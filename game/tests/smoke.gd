@@ -1,5 +1,5 @@
 extends Node
-## Headless smoke test v2 — canon systems, no UI.
+## Headless smoke test v2 — canon systems, Action Value Model & GameMathEngine.
 ## Runs as a scene so autoloads (Game, EventBus) are live:
 ##   godot --headless --path . res://tests/smoke.tscn
 
@@ -7,7 +7,7 @@ var failures := 0
 
 
 func _ready() -> void:
-	print("== Into the Wild smoke test v2 (canon) ==")
+	print("== Into the Wild smoke test v2 (canon + GameMathEngine) ==")
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 12345
 
@@ -36,6 +36,42 @@ func _ready() -> void:
 	var pity: Dictionary = {"want": 10}
 	var pity_roll := GameMathEngine.roll_loot_with_pity({"want": 1.0, "other": 99.0}, pity, "want", 10)
 	_check(pity_roll == "want", "pity roll guarantees the target at max rolls")
+
+	# --- Expanded Datasets loading
+	_check(decks.items.size() >= 50, "expanded items dataset loaded (%d items)" % decks.items.size())
+	_check(decks.expanded_creatures.size() >= 10, "expanded creatures dataset loaded (%d creatures)" % decks.expanded_creatures.size())
+	_check(decks.expanded_quests.size() >= 10, "expanded trials dataset loaded (%d trials)" % decks.expanded_quests.size())
+	_check(decks.expanded_deck_cards.size() >= 10, "expanded deck cards loaded (%d cards)" % decks.expanded_deck_cards.size())
+
+	# --- GameMathEngine Action Value Model (AVM) Tests
+	_check(GameMathEngine.ce_of_tier("common") == 1 and GameMathEngine.ce_of_tier("uncommon") == 3
+		and GameMathEngine.ce_of_tier("rare") == 9 and GameMathEngine.ce_of_tier("legendary") == 27, "GameMathEngine CE tier ladder 1/3/9/27")
+	var sample_item := {"item_id": "tool_01", "rarity": "Uncommon", "properties": {"harvest_multiplier": 2.0, "durability": 100.0}}
+	var item_val := GameMathEngine.calculate_item_value(sample_item)
+	_check(item_val > 3.0, "GameMathEngine item valuation calculates utility (%f CE)" % item_val)
+	# A mid bottleneck trial by the actual rebalanced numbers: 5-common deposit,
+	# +3 VP, +3 Light — the AVM should judge it balanced.
+	var quest_bal := GameMathEngine.calculate_quest_balance(5.0, 3, 3, false)
+	_check(bool(quest_bal["balanced"]), "GameMathEngine judges a mid trial balanced (ROI)")
+
+	# --- GameMathEngine Combat & Asymptotic Mitigation Tests
+	_check(absf(GameMathEngine.calculate_asymptotic_mitigation(60.0, 1, 60.0) - 0.5) < 0.001, "asymptotic mitigation at stat=60, L=1, K=60 is 50%")
+	_check(absf(GameMathEngine.calculate_dodge_chance(0.0, 1, 60.0, 0.02) - 0.02) < 0.001, "base dodge chance is 2%")
+	_check(absf(GameMathEngine.calculate_crit_chance(0.0, 1, 120.0, 0.04) - 0.04) < 0.001, "base crit chance is 4%")
+	_check(absf(GameMathEngine.calculate_effective_health(100.0, 60.0, 1, 60.0) - 200.0) < 0.01, "EHP with 50% armor mitigation doubles raw HP (100 -> 200)")
+	_check(absf(GameMathEngine.calculate_combat_damage(10.0, 16.0, 0.0, 1) - 11.0) < 0.001, "combat damage calculation (10 weapon + 16/16 AP = 11)")
+
+	# --- GameMathEngine Loot Systems with Pity
+	var test_loot_table := {"common_stick": 10.0, "rare_gem": 1.0}
+	var pity_counter := {}
+	var rolled := GameMathEngine.roll_loot_with_pity(test_loot_table, pity_counter, "rare_gem", 2)
+	_check(rolled != "null", "pity roller outputs valid drop")
+	var rolled_item_dict := decks.roll_item_loot()
+	_check(not rolled_item_dict.is_empty(), "decks.roll_item_loot rolls valid item from dataset")
+
+	# --- GameMathEngine Procedural Enemy Generator
+	var enemy := GameMathEngine.generate_balanced_enemy(1, 1.0)
+	_check(int(enemy["level"]) == 1 and enemy.has("stats") and float(enemy["stats"]["max_hp"]) > 0.0, "procedural enemy generator compiles level 1 budget")
 
 	# --- CE tier ladder (canon invariant I1)
 	_check(decks.ce_of("common") == 1 and decks.ce_of("uncommon") == 3
@@ -110,7 +146,7 @@ func _ready() -> void:
 		_check(game.players[0].character_id == "botanist" and game.players[0].heart == "wood", "p0 assigned Botanist")
 		_check(game.players[1].character_id == "blacksmith" and game.players[1].heart == "stone", "p1 assigned Blacksmith")
 		
-		# --- quest engine unit test
+		# --- quest engine unit test (common quests & expanded dual-path trials)
 		var qe := QuestEngine.new([
 			{"id": "first_meal", "name": "A Meal Shared", "vp": 2, "difficulty": "easy"},
 			{"id": "shoreline", "name": "Learn the Shore", "vp": 2, "difficulty": "easy"}
@@ -124,6 +160,18 @@ func _ready() -> void:
 		qe.on_tile_explored(test_p, dummy_tile)
 		_check(qe.is_completed(test_p, "shoreline") and test_p.vp == 2, "shoreline auto-completes at 3 tiles (+2 VP)")
 		
+		# Dual-path trial test
+		var sample_trial := {
+			"quest_id": "trial_01",
+			"title": "Trial of the Furnace",
+			"light_path": {"reward": {"vp": 2, "light": 2, "items": ["harmony_token_t1"]}},
+			"dark_path": {"reward": {"vp": 3, "light": -2, "items": ["shatter_shard_t1"]}}
+		}
+		var p_trial := PlayerState.new()
+		p_trial.index = 0
+		var light_res := qe.complete_trial_light(p_trial, sample_trial)
+		_check(bool(light_res["success"]) and p_trial.vp == 2 and p_trial.has_item("harmony_token_t1"), "complete_trial_light awards VP and items")
+
 		# Redraw vote test
 		var vote := qe.start_redraw_vote(0, 2)
 		_check(not bool(vote["resolved"]), "vote pending responder")
@@ -163,9 +211,14 @@ func _ready() -> void:
 		SkillTree.learn_skill(p_skill, skill_swift, rng)
 		_check(p_skill.skills.has("swift_stride") and p_skill.move == m0 + 1, "swift_stride learned, +1 move speed applied")
 
-		# --- CreatureEngine test
+		# --- CreatureEngine test (expanded karma & field moves)
 		var test_creature := {
-			"id": "bramblehog", "name": "Bramblehog", "element": "wood", "tier": "common", "f": 4,
+			"id": "puddle_frog", "name": "Puddle-Frog", "element": "wood", "tier": 1, "f": 4,
+			"field_move": "Irrigate",
+			"karma_interactions": {
+				"exalted_light": {"action": "gift", "item_reward": "luminous_algae", "light_change": 2, "flavor": "Reverence."},
+				"neutral": {"action": "challenge", "cost": {"item_id": "sweet_berry", "qty": 1}, "flavor": "Curious block."}
+			},
 			"demand": { "type": "common", "ids": ["wild_berries"], "n": 1 },
 			"gift": { "op": "gain_common", "element": "wood", "n": 2 },
 			"bite": { "op": "lose_common", "n": 1 }
@@ -173,6 +226,9 @@ func _ready() -> void:
 		var p_wood := PlayerState.new()
 		p_wood.heart = "wood"
 		_check(int(CreatureEngine.effective_band(p_wood, test_creature)) == int(Game.band_of(p_wood)) + 1, "matching heart shifts effective creature band +1")
+		var field_msg := CreatureEngine.execute_field_move(p_wood, test_creature, dummy_tile, rng)
+		_check(field_msg.contains("Irrigate"), "creature field move executes successfully")
+
 		p_wood.skills.append("iron_skin")
 		var bite_msg := CreatureEngine.apply_effect(p_wood, test_creature["bite"], rng, true)
 		_check(bite_msg.contains("Iron Skin protects"), "iron_skin shields player from creature bite")
@@ -181,6 +237,7 @@ func _ready() -> void:
 		var b_tile := IslandTile.new(Vector2i(0, 0), "wood", 1)
 		b_tile.buildings.append("wayside_shrine")
 		_check(BuildingEngine.has_building(b_tile, "wayside_shrine"), "tile has wayside_shrine")
+		_check(BuildingEngine.get_building_stat_budget("workshop") > 0, "get_building_stat_budget calculated via GameMathEngine")
 		p_wood.add_common("wood", 2)
 		var b_res := BuildingEngine.interact(p_wood, b_tile, "wayside_shrine", rng)
 		_check(bool(b_res["success"]), "interact with wayside_shrine succeeds")

@@ -113,6 +113,14 @@ func has_item(id: String) -> bool:
 	return items.has(id)
 
 
+## Add an item if the pack has room. Returns whether it fit.
+func add_item(id: String) -> bool:
+	if id == "" or items.size() >= pack_size:
+		return false
+	items.append(id)
+	return true
+
+
 func remove_item(id: String) -> bool:
 	var i := items.find(id)
 	if i < 0:
