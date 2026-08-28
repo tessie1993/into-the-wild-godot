@@ -90,13 +90,22 @@ func end_care_phase() -> void:
 func end_turn() -> void:
 	var p := current_player()
 	p.fought_recently = false  # set again during the turn if they fought
-	_check_victory(p)
 	EventBus.turn_ended.emit(current)
-	if winner_index >= 0:
+	
+	# Single player check: resolve immediately
+	if players.size() == 1 and get_victory_way(p) != "":
+		winner_index = p.index
+		winner_way = get_victory_way(p)
 		_clear_save()
+		EventBus.game_won.emit(winner_index, winner_way)
 		return
+
 	current = (current + 1) % players.size()
 	if current == 0:
+		# Round complete: evaluate simultaneous finish tiebreakers (GDD §10.3 & S11)
+		if resolve_round_end_victory():
+			return
+
 		round_num += 1
 		for pl in players:
 			pl.gifted_players_this_round.clear()
@@ -280,26 +289,68 @@ func fight(p: PlayerState, creature: Dictionary, spend_energy: int) -> Dictionar
 
 # ------------------------------------------------------------------ victory
 
-## Three ways (canon/victory.json shapes + synthesis S1 numbers):
-## Capable: VP>=16, Light>=+3 · Enlightened: VP>=10, Light>=+8 · Dark: VP>=18, Light<=−8.
-func _check_victory(p: PlayerState) -> void:
+## Returns victory way ("enlightened", "capable", "dark") if player qualifies, or "" if not.
+## Enforces viability gate (S5 / Q7): player must have completed >= 1 Guardian offering or defiled a site.
+func get_victory_way(p: PlayerState) -> String:
+	var viable := p.offerings_made >= 1 or p.character_id == "outcast" or p.light <= -8
+	if not viable:
+		return ""
 	var t := decks.victory_thresholds()
 	var cap: Dictionary = t.get("capable", {})
 	var enl: Dictionary = t.get("enlightened", {})
 	var drk: Dictionary = t.get("dark", {})
 	if p.vp >= int(enl.get("vp", 10)) and p.light >= int(enl.get("min_light", 8)):
-		winner_index = p.index
-		winner_way = "enlightened"
+		return "enlightened"
 	elif p.vp >= int(cap.get("vp", 16)) and p.light >= int(cap.get("min_light", 3)):
-		winner_index = p.index
-		winner_way = "capable"
+		return "capable"
 	elif p.vp >= int(drk.get("vp", 18)) and p.light <= int(drk.get("max_light", -8)):
-		winner_index = p.index
-		winner_way = "dark"
-	if winner_index >= 0:
+		return "dark"
+	return ""
+
+
+## Evaluates round-end simultaneous finishes and resolves tiebreakers (GDD §10.3 & S11).
+## 1. Higher Light wins (being kind beats being successful).
+## 2. Most Guardian VP wins.
+## 3. Shared victory (cooperation is the point of the game).
+func resolve_round_end_victory() -> bool:
+	var qualified: Array[PlayerState] = []
+	for p in players:
+		if get_victory_way(p) != "":
+			qualified.append(p)
+	if qualified.is_empty():
+		return false
+	if qualified.size() == 1:
+		winner_index = qualified[0].index
+		winner_way = get_victory_way(qualified[0])
+		_clear_save()
 		EventBus.game_won.emit(winner_index, winner_way)
-		# Tiebreakers (canon): higher Light > Guardian VP > shared. TODO(agent):
-		# simultaneous finishes need round-end resolution once that exists.
+		return true
+
+	# Tiebreaker 1: Light Track Priority
+	qualified.sort_custom(func(a: PlayerState, b: PlayerState) -> bool:
+		if a.light != b.light:
+			return a.light > b.light
+		if a.guardian_vp != b.guardian_vp:
+			return a.guardian_vp > b.guardian_vp
+		return a.vp > b.vp
+	)
+	var top: PlayerState = qualified[0]
+	var second: PlayerState = qualified[1]
+
+	if top.light > second.light:
+		winner_index = top.index
+		winner_way = get_victory_way(top)
+	elif top.guardian_vp > second.guardian_vp:
+		winner_index = top.index
+		winner_way = get_victory_way(top)
+	else:
+		# Shared Victory!
+		winner_index = -2
+		winner_way = "shared"
+
+	_clear_save()
+	EventBus.game_won.emit(winner_index, winner_way)
+	return true
 
 
 # ------------------------------------------------------------------ save/load
