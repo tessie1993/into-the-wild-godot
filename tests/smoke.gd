@@ -86,8 +86,31 @@ func _initialize() -> void:
 	# --- turn engine (autoload present when run in-project)
 	var game: Node = root.get_node_or_null("Game")
 	if game != null:
-		game.new_game(2)
+		game.new_game(2, ["botanist", "blacksmith"])
 		_check(game.players.size() == 2, "new_game(2)")
+		_check(game.players[0].character_id == "botanist" and game.players[0].heart == "wood", "p0 assigned Botanist")
+		_check(game.players[1].character_id == "blacksmith" and game.players[1].heart == "stone", "p1 assigned Blacksmith")
+		
+		# --- quest engine unit test
+		var qe := QuestEngine.new([
+			{"id": "first_meal", "name": "A Meal Shared", "vp": 2, "difficulty": "easy"},
+			{"id": "shoreline", "name": "Learn the Shore", "vp": 2, "difficulty": "easy"}
+		])
+		var test_p := PlayerState.new()
+		test_p.index = 0
+		var dummy_tile := IslandTile.new(Vector2i(1, 0), "wood", 1)
+		qe.on_tile_explored(test_p, dummy_tile)
+		qe.on_tile_explored(test_p, dummy_tile)
+		_check(not qe.is_completed(test_p, "shoreline"), "shoreline requires 3 tiles (at 2)")
+		qe.on_tile_explored(test_p, dummy_tile)
+		_check(qe.is_completed(test_p, "shoreline") and test_p.vp == 2, "shoreline auto-completes at 3 tiles (+2 VP)")
+		
+		# Redraw vote test
+		var vote := qe.start_redraw_vote(0, 2)
+		_check(not bool(vote["resolved"]), "vote pending responder")
+		vote = qe.submit_vote(1, true, 2)
+		_check(bool(vote["resolved"]) and bool(vote["passed"]), "majority vote passes")
+
 		var cur: PlayerState = game.current_player()
 		cur.add_common("grain", 3)
 		var g0: int = cur.energy

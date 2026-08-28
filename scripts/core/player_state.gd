@@ -33,6 +33,15 @@ var fought_recently: bool = false  ## Outcast weakness hook
 var skills: Array = []             ## learned skill ids
 var offerings_made: int = 0
 
+# Quest tracking (v2 quest engine)
+var completed_quests: Array = []
+var quest_progress: Dictionary = {}
+var guardian_quests: Array = []
+var explored_t1_count: int = 0
+var gifted_players_this_round: Array = []
+var guardian_sites_offered: Array = []
+var crafted_items_history: Array = []
+
 
 func commons_count() -> int:
 	var total := 0
@@ -112,6 +121,13 @@ func to_dict() -> Dictionary:
 		"slow_penalty": slow_penalty, "last_action": last_action,
 		"skills": skills.duplicate(), "offerings_made": offerings_made,
 		"fought_recently": fought_recently,
+		"completed_quests": completed_quests.duplicate(),
+		"quest_progress": quest_progress.duplicate(),
+		"guardian_quests": guardian_quests.duplicate(true),
+		"explored_t1_count": explored_t1_count,
+		"gifted_players_this_round": gifted_players_this_round.duplicate(),
+		"guardian_sites_offered": guardian_sites_offered.map(func(v: Vector2i) -> Array: return [v.x, v.y]),
+		"crafted_items_history": crafted_items_history.duplicate(),
 	}
 
 
@@ -138,4 +154,15 @@ static func from_dict(d: Dictionary) -> PlayerState:
 	p.skills = d.get("skills", [])
 	p.offerings_made = int(d.get("offerings_made", 0))
 	p.fought_recently = bool(d.get("fought_recently", false))
+	p.completed_quests = d.get("completed_quests", [])
+	p.quest_progress = d.get("quest_progress", {})
+	p.guardian_quests = d.get("guardian_quests", [])
+	p.explored_t1_count = int(d.get("explored_t1_count", 0))
+	p.gifted_players_this_round = d.get("gifted_players_this_round", [])
+	var raw_sites: Array = d.get("guardian_sites_offered", [])
+	p.guardian_sites_offered = []
+	for s in raw_sites:
+		if s is Array and s.size() >= 2:
+			p.guardian_sites_offered.append(Vector2i(int(s[0]), int(s[1])))
+	p.crafted_items_history = d.get("crafted_items_history", [])
 	return p

@@ -64,6 +64,16 @@ func _ready() -> void:
 	EventBus.vp_changed.connect(func(_i: int, _v: int) -> void: _refresh_hud())
 	EventBus.inventory_changed.connect(func(_i: int) -> void: _refresh_hud())
 	EventBus.rage_changed.connect(func(_v: int) -> void: _refresh_hud())
+	EventBus.quest_completed.connect(func(p_idx: int, q: Dictionary) -> void:
+		if p_idx == Game.current:
+			_toast("★ Quest Complete: %s (+%d VP)!" % [String(q.get("name", "")), int(q.get("vp", 0))])
+		_refresh_quests()
+		_refresh_hud()
+	)
+	EventBus.quests_redrawn.connect(func(_new_quests: Array) -> void:
+		_refresh_quests()
+		_refresh_hud()
+	)
 	Game.begin_turn_for_current()
 	_begin_turn()
 	if Game.winner_index >= 0:
@@ -290,9 +300,24 @@ func _toast(text: String) -> void:
 
 
 func _refresh_quests() -> void:
+	if Game.players.is_empty():
+		return
+	var p := Game.current_player()
 	var lines: Array = ["Common Quests (open to all):"]
 	for q in Game.common_quests:
-		lines.append("• [%s] %s (%d VP)" % [String(q.get("difficulty", "?")), String(q.get("name", "")), int(q.get("vp", 0))])
+		var qid := String(q.get("id", ""))
+		var qname := String(q.get("name", ""))
+		var vp := int(q.get("vp", 0))
+		var diff := String(q.get("difficulty", "?")).capitalize()
+		if p.completed_quests.has(qid):
+			lines.append("• [%s] %s (✓ +%d VP)" % [diff, qname, vp])
+		else:
+			var target: int = int(QuestEngine.COMMON_QUEST_TARGETS.get(qid, 1))
+			var cur: int = int(p.quest_progress.get(qid, 0))
+			if target > 1:
+				lines.append("• [%s] %s [%d/%d] (%d VP)" % [diff, qname, mini(cur, target), target, vp])
+			else:
+				lines.append("• [%s] %s (%d VP)" % [diff, qname, vp])
 	lines.append("")
 	lines.append("Ways to win:  Capable 16VP & Light≥3")
 	lines.append("Enlightened 10VP & Light≥8 · Dark 18VP & Light≤−8")
@@ -554,10 +579,14 @@ func _reveal(tile: IslandTile, p: PlayerState) -> void:
 	tile.explored = true
 	_refresh_tile(tile.axial)
 	EventBus.tile_explored.emit(tile.axial)
+	if Game.quest_engine != null:
+		Game.quest_engine.on_tile_explored(p, tile)
 	_toast("You step into %s." % _terrain_name(tile))
 	var card := Game.decks.draw_card(tile.element_id, tile.tier)
 	if not card.is_empty():
 		if p.add_card(card):
+			if Game.quest_engine != null:
+				Game.quest_engine.on_gather_card(p, tile.tier, String(card.get("tier", "")))
 			_toast("Found: [%s] %s." % [String(card["tier"]), Game.decks.display_name_of(String(card["id"]))])
 		else:
 			_toast("Hand full — the find slips away.")
@@ -608,6 +637,8 @@ func _gather_do(p: PlayerState, tile: IslandTile, exploit: bool) -> void:
 	var card := Game.decks.draw_card_keep_best(tile.element_id, tile.tier, draws)
 	var card_txt := ""
 	if not card.is_empty() and p.add_card(card):
+		if Game.quest_engine != null:
+			Game.quest_engine.on_gather_card(p, tile.tier, String(card.get("tier", "")))
 		card_txt = " + [%s] %s" % [String(card["tier"]), Game.decks.display_name_of(String(card["id"]))]
 	if exploit:
 		tile.exhausted = true
@@ -649,6 +680,8 @@ func _craft_pick(recipe: Dictionary, p: PlayerState, tile: IslandTile) -> void:
 	if kind == "":
 		_toast("Crafting failed (pack full or materials short).")
 		return
+	if Game.quest_engine != null:
+		Game.quest_engine.on_item_crafted(p, String(recipe["id"]))
 	if kind == "building":
 		tile.buildings.append(String(recipe["id"]))
 		_refresh_tile(tile.axial)
@@ -759,16 +792,78 @@ func _learn_pick(p: PlayerState, skill: String, ce: int) -> void:
 # ----------------------------------------------------------------- quest
 
 func _do_quest(p: PlayerState) -> void:
-	action_taken = "quest"
 	var tile: IslandTile = Game.board.get_tile(p.pos)
+	var is_guardian_tile := tile.has_guardian or tile.tier == 3
 	var sanctum := tile.tier == 3
 	var entries: Array = []
-	if p.has_item("offering_bundle"):
-		entries.append(["Make an Offering (+2 Light, +%d VP, −1 Rage)" % (4 if sanctum else 2), _quest_offer.bind(p, sanctum)])
-	if Duality.corrupt_gate_open(Game.band_of(p)):
-		entries.append(["Defile the site (−3 Light, +2 VP, +1 Rage)", _quest_defile.bind(p)])
-	entries.append(["Step back", _close_modal])
-	_show_modal("The Guardian watches", "Something old and patient regards you.", entries)
+
+	if is_guardian_tile:
+		if p.has_item("offering_bundle"):
+			entries.append(["★ Make an Offering (+2 Light, +%d VP, −1 Rage)" % (4 if sanctum else 2), _quest_offer.bind(p, sanctum)])
+		if Duality.corrupt_gate_open(Game.band_of(p)):
+			entries.append(["☠ Defile the site (−3 Light, +2 VP, +1 Rage)", _quest_defile.bind(p)])
+
+	entries.append(["⚅ Call Quest Redraw Vote", _on_call_quest_redraw_vote.bind(p)])
+	entries.append(["Close", _close_modal])
+
+	var q_lines: Array = ["Active Island Quests:"]
+	for q in Game.common_quests:
+		var qid := String(q.get("id", ""))
+		var qname := String(q.get("name", ""))
+		var qdesc := String(q.get("desc", ""))
+		var vp := int(q.get("vp", 0))
+		var diff := String(q.get("difficulty", "?")).capitalize()
+		var status_str := "Completed ✓" if p.completed_quests.has(qid) else "In Progress"
+		q_lines.append("\n[%s] %s (%d VP) — %s\n  %s" % [diff, qname, vp, status_str, qdesc])
+	
+	if is_guardian_tile:
+		q_lines.append("\n✦ You stand at an ancient Guardian site.")
+
+	_show_modal("Quests & Guardians", "\n".join(q_lines), entries)
+
+
+func _on_call_quest_redraw_vote(p: PlayerState) -> void:
+	_close_modal()
+	if Game.players.size() == 1:
+		Game.redraw_common_quests()
+		_toast("Quests redrawn!")
+		return
+	
+	Game.start_quest_redraw_vote(p.index)
+	_toast("%s called for a Common Quest redraw vote." % p.display_name)
+	_prompt_next_redraw_vote(p.index, 0)
+
+
+func _prompt_next_redraw_vote(caller_idx: int, check_idx: int) -> void:
+	if check_idx >= Game.players.size():
+		return
+	if check_idx == caller_idx:
+		_prompt_next_redraw_vote(caller_idx, check_idx + 1)
+		return
+	
+	var voter: PlayerState = Game.players[check_idx]
+	var entries: Array = [
+		["Agree (Vote YES to redraw)", _cast_redraw_vote_choice.bind(caller_idx, check_idx, true)],
+		["Disagree (Vote NO)", _cast_redraw_vote_choice.bind(caller_idx, check_idx, false)],
+	]
+	_show_modal(
+		"Quest Redraw Vote",
+		"Player %s wants to redraw the 3 Common Quests.\n\n%s, do you agree?" % [Game.players[caller_idx].display_name, voter.display_name],
+		entries
+	)
+
+
+func _cast_redraw_vote_choice(caller_idx: int, voter_idx: int, agree: bool) -> void:
+	_close_modal()
+	var status := Game.submit_quest_redraw_vote(voter_idx, agree)
+	if bool(status.get("resolved", false)):
+		if bool(status.get("passed", false)):
+			_toast("Redraw vote PASSED (%d/%d). New quests drawn!" % [int(status.get("yes_count", 0)), int(status.get("total_players", 0))])
+		else:
+			_toast("Redraw vote FAILED. Quests remain unchanged.")
+		_refresh_quests()
+	else:
+		_prompt_next_redraw_vote(caller_idx, voter_idx + 1)
 
 
 func _quest_offer(p: PlayerState, sanctum: bool) -> void:

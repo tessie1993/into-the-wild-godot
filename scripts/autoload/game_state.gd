@@ -10,6 +10,7 @@ var rng := RandomNumberGenerator.new()
 var decks: Decks
 var board: Board
 var fate: Fate
+var quest_engine: QuestEngine
 var players: Array[PlayerState] = []
 var current: int = 0
 var round_num: int = 1
@@ -19,6 +20,7 @@ var common_quests: Array = []
 var started: bool = false
 var winner_index: int = -1
 var winner_way: String = ""
+var pending_player_count: int = 2
 
 
 func _ready() -> void:
@@ -35,7 +37,7 @@ func band_of(p: PlayerState) -> Duality.Band:
 
 # ------------------------------------------------------------------ lifecycle
 
-func new_game(player_count: int) -> void:
+func new_game(player_count: int, character_ids: Array[String] = []) -> void:
 	decks = Decks.new(rng)
 	fate = Fate.new(rng, decks.canon.get("fate", {}))
 	board = Board.new()
@@ -46,7 +48,11 @@ func new_game(player_count: int) -> void:
 	rage = 0
 	var starts := board.start_positions(player_count)
 	for i in player_count:
-		var c: Dictionary = decks.characters[i % decks.characters.size()]
+		var c: Dictionary = {}
+		if i < character_ids.size() and decks.characters_by_id.has(character_ids[i]):
+			c = decks.characters_by_id[character_ids[i]]
+		else:
+			c = decks.characters[i % decks.characters.size()]
 		var p := PlayerState.new()
 		p.index = i
 		p.character_id = String(c["id"])
@@ -60,6 +66,7 @@ func new_game(player_count: int) -> void:
 		p.pos = starts[i]
 		players.append(p)
 	common_quests = decks.draw_common_quests()
+	quest_engine = QuestEngine.new(common_quests)
 	current = 0
 	round_num = 1
 	phase = "care"
@@ -90,6 +97,8 @@ func end_turn() -> void:
 	current = (current + 1) % players.size()
 	if current == 0:
 		round_num += 1
+		for pl in players:
+			pl.gifted_players_this_round.clear()
 		# Island Rage: temporal faucet, +1 every round (canon/rage.json).
 		add_rage(Rage.delta_for("round_start"))
 		# Mode turn limit (canon/modes.json; Standard 15 is the designer-approved
@@ -192,6 +201,8 @@ func care_gift(from_p: PlayerState, to_p: PlayerState, common_id: String) -> boo
 		if not blocked:
 			shift_light(from_p, "gift_card")
 		from_p.care_gift_used = true
+	if quest_engine != null:
+		quest_engine.on_gift_given(from_p, to_p, common_id, false, players.size())
 	EventBus.inventory_changed.emit(from_p.index)
 	EventBus.inventory_changed.emit(to_p.index)
 	return true
@@ -219,6 +230,8 @@ func guardian_offering(p: PlayerState, sanctum: bool) -> bool:
 	add_rage(Rage.delta_for("guardian_quest_step"))
 	var step_vp := decks.vp_faucet("guardian_chain_step", "rare" if sanctum else "uncommon")
 	add_vp(p, step_vp, true)
+	if quest_engine != null:
+		quest_engine.on_guardian_offering(p, p.pos)
 	EventBus.inventory_changed.emit(p.index)
 	return true
 
@@ -336,8 +349,31 @@ func load_game() -> bool:
 	winner_index = int(data.get("winner_index", -1))
 	winner_way = String(data.get("winner_way", ""))
 	common_quests = data.get("common_quests", [])
+	quest_engine = QuestEngine.new(common_quests)
 	started = true
 	return true
+
+
+func redraw_common_quests() -> void:
+	common_quests = decks.draw_common_quests()
+	if quest_engine != null:
+		quest_engine.set_common_quests(common_quests)
+	EventBus.quests_redrawn.emit(common_quests)
+
+
+func start_quest_redraw_vote(caller_index: int) -> Dictionary:
+	if quest_engine == null:
+		quest_engine = QuestEngine.new(common_quests)
+	return quest_engine.start_redraw_vote(caller_index, players.size())
+
+
+func submit_quest_redraw_vote(voter_index: int, agree: bool) -> Dictionary:
+	if quest_engine == null:
+		quest_engine = QuestEngine.new(common_quests)
+	var status := quest_engine.submit_vote(voter_index, agree, players.size())
+	if bool(status.get("resolved", false)) and bool(status.get("passed", false)):
+		redraw_common_quests()
+	return status
 
 
 func _clear_save() -> void:

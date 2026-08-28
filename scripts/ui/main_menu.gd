@@ -107,8 +107,8 @@ func _update_count() -> void:
 
 
 func _on_start() -> void:
-	Game.new_game(_player_count)
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	Game.pending_player_count = _player_count
+	get_tree().change_scene_to_file("res://scenes/character_select.tscn")
 
 
 func _on_continue() -> void:
