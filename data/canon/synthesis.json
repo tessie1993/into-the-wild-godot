@@ -1,5 +1,9 @@
 {
-  "$source": "SYNTHESIS-DECISIONS.md — Desktop synthesis rulings over the Orca lane canon. Canon files stay verbatim from lane-systems; this overlay resolves their OPEN markers. Every ruling is provisional until the designer approves.",
+  "$source": "Desktop synthesis rulings over the Orca lane canon. Canon files stay verbatim from lane-systems; this overlay resolves their OPEN markers.",
+  "$designer_approval": "2026-08-28 — APPROVED by the designer: S1 (VP 0-20, 16/+3 · 10/+8 · 18/−8), S2 (band-valued Wilds), S3 (Corrupt Gate Way 3), S4 (first-gift-only Light cap), S11 (Standard 15 default mode + endgame scoring VP>Light>GuardianVP), S12 (companions CUT for v1 — first post-launch module), S13 (fight tie = win, draw >= F), S14 (art: painterly storybook). S5-S10 pending explicit review; treat as proposed.",
+  "S11_default_mode": { "mode": "standard", "turns_per_player": 15, "endgame": "at limit: most VP, ties by Light then Guardian VP" },
+  "S13_tie_rule": { "rule": "fate draw >= F wins" },
+  "S14_art_direction": { "style": "painterly storybook", "notes": "soft watercolor/gouache warmth; see docs/art-direction.md" },
   "S1_vp_scale": {
     "resolves": ["Q6", "Q2"],
     "rule": "VP lives on a 0-20 track sharing Light's order of magnitude (the hypocrisy penalty forces this).",

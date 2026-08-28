@@ -92,9 +92,36 @@ func end_turn() -> void:
 		round_num += 1
 		# Island Rage: temporal faucet, +1 every round (canon/rage.json).
 		add_rage(Rage.delta_for("round_start"))
+		# Mode turn limit (canon/modes.json; Standard 15 is the designer-approved
+		# default): when the last round completes, the island decides.
+		if round_num > _turns_limit():
+			_endgame_scoring()
+			return
 	begin_turn_for_current()
 	save_game()
 	EventBus.turn_started.emit(current)
+
+
+func _turns_limit() -> int:
+	for m in decks.canon.get("modes", {}).get("modes", []):
+		if bool(m.get("baseline", false)):
+			return int(m.get("turns_per_player", 15))
+	return 15
+
+
+## Nobody reached a Way in time: closest journey wins — most VP, ties broken
+## by higher Light, then Guardian VP (canon tiebreaker order). TUNE.
+func _endgame_scoring() -> void:
+	var best: PlayerState = players[0]
+	for p in players:
+		if p.vp > best.vp \
+			or (p.vp == best.vp and p.light > best.light) \
+			or (p.vp == best.vp and p.light == best.light and p.guardian_vp > best.guardian_vp):
+			best = p
+	winner_index = best.index
+	winner_way = "endgame"
+	_clear_save()
+	EventBus.game_won.emit(winner_index, winner_way)
 
 
 # ------------------------------------------------------------------ mutations

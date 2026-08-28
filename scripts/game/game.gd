@@ -1031,6 +1031,8 @@ func _on_game_won(index: int, way: String) -> void:
 			winner_label.text = "%s\nwalks the Enlightened Path.\nThe island keeps them as one of its own." % p.display_name
 		"capable":
 			winner_label.text = "%s\nwalks the Capable Path.\nSkilled hands, and light enough to trust." % p.display_name
+		"endgame":
+			winner_label.text = "The seasons turn.\n%s came furthest on their path.\nThe island remembers everyone." % p.display_name
 		_:
 			winner_label.text = "%s\ntakes the island in shadow.\nA hollow kind of crown." % p.display_name
 	winner_overlay.visible = true
