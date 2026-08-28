@@ -1,12 +1,13 @@
 extends Node2D
-## The play scene, v2 — the canon turn: CARE phase (free bonuses) then one of
-## six MAIN actions (canon/actions.json). Rules live in Game + systems/*;
-## this scene is the table.
+## The play scene, v2 — Painterly Storybook Table & HUD.
+## The canon turn: CARE phase (free bonuses) then one of six MAIN actions (canon/actions.json).
+## Rules live in Game + systems/*; this scene is the illustrated view table.
 
-const PLAYER_COLORS: Array[Color] = [
-	Color("e4b74a"), Color("d16a5a"), Color("5aa7d1"), Color("9a6ad1"),
-]
-const FACEDOWN_COLORS: Dictionary = {1: Color("39404a"), 2: Color("2b3038"), 3: Color("241f30")}
+const FACEDOWN_COLORS: Dictionary = {
+	1: Color("28322e"),  ## Outer ring slate green
+	2: Color("202824"),  ## Middle ring deep slate
+	3: Color("1a1f26"),  ## Inner sanctum shadow
+}
 const PAWN_OFFSETS: Array[Vector2] = [
 	Vector2(-14, -10), Vector2(14, -10), Vector2(-14, 12), Vector2(14, 12),
 ]
@@ -30,19 +31,28 @@ var action_taken := ""
 
 # --- HUD
 var hud: CanvasLayer
+var p_crest_panel: PanelContainer
 var lbl_turn: Label
 var lbl_stats: Label
 var lbl_inv: Label
 var lbl_quests: Label
 var lbl_toast: Label
+var toast_panel: PanelContainer
 var care_bar: HBoxContainer
 var action_bar: HBoxContainer
 var buttons: Dictionary = {}
+
+# Modal System
 var modal_root: CenterContainer
+var modal_panel: PanelContainer
+var modal_card_img: TextureRect
 var modal_title: Label
-var modal_body: Label
+var modal_body: RichTextLabel
 var modal_buttons: VBoxContainer
-var winner_overlay: Control
+
+# Winner Overlay
+var winner_overlay: ColorRect
+var winner_panel: PanelContainer
 var winner_label: Label
 
 var _pressing := false
@@ -84,56 +94,87 @@ func _ready() -> void:
 
 func _build_world() -> void:
 	var world_bg := ColorRect.new()
-	world_bg.color = Color("101b22")
+	world_bg.color = UITheme.COLOR_BG_DEEP
 	world_bg.size = Vector2(8000, 8000)
 	world_bg.position = Vector2(-4000, -4000)
 	world_bg.z_index = -10
 	add_child(world_bg)
+
 	board_layer = Node2D.new()
 	add_child(board_layer)
 	pawn_layer = Node2D.new()
 	pawn_layer.z_index = 5
 	add_child(pawn_layer)
+
 	for axial in Game.board.tiles.keys():
 		_spawn_tile_nodes(axial)
+
 	for p in Game.players:
 		var pawn := Node2D.new()
+		var p_col: Color = UITheme.PLAYER_COLORS[p.index % UITheme.PLAYER_COLORS.size()]
+		
+		# Outer soft glow ring
+		var glow := Line2D.new()
+		glow.points = _circle_points(hex_size * 0.28, 16)
+		glow.closed = true
+		glow.width = 4.0
+		glow.default_color = Color(p_col.r, p_col.g, p_col.b, 0.4)
+		pawn.add_child(glow)
+
+		# Inner token dot
 		var dot := Polygon2D.new()
-		dot.polygon = _circle_points(hex_size * 0.22, 12)
-		dot.color = PLAYER_COLORS[p.index % PLAYER_COLORS.size()]
+		dot.polygon = _circle_points(hex_size * 0.22, 16)
+		dot.color = p_col
 		pawn.add_child(dot)
+
+		# Dark rim
 		var rim := Line2D.new()
-		rim.points = _circle_points(hex_size * 0.22, 12)
+		rim.points = _circle_points(hex_size * 0.22, 16)
 		rim.closed = true
-		rim.width = 3.0
-		rim.default_color = Color("10151a")
+		rim.width = 2.5
+		rim.default_color = Color(0.08, 0.12, 0.10, 0.95)
 		pawn.add_child(rim)
+
 		pawn_layer.add_child(pawn)
 		pawns.append(pawn)
 		_place_pawn(p)
+
 	camera = Camera2D.new()
-	camera.zoom = Vector2(0.8, 0.8)
+	camera.zoom = Vector2(0.85, 0.85)
 	add_child(camera)
 	camera.make_current()
 
 
 func _spawn_tile_nodes(axial: Vector2i) -> void:
 	var center := Hex.to_pixel(axial, hex_size)
+	
+	# Drop shadow / outer bevel
+	var shadow := Polygon2D.new()
+	shadow.polygon = Hex.corners(center + Vector2(0, 3), hex_size * 0.98)
+	shadow.color = Color(0.04, 0.07, 0.05, 0.5)
+	board_layer.add_child(shadow)
+
+	# Border outline
 	var outline := Polygon2D.new()
 	outline.polygon = Hex.corners(center, hex_size * 0.98)
-	outline.color = Color("0c1116")
+	outline.color = Color(0.12, 0.17, 0.14, 0.95)
 	board_layer.add_child(outline)
+
+	# Inner tile fill
 	var fill := Polygon2D.new()
 	fill.polygon = Hex.corners(center, hex_size * 0.90)
 	board_layer.add_child(fill)
 	tile_fills[axial] = fill
+
+	# Marker glyph
 	var mark := Label.new()
 	mark.add_theme_font_size_override("font_size", 26)
-	mark.add_theme_color_override("font_color", Color("f2d06b"))
+	mark.add_theme_color_override("font_color", UITheme.COLOR_TEXT_GOLD)
 	mark.position = center - Vector2(14, 20)
 	mark.text = ""
 	board_layer.add_child(mark)
 	tile_marks[axial] = mark
+
 	_refresh_tile(axial)
 
 
@@ -144,7 +185,7 @@ func _refresh_tile(axial: Vector2i) -> void:
 	if tile.explored:
 		var e: Dictionary = Game.decks.elements_by_id.get(tile.element_id, {})
 		var key := "t2_color" if tile.tier >= 2 else "color"
-		fill.color = Color(String(e.get(key, "#666666")))
+		fill.color = Color(String(e.get(key, "#4a7c59")))
 		var glyphs := ""
 		if tile.has_guardian:
 			glyphs += "✦"
@@ -156,7 +197,7 @@ func _refresh_tile(axial: Vector2i) -> void:
 			glyphs += "×"
 		mark.text = glyphs
 	else:
-		fill.color = FACEDOWN_COLORS.get(tile.tier, Color("333333"))
+		fill.color = FACEDOWN_COLORS.get(tile.tier, Color("222b26"))
 		mark.text = ""
 
 
@@ -185,131 +226,238 @@ func _build_hud() -> void:
 	hud = CanvasLayer.new()
 	add_child(hud)
 
-	var top_left := _panel()
-	top_left.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT, Control.PRESET_MODE_MINSIZE, 14)
-	var tl := VBoxContainer.new()
-	top_left.add_child(tl)
-	lbl_turn = _label(24, "b8d8c4")
-	tl.add_child(lbl_turn)
-	lbl_stats = _label(19, "e8e2cf")
-	tl.add_child(lbl_stats)
+	# 1. Top-Left Player Identity & Turn Banner
+	p_crest_panel = _panel(Control.PRESET_TOP_LEFT, 16)
+	var tl_vbox := VBoxContainer.new()
+	tl_vbox.add_theme_constant_override("separation", 6)
+	p_crest_panel.add_child(tl_vbox)
 
-	var top_right := _panel()
-	top_right.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 14)
-	lbl_quests = _label(15, "cfc7ae")
-	top_right.add_child(lbl_quests)
+	lbl_turn = _label(22, UITheme.COLOR_TEXT_GOLD)
+	tl_vbox.add_child(lbl_turn)
 
-	var bottom_right := _panel()
-	bottom_right.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT, Control.PRESET_MODE_MINSIZE, 14)
-	lbl_inv = _label(16, "d8e6da")
-	bottom_right.add_child(lbl_inv)
+	lbl_stats = _label(17, UITheme.COLOR_TEXT_LIGHT)
+	tl_vbox.add_child(lbl_stats)
 
-	# Care bar and Action bar share the bottom center; visibility toggles by phase.
-	var bar_panel := _panel()
-	bar_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM, Control.PRESET_MODE_MINSIZE, 14)
-	var bars := VBoxContainer.new()
-	bar_panel.add_child(bars)
+	# 2. Top-Right Quests Scroll
+	var top_right := _panel(Control.PRESET_TOP_RIGHT, 16)
+	var tr_vbox := VBoxContainer.new()
+	tr_vbox.add_theme_constant_override("separation", 6)
+	top_right.add_child(tr_vbox)
+
+	var q_header := _label(16, UITheme.COLOR_TEXT_GOLD)
+	q_header.text = "✦ ISLAND QUESTS ✦"
+	tr_vbox.add_child(q_header)
+
+	lbl_quests = _label(14, UITheme.COLOR_TEXT_MUTED)
+	tr_vbox.add_child(lbl_quests)
+
+	# 3. Bottom-Right Inventory Pouch
+	var bottom_right := _panel(Control.PRESET_BOTTOM_RIGHT, 16)
+	var br_vbox := VBoxContainer.new()
+	br_vbox.add_theme_constant_override("separation", 6)
+	bottom_right.add_child(br_vbox)
+
+	var inv_header := _label(16, UITheme.COLOR_TEXT_EMERALD)
+	inv_header.text = "🎒 POUCH & CARDS"
+	br_vbox.add_child(inv_header)
+
+	lbl_inv = _label(14, UITheme.COLOR_TEXT_LIGHT)
+	br_vbox.add_child(lbl_inv)
+
+	# 4. Bottom-Center Care & Action Dock
+	var dock_panel := _panel(Control.PRESET_CENTER_BOTTOM, 16)
+	var dock_box := VBoxContainer.new()
+	dock_box.add_theme_constant_override("separation", 8)
+	dock_panel.add_child(dock_box)
+
 	care_bar = HBoxContainer.new()
-	care_bar.add_theme_constant_override("separation", 8)
-	bars.add_child(care_bar)
-	for def in [["eat", "Eat (⚡)"], ["sleep", "Sleep (+2⚡, skip)"], ["meditate", "Meditate (1⚡)"], ["trade", "Trade & Gift ⇄"], ["begin_action", "Begin Action ▸"]]:
-		_add_button(care_bar, String(def[0]), String(def[1]), _on_care)
+	care_bar.add_theme_constant_override("separation", 10)
+	dock_box.add_child(care_bar)
+	for def in [
+		["eat", "Eat (⚡)", "secondary"],
+		["sleep", "Sleep (+2⚡)", "secondary"],
+		["meditate", "Meditate 🧘", "secondary"],
+		["trade", "Trade & Gift ⇄", "gold"],
+		["begin_action", "Begin Action ▸", "primary"]
+	]:
+		_add_dock_button(care_bar, String(def[0]), String(def[1]), String(def[2]), _on_care)
+
 	action_bar = HBoxContainer.new()
-	action_bar.add_theme_constant_override("separation", 8)
-	bars.add_child(action_bar)
-	for def in [["explore", "Explore"], ["craft", "Craft"], ["creatures", "Creatures"], ["magic", "Magic/Learn"], ["guardian", "Guardian"], ["give_back", "Give Back"], ["raid", "Raid ☠"], ["trade_free", "Trade ⇄"], ["end", "End Turn"]]:
-		_add_button(action_bar, String(def[0]), String(def[1]), _on_action)
+	action_bar.add_theme_constant_override("separation", 10)
+	dock_box.add_child(action_bar)
+	for def in [
+		["explore", "Explore", "primary"],
+		["craft", "Craft", "primary"],
+		["creatures", "Creatures", "primary"],
+		["magic", "Magic/Learn", "primary"],
+		["guardian", "Guardian", "gold"],
+		["give_back", "Give Back ✦", "gold"],
+		["raid", "Raid ☠", "danger"],
+		["trade_free", "Trade ⇄", "secondary"],
+		["end", "End Turn", "secondary"]
+	]:
+		_add_dock_button(action_bar, String(def[0]), String(def[1]), String(def[2]), _on_action)
 
-	lbl_toast = _label(19, "f2d06b")
-	lbl_toast.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT, Control.PRESET_MODE_MINSIZE, 14)
-	hud.add_child(lbl_toast)
+	# 5. Toast Notification Banner
+	toast_panel = _panel(Control.PRESET_BOTTOM_LEFT, 16)
+	toast_panel.visible = false
+	lbl_toast = _label(16, UITheme.COLOR_TEXT_GOLD)
+	toast_panel.add_child(lbl_toast)
 
+	# 6. Storybook Encounter & Choice Modal
 	modal_root = CenterContainer.new()
 	modal_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	modal_root.visible = false
 	hud.add_child(modal_root)
-	var mp := PanelContainer.new()
-	modal_root.add_child(mp)
+
+	var modal_backdrop := ColorRect.new()
+	modal_backdrop.color = Color(0.04, 0.06, 0.05, 0.85)
+	modal_backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	modal_root.add_child(modal_backdrop)
+
+	modal_panel = PanelContainer.new()
+	modal_panel.custom_minimum_size = Vector2(680, 480)
+	var m_style := UITheme.make_panel_style(
+		Color(0.10, 0.14, 0.11, 0.98),
+		Color(0.85, 0.72, 0.35, 0.9),
+		3,
+		16,
+		24
+	)
+	modal_panel.add_theme_stylebox_override("panel", m_style)
+	modal_root.add_child(modal_panel)
+
+	var m_main_box := HBoxContainer.new()
+	m_main_box.add_theme_constant_override("separation", 24)
+	modal_panel.add_child(m_main_box)
+
+	# Card Illustration on left
+	modal_card_img = TextureRect.new()
+	modal_card_img.custom_minimum_size = Vector2(200, 300)
+	modal_card_img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	modal_card_img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	modal_card_img.visible = false
+	m_main_box.add_child(modal_card_img)
+
+	# Right Column: Content & Buttons
 	var mbox := VBoxContainer.new()
-	mbox.custom_minimum_size = Vector2(600, 0)
-	mbox.add_theme_constant_override("separation", 10)
-	mp.add_child(mbox)
-	modal_title = _label(26, "f2d06b")
+	mbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	mbox.add_theme_constant_override("separation", 12)
+	m_main_box.add_child(mbox)
+
+	modal_title = _label(24, UITheme.COLOR_TEXT_GOLD)
 	mbox.add_child(modal_title)
-	modal_body = _label(19, "e8e2cf")
-	modal_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	modal_body.custom_minimum_size = Vector2(600, 0)
+
+	var m_sep := HSeparator.new()
+	mbox.add_child(m_sep)
+
+	modal_body = RichTextLabel.new()
+	modal_body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	modal_body.bbcode_enabled = true
+	modal_body.add_theme_font_size_override("normal_font_size", 16)
+	modal_body.add_theme_color_override("default_color", UITheme.COLOR_TEXT_LIGHT)
 	mbox.add_child(modal_body)
+
 	modal_buttons = VBoxContainer.new()
-	modal_buttons.add_theme_constant_override("separation", 6)
+	modal_buttons.add_theme_constant_override("separation", 8)
 	mbox.add_child(modal_buttons)
 
+	# 7. Winner Chronicle Overlay
 	winner_overlay = ColorRect.new()
-	(winner_overlay as ColorRect).color = Color(0.04, 0.07, 0.05, 0.93)
+	(winner_overlay as ColorRect).color = Color(0.04, 0.06, 0.05, 0.94)
 	winner_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	winner_overlay.visible = false
 	hud.add_child(winner_overlay)
+
 	var wc := CenterContainer.new()
 	wc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	winner_overlay.add_child(wc)
+
+	winner_panel = PanelContainer.new()
+	winner_panel.custom_minimum_size = Vector2(720, 480)
+	var win_style := UITheme.make_panel_style(
+		Color(0.09, 0.14, 0.11, 0.98),
+		Color(0.95, 0.80, 0.35, 0.95),
+		3,
+		18,
+		32
+	)
+	winner_panel.add_theme_stylebox_override("panel", win_style)
+	wc.add_child(winner_panel)
+
 	var wbox := VBoxContainer.new()
-	wbox.add_theme_constant_override("separation", 18)
-	wc.add_child(wbox)
-	winner_label = _label(40, "bfe8cf")
+	wbox.add_theme_constant_override("separation", 20)
+	winner_panel.add_child(wbox)
+
+	var win_title := _label(22, UITheme.COLOR_TEXT_GOLD)
+	win_title.text = "✦  CHRONICLE OF THE ISLAND  ✦"
+	win_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	wbox.add_child(win_title)
+
+	winner_label = _label(28, UITheme.COLOR_TEXT_LIGHT)
 	winner_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	winner_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	wbox.add_child(winner_label)
+
 	var back := Button.new()
 	back.text = "Return to Shore"
-	back.custom_minimum_size = Vector2(320, 70)
-	back.add_theme_font_size_override("font_size", 24)
+	back.custom_minimum_size = Vector2(300, 56)
+	UITheme.apply_button_style(back, "primary", Color("3a8c56"), 20)
 	back.pressed.connect(_back_to_menu)
 	wbox.add_child(back)
 
 	_refresh_quests()
 
 
-func _add_button(bar: HBoxContainer, id: String, text: String, handler: Callable) -> void:
+func _panel(preset: Control.LayoutPreset, margin: int = 14) -> PanelContainer:
+	var p := PanelContainer.new()
+	var style := UITheme.make_panel_style(
+		Color(0.08, 0.12, 0.09, 0.94),
+		Color(0.35, 0.52, 0.40, 0.65),
+		2,
+		12,
+		12
+	)
+	p.add_theme_stylebox_override("panel", style)
+	p.set_anchors_and_offsets_preset(preset, Control.PRESET_MODE_MINSIZE, margin)
+	hud.add_child(p)
+	return p
+
+
+func _label(size: int, col: Color) -> Label:
+	var l := Label.new()
+	l.add_theme_font_size_override("font_size", size)
+	l.add_theme_color_override("font_color", col)
+	return l
+
+
+func _add_dock_button(bar: HBoxContainer, id: String, text: String, variant: String, handler: Callable) -> void:
 	var b := Button.new()
 	b.text = text
-	b.custom_minimum_size = Vector2(120, 58)
-	b.add_theme_font_size_override("font_size", 18)
+	b.custom_minimum_size = Vector2(120, 52)
+	UITheme.apply_button_style(b, variant, Color("3a8c56"), 16)
 	b.pressed.connect(handler.bind(id))
 	bar.add_child(b)
 	buttons[id] = b
 
 
-func _back_to_menu() -> void:
-	Game.started = false
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-
-
-func _panel() -> PanelContainer:
-	var p := PanelContainer.new()
-	hud.add_child(p)
-	return p
-
-
-func _label(size: int, color_hex: String) -> Label:
-	var l := Label.new()
-	l.add_theme_font_size_override("font_size", size)
-	l.add_theme_color_override("font_color", Color(color_hex))
-	return l
-
-
 func _toast(text: String) -> void:
 	lbl_toast.text = text
+	toast_panel.visible = (text != "")
 	_toast_token += 1
 	var token := _toast_token
 	get_tree().create_timer(4.5).timeout.connect(func() -> void:
 		if token == _toast_token:
-			lbl_toast.text = "")
+			lbl_toast.text = ""
+			toast_panel.visible = false
+	)
 
 
 func _refresh_quests() -> void:
 	if Game.players.is_empty():
 		return
 	var p := Game.current_player()
-	var lines: Array = ["Common Quests (open to all):"]
+	var lines: Array = []
 	for q in Game.common_quests:
 		var qid := String(q.get("id", ""))
 		var qname := String(q.get("name", ""))
@@ -324,9 +472,10 @@ func _refresh_quests() -> void:
 				lines.append("• [%s] %s [%d/%d] (%d VP)" % [diff, qname, mini(cur, target), target, vp])
 			else:
 				lines.append("• [%s] %s (%d VP)" % [diff, qname, vp])
-	lines.append("")
-	lines.append("Ways to win:  Capable 16VP & Light≥3")
-	lines.append("Enlightened 10VP & Light≥8 · Dark 18VP & Light≤−8")
+	lines.append("\nPaths to Victory:")
+	lines.append("★ Capable: 16 VP & Light ≥ 3")
+	lines.append("★ Enlightened: 10 VP & Light ≥ 8")
+	lines.append("☠ Dark: 18 VP & Light ≤ −8")
 	lbl_quests.text = "\n".join(lines)
 
 
@@ -335,22 +484,32 @@ func _refresh_hud() -> void:
 		return
 	var p := Game.current_player()
 	var band := Game.band_of(p)
-	lbl_turn.text = "Round %d — %s   [%s phase]" % [Game.round_num, p.display_name, Game.phase.capitalize()]
-	var move_txt := "  ·  Moves %d" % moves_left if mode == "explore" else ""
+	var p_col: Color = UITheme.PLAYER_COLORS[p.index % UITheme.PLAYER_COLORS.size()]
+
+	# Player Crest Border Accent
+	var st: StyleBoxFlat = p_crest_panel.get_theme_stylebox("panel") as StyleBoxFlat
+	if st != null:
+		st.border_color = Color(p_col.r, p_col.g, p_col.b, 0.8)
+
+	lbl_turn.text = "Round %d  •  %s  [%s phase]" % [Game.round_num, p.display_name, Game.phase.capitalize()]
+	var move_txt := "  ·  Moves: %d" % moves_left if mode == "explore" else ""
 	var hyp := Duality.hypocrisy_energy_penalty(p.vp, p.light)
-	var hyp_txt := "  ·  ⚠hypocrisy −%d⚡gain" % hyp if hyp > 0 else ""
-	lbl_stats.text = "⚡%d/5 · Light %d (%s) · VP %d/20 · Island Rage %d/10%s%s" % [
-		p.energy, p.light, Duality.band_name(band), p.vp, Game.rage, move_txt, hyp_txt]
+	var hyp_txt := "  ·  ⚠ Hypocrisy −%d⚡" % hyp if hyp > 0 else ""
+
+	lbl_stats.text = "⚡ %d/5   •   Light %d (%s)   •   ★ %d/20 VP   •   Island Rage %d/10%s%s" % [
+		p.energy, p.light, Duality.band_name(band), p.vp, Game.rage, move_txt, hyp_txt
+	]
+
 	var lines: Array = []
 	lines.append("Pouch (%d commons):" % p.commons_count())
 	for id in p.commons.keys():
-		lines.append("  %s ×%d" % [Game.decks.display_name_of(String(id)), int(p.commons[id])])
+		lines.append("  • %s ×%d" % [Game.decks.display_name_of(String(id)), int(p.commons[id])])
 	lines.append("Cards (%d/%d):" % [p.cards.size(), p.hand_limit])
 	for c in p.cards:
-		lines.append("  [%s] %s" % [String(c.get("tier", "?")).left(1).to_upper(), Game.decks.display_name_of(String(c.get("id", "")))])
+		lines.append("  • [%s] %s" % [String(c.get("tier", "?")).left(1).to_upper(), Game.decks.display_name_of(String(c.get("id", "")))])
 	lines.append("Items (%d/%d):" % [p.items.size(), p.pack_size])
 	for it in p.items:
-		lines.append("  %s" % Game.decks.display_name_of(String(it)))
+		lines.append("  • %s" % Game.decks.display_name_of(String(it)))
 	lbl_inv.text = "\n".join(lines)
 	_refresh_bars(p)
 
@@ -798,95 +957,68 @@ func _gather(p: PlayerState, tile: IslandTile) -> void:
 		return
 	_show_modal("Gather — %s" % _terrain_name(tile),
 		"Gently: 2 commons + a deck draw.\nStrip the land: DOUBLE, but the tile dies. −1 Light, +1 Island Rage.", [
-		["Gather gently", _gather_do.bind(p, tile, false)],
-		["Strip the land", _gather_do.bind(p, tile, true)],
-	])
+			["Gather gently", _gather_do.bind(p, tile, false)],
+			["Strip the land (selfish)", _gather_do.bind(p, tile, true)],
+			["Cancel", _close_modal],
+		])
 
 
-func _gather_do(p: PlayerState, tile: IslandTile, exploit: bool) -> void:
+func _gather_do(p: PlayerState, tile: IslandTile, selfish: bool) -> void:
 	_close_modal()
-	var mult := 2 if exploit else 1
-	var n_commons := 2 * mult
-	# Explore Lvl 2+ perk: +1 common on gathers
-	if ActionCards.get_level(p, "explore") >= 2:
-		n_commons += 1
-	# PERK/WEAKNESS hooks
-	if p.character_id == "botanist" and (tile.element_id == "wood" or tile.element_id == "grain"):
-		n_commons += 1
-	if p.character_id == "botanist" and tile.element_id == "stone":
-		n_commons = maxi(1, n_commons - 1)
-	if p.has_item("stone_axe") and (tile.element_id == "wood" or tile.element_id == "stone"):
-		n_commons += 1
-	if p.skills.has("scavengers_eye"):
-		n_commons += 1
-	var got: Dictionary = {}
+	action_taken = "explore"
+	var e: Dictionary = Game.decks.elements_by_id.get(tile.element_id, {})
+	var commons_list: Array = e.get("commons", [])
+	var n_commons := 4 if selfish else 2
+	var gained: Array = []
 	for i in n_commons:
-		var c := Game.decks.random_common(tile.element_id)
-		if c != "":
-			p.add_common(c, 1)
-			got[c] = int(got.get(c, 0)) + 1
-	var draws := (2 if tile.tier >= 2 else 1) * mult
-	var card := Game.decks.draw_card_keep_best(tile.element_id, tile.tier, draws)
-	var card_txt := ""
-	if not card.is_empty() and p.add_card(card):
-		if Game.quest_engine != null:
-			Game.quest_engine.on_gather_card(p, tile.tier, String(card.get("tier", "")))
-		card_txt = " + [%s] %s" % [String(card["tier"]), Game.decks.display_name_of(String(card["id"]))]
-	if exploit:
+		if not commons_list.is_empty():
+			var id := String(commons_list[Game.rng.randi_range(0, commons_list.size() - 1)])
+			p.add_common(id, 1)
+			gained.append(Game.decks.display_name_of(id))
+	var n_cards := 2 if selfish else 1
+	var cards_gained: Array = []
+	for i in n_cards:
+		var card := Game.decks.draw_card(tile.element_id, tile.tier)
+		if not card.is_empty():
+			if p.add_card(card):
+				cards_gained.append("[%s] %s" % [String(card["tier"]), Game.decks.display_name_of(String(card["id"]))])
+				if Game.quest_engine != null:
+					Game.quest_engine.on_gather_card(p, tile.tier, String(card.get("tier", "")))
+	if selfish:
 		tile.exhausted = true
 		_refresh_tile(tile.axial)
-		Game.shift_light(p, "exploit_tile")
-		Game.add_rage(Rage.delta_for("exploit_tile"))
-		_toast("The land cracks. Yield doubled%s. −1 Light, +1 Rage." % card_txt)
+		Game.add_light(p, -1)
+		Game.add_rage(1)
+		_toast("Stripped: %s, %s (−1 Light, +1 Rage)." % [", ".join(gained), ", ".join(cards_gained)])
 	else:
-		_toast("Gathered %d commons%s." % [n_commons, card_txt])
+		_toast("Gathered: %s, %s." % [", ".join(gained), ", ".join(cards_gained)])
 	_finish_main_action()
 
 
-# ----------------------------------------------------------------- craft
+# ----------------------------------------------------------------- crafting & base building
 
 func _open_craft(p: PlayerState) -> void:
 	var tile: IslandTile = Game.board.get_tile(p.pos)
 	var craft_lvl := ActionCards.get_level(p, "craft")
-	var bench := tile.has_building("homebase") or craft_lvl >= 3
-	var workshop := tile.has_building("workshop") or craft_lvl >= 5
 	var entries: Array = []
-
-	# Tile building interactions
-	if BuildingEngine.has_building(tile, "wayside_shrine"):
-		entries.append(["✦ Offer at Wayside Shrine (1 Common -> +1 Light)", func() -> void:
-			_close_modal()
-			var res := BuildingEngine.interact(p, tile, "wayside_shrine", Game.rng)
-			_toast(String(res.get("message", "")))
-			_finish_main_action()
-		])
-	if BuildingEngine.has_building(tile, "campfire"):
-		entries.append(["♨ Cook Food at Campfire (Free)", func() -> void:
-			_close_modal()
-			var res := BuildingEngine.interact(p, tile, "campfire", Game.rng)
-			_toast(String(res.get("message", "")))
-			_refresh_hud()
-		])
-
 	for r in Game.decks.recipes:
-		var recipe: Dictionary = r
-		if not Crafting.bench_ok(recipe, bench, workshop):
+		var rec: Dictionary = r
+		var rid := String(rec.get("id", ""))
+		var rname := String(rec.get("name", ""))
+		var rcost: Dictionary = rec.get("cost", {})
+		var rtype := String(rec.get("type", "item"))
+		if not Crafting.can_craft_type(rtype, craft_lvl):
 			continue
-		if not Crafting.can_craft(recipe, p):
+		if rtype == "building" and not BuildingEngine.can_build(tile, rid, p):
 			continue
-		var label := "%s (%s) — %s" % [String(recipe["name"]), String(recipe["tier"]), Crafting.cost_text(recipe, Game.decks)]
-		entries.append([label, _craft_pick.bind(recipe, p, tile)])
-	if craft_lvl < 5 and (p.energy >= 1 or p.commons_count() >= 3):
-		entries.append(["Empower Crafting Card (Level Up)", func() -> void:
-			_close_modal()
-			if p.energy >= 1:
-				Game.add_energy(p, -1)
-			else:
-				p.spend_any_commons(3, Game.rng)
-			ActionCards.level_up(p, "craft")
-			_toast("Crafting Action Card leveled up to Lvl %d!" % ActionCards.get_level(p, "craft"))
-			_finish_main_action()
-		])
+		var can_make := Crafting.can_craft(rec, p)
+		var cost_str := Crafting.cost_summary(rcost, Game.decks)
+		var label := "%s (%s)" % [rname, cost_str]
+		if can_make:
+			entries.append(["⚒ " + label, _craft_pick.bind(rec, p, tile)])
+		else:
+			entries.append(["(Need mats) " + label, func() -> void: _toast("Missing ingredients for %s." % rname)])
+
 	if entries.is_empty():
 		_toast("Nothing craftable here. (Craft Lvl %d)" % craft_lvl)
 		return
@@ -982,7 +1114,6 @@ func _open_magic_menu(p: PlayerState) -> void:
 	_show_modal("Magic & Learning (Lvl %d)" % mlvl, "Channel elemental power or expand your knowledge:\n%s" % ActionCards.get_perks_text("magic", mlvl), entries)
 
 
-## Signature abilities — each expresses the character AND the Duality (canon action 3).
 func _cast_signature(p: PlayerState) -> void:
 	action_taken = "magic"
 	match p.character_id:
@@ -1214,21 +1345,39 @@ func _resolve_creature(creature: Dictionary, p: PlayerState, tile: IslandTile) -
 		return
 	var band := CreatureEngine.effective_band(p, creature)
 	var cname := String(creature.get("name", "A creature"))
+	var cid := String(creature.get("id", "")).to_lower()
 	var f := int(creature.get("f", 4))
 	var demand: Dictionary = creature.get("demand", {})
 	var demand_txt := _demand_text(demand)
 	var entries: Array = []
-	var body := "F%d · Demand: %s" % [f, demand_txt]
+	var body := "Fight Rating: F%d  •  Demand: %s" % [f, demand_txt]
+	
+	var k_inter := CreatureEngine.get_karma_interaction(creature, band)
+	if not k_inter.is_empty():
+		var flavor := String(k_inter.get("flavor", ""))
+		if flavor != "":
+			body = flavor
+
+	var field_move := String(creature.get("field_move", ""))
+	if field_move != "":
+		body += "\n\n✦ Field Ability: %s" % field_move
+		entries.append(["Activate %s" % field_move, func() -> void:
+			_close_modal()
+			var msg := CreatureEngine.execute_field_move(p, creature, tile, Game.rng)
+			_toast(msg)
+		])
 
 	match band:
 		Duality.Band.RADIANT, Duality.Band.KIND:
 			var gift_desc := CreatureEngine.apply_effect(p, creature.get("gift", {}), Game.rng)
+			if not k_inter.is_empty():
+				gift_desc = String(k_inter.get("item_reward", gift_desc))
 			body += "\n\nIt greets you in pure harmony — its Gift is yours:\n★ %s" % gift_desc
-			if CreatureEngine.can_fulfill_demand(p, creature):
+			if CreatureEngine.can_fulfill_demand(p, creature, band):
 				entries.append(["Commune deeper (pay demand · +1 Light)", _befriend.bind(p, creature, tile)])
 		Duality.Band.NEUTRAL:
 			body += "\n\nIt offers its Demand as a trial of balance: meet it, commune, or fight."
-			if CreatureEngine.can_fulfill_demand(p, creature):
+			if CreatureEngine.can_fulfill_demand(p, creature, band):
 				entries.append(["Meet the Demand (+1 Light, claim Gift)", _befriend.bind(p, creature, tile)])
 			if p.energy >= 1:
 				entries.append(["Soothe with Spirit (1⚡ · claim Gift)", func() -> void:
@@ -1243,7 +1392,7 @@ func _resolve_creature(creature: Dictionary, p: PlayerState, tile: IslandTile) -
 			entries.append(["Fight (fate draw vs F%d)" % f, _fight_menu.bind(p, creature, tile)])
 		Duality.Band.SHADOWED:
 			body += "\n\nIt eyes you warily, growling in defense."
-			if CreatureEngine.can_fulfill_demand(p, creature):
+			if CreatureEngine.can_fulfill_demand(p, creature, band):
 				entries.append(["Tribute (pay demand to appease)", _befriend.bind(p, creature, tile)])
 			entries.append(["Endure the Bite", func() -> void:
 				_close_modal()
@@ -1258,7 +1407,10 @@ func _resolve_creature(creature: Dictionary, p: PlayerState, tile: IslandTile) -
 			entries.append(["Fight back (+1 F for dark karma)", _fight_menu.bind(p, creature, tile)])
 
 	entries.append(["Step away", _close_modal])
-	_show_modal(cname, body, entries)
+
+	# Try to find creature card illustration
+	var card_path := "res://assets/cards/creatures/%s.png" % cid
+	_show_modal(cname, body, entries, card_path)
 
 
 func _demand_text(demand: Dictionary) -> String:
@@ -1279,7 +1431,8 @@ func _demand_text(demand: Dictionary) -> String:
 
 func _befriend(p: PlayerState, creature: Dictionary, tile: IslandTile) -> void:
 	_close_modal()
-	CreatureEngine.fulfill_demand(p, creature, Game.rng)
+	var band := CreatureEngine.effective_band(p, creature)
+	CreatureEngine.fulfill_demand(p, creature, Game.rng, band)
 	Game.shift_light(p, "befriend_creature")
 	var gift_desc := CreatureEngine.apply_effect(p, creature.get("gift", {}), Game.rng)
 	var card := Game.decks.draw_card(tile.element_id, tile.tier)
@@ -1334,7 +1487,6 @@ func _fight_do(p: PlayerState, creature: Dictionary, tile: IslandTile, energy: i
 	EventBus.inventory_changed.emit(p.index)
 
 
-## Execute a creature/event op (the small op vocabulary in creatures_canon.json).
 func _apply_op(op: Dictionary, p: PlayerState, tile: IslandTile) -> void:
 	match String(op.get("op", "none")):
 		"gain_common":
@@ -1394,27 +1546,44 @@ func _resolve_event(ev: Dictionary, p: PlayerState, tile: IslandTile) -> void:
 		"slow_next_turn":
 			var slow := amount
 			if p.character_id == "blacksmith":
-				slow += 1  # WEAKNESS — Heavy Gear
+				slow += 1
 			p.slow_penalty += slow
 			desc += "\n\nNext turn: −%d movement." % slow
-	_show_modal(title, desc, [["Continue", _close_modal]])
+
+	var ev_id := String(ev.get("id", "")).to_lower()
+	var card_path := "res://assets/cards/events/%s.png" % ev_id
+	_show_modal(title, desc, [["Continue", _close_modal]], card_path)
 	EventBus.inventory_changed.emit(p.index)
 
 
 # ================================================================= MODAL / WIN
 
-func _show_modal(title: String, body: String, entries: Array) -> void:
+func _show_modal(title: String, body: String, entries: Array, card_image_path: String = "") -> void:
 	modal_title.text = title
 	modal_body.text = body
+	
+	if card_image_path != "" and ResourceLoader.exists(card_image_path):
+		var tex: Texture2D = load(card_image_path)
+		modal_card_img.texture = tex
+		modal_card_img.visible = true
+	else:
+		modal_card_img.texture = null
+		modal_card_img.visible = false
+
 	for child in modal_buttons.get_children():
 		child.queue_free()
+
 	for entry in entries:
 		var b := Button.new()
 		b.text = String(entry[0])
-		b.custom_minimum_size = Vector2(480, 52)
-		b.add_theme_font_size_override("font_size", 19)
+		b.custom_minimum_size = Vector2(360, 46)
+		var is_cancel := ("cancel" in b.text.to_lower() or "never mind" in b.text.to_lower() or "step away" in b.text.to_lower() or "close" in b.text.to_lower())
+		var is_dark := ("exploit" in b.text.to_lower() or "defile" in b.text.to_lower() or "drain" in b.text.to_lower() or "raid" in b.text.to_lower())
+		var variant := "danger" if is_dark else ("secondary" if is_cancel else "primary")
+		UITheme.apply_button_style(b, variant, Color("3a8c56"), 16)
 		b.pressed.connect(entry[1])
 		modal_buttons.add_child(b)
+
 	modal_root.visible = true
 
 
@@ -1532,7 +1701,6 @@ func _handle_tap() -> void:
 	if mode == "explore" and not turn_over:
 		var p := Game.current_player()
 		if axial == p.pos and moves_left >= 0 and not flipped_this_move:
-			# Tap own tile: choose Push or Finish&Gather.
 			_show_modal("Here?", "Finish here and gather — or push on (1⚡ per extra move).", [
 				["Finish & Gather", _finish_gather.bind(p)],
 				["Push +1 move (1⚡)", _push_move.bind(p)],
@@ -1560,3 +1728,8 @@ func _push_move(p: PlayerState) -> void:
 		moves_left += 1
 		_toast("Push! +1 move (⚡%d)." % p.energy)
 	_refresh_hud()
+
+
+func _back_to_menu() -> void:
+	Game.started = false
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
