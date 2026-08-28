@@ -211,7 +211,7 @@ func _build_hud() -> void:
 	action_bar = HBoxContainer.new()
 	action_bar.add_theme_constant_override("separation", 8)
 	bars.add_child(action_bar)
-	for def in [["explore", "Explore"], ["craft", "Craft"], ["creatures", "Creatures"], ["magic", "Magic/Learn"], ["guardian", "Guardian"], ["give_back", "Give Back"], ["trade_free", "Trade ⇄"], ["end", "End Turn"]]:
+	for def in [["explore", "Explore"], ["craft", "Craft"], ["creatures", "Creatures"], ["magic", "Magic/Learn"], ["guardian", "Guardian"], ["give_back", "Give Back"], ["raid", "Raid ☠"], ["trade_free", "Trade ⇄"], ["end", "End Turn"]]:
 		_add_button(action_bar, String(def[0]), String(def[1]), _on_action)
 
 	lbl_toast = _label(19, "f2d06b")
@@ -358,13 +358,20 @@ func _refresh_bars(p: PlayerState) -> void:
 		(buttons["trade"] as Button).disabled = Game.players.size() < 2
 	else:
 		var done := turn_over
-		for id in ["explore", "craft", "creatures", "magic", "guardian", "give_back", "trade_free"]:
+		for id in ["explore", "craft", "creatures", "magic", "guardian", "give_back", "raid", "trade_free"]:
 			if buttons.has(id):
 				(buttons[id] as Button).disabled = done
 		if not done:
 			(buttons["give_back"] as Button).disabled = p.commons_count() < 3
 			if buttons.has("trade_free"):
 				(buttons["trade_free"] as Button).visible = ActionCards.has_free_trading(p)
+			if buttons.has("raid"):
+				var can_any_raid := false
+				for other in Game.players:
+					if DarkRaiding.can_raid(p, other):
+						can_any_raid = true
+						break
+				(buttons["raid"] as Button).visible = can_any_raid
 			# Update dynamic level text
 			(buttons["explore"] as Button).text = "Explore (%d)" % ActionCards.get_level(p, "explore")
 			(buttons["craft"] as Button).text = "Craft (%d)" % ActionCards.get_level(p, "craft")
@@ -613,6 +620,30 @@ func _trade_resolve_choice(p: PlayerState, target: PlayerState, bundle_a: Dictio
 	_refresh_hud()
 
 
+# ----------------------------------------------------------------- dark raiding
+
+func _open_raid_menu(p: PlayerState) -> void:
+	var entries: Array = []
+	for other in Game.players:
+		if DarkRaiding.can_raid(p, other):
+			var target: PlayerState = other
+			var loc := "Same Hex" if Hex.distance(p.pos, target.pos) == 0 else "Adjacent Hex"
+			entries.append(["Raid %s (%s)" % [target.display_name, loc], _execute_raid_action.bind(p, target)])
+	if entries.is_empty():
+		_toast("No eligible targets within 1 hex to raid.")
+		return
+	entries.append(["Cancel", _close_modal])
+	_show_modal("Dark Raiding ☠", "Shadows creep. Rob a nearby wanderer (−2 Light, +1 Rage):", entries)
+
+
+func _execute_raid_action(p: PlayerState, target: PlayerState) -> void:
+	_close_modal()
+	action_taken = "raid"
+	var res := DarkRaiding.execute_raid(p, target, Game.rng)
+	_toast(String(res.get("message", "Raid resolved.")))
+	_finish_main_action()
+
+
 # ================================================================= MAIN ACTIONS
 
 func _on_action(id: String) -> void:
@@ -650,6 +681,8 @@ func _on_action(id: String) -> void:
 			if Game.give_back_light(p):
 				_toast("You give back. +2 Light, −1 Island Rage, +1 VP.")
 				_finish_main_action()
+		"raid":
+			_open_raid_menu(p)
 		"trade_free":
 			_open_trade(p)
 
@@ -804,6 +837,23 @@ func _open_craft(p: PlayerState) -> void:
 	var bench := tile.has_building("homebase") or craft_lvl >= 3
 	var workshop := tile.has_building("workshop") or craft_lvl >= 5
 	var entries: Array = []
+
+	# Tile building interactions
+	if BuildingEngine.has_building(tile, "wayside_shrine"):
+		entries.append(["✦ Offer at Wayside Shrine (1 Common -> +1 Light)", func() -> void:
+			_close_modal()
+			var res := BuildingEngine.interact(p, tile, "wayside_shrine", Game.rng)
+			_toast(String(res.get("message", "")))
+			_finish_main_action()
+		])
+	if BuildingEngine.has_building(tile, "campfire"):
+		entries.append(["♨ Cook Food at Campfire (Free)", func() -> void:
+			_close_modal()
+			var res := BuildingEngine.interact(p, tile, "campfire", Game.rng)
+			_toast(String(res.get("message", "")))
+			_refresh_hud()
+		])
+
 	for r in Game.decks.recipes:
 		var recipe: Dictionary = r
 		if not Crafting.bench_ok(recipe, bench, workshop):
@@ -827,7 +877,11 @@ func _open_craft(p: PlayerState) -> void:
 		_toast("Nothing craftable here. (Craft Lvl %d)" % craft_lvl)
 		return
 	entries.append(["Never mind", _close_modal])
-	_show_modal("Building & Crafting (Lvl %d)" % craft_lvl, "Materials decide quality:\n%s" % ActionCards.get_perks_text("craft", craft_lvl), entries)
+	var summary := BuildingEngine.tile_buildings_summary(tile)
+	var body_txt := "Materials decide quality:\n%s" % ActionCards.get_perks_text("craft", craft_lvl)
+	if summary != "":
+		body_txt += "\n\n%s" % summary
+	_show_modal("Building & Crafting (Lvl %d)" % craft_lvl, body_txt, entries)
 
 
 func _craft_pick(recipe: Dictionary, p: PlayerState, tile: IslandTile) -> void:
@@ -982,35 +1036,44 @@ func _outcast_drain(p: PlayerState, target: PlayerState) -> void:
 	_finish_main_action()
 
 
-# ----------------------------------------------------------------- learn
+# ----------------------------------------------------------------- learn & skill tree
 
 func _open_learn(p: PlayerState) -> void:
 	var magic_lvl := ActionCards.get_level(p, "magic")
-	var discount := 1 if magic_lvl >= 2 else 0
-	var c_cost := maxi(1, 3 - discount)
-	var u_cost := maxi(2, 6 - discount)
+	var learnable := SkillTree.get_learnable_skills(p, Game.decks.skills)
 	var entries: Array = []
-	if not p.skills.has("scavengers_eye") and p.commons_count() >= c_cost:
-		entries.append(["Scavenger's Eye (%d CE): +1 common on gathers" % c_cost, _learn_pick.bind(p, "scavengers_eye", c_cost)])
-	if p.skills.has("scavengers_eye") and not p.skills.has("sturdy_pack") and p.commons_count() >= u_cost:
-		entries.append(["Sturdy Pack (%d CE): +2 hand limit" % u_cost, _learn_pick.bind(p, "sturdy_pack", u_cost)])
+	for s in learnable:
+		var skill: Dictionary = s
+		var costs := SkillTree.get_cost(p, skill)
+		var ce_cost: int = costs["ce"]
+		var energy_cost: int = costs["energy"]
+		var cost_str := "%d CE" % ce_cost
+		if energy_cost > 0:
+			cost_str += " + %d⚡" % energy_cost
+		var tier_str := String(skill.get("tier", "common")).capitalize()
+		var sname := String(skill.get("name", ""))
+		var sdesc := String(skill.get("desc", ""))
+		if SkillTree.can_learn(p, skill):
+			entries.append(["[%s] %s (%s) — %s" % [tier_str, sname, cost_str, sdesc], _learn_pick.bind(p, skill)])
+		else:
+			entries.append(["(Need %s) [%s] %s" % [cost_str, tier_str, sname], func() -> void:
+				_toast("Requires %s and prerequisite skills." % cost_str)
+			])
 	if entries.is_empty():
-		_toast("No affordable skill right now (Common %d CE, Uncommon %d CE)." % [c_cost, u_cost])
+		_toast("All available skills in this branch already mastered!")
 		return
 	entries.append(["Never mind", _close_modal])
-	_show_modal("Learning (Magic Lvl %d)" % magic_lvl, "Meditation opened the way. Spend commons as CE:", entries)
+	_show_modal("Skill Tree (Magic Lvl %d)" % magic_lvl, "Meditation opens the mind. Master new perks:\n" + ActionCards.get_perks_text("magic", magic_lvl), entries)
 
 
-func _learn_pick(p: PlayerState, skill: String, ce: int) -> void:
+func _learn_pick(p: PlayerState, skill: Dictionary) -> void:
 	_close_modal()
 	action_taken = "magic"
-	p.spend_any_commons(ce, Game.rng)
-	p.skills.append(skill)
-	if skill == "sturdy_pack":
-		p.hand_limit += 2
-	_toast("Learned: %s." % Game.decks.display_name_of(skill))
-	EventBus.inventory_changed.emit(p.index)
-	_finish_main_action()
+	if SkillTree.learn_skill(p, skill, Game.rng):
+		_toast("Learned: %s!" % String(skill.get("name", "Skill")))
+		_finish_main_action()
+	else:
+		_toast("Could not learn skill (materials or energy short).")
 
 
 # ----------------------------------------------------------------- guardian & association
@@ -1135,7 +1198,7 @@ func _quest_defile(p: PlayerState) -> void:
 func _resolve_creature(creature: Dictionary, p: PlayerState, tile: IslandTile) -> void:
 	if creature.is_empty():
 		return
-	var band := Game.band_of(p)
+	var band := CreatureEngine.effective_band(p, creature)
 	var cname := String(creature.get("name", "A creature"))
 	var f := int(creature.get("f", 4))
 	var demand: Dictionary = creature.get("demand", {})
@@ -1144,32 +1207,43 @@ func _resolve_creature(creature: Dictionary, p: PlayerState, tile: IslandTile) -
 	var body := "F%d · Demand: %s" % [f, demand_txt]
 
 	match band:
-		Duality.Band.MAX_LIGHT:
-			_apply_op(creature.get("gift", {}), p, tile)
-			body += "\n\nIt greets you like an old friend — its Gift is already yours."
-			if _demand_affordable(demand, p):
-				entries.append(["Befriend (pay demand · +1 Light, +1 draw)", _befriend.bind(p, creature, tile)])
-		Duality.Band.LIGHT:
-			body += "\n\nIt watches you kindly."
-			if _demand_affordable(demand, p):
-				entries.append(["Befriend (pay demand · +1 Light, +1 draw)", _befriend.bind(p, creature, tile)])
-			entries.append(["Fight (fate draw vs F%d)" % f, _fight_menu.bind(p, creature, tile)])
+		Duality.Band.RADIANT, Duality.Band.KIND:
+			var gift_desc := CreatureEngine.apply_effect(p, creature.get("gift", {}), Game.rng)
+			body += "\n\nIt greets you in pure harmony — its Gift is yours:\n★ %s" % gift_desc
+			if CreatureEngine.can_fulfill_demand(p, creature):
+				entries.append(["Commune deeper (pay demand · +1 Light)", _befriend.bind(p, creature, tile)])
 		Duality.Band.NEUTRAL:
-			body += "\n\nIt offers its Demand as a challenge: meet it, or take from it."
-			if _demand_affordable(demand, p):
-				entries.append(["Meet the Demand (+1 Light)", _befriend.bind(p, creature, tile)])
-			entries.append(["Exploit it (−1 Light, +1 Rage, +1 draw)", _exploit_creature.bind(p, creature, tile)])
+			body += "\n\nIt offers its Demand as a trial of balance: meet it, commune, or fight."
+			if CreatureEngine.can_fulfill_demand(p, creature):
+				entries.append(["Meet the Demand (+1 Light, claim Gift)", _befriend.bind(p, creature, tile)])
+			if p.energy >= 1:
+				entries.append(["Soothe with Spirit (1⚡ · claim Gift)", func() -> void:
+					_close_modal()
+					Game.add_energy(p, -1)
+					var gift_desc := CreatureEngine.apply_effect(p, creature.get("gift", {}), Game.rng)
+					Game.shift_light(p, "care_gift")
+					_toast("Soothed: %s (+1 Light)." % gift_desc)
+					EventBus.inventory_changed.emit(p.index)
+				])
+			entries.append(["Exploit it (−1 Light, +1 Rage, double cards)", _exploit_creature.bind(p, creature, tile)])
 			entries.append(["Fight (fate draw vs F%d)" % f, _fight_menu.bind(p, creature, tile)])
-		Duality.Band.DARK:
-			body += "\n\nIt sees what you are. It strikes first."
-			_apply_op(creature.get("bite", {}), p, tile)
-			entries.append(["Fight back (+1 F for your darkness)", _fight_menu.bind(p, creature, tile)])
-		Duality.Band.MAX_DARK:
-			body += "\n\nEven the island's patience ends. It savages you — twice."
-			_apply_op(creature.get("bite", {}), p, tile)
-			_apply_op(creature.get("bite", {}), p, tile)
-			entries.append(["Fight back (+1 F)", _fight_menu.bind(p, creature, tile)])
-	entries.append(["Leave quietly", _close_modal])
+		Duality.Band.SHADOWED:
+			body += "\n\nIt eyes you warily, growling in defense."
+			if CreatureEngine.can_fulfill_demand(p, creature):
+				entries.append(["Tribute (pay demand to appease)", _befriend.bind(p, creature, tile)])
+			entries.append(["Endure the Bite", func() -> void:
+				_close_modal()
+				var bite_desc := CreatureEngine.apply_effect(p, creature.get("bite", {}), Game.rng, true)
+				_toast("Bite suffered: %s." % bite_desc)
+			])
+			entries.append(["Fight back (fate draw vs F%d)" % f, _fight_menu.bind(p, creature, tile)])
+		_: # DARK or MAX_DARK
+			body += "\n\nIt sees the corruption in you and attacks on sight!"
+			var bite_desc := CreatureEngine.apply_effect(p, creature.get("bite", {}), Game.rng, true)
+			body += "\n⚠ Hostile Bite: %s" % bite_desc
+			entries.append(["Fight back (+1 F for dark karma)", _fight_menu.bind(p, creature, tile)])
+
+	entries.append(["Step away", _close_modal])
 	_show_modal(cname, body, entries)
 
 
@@ -1189,49 +1263,16 @@ func _demand_text(demand: Dictionary) -> String:
 	return "?"
 
 
-func _demand_affordable(demand: Dictionary, p: PlayerState) -> bool:
-	match String(demand.get("type", "free")):
-		"common":
-			var ids: Array = demand.get("ids", [])
-			if ids.is_empty():
-				return p.commons_count() >= int(demand.get("n", 1))
-			for id in ids:
-				if p.has_common(String(id), int(demand.get("n", 1))):
-					return true
-			return false
-		"item": return not p.items.is_empty()
-		"give_common": return p.commons_count() >= 1
-		"free": return true
-	return true
-
-
-func _pay_demand(demand: Dictionary, p: PlayerState) -> void:
-	match String(demand.get("type", "free")):
-		"common":
-			var ids: Array = demand.get("ids", [])
-			var n := int(demand.get("n", 1))
-			if ids.is_empty():
-				p.spend_any_commons(n, Game.rng)
-			else:
-				for id in ids:
-					if p.spend_common(String(id), n):
-						break
-		"item":
-			if not p.items.is_empty():
-				p.items.remove_at(0)
-		"give_common":
-			p.spend_any_commons(1, Game.rng)
-
-
 func _befriend(p: PlayerState, creature: Dictionary, tile: IslandTile) -> void:
 	_close_modal()
-	_pay_demand(creature.get("demand", {}), p)
+	CreatureEngine.fulfill_demand(p, creature, Game.rng)
 	Game.shift_light(p, "befriend_creature")
+	var gift_desc := CreatureEngine.apply_effect(p, creature.get("gift", {}), Game.rng)
 	var card := Game.decks.draw_card(tile.element_id, tile.tier)
 	var extra := ""
 	if not card.is_empty() and p.add_card(card):
-		extra = " It leads you to: [%s] %s." % [String(card["tier"]), Game.decks.display_name_of(String(card["id"]))]
-	_toast("Befriended. +1 Light.%s" % extra)
+		extra = " Found: [%s] %s." % [String(card["tier"]), Game.decks.display_name_of(String(card["id"]))]
+	_toast("Befriended! %s%s" % [gift_desc, extra])
 	EventBus.inventory_changed.emit(p.index)
 
 
@@ -1242,7 +1283,8 @@ func _exploit_creature(p: PlayerState, creature: Dictionary, tile: IslandTile) -
 	var card := Game.decks.draw_card(tile.element_id, tile.tier)
 	if not card.is_empty():
 		p.add_card(card)
-	_toast("You take advantage. −1 Light, +1 Island Rage. It flees, angry.")
+	var bite_desc := CreatureEngine.apply_effect(p, creature.get("bite", {}), Game.rng, true)
+	_toast("Exploited (−1 Light, +1 Rage). Bite suffered: %s." % bite_desc)
 	EventBus.inventory_changed.emit(p.index)
 
 

@@ -17,6 +17,7 @@ var creatures: Array = []
 var events: Array = []
 var recipes: Array = []
 var quests: Dictionary = {}
+var skills: Array = []
 
 var _rng: RandomNumberGenerator
 
@@ -51,6 +52,8 @@ func _init(rng: RandomNumberGenerator) -> void:
 	var rc: Dictionary = _load_json("res://data/recipes.json")
 	recipes = rc.get("recipes", [])
 	quests = _load_json("res://data/quests.json")
+	var sk: Dictionary = _load_json("res://data/skills.json")
+	skills = sk.get("skills", [])
 
 
 static func _load_json(path: String) -> Dictionary:

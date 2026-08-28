@@ -1,0 +1,90 @@
+{
+  "_comment": "4-Tier Skill Tree (GDD §6.3, canon/actions.json §4.4). Common = 3 CE, Uncommon = 6 CE, Rare = 18 CE, Legendary = 54 CE. Learning requires Meditation in Care phase.",
+  "skills": [
+    {
+      "id": "scavengers_eye",
+      "name": "Scavenger's Eye",
+      "tier": "common",
+      "ce_cost": 3,
+      "energy_cost": 0,
+      "desc": "Sharp eyes for the small things: +1 common when gathering on any tile."
+    },
+    {
+      "id": "swift_stride",
+      "name": "Swift Stride",
+      "tier": "common",
+      "ce_cost": 3,
+      "energy_cost": 0,
+      "desc": "Light on your feet: +1 base move speed."
+    },
+    {
+      "id": "sturdy_pack",
+      "name": "Sturdy Pack",
+      "tier": "uncommon",
+      "ce_cost": 6,
+      "energy_cost": 0,
+      "requires": ["scavengers_eye"],
+      "desc": "Reinforced straps: +2 hand limit and +1 backpack item slot."
+    },
+    {
+      "id": "iron_skin",
+      "name": "Iron Skin",
+      "tier": "uncommon",
+      "ce_cost": 6,
+      "energy_cost": 1,
+      "desc": "Toughened by thorns: ignores the first creature Bite or Raid against you each round."
+    },
+    {
+      "id": "duality_attunement",
+      "name": "Duality Attunement",
+      "tier": "uncommon",
+      "ce_cost": 6,
+      "energy_cost": 0,
+      "desc": "Resonance with the island karma: gifts and generous trades yield +1 additional Light."
+    },
+    {
+      "id": "beast_whisperer",
+      "name": "Beast Whisperer",
+      "tier": "rare",
+      "ce_cost": 18,
+      "energy_cost": 1,
+      "requires": ["iron_skin"],
+      "desc": "The wild recognizes your soul: creature encounters treat your Light as 1 band higher."
+    },
+    {
+      "id": "master_crafter",
+      "name": "Master Crafter",
+      "tier": "rare",
+      "ce_cost": 18,
+      "energy_cost": 1,
+      "requires": ["sturdy_pack"],
+      "desc": "Effortless craftsmanship: all recipe costs reduced by 1 Common (minimum 1)."
+    },
+    {
+      "id": "shrine_keeper",
+      "name": "Shrine Keeper",
+      "tier": "rare",
+      "ce_cost": 18,
+      "energy_cost": 0,
+      "desc": "Reverence for holy ground: building or visiting shrines grants +1 VP and clears 1 Island Rage."
+    },
+    {
+      "id": "avatar_of_harmony",
+      "name": "Avatar of Harmony",
+      "tier": "legendary",
+      "ce_cost": 54,
+      "energy_cost": 2,
+      "requires": ["duality_attunement", "beast_whisperer"],
+      "desc": "One with the living island: Giving Back grants +2 VP and heals 2 Energy."
+    },
+    {
+      "id": "island_sovereign",
+      "name": "Island Sovereign",
+      "tier": "legendary",
+      "ce_cost": 54,
+      "energy_cost": 2,
+      "requires": ["master_crafter"],
+      "desc": "The land yields freely: gathering yields double commons and cards without exhausting the hex."
+    }
+  ]
+}

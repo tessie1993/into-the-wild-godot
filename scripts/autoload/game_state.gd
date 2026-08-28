@@ -218,6 +218,9 @@ func give_back_light(p: PlayerState) -> bool:
 	shift_light(p, "give_back_light")
 	add_rage(Rage.delta_for("give_back_light"))
 	add_vp(p, decks.vp_faucet("give_back_light"))
+	if p.skills.has("avatar_of_harmony"):
+		add_vp(p, 2)
+		add_energy(p, 2)
 	EventBus.inventory_changed.emit(p.index)
 	return true
 

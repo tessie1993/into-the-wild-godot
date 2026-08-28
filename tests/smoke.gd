@@ -134,6 +134,51 @@ func _initialize() -> void:
 		_check(bool(trade_res["success"]) and bool(trade_res["generous_a"]), "trade executed (generous: 4 CE vs 1 CE => delta >= 3)")
 		_check(p_trade_a.has_common("stone", 1) and p_trade_b.has_common("flax", 4), "resources exchanged properly")
 
+		# --- SkillTree test
+		var p_skill := PlayerState.new()
+		p_skill.index = 0
+		p_skill.add_common("sticks", 10)
+		var skill_swift := {"id": "swift_stride", "tier": "common", "ce_cost": 3, "energy_cost": 0, "desc": "+1 move"}
+		var m0 := p_skill.move
+		_check(SkillTree.can_learn(p_skill, skill_swift), "can learn swift_stride with 3 commons")
+		SkillTree.learn_skill(p_skill, skill_swift, rng)
+		_check(p_skill.skills.has("swift_stride") and p_skill.move == m0 + 1, "swift_stride learned, +1 move speed applied")
+
+		# --- CreatureEngine test
+		var test_creature := {
+			"id": "bramblehog", "name": "Bramblehog", "element": "wood", "tier": "common", "f": 4,
+			"demand": { "type": "common", "ids": ["wild_berries"], "n": 1 },
+			"gift": { "op": "gain_common", "element": "wood", "n": 2 },
+			"bite": { "op": "lose_common", "n": 1 }
+		}
+		var p_wood := PlayerState.new()
+		p_wood.heart = "wood"
+		_check(int(CreatureEngine.effective_band(p_wood, test_creature)) == int(Game.band_of(p_wood)) + 1, "matching heart shifts effective creature band +1")
+		p_wood.skills.append("iron_skin")
+		var bite_msg := CreatureEngine.apply_effect(p_wood, test_creature["bite"], rng, true)
+		_check(bite_msg.contains("Iron Skin protects"), "iron_skin shields player from creature bite")
+
+		# --- BuildingEngine test
+		var b_tile := IslandTile.new(Vector2i(0, 0), "wood", 1)
+		b_tile.buildings.append("wayside_shrine")
+		_check(BuildingEngine.has_building(b_tile, "wayside_shrine"), "tile has wayside_shrine")
+		p_wood.add_common("wood", 2)
+		var b_res := BuildingEngine.interact(p_wood, b_tile, "wayside_shrine", rng)
+		_check(bool(b_res["success"]), "interact with wayside_shrine succeeds")
+
+		# --- DarkRaiding test
+		var p_dark := PlayerState.new()
+		p_dark.index = 0
+		p_dark.character_id = "outcast"
+		p_dark.pos = Vector2i(0, 0)
+		var p_target := PlayerState.new()
+		p_target.index = 1
+		p_target.pos = Vector2i(0, 0)
+		p_target.add_common("flax", 2)
+		_check(DarkRaiding.can_raid(p_dark, p_target), "outcast can raid target on same hex")
+		var raid_res := DarkRaiding.execute_raid(p_dark, p_target, rng)
+		_check(bool(raid_res["success"]) and not bool(raid_res["blocked"]), "unblocked raid successfully steals materials")
+
 		var cur: PlayerState = game.current_player()
 		cur.add_common("grain", 3)
 		var g0: int = cur.energy
