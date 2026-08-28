@@ -1,0 +1,1402 @@
+[
+  {
+    "id": "action_double_down_0",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_1",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_2",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_3",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_4",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_5",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_6",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_7",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_8",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_9",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_10",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_11",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_12",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_13",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_double_down_14",
+    "name": "Double Down",
+    "type": "Action/Fate",
+    "description": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_0",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_1",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_2",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_3",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_4",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_5",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_6",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_7",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_8",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_9",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_10",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_11",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_12",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_13",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_unshackled_14",
+    "name": "Unshackled",
+    "type": "Action/Fate",
+    "description": "Instantly remove a 'Lock' status from your chosen action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_0",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_1",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_2",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_3",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_4",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_5",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_6",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_7",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_8",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_9",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_10",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_11",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_12",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_13",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_focus_shift_14",
+    "name": "Focus Shift",
+    "type": "Action/Fate",
+    "description": "Switch your chosen action this turn without paying the 1 Light cost.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_0",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_1",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_2",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_3",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_4",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_5",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_6",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_7",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_8",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_9",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_10",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_11",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_12",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_13",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "action_swift_step_14",
+    "name": "Swift Step",
+    "type": "Action/Fate",
+    "description": "Move up to 2 hexes instead of 1 on your move phase.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_swamp_ambush_0",
+    "name": "Swamp Ambush",
+    "type": "Encounter",
+    "description": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_swamp_ambush_1",
+    "name": "Swamp Ambush",
+    "type": "Encounter",
+    "description": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_swamp_ambush_2",
+    "name": "Swamp Ambush",
+    "type": "Encounter",
+    "description": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_swamp_ambush_3",
+    "name": "Swamp Ambush",
+    "type": "Encounter",
+    "description": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_swamp_ambush_4",
+    "name": "Swamp Ambush",
+    "type": "Encounter",
+    "description": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_swamp_ambush_5",
+    "name": "Swamp Ambush",
+    "type": "Encounter",
+    "description": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_swamp_ambush_6",
+    "name": "Swamp Ambush",
+    "type": "Encounter",
+    "description": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_swamp_ambush_7",
+    "name": "Swamp Ambush",
+    "type": "Encounter",
+    "description": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_swamp_ambush_8",
+    "name": "Swamp Ambush",
+    "type": "Encounter",
+    "description": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_swamp_ambush_9",
+    "name": "Swamp Ambush",
+    "type": "Encounter",
+    "description": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_sinking_quagmire_0",
+    "name": "Sinking Quagmire",
+    "type": "Encounter",
+    "description": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_sinking_quagmire_1",
+    "name": "Sinking Quagmire",
+    "type": "Encounter",
+    "description": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_sinking_quagmire_2",
+    "name": "Sinking Quagmire",
+    "type": "Encounter",
+    "description": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_sinking_quagmire_3",
+    "name": "Sinking Quagmire",
+    "type": "Encounter",
+    "description": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_sinking_quagmire_4",
+    "name": "Sinking Quagmire",
+    "type": "Encounter",
+    "description": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_sinking_quagmire_5",
+    "name": "Sinking Quagmire",
+    "type": "Encounter",
+    "description": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_sinking_quagmire_6",
+    "name": "Sinking Quagmire",
+    "type": "Encounter",
+    "description": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_sinking_quagmire_7",
+    "name": "Sinking Quagmire",
+    "type": "Encounter",
+    "description": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_sinking_quagmire_8",
+    "name": "Sinking Quagmire",
+    "type": "Encounter",
+    "description": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_sinking_quagmire_9",
+    "name": "Sinking Quagmire",
+    "type": "Encounter",
+    "description": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_guardian's_whispers_0",
+    "name": "Guardian's Whispers",
+    "type": "Encounter",
+    "description": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_guardian's_whispers_1",
+    "name": "Guardian's Whispers",
+    "type": "Encounter",
+    "description": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_guardian's_whispers_2",
+    "name": "Guardian's Whispers",
+    "type": "Encounter",
+    "description": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_guardian's_whispers_3",
+    "name": "Guardian's Whispers",
+    "type": "Encounter",
+    "description": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_guardian's_whispers_4",
+    "name": "Guardian's Whispers",
+    "type": "Encounter",
+    "description": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_guardian's_whispers_5",
+    "name": "Guardian's Whispers",
+    "type": "Encounter",
+    "description": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_guardian's_whispers_6",
+    "name": "Guardian's Whispers",
+    "type": "Encounter",
+    "description": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_guardian's_whispers_7",
+    "name": "Guardian's Whispers",
+    "type": "Encounter",
+    "description": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_guardian's_whispers_8",
+    "name": "Guardian's Whispers",
+    "type": "Encounter",
+    "description": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_guardian's_whispers_9",
+    "name": "Guardian's Whispers",
+    "type": "Encounter",
+    "description": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_raging_tempest_0",
+    "name": "Raging Tempest",
+    "type": "Encounter",
+    "description": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_raging_tempest_1",
+    "name": "Raging Tempest",
+    "type": "Encounter",
+    "description": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_raging_tempest_2",
+    "name": "Raging Tempest",
+    "type": "Encounter",
+    "description": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_raging_tempest_3",
+    "name": "Raging Tempest",
+    "type": "Encounter",
+    "description": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_raging_tempest_4",
+    "name": "Raging Tempest",
+    "type": "Encounter",
+    "description": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_raging_tempest_5",
+    "name": "Raging Tempest",
+    "type": "Encounter",
+    "description": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_raging_tempest_6",
+    "name": "Raging Tempest",
+    "type": "Encounter",
+    "description": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_raging_tempest_7",
+    "name": "Raging Tempest",
+    "type": "Encounter",
+    "description": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_raging_tempest_8",
+    "name": "Raging Tempest",
+    "type": "Encounter",
+    "description": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_raging_tempest_9",
+    "name": "Raging Tempest",
+    "type": "Encounter",
+    "description": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_ancient_trap_0",
+    "name": "Ancient Trap",
+    "type": "Encounter",
+    "description": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_ancient_trap_1",
+    "name": "Ancient Trap",
+    "type": "Encounter",
+    "description": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_ancient_trap_2",
+    "name": "Ancient Trap",
+    "type": "Encounter",
+    "description": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_ancient_trap_3",
+    "name": "Ancient Trap",
+    "type": "Encounter",
+    "description": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_ancient_trap_4",
+    "name": "Ancient Trap",
+    "type": "Encounter",
+    "description": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_ancient_trap_5",
+    "name": "Ancient Trap",
+    "type": "Encounter",
+    "description": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_ancient_trap_6",
+    "name": "Ancient Trap",
+    "type": "Encounter",
+    "description": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_ancient_trap_7",
+    "name": "Ancient Trap",
+    "type": "Encounter",
+    "description": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_ancient_trap_8",
+    "name": "Ancient Trap",
+    "type": "Encounter",
+    "description": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_ancient_trap_9",
+    "name": "Ancient Trap",
+    "type": "Encounter",
+    "description": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_mirage_0",
+    "name": "Mirage",
+    "type": "Encounter",
+    "description": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_mirage_1",
+    "name": "Mirage",
+    "type": "Encounter",
+    "description": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_mirage_2",
+    "name": "Mirage",
+    "type": "Encounter",
+    "description": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_mirage_3",
+    "name": "Mirage",
+    "type": "Encounter",
+    "description": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_mirage_4",
+    "name": "Mirage",
+    "type": "Encounter",
+    "description": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_mirage_5",
+    "name": "Mirage",
+    "type": "Encounter",
+    "description": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_mirage_6",
+    "name": "Mirage",
+    "type": "Encounter",
+    "description": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_mirage_7",
+    "name": "Mirage",
+    "type": "Encounter",
+    "description": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_mirage_8",
+    "name": "Mirage",
+    "type": "Encounter",
+    "description": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_mirage_9",
+    "name": "Mirage",
+    "type": "Encounter",
+    "description": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_eclipse_0",
+    "name": "Eclipse",
+    "type": "Encounter",
+    "description": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_eclipse_1",
+    "name": "Eclipse",
+    "type": "Encounter",
+    "description": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_eclipse_2",
+    "name": "Eclipse",
+    "type": "Encounter",
+    "description": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_eclipse_3",
+    "name": "Eclipse",
+    "type": "Encounter",
+    "description": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_eclipse_4",
+    "name": "Eclipse",
+    "type": "Encounter",
+    "description": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_eclipse_5",
+    "name": "Eclipse",
+    "type": "Encounter",
+    "description": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_eclipse_6",
+    "name": "Eclipse",
+    "type": "Encounter",
+    "description": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_eclipse_7",
+    "name": "Eclipse",
+    "type": "Encounter",
+    "description": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_eclipse_8",
+    "name": "Eclipse",
+    "type": "Encounter",
+    "description": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "encounter_eclipse_9",
+    "name": "Eclipse",
+    "type": "Encounter",
+    "description": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_rich_loom_0",
+    "name": "Rich Loom",
+    "type": "Resource/Loot",
+    "description": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_rich_loom_1",
+    "name": "Rich Loom",
+    "type": "Resource/Loot",
+    "description": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_rich_loom_2",
+    "name": "Rich Loom",
+    "type": "Resource/Loot",
+    "description": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_rich_loom_3",
+    "name": "Rich Loom",
+    "type": "Resource/Loot",
+    "description": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_rich_loom_4",
+    "name": "Rich Loom",
+    "type": "Resource/Loot",
+    "description": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_rich_loom_5",
+    "name": "Rich Loom",
+    "type": "Resource/Loot",
+    "description": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_rich_loom_6",
+    "name": "Rich Loom",
+    "type": "Resource/Loot",
+    "description": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_rich_loom_7",
+    "name": "Rich Loom",
+    "type": "Resource/Loot",
+    "description": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_rich_loom_8",
+    "name": "Rich Loom",
+    "type": "Resource/Loot",
+    "description": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_rich_loom_9",
+    "name": "Rich Loom",
+    "type": "Resource/Loot",
+    "description": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_flint_deposit_0",
+    "name": "Flint Deposit",
+    "type": "Resource/Loot",
+    "description": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_flint_deposit_1",
+    "name": "Flint Deposit",
+    "type": "Resource/Loot",
+    "description": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_flint_deposit_2",
+    "name": "Flint Deposit",
+    "type": "Resource/Loot",
+    "description": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_flint_deposit_3",
+    "name": "Flint Deposit",
+    "type": "Resource/Loot",
+    "description": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_flint_deposit_4",
+    "name": "Flint Deposit",
+    "type": "Resource/Loot",
+    "description": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_flint_deposit_5",
+    "name": "Flint Deposit",
+    "type": "Resource/Loot",
+    "description": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_flint_deposit_6",
+    "name": "Flint Deposit",
+    "type": "Resource/Loot",
+    "description": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_flint_deposit_7",
+    "name": "Flint Deposit",
+    "type": "Resource/Loot",
+    "description": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_flint_deposit_8",
+    "name": "Flint Deposit",
+    "type": "Resource/Loot",
+    "description": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_flint_deposit_9",
+    "name": "Flint Deposit",
+    "type": "Resource/Loot",
+    "description": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_luminous_algae_pool_0",
+    "name": "Luminous Algae Pool",
+    "type": "Resource/Loot",
+    "description": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_luminous_algae_pool_1",
+    "name": "Luminous Algae Pool",
+    "type": "Resource/Loot",
+    "description": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_luminous_algae_pool_2",
+    "name": "Luminous Algae Pool",
+    "type": "Resource/Loot",
+    "description": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_luminous_algae_pool_3",
+    "name": "Luminous Algae Pool",
+    "type": "Resource/Loot",
+    "description": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_luminous_algae_pool_4",
+    "name": "Luminous Algae Pool",
+    "type": "Resource/Loot",
+    "description": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_luminous_algae_pool_5",
+    "name": "Luminous Algae Pool",
+    "type": "Resource/Loot",
+    "description": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_luminous_algae_pool_6",
+    "name": "Luminous Algae Pool",
+    "type": "Resource/Loot",
+    "description": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_luminous_algae_pool_7",
+    "name": "Luminous Algae Pool",
+    "type": "Resource/Loot",
+    "description": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_luminous_algae_pool_8",
+    "name": "Luminous Algae Pool",
+    "type": "Resource/Loot",
+    "description": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_luminous_algae_pool_9",
+    "name": "Luminous Algae Pool",
+    "type": "Resource/Loot",
+    "description": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_hidden_chest_0",
+    "name": "Hidden Chest",
+    "type": "Resource/Loot",
+    "description": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_hidden_chest_1",
+    "name": "Hidden Chest",
+    "type": "Resource/Loot",
+    "description": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_hidden_chest_2",
+    "name": "Hidden Chest",
+    "type": "Resource/Loot",
+    "description": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_hidden_chest_3",
+    "name": "Hidden Chest",
+    "type": "Resource/Loot",
+    "description": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_hidden_chest_4",
+    "name": "Hidden Chest",
+    "type": "Resource/Loot",
+    "description": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_hidden_chest_5",
+    "name": "Hidden Chest",
+    "type": "Resource/Loot",
+    "description": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_hidden_chest_6",
+    "name": "Hidden Chest",
+    "type": "Resource/Loot",
+    "description": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_hidden_chest_7",
+    "name": "Hidden Chest",
+    "type": "Resource/Loot",
+    "description": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_hidden_chest_8",
+    "name": "Hidden Chest",
+    "type": "Resource/Loot",
+    "description": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_hidden_chest_9",
+    "name": "Hidden Chest",
+    "type": "Resource/Loot",
+    "description": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_scrap_metal_pile_0",
+    "name": "Scrap Metal Pile",
+    "type": "Resource/Loot",
+    "description": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_scrap_metal_pile_1",
+    "name": "Scrap Metal Pile",
+    "type": "Resource/Loot",
+    "description": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_scrap_metal_pile_2",
+    "name": "Scrap Metal Pile",
+    "type": "Resource/Loot",
+    "description": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_scrap_metal_pile_3",
+    "name": "Scrap Metal Pile",
+    "type": "Resource/Loot",
+    "description": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_scrap_metal_pile_4",
+    "name": "Scrap Metal Pile",
+    "type": "Resource/Loot",
+    "description": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_scrap_metal_pile_5",
+    "name": "Scrap Metal Pile",
+    "type": "Resource/Loot",
+    "description": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_scrap_metal_pile_6",
+    "name": "Scrap Metal Pile",
+    "type": "Resource/Loot",
+    "description": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_scrap_metal_pile_7",
+    "name": "Scrap Metal Pile",
+    "type": "Resource/Loot",
+    "description": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_scrap_metal_pile_8",
+    "name": "Scrap Metal Pile",
+    "type": "Resource/Loot",
+    "description": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "loot_scrap_metal_pile_9",
+    "name": "Scrap Metal Pile",
+    "type": "Resource/Loot",
+    "description": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+    "karma_requirement": "any"
+  },
+  {
+    "id": "ward_mist_ward_0",
+    "name": "Mist Ward",
+    "type": "Ward/Blessing",
+    "description": "Deploy a magical fog ward. Wild creatures cannot chase or spot you for 3 turns.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_mist_ward_1",
+    "name": "Mist Ward",
+    "type": "Ward/Blessing",
+    "description": "Deploy a magical fog ward. Wild creatures cannot chase or spot you for 3 turns.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_mist_ward_2",
+    "name": "Mist Ward",
+    "type": "Ward/Blessing",
+    "description": "Deploy a magical fog ward. Wild creatures cannot chase or spot you for 3 turns.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_mist_ward_3",
+    "name": "Mist Ward",
+    "type": "Ward/Blessing",
+    "description": "Deploy a magical fog ward. Wild creatures cannot chase or spot you for 3 turns.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_mist_ward_4",
+    "name": "Mist Ward",
+    "type": "Ward/Blessing",
+    "description": "Deploy a magical fog ward. Wild creatures cannot chase or spot you for 3 turns.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_thermal_cloak_blessing_0",
+    "name": "Thermal Cloak Blessing",
+    "type": "Ward/Blessing",
+    "description": "Provides complete warmth protection from cold mountain hexes for 5 turns.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_thermal_cloak_blessing_1",
+    "name": "Thermal Cloak Blessing",
+    "type": "Ward/Blessing",
+    "description": "Provides complete warmth protection from cold mountain hexes for 5 turns.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_thermal_cloak_blessing_2",
+    "name": "Thermal Cloak Blessing",
+    "type": "Ward/Blessing",
+    "description": "Provides complete warmth protection from cold mountain hexes for 5 turns.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_thermal_cloak_blessing_3",
+    "name": "Thermal Cloak Blessing",
+    "type": "Ward/Blessing",
+    "description": "Provides complete warmth protection from cold mountain hexes for 5 turns.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_thermal_cloak_blessing_4",
+    "name": "Thermal Cloak Blessing",
+    "type": "Ward/Blessing",
+    "description": "Provides complete warmth protection from cold mountain hexes for 5 turns.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_aura_shield_0",
+    "name": "Aura Shield",
+    "type": "Ward/Blessing",
+    "description": "Absorbs up to 3 damage from any hostile creature attack.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_aura_shield_1",
+    "name": "Aura Shield",
+    "type": "Ward/Blessing",
+    "description": "Absorbs up to 3 damage from any hostile creature attack.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_aura_shield_2",
+    "name": "Aura Shield",
+    "type": "Ward/Blessing",
+    "description": "Absorbs up to 3 damage from any hostile creature attack.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_aura_shield_3",
+    "name": "Aura Shield",
+    "type": "Ward/Blessing",
+    "description": "Absorbs up to 3 damage from any hostile creature attack.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_aura_shield_4",
+    "name": "Aura Shield",
+    "type": "Ward/Blessing",
+    "description": "Absorbs up to 3 damage from any hostile creature attack.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_sanctum_key_0",
+    "name": "Sanctum Key",
+    "type": "Ward/Blessing",
+    "description": "Bypasses the Light-gate requirements of the central Sanctum.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_sanctum_key_1",
+    "name": "Sanctum Key",
+    "type": "Ward/Blessing",
+    "description": "Bypasses the Light-gate requirements of the central Sanctum.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_sanctum_key_2",
+    "name": "Sanctum Key",
+    "type": "Ward/Blessing",
+    "description": "Bypasses the Light-gate requirements of the central Sanctum.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_sanctum_key_3",
+    "name": "Sanctum Key",
+    "type": "Ward/Blessing",
+    "description": "Bypasses the Light-gate requirements of the central Sanctum.",
+    "karma_requirement": "positive"
+  },
+  {
+    "id": "ward_sanctum_key_4",
+    "name": "Sanctum Key",
+    "type": "Ward/Blessing",
+    "description": "Bypasses the Light-gate requirements of the central Sanctum.",
+    "karma_requirement": "positive"
+  }
+]
