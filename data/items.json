@@ -1,0 +1,1772 @@
+[
+  {
+    "item_id": "tool_item_01",
+    "name": "Tool Item 1",
+    "type": "Tool",
+    "rarity": "Common",
+    "weight": 2.0,
+    "properties": {
+      "durability": 75,
+      "harvest_multiplier": 1.5,
+      "description": "A Common harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_02",
+    "name": "Tool Item 2",
+    "type": "Tool",
+    "rarity": "Uncommon",
+    "weight": 1.0,
+    "properties": {
+      "durability": 100,
+      "harvest_multiplier": 2.0,
+      "description": "A Uncommon harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_03",
+    "name": "Tool Item 3",
+    "type": "Tool",
+    "rarity": "Rare",
+    "weight": 1.0,
+    "properties": {
+      "durability": 125,
+      "harvest_multiplier": 1.0,
+      "description": "A Rare harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_04",
+    "name": "Tool Item 4",
+    "type": "Tool",
+    "rarity": "Legendary",
+    "weight": 1.0,
+    "properties": {
+      "durability": 150,
+      "harvest_multiplier": 1.5,
+      "description": "A Legendary harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_05",
+    "name": "Tool Item 5",
+    "type": "Tool",
+    "rarity": "Common",
+    "weight": 2.0,
+    "properties": {
+      "durability": 50,
+      "harvest_multiplier": 2.0,
+      "description": "A Common harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_06",
+    "name": "Tool Item 6",
+    "type": "Tool",
+    "rarity": "Uncommon",
+    "weight": 1.0,
+    "properties": {
+      "durability": 75,
+      "harvest_multiplier": 1.0,
+      "description": "A Uncommon harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_07",
+    "name": "Tool Item 7",
+    "type": "Tool",
+    "rarity": "Rare",
+    "weight": 1.0,
+    "properties": {
+      "durability": 100,
+      "harvest_multiplier": 1.5,
+      "description": "A Rare harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_08",
+    "name": "Tool Item 8",
+    "type": "Tool",
+    "rarity": "Legendary",
+    "weight": 1.0,
+    "properties": {
+      "durability": 125,
+      "harvest_multiplier": 2.0,
+      "description": "A Legendary harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_09",
+    "name": "Tool Item 9",
+    "type": "Tool",
+    "rarity": "Common",
+    "weight": 2.0,
+    "properties": {
+      "durability": 150,
+      "harvest_multiplier": 1.0,
+      "description": "A Common harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_10",
+    "name": "Tool Item 10",
+    "type": "Tool",
+    "rarity": "Uncommon",
+    "weight": 1.0,
+    "properties": {
+      "durability": 50,
+      "harvest_multiplier": 1.5,
+      "description": "A Uncommon harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_11",
+    "name": "Tool Item 11",
+    "type": "Tool",
+    "rarity": "Rare",
+    "weight": 1.0,
+    "properties": {
+      "durability": 75,
+      "harvest_multiplier": 2.0,
+      "description": "A Rare harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_12",
+    "name": "Tool Item 12",
+    "type": "Tool",
+    "rarity": "Legendary",
+    "weight": 1.0,
+    "properties": {
+      "durability": 100,
+      "harvest_multiplier": 1.0,
+      "description": "A Legendary harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_13",
+    "name": "Tool Item 13",
+    "type": "Tool",
+    "rarity": "Common",
+    "weight": 2.0,
+    "properties": {
+      "durability": 125,
+      "harvest_multiplier": 1.5,
+      "description": "A Common harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_14",
+    "name": "Tool Item 14",
+    "type": "Tool",
+    "rarity": "Uncommon",
+    "weight": 1.0,
+    "properties": {
+      "durability": 150,
+      "harvest_multiplier": 2.0,
+      "description": "A Uncommon harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_15",
+    "name": "Tool Item 15",
+    "type": "Tool",
+    "rarity": "Rare",
+    "weight": 1.0,
+    "properties": {
+      "durability": 50,
+      "harvest_multiplier": 1.0,
+      "description": "A Rare harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_16",
+    "name": "Tool Item 16",
+    "type": "Tool",
+    "rarity": "Legendary",
+    "weight": 1.0,
+    "properties": {
+      "durability": 75,
+      "harvest_multiplier": 1.5,
+      "description": "A Legendary harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_17",
+    "name": "Tool Item 17",
+    "type": "Tool",
+    "rarity": "Common",
+    "weight": 2.0,
+    "properties": {
+      "durability": 100,
+      "harvest_multiplier": 2.0,
+      "description": "A Common harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_18",
+    "name": "Tool Item 18",
+    "type": "Tool",
+    "rarity": "Uncommon",
+    "weight": 1.0,
+    "properties": {
+      "durability": 125,
+      "harvest_multiplier": 1.0,
+      "description": "A Uncommon harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_19",
+    "name": "Tool Item 19",
+    "type": "Tool",
+    "rarity": "Rare",
+    "weight": 1.0,
+    "properties": {
+      "durability": 150,
+      "harvest_multiplier": 1.5,
+      "description": "A Rare harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_20",
+    "name": "Tool Item 20",
+    "type": "Tool",
+    "rarity": "Legendary",
+    "weight": 1.0,
+    "properties": {
+      "durability": 50,
+      "harvest_multiplier": 2.0,
+      "description": "A Legendary harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_21",
+    "name": "Tool Item 21",
+    "type": "Tool",
+    "rarity": "Common",
+    "weight": 2.0,
+    "properties": {
+      "durability": 75,
+      "harvest_multiplier": 1.0,
+      "description": "A Common harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_22",
+    "name": "Tool Item 22",
+    "type": "Tool",
+    "rarity": "Uncommon",
+    "weight": 1.0,
+    "properties": {
+      "durability": 100,
+      "harvest_multiplier": 1.5,
+      "description": "A Uncommon harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_23",
+    "name": "Tool Item 23",
+    "type": "Tool",
+    "rarity": "Rare",
+    "weight": 1.0,
+    "properties": {
+      "durability": 125,
+      "harvest_multiplier": 2.0,
+      "description": "A Rare harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_24",
+    "name": "Tool Item 24",
+    "type": "Tool",
+    "rarity": "Legendary",
+    "weight": 1.0,
+    "properties": {
+      "durability": 150,
+      "harvest_multiplier": 1.0,
+      "description": "A Legendary harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_25",
+    "name": "Tool Item 25",
+    "type": "Tool",
+    "rarity": "Common",
+    "weight": 2.0,
+    "properties": {
+      "durability": 50,
+      "harvest_multiplier": 1.5,
+      "description": "A Common harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_26",
+    "name": "Tool Item 26",
+    "type": "Tool",
+    "rarity": "Uncommon",
+    "weight": 1.0,
+    "properties": {
+      "durability": 75,
+      "harvest_multiplier": 2.0,
+      "description": "A Uncommon harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_27",
+    "name": "Tool Item 27",
+    "type": "Tool",
+    "rarity": "Rare",
+    "weight": 1.0,
+    "properties": {
+      "durability": 100,
+      "harvest_multiplier": 1.0,
+      "description": "A Rare harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_28",
+    "name": "Tool Item 28",
+    "type": "Tool",
+    "rarity": "Legendary",
+    "weight": 1.0,
+    "properties": {
+      "durability": 125,
+      "harvest_multiplier": 1.5,
+      "description": "A Legendary harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_29",
+    "name": "Tool Item 29",
+    "type": "Tool",
+    "rarity": "Common",
+    "weight": 2.0,
+    "properties": {
+      "durability": 150,
+      "harvest_multiplier": 2.0,
+      "description": "A Common harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_30",
+    "name": "Tool Item 30",
+    "type": "Tool",
+    "rarity": "Uncommon",
+    "weight": 1.0,
+    "properties": {
+      "durability": 50,
+      "harvest_multiplier": 1.0,
+      "description": "A Uncommon harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_31",
+    "name": "Tool Item 31",
+    "type": "Tool",
+    "rarity": "Rare",
+    "weight": 1.0,
+    "properties": {
+      "durability": 75,
+      "harvest_multiplier": 1.5,
+      "description": "A Rare harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_32",
+    "name": "Tool Item 32",
+    "type": "Tool",
+    "rarity": "Legendary",
+    "weight": 1.0,
+    "properties": {
+      "durability": 100,
+      "harvest_multiplier": 2.0,
+      "description": "A Legendary harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_33",
+    "name": "Tool Item 33",
+    "type": "Tool",
+    "rarity": "Common",
+    "weight": 2.0,
+    "properties": {
+      "durability": 125,
+      "harvest_multiplier": 1.0,
+      "description": "A Common harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_34",
+    "name": "Tool Item 34",
+    "type": "Tool",
+    "rarity": "Uncommon",
+    "weight": 1.0,
+    "properties": {
+      "durability": 150,
+      "harvest_multiplier": 1.5,
+      "description": "A Uncommon harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_35",
+    "name": "Tool Item 35",
+    "type": "Tool",
+    "rarity": "Rare",
+    "weight": 1.0,
+    "properties": {
+      "durability": 50,
+      "harvest_multiplier": 2.0,
+      "description": "A Rare harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_36",
+    "name": "Tool Item 36",
+    "type": "Tool",
+    "rarity": "Legendary",
+    "weight": 1.0,
+    "properties": {
+      "durability": 75,
+      "harvest_multiplier": 1.0,
+      "description": "A Legendary harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_37",
+    "name": "Tool Item 37",
+    "type": "Tool",
+    "rarity": "Common",
+    "weight": 2.0,
+    "properties": {
+      "durability": 100,
+      "harvest_multiplier": 1.5,
+      "description": "A Common harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_38",
+    "name": "Tool Item 38",
+    "type": "Tool",
+    "rarity": "Uncommon",
+    "weight": 1.0,
+    "properties": {
+      "durability": 125,
+      "harvest_multiplier": 2.0,
+      "description": "A Uncommon harvesting tool. Its durable structure yields 2.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_39",
+    "name": "Tool Item 39",
+    "type": "Tool",
+    "rarity": "Rare",
+    "weight": 1.0,
+    "properties": {
+      "durability": 150,
+      "harvest_multiplier": 1.0,
+      "description": "A Rare harvesting tool. Its durable structure yields 1.0x raw resources."
+    }
+  },
+  {
+    "item_id": "tool_item_40",
+    "name": "Tool Item 40",
+    "type": "Tool",
+    "rarity": "Legendary",
+    "weight": 1.0,
+    "properties": {
+      "durability": 50,
+      "harvest_multiplier": 1.5,
+      "description": "A Legendary harvesting tool. Its durable structure yields 1.5x raw resources."
+    }
+  },
+  {
+    "item_id": "gear_item_01",
+    "name": "Gear Item 1",
+    "type": "Gear",
+    "rarity": "Common",
+    "weight": 3.0,
+    "properties": {
+      "immunity": "wooded_lake",
+      "armor_value": 1,
+      "description": "Wearable protective gear of Common quality. Grants full survival protection against wooded_lake environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_02",
+    "name": "Gear Item 2",
+    "type": "Gear",
+    "rarity": "Uncommon",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "rocky_ridge",
+      "armor_value": 2,
+      "description": "Wearable protective gear of Uncommon quality. Grants full survival protection against rocky_ridge environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_03",
+    "name": "Gear Item 3",
+    "type": "Gear",
+    "rarity": "Rare",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "sinking_bog",
+      "armor_value": 3,
+      "description": "Wearable protective gear of Rare quality. Grants full survival protection against sinking_bog environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_04",
+    "name": "Gear Item 4",
+    "type": "Gear",
+    "rarity": "Legendary",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "volcano",
+      "armor_value": 4,
+      "description": "Wearable protective gear of Legendary quality. Grants full survival protection against volcano environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_05",
+    "name": "Gear Item 5",
+    "type": "Gear",
+    "rarity": "Common",
+    "weight": 3.0,
+    "properties": {
+      "immunity": "desert",
+      "armor_value": 5,
+      "description": "Wearable protective gear of Common quality. Grants full survival protection against desert environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_06",
+    "name": "Gear Item 6",
+    "type": "Gear",
+    "rarity": "Uncommon",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "frost_peak",
+      "armor_value": 6,
+      "description": "Wearable protective gear of Uncommon quality. Grants full survival protection against frost_peak environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_07",
+    "name": "Gear Item 7",
+    "type": "Gear",
+    "rarity": "Rare",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "ancient_ruins",
+      "armor_value": 7,
+      "description": "Wearable protective gear of Rare quality. Grants full survival protection against ancient_ruins environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_08",
+    "name": "Gear Item 8",
+    "type": "Gear",
+    "rarity": "Legendary",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "grasslands",
+      "armor_value": 8,
+      "description": "Wearable protective gear of Legendary quality. Grants full survival protection against grasslands environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_09",
+    "name": "Gear Item 9",
+    "type": "Gear",
+    "rarity": "Common",
+    "weight": 3.0,
+    "properties": {
+      "immunity": "wooded_lake",
+      "armor_value": 9,
+      "description": "Wearable protective gear of Common quality. Grants full survival protection against wooded_lake environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_10",
+    "name": "Gear Item 10",
+    "type": "Gear",
+    "rarity": "Uncommon",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "rocky_ridge",
+      "armor_value": 0,
+      "description": "Wearable protective gear of Uncommon quality. Grants full survival protection against rocky_ridge environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_11",
+    "name": "Gear Item 11",
+    "type": "Gear",
+    "rarity": "Rare",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "sinking_bog",
+      "armor_value": 1,
+      "description": "Wearable protective gear of Rare quality. Grants full survival protection against sinking_bog environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_12",
+    "name": "Gear Item 12",
+    "type": "Gear",
+    "rarity": "Legendary",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "volcano",
+      "armor_value": 2,
+      "description": "Wearable protective gear of Legendary quality. Grants full survival protection against volcano environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_13",
+    "name": "Gear Item 13",
+    "type": "Gear",
+    "rarity": "Common",
+    "weight": 3.0,
+    "properties": {
+      "immunity": "desert",
+      "armor_value": 3,
+      "description": "Wearable protective gear of Common quality. Grants full survival protection against desert environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_14",
+    "name": "Gear Item 14",
+    "type": "Gear",
+    "rarity": "Uncommon",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "frost_peak",
+      "armor_value": 4,
+      "description": "Wearable protective gear of Uncommon quality. Grants full survival protection against frost_peak environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_15",
+    "name": "Gear Item 15",
+    "type": "Gear",
+    "rarity": "Rare",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "ancient_ruins",
+      "armor_value": 5,
+      "description": "Wearable protective gear of Rare quality. Grants full survival protection against ancient_ruins environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_16",
+    "name": "Gear Item 16",
+    "type": "Gear",
+    "rarity": "Legendary",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "grasslands",
+      "armor_value": 6,
+      "description": "Wearable protective gear of Legendary quality. Grants full survival protection against grasslands environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_17",
+    "name": "Gear Item 17",
+    "type": "Gear",
+    "rarity": "Common",
+    "weight": 3.0,
+    "properties": {
+      "immunity": "wooded_lake",
+      "armor_value": 7,
+      "description": "Wearable protective gear of Common quality. Grants full survival protection against wooded_lake environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_18",
+    "name": "Gear Item 18",
+    "type": "Gear",
+    "rarity": "Uncommon",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "rocky_ridge",
+      "armor_value": 8,
+      "description": "Wearable protective gear of Uncommon quality. Grants full survival protection against rocky_ridge environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_19",
+    "name": "Gear Item 19",
+    "type": "Gear",
+    "rarity": "Rare",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "sinking_bog",
+      "armor_value": 9,
+      "description": "Wearable protective gear of Rare quality. Grants full survival protection against sinking_bog environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_20",
+    "name": "Gear Item 20",
+    "type": "Gear",
+    "rarity": "Legendary",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "volcano",
+      "armor_value": 0,
+      "description": "Wearable protective gear of Legendary quality. Grants full survival protection against volcano environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_21",
+    "name": "Gear Item 21",
+    "type": "Gear",
+    "rarity": "Common",
+    "weight": 3.0,
+    "properties": {
+      "immunity": "desert",
+      "armor_value": 1,
+      "description": "Wearable protective gear of Common quality. Grants full survival protection against desert environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_22",
+    "name": "Gear Item 22",
+    "type": "Gear",
+    "rarity": "Uncommon",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "frost_peak",
+      "armor_value": 2,
+      "description": "Wearable protective gear of Uncommon quality. Grants full survival protection against frost_peak environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_23",
+    "name": "Gear Item 23",
+    "type": "Gear",
+    "rarity": "Rare",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "ancient_ruins",
+      "armor_value": 3,
+      "description": "Wearable protective gear of Rare quality. Grants full survival protection against ancient_ruins environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_24",
+    "name": "Gear Item 24",
+    "type": "Gear",
+    "rarity": "Legendary",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "grasslands",
+      "armor_value": 4,
+      "description": "Wearable protective gear of Legendary quality. Grants full survival protection against grasslands environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_25",
+    "name": "Gear Item 25",
+    "type": "Gear",
+    "rarity": "Common",
+    "weight": 3.0,
+    "properties": {
+      "immunity": "wooded_lake",
+      "armor_value": 5,
+      "description": "Wearable protective gear of Common quality. Grants full survival protection against wooded_lake environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_26",
+    "name": "Gear Item 26",
+    "type": "Gear",
+    "rarity": "Uncommon",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "rocky_ridge",
+      "armor_value": 6,
+      "description": "Wearable protective gear of Uncommon quality. Grants full survival protection against rocky_ridge environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_27",
+    "name": "Gear Item 27",
+    "type": "Gear",
+    "rarity": "Rare",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "sinking_bog",
+      "armor_value": 7,
+      "description": "Wearable protective gear of Rare quality. Grants full survival protection against sinking_bog environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_28",
+    "name": "Gear Item 28",
+    "type": "Gear",
+    "rarity": "Legendary",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "volcano",
+      "armor_value": 8,
+      "description": "Wearable protective gear of Legendary quality. Grants full survival protection against volcano environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_29",
+    "name": "Gear Item 29",
+    "type": "Gear",
+    "rarity": "Common",
+    "weight": 3.0,
+    "properties": {
+      "immunity": "desert",
+      "armor_value": 9,
+      "description": "Wearable protective gear of Common quality. Grants full survival protection against desert environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_30",
+    "name": "Gear Item 30",
+    "type": "Gear",
+    "rarity": "Uncommon",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "frost_peak",
+      "armor_value": 0,
+      "description": "Wearable protective gear of Uncommon quality. Grants full survival protection against frost_peak environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_31",
+    "name": "Gear Item 31",
+    "type": "Gear",
+    "rarity": "Rare",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "ancient_ruins",
+      "armor_value": 1,
+      "description": "Wearable protective gear of Rare quality. Grants full survival protection against ancient_ruins environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_32",
+    "name": "Gear Item 32",
+    "type": "Gear",
+    "rarity": "Legendary",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "grasslands",
+      "armor_value": 2,
+      "description": "Wearable protective gear of Legendary quality. Grants full survival protection against grasslands environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_33",
+    "name": "Gear Item 33",
+    "type": "Gear",
+    "rarity": "Common",
+    "weight": 3.0,
+    "properties": {
+      "immunity": "wooded_lake",
+      "armor_value": 3,
+      "description": "Wearable protective gear of Common quality. Grants full survival protection against wooded_lake environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_34",
+    "name": "Gear Item 34",
+    "type": "Gear",
+    "rarity": "Uncommon",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "rocky_ridge",
+      "armor_value": 4,
+      "description": "Wearable protective gear of Uncommon quality. Grants full survival protection against rocky_ridge environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_35",
+    "name": "Gear Item 35",
+    "type": "Gear",
+    "rarity": "Rare",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "sinking_bog",
+      "armor_value": 5,
+      "description": "Wearable protective gear of Rare quality. Grants full survival protection against sinking_bog environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_36",
+    "name": "Gear Item 36",
+    "type": "Gear",
+    "rarity": "Legendary",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "volcano",
+      "armor_value": 6,
+      "description": "Wearable protective gear of Legendary quality. Grants full survival protection against volcano environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_37",
+    "name": "Gear Item 37",
+    "type": "Gear",
+    "rarity": "Common",
+    "weight": 3.0,
+    "properties": {
+      "immunity": "desert",
+      "armor_value": 7,
+      "description": "Wearable protective gear of Common quality. Grants full survival protection against desert environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_38",
+    "name": "Gear Item 38",
+    "type": "Gear",
+    "rarity": "Uncommon",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "frost_peak",
+      "armor_value": 8,
+      "description": "Wearable protective gear of Uncommon quality. Grants full survival protection against frost_peak environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_39",
+    "name": "Gear Item 39",
+    "type": "Gear",
+    "rarity": "Rare",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "ancient_ruins",
+      "armor_value": 9,
+      "description": "Wearable protective gear of Rare quality. Grants full survival protection against ancient_ruins environmental drains."
+    }
+  },
+  {
+    "item_id": "gear_item_40",
+    "name": "Gear Item 40",
+    "type": "Gear",
+    "rarity": "Legendary",
+    "weight": 1.5,
+    "properties": {
+      "immunity": "grasslands",
+      "armor_value": 0,
+      "description": "Wearable protective gear of Legendary quality. Grants full survival protection against grasslands environmental drains."
+    }
+  },
+  {
+    "item_id": "consumable_item_01",
+    "name": "Consumable Item 1",
+    "type": "Consumable",
+    "rarity": "Common",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 10,
+      "restore_light": 5,
+      "description": "A nourishing Common food or elixir. Restores 10 health and 5 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_02",
+    "name": "Consumable Item 2",
+    "type": "Consumable",
+    "rarity": "Uncommon",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 20,
+      "restore_light": 10,
+      "description": "A nourishing Uncommon food or elixir. Restores 20 health and 10 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_03",
+    "name": "Consumable Item 3",
+    "type": "Consumable",
+    "rarity": "Rare",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 30,
+      "restore_light": 15,
+      "description": "A nourishing Rare food or elixir. Restores 30 health and 15 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_04",
+    "name": "Consumable Item 4",
+    "type": "Consumable",
+    "rarity": "Legendary",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 40,
+      "restore_light": 0,
+      "description": "A nourishing Legendary food or elixir. Restores 40 health and 0 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_05",
+    "name": "Consumable Item 5",
+    "type": "Consumable",
+    "rarity": "Common",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 0,
+      "restore_light": 5,
+      "description": "A nourishing Common food or elixir. Restores 0 health and 5 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_06",
+    "name": "Consumable Item 6",
+    "type": "Consumable",
+    "rarity": "Uncommon",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 10,
+      "restore_light": 10,
+      "description": "A nourishing Uncommon food or elixir. Restores 10 health and 10 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_07",
+    "name": "Consumable Item 7",
+    "type": "Consumable",
+    "rarity": "Rare",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 20,
+      "restore_light": 15,
+      "description": "A nourishing Rare food or elixir. Restores 20 health and 15 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_08",
+    "name": "Consumable Item 8",
+    "type": "Consumable",
+    "rarity": "Legendary",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 30,
+      "restore_light": 0,
+      "description": "A nourishing Legendary food or elixir. Restores 30 health and 0 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_09",
+    "name": "Consumable Item 9",
+    "type": "Consumable",
+    "rarity": "Common",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 40,
+      "restore_light": 5,
+      "description": "A nourishing Common food or elixir. Restores 40 health and 5 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_10",
+    "name": "Consumable Item 10",
+    "type": "Consumable",
+    "rarity": "Uncommon",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 0,
+      "restore_light": 10,
+      "description": "A nourishing Uncommon food or elixir. Restores 0 health and 10 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_11",
+    "name": "Consumable Item 11",
+    "type": "Consumable",
+    "rarity": "Rare",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 10,
+      "restore_light": 15,
+      "description": "A nourishing Rare food or elixir. Restores 10 health and 15 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_12",
+    "name": "Consumable Item 12",
+    "type": "Consumable",
+    "rarity": "Legendary",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 20,
+      "restore_light": 0,
+      "description": "A nourishing Legendary food or elixir. Restores 20 health and 0 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_13",
+    "name": "Consumable Item 13",
+    "type": "Consumable",
+    "rarity": "Common",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 30,
+      "restore_light": 5,
+      "description": "A nourishing Common food or elixir. Restores 30 health and 5 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_14",
+    "name": "Consumable Item 14",
+    "type": "Consumable",
+    "rarity": "Uncommon",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 40,
+      "restore_light": 10,
+      "description": "A nourishing Uncommon food or elixir. Restores 40 health and 10 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_15",
+    "name": "Consumable Item 15",
+    "type": "Consumable",
+    "rarity": "Rare",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 0,
+      "restore_light": 15,
+      "description": "A nourishing Rare food or elixir. Restores 0 health and 15 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_16",
+    "name": "Consumable Item 16",
+    "type": "Consumable",
+    "rarity": "Legendary",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 10,
+      "restore_light": 0,
+      "description": "A nourishing Legendary food or elixir. Restores 10 health and 0 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_17",
+    "name": "Consumable Item 17",
+    "type": "Consumable",
+    "rarity": "Common",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 20,
+      "restore_light": 5,
+      "description": "A nourishing Common food or elixir. Restores 20 health and 5 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_18",
+    "name": "Consumable Item 18",
+    "type": "Consumable",
+    "rarity": "Uncommon",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 30,
+      "restore_light": 10,
+      "description": "A nourishing Uncommon food or elixir. Restores 30 health and 10 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_19",
+    "name": "Consumable Item 19",
+    "type": "Consumable",
+    "rarity": "Rare",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 40,
+      "restore_light": 15,
+      "description": "A nourishing Rare food or elixir. Restores 40 health and 15 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_20",
+    "name": "Consumable Item 20",
+    "type": "Consumable",
+    "rarity": "Legendary",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 0,
+      "restore_light": 0,
+      "description": "A nourishing Legendary food or elixir. Restores 0 health and 0 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_21",
+    "name": "Consumable Item 21",
+    "type": "Consumable",
+    "rarity": "Common",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 10,
+      "restore_light": 5,
+      "description": "A nourishing Common food or elixir. Restores 10 health and 5 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_22",
+    "name": "Consumable Item 22",
+    "type": "Consumable",
+    "rarity": "Uncommon",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 20,
+      "restore_light": 10,
+      "description": "A nourishing Uncommon food or elixir. Restores 20 health and 10 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_23",
+    "name": "Consumable Item 23",
+    "type": "Consumable",
+    "rarity": "Rare",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 30,
+      "restore_light": 15,
+      "description": "A nourishing Rare food or elixir. Restores 30 health and 15 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_24",
+    "name": "Consumable Item 24",
+    "type": "Consumable",
+    "rarity": "Legendary",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 40,
+      "restore_light": 0,
+      "description": "A nourishing Legendary food or elixir. Restores 40 health and 0 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_25",
+    "name": "Consumable Item 25",
+    "type": "Consumable",
+    "rarity": "Common",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 0,
+      "restore_light": 5,
+      "description": "A nourishing Common food or elixir. Restores 0 health and 5 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_26",
+    "name": "Consumable Item 26",
+    "type": "Consumable",
+    "rarity": "Uncommon",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 10,
+      "restore_light": 10,
+      "description": "A nourishing Uncommon food or elixir. Restores 10 health and 10 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_27",
+    "name": "Consumable Item 27",
+    "type": "Consumable",
+    "rarity": "Rare",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 20,
+      "restore_light": 15,
+      "description": "A nourishing Rare food or elixir. Restores 20 health and 15 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_28",
+    "name": "Consumable Item 28",
+    "type": "Consumable",
+    "rarity": "Legendary",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 30,
+      "restore_light": 0,
+      "description": "A nourishing Legendary food or elixir. Restores 30 health and 0 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_29",
+    "name": "Consumable Item 29",
+    "type": "Consumable",
+    "rarity": "Common",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 40,
+      "restore_light": 5,
+      "description": "A nourishing Common food or elixir. Restores 40 health and 5 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_30",
+    "name": "Consumable Item 30",
+    "type": "Consumable",
+    "rarity": "Uncommon",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 0,
+      "restore_light": 10,
+      "description": "A nourishing Uncommon food or elixir. Restores 0 health and 10 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_31",
+    "name": "Consumable Item 31",
+    "type": "Consumable",
+    "rarity": "Rare",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 10,
+      "restore_light": 15,
+      "description": "A nourishing Rare food or elixir. Restores 10 health and 15 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_32",
+    "name": "Consumable Item 32",
+    "type": "Consumable",
+    "rarity": "Legendary",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 20,
+      "restore_light": 0,
+      "description": "A nourishing Legendary food or elixir. Restores 20 health and 0 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_33",
+    "name": "Consumable Item 33",
+    "type": "Consumable",
+    "rarity": "Common",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 30,
+      "restore_light": 5,
+      "description": "A nourishing Common food or elixir. Restores 30 health and 5 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_34",
+    "name": "Consumable Item 34",
+    "type": "Consumable",
+    "rarity": "Uncommon",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 40,
+      "restore_light": 10,
+      "description": "A nourishing Uncommon food or elixir. Restores 40 health and 10 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_35",
+    "name": "Consumable Item 35",
+    "type": "Consumable",
+    "rarity": "Rare",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 0,
+      "restore_light": 15,
+      "description": "A nourishing Rare food or elixir. Restores 0 health and 15 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_36",
+    "name": "Consumable Item 36",
+    "type": "Consumable",
+    "rarity": "Legendary",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 10,
+      "restore_light": 0,
+      "description": "A nourishing Legendary food or elixir. Restores 10 health and 0 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_37",
+    "name": "Consumable Item 37",
+    "type": "Consumable",
+    "rarity": "Common",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 20,
+      "restore_light": 5,
+      "description": "A nourishing Common food or elixir. Restores 20 health and 5 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_38",
+    "name": "Consumable Item 38",
+    "type": "Consumable",
+    "rarity": "Uncommon",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 30,
+      "restore_light": 10,
+      "description": "A nourishing Uncommon food or elixir. Restores 30 health and 10 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_39",
+    "name": "Consumable Item 39",
+    "type": "Consumable",
+    "rarity": "Rare",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 40,
+      "restore_light": 15,
+      "description": "A nourishing Rare food or elixir. Restores 40 health and 15 Light points."
+    }
+  },
+  {
+    "item_id": "consumable_item_40",
+    "name": "Consumable Item 40",
+    "type": "Consumable",
+    "rarity": "Legendary",
+    "weight": 0.2,
+    "properties": {
+      "restore_health": 0,
+      "restore_light": 0,
+      "description": "A nourishing Legendary food or elixir. Restores 0 health and 0 Light points."
+    }
+  },
+  {
+    "item_id": "relic_item_01",
+    "name": "Relic Item 1",
+    "type": "Relic",
+    "rarity": "Common",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 20,
+      "description": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_02",
+    "name": "Relic Item 2",
+    "type": "Relic",
+    "rarity": "Uncommon",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 25,
+      "description": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_03",
+    "name": "Relic Item 3",
+    "type": "Relic",
+    "rarity": "Rare",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 30,
+      "description": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_04",
+    "name": "Relic Item 4",
+    "type": "Relic",
+    "rarity": "Legendary",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 35,
+      "description": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_05",
+    "name": "Relic Item 5",
+    "type": "Relic",
+    "rarity": "Common",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 15,
+      "description": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_06",
+    "name": "Relic Item 6",
+    "type": "Relic",
+    "rarity": "Uncommon",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 20,
+      "description": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_07",
+    "name": "Relic Item 7",
+    "type": "Relic",
+    "rarity": "Rare",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 25,
+      "description": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_08",
+    "name": "Relic Item 8",
+    "type": "Relic",
+    "rarity": "Legendary",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 30,
+      "description": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_09",
+    "name": "Relic Item 9",
+    "type": "Relic",
+    "rarity": "Common",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 35,
+      "description": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_10",
+    "name": "Relic Item 10",
+    "type": "Relic",
+    "rarity": "Uncommon",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 15,
+      "description": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_11",
+    "name": "Relic Item 11",
+    "type": "Relic",
+    "rarity": "Rare",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 20,
+      "description": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_12",
+    "name": "Relic Item 12",
+    "type": "Relic",
+    "rarity": "Legendary",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 25,
+      "description": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_13",
+    "name": "Relic Item 13",
+    "type": "Relic",
+    "rarity": "Common",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 30,
+      "description": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_14",
+    "name": "Relic Item 14",
+    "type": "Relic",
+    "rarity": "Uncommon",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 35,
+      "description": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_15",
+    "name": "Relic Item 15",
+    "type": "Relic",
+    "rarity": "Rare",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 15,
+      "description": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_16",
+    "name": "Relic Item 16",
+    "type": "Relic",
+    "rarity": "Legendary",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 20,
+      "description": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_17",
+    "name": "Relic Item 17",
+    "type": "Relic",
+    "rarity": "Common",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 25,
+      "description": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_18",
+    "name": "Relic Item 18",
+    "type": "Relic",
+    "rarity": "Uncommon",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 30,
+      "description": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_19",
+    "name": "Relic Item 19",
+    "type": "Relic",
+    "rarity": "Rare",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 35,
+      "description": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_20",
+    "name": "Relic Item 20",
+    "type": "Relic",
+    "rarity": "Legendary",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 15,
+      "description": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_21",
+    "name": "Relic Item 21",
+    "type": "Relic",
+    "rarity": "Common",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 20,
+      "description": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_22",
+    "name": "Relic Item 22",
+    "type": "Relic",
+    "rarity": "Uncommon",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 25,
+      "description": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_23",
+    "name": "Relic Item 23",
+    "type": "Relic",
+    "rarity": "Rare",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 30,
+      "description": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_24",
+    "name": "Relic Item 24",
+    "type": "Relic",
+    "rarity": "Legendary",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 35,
+      "description": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_25",
+    "name": "Relic Item 25",
+    "type": "Relic",
+    "rarity": "Common",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 15,
+      "description": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_26",
+    "name": "Relic Item 26",
+    "type": "Relic",
+    "rarity": "Uncommon",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 20,
+      "description": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_27",
+    "name": "Relic Item 27",
+    "type": "Relic",
+    "rarity": "Rare",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 25,
+      "description": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_28",
+    "name": "Relic Item 28",
+    "type": "Relic",
+    "rarity": "Legendary",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 30,
+      "description": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_29",
+    "name": "Relic Item 29",
+    "type": "Relic",
+    "rarity": "Common",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 35,
+      "description": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points."
+    }
+  },
+  {
+    "item_id": "relic_item_30",
+    "name": "Relic Item 30",
+    "type": "Relic",
+    "rarity": "Uncommon",
+    "weight": 0.5,
+    "properties": {
+      "vp_offering_value": 15,
+      "description": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points."
+    }
+  }
+]

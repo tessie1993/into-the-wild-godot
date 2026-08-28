@@ -1,10 +1,13 @@
 class_name QuestEngine
 extends RefCounted
-## Quest Engine — tracks session common quests and personal guardian quests.
-## Handles event-driven progress updates, VP claiming, revoke_vp enforcement,
+## Quest Engine — tracks session common quests, personal guardian quests,
+## and expanded bottleneck trials (with Light and Dark dual paths).
+## Integrates GameMathEngine Action Value Model for quest balance evaluations,
+## handles event-driven progress updates, VP claiming, revoke_vp enforcement,
 ## and democratic redraw voting per GDD §8.5 & synthesis S1.
 
 var common_quests: Array = []       ## Active 3 common quests [easy, medium, hard]
+var active_trials: Array = []       ## Active expanded bottleneck trials
 var _redraw_votes: Dictionary = {}  ## player_index -> bool
 var _redraw_caller: int = -1
 
@@ -18,14 +21,19 @@ const COMMON_QUEST_TARGETS: Dictionary = {
 }
 
 
-func _init(initial_quests: Array = []) -> void:
+func _init(initial_quests: Array = [], initial_trials: Array = []) -> void:
 	common_quests = initial_quests.duplicate(true)
+	active_trials = initial_trials.duplicate(true)
 
 
 func set_common_quests(quests: Array) -> void:
 	common_quests = quests.duplicate(true)
 	_redraw_votes.clear()
 	_redraw_caller = -1
+
+
+func set_active_trials(trials: Array) -> void:
+	active_trials = trials.duplicate(true)
 
 
 ## Checks if a player has completed a given quest ID.
@@ -35,22 +43,97 @@ func is_completed(p: PlayerState, quest_id: String) -> bool:
 
 ## Returns progress dictionary {current: int, target: int, completed: bool, desc: String, name: String, vp: int}
 func get_quest_info(quest: Dictionary, p: PlayerState) -> Dictionary:
-	var qid := String(quest.get("id", ""))
+	var qid := String(quest.get("id", quest.get("quest_id", "")))
 	var target: int = int(COMMON_QUEST_TARGETS.get(qid, 1))
 	var current: int = int(p.quest_progress.get(qid, 0))
 	var done := is_completed(p, qid)
 	return {
 		"id": qid,
-		"name": String(quest.get("name", "Unknown Quest")),
-		"desc": String(quest.get("desc", "")),
+		"name": String(quest.get("name", quest.get("title", "Unknown Quest"))),
+		"desc": String(quest.get("desc", quest.get("description", ""))),
 		"difficulty": String(quest.get("difficulty", "common")),
-		"vp": int(quest.get("vp", 0)),
+		"vp": int(quest.get("vp", quest.get("light_path", {}).get("reward", {}).get("vp", 0))),
 		"revoke_vp": bool(quest.get("revoke_vp", false)),
 		"current": current,
 		"target": target,
 		"completed": done,
 	}
 
+
+## Evaluates the Action Value Model balance of a quest.
+func evaluate_quest_balance(quest: Dictionary) -> Dictionary:
+	var lp: Dictionary = quest.get("light_path", {})
+	if not lp.is_empty():
+		var rew: Dictionary = lp.get("reward", {})
+		var vp: int = int(rew.get("vp", 1))
+		var light: int = int(rew.get("light", 1))
+		return GameMathEngine.calculate_quest_balance(6.0, vp, light, false)
+	var vp: int = int(quest.get("vp", 1))
+	return GameMathEngine.calculate_quest_balance(3.0, vp, 0, false)
+
+
+# ------------------------------------------------------------------ Dual-Path Trial Resolution
+
+## Completes an expanded trial via the peaceful Light Path.
+func complete_trial_light(p: PlayerState, trial: Dictionary) -> Dictionary:
+	var qid := String(trial.get("quest_id", trial.get("id", "")))
+	if is_completed(p, qid):
+		return {"success": false, "message": "Trial already completed."}
+		
+	var lp: Dictionary = trial.get("light_path", {})
+	var reward: Dictionary = lp.get("reward", {})
+	var vp_reward: int = int(reward.get("vp", 1))
+	var light_gain: int = int(reward.get("light", 1))
+	var items: Array = reward.get("items", [])
+	
+	p.completed_quests.append(qid)
+	p.vp = clampi(p.vp + vp_reward, 0, 20)
+	for i in light_gain:
+		Game.shift_light(p, "care_gift")
+	for it in items:
+		var item_id := String(it)
+		p.add_item(item_id)
+		
+	EventBus.vp_changed.emit(p.index, p.vp)
+	EventBus.inventory_changed.emit(p.index)
+	EventBus.quest_completed.emit(p.index, trial)
+	return {
+		"success": true,
+		"message": "Light Path Completed: +%d VP, +%d Light, earned %s!" % [vp_reward, light_gain, ", ".join(items)]
+	}
+
+
+## Completes an expanded trial via the aggressive Dark Path.
+func complete_trial_dark(p: PlayerState, trial: Dictionary) -> Dictionary:
+	var qid := String(trial.get("quest_id", trial.get("id", "")))
+	if is_completed(p, qid):
+		return {"success": false, "message": "Trial already completed."}
+		
+	var dp: Dictionary = trial.get("dark_path", {})
+	var reward: Dictionary = dp.get("reward", {})
+	var vp_reward: int = int(reward.get("vp", 2))
+	var light_loss: int = absi(int(reward.get("light", -2)))
+	var items: Array = reward.get("items", [])
+	
+	p.completed_quests.append(qid)
+	p.vp = clampi(p.vp + vp_reward, 0, 20)
+	for i in light_loss:
+		Game.shift_light(p, "exploit_tile")
+	Game.add_rage(1)
+	for it in items:
+		var item_id := String(it)
+		p.add_item(item_id)
+		
+	EventBus.vp_changed.emit(p.index, p.vp)
+	EventBus.inventory_changed.emit(p.index)
+	EventBus.quest_completed.emit(p.index, trial)
+	return {
+		"success": true,
+		"message": "Dark Path Executed: +%d VP, −%d Light, +1 Island Rage, seized %s!" % [vp_reward, light_loss, ", ".join(items)]
+	}
+
+
+# ------------------------------------------------------------------ Event Hooks
 
 ## Event hook: a tile was explored by player p.
 func on_tile_explored(p: PlayerState, tile: IslandTile) -> void:
@@ -135,7 +218,6 @@ func complete_quest(p: PlayerState, quest: Dictionary) -> void:
 		return
 	p.completed_quests.append(qid)
 	var vp_reward := int(quest.get("vp", 1))
-	# Update VP through Game state or directly on player
 	p.vp = clampi(p.vp + vp_reward, 0, 20)
 	EventBus.vp_changed.emit(p.index, p.vp)
 	EventBus.quest_completed.emit(p.index, quest)
@@ -187,8 +269,6 @@ func get_vote_status(total_players: int) -> Dictionary:
 	var passed := yes_count >= needed
 	var failed := no_count >= needed or (all_voted and yes_count < needed)
 	
-	# Tiebreaker rule for 2 players or even split when everyone voted:
-	# If 2 players and 1 voted Yes (caller) and 1 voted No -> non-owner decides (fails)
 	var resolved := passed or failed or all_voted
 	return {
 		"caller": _redraw_caller,

@@ -1,0 +1,2224 @@
+[
+  {
+    "id": "puddle_frog",
+    "name": "Puddle-Frog",
+    "tier": 1,
+    "biomes": [
+      "wooded_lake",
+      "grasslands"
+    ],
+    "field_move": "Irrigate",
+    "description": "A mystical creature that makes its home in the wooded lake. Its specialized field ability 'Irrigate' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_luminous_algae",
+        "light_change": 4,
+        "flavor": "The Puddle-Frog bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "luminous_algae",
+        "light_change": 3,
+        "flavor": "The Puddle-Frog senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Puddle-Frog blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "flint",
+        "flavor": "The Puddle-Frog watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Puddle-Frog screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "moss_weaver",
+    "name": "Moss-Weaver",
+    "tier": 1,
+    "biomes": [
+      "grasslands"
+    ],
+    "field_move": "Weave",
+    "description": "A mystical creature that makes its home in the grasslands. Its specialized field ability 'Weave' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_plant_fiber",
+        "light_change": 4,
+        "flavor": "The Moss-Weaver bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "plant_fiber",
+        "light_change": 3,
+        "flavor": "The Moss-Weaver senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Moss-Weaver blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The Moss-Weaver watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Moss-Weaver screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "flint_grubber",
+    "name": "Flint-Grubber",
+    "tier": 1,
+    "biomes": [
+      "rocky_ridge",
+      "grasslands"
+    ],
+    "field_move": "Dig",
+    "description": "A mystical creature that makes its home in the rocky ridge. Its specialized field ability 'Dig' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_flint",
+        "light_change": 4,
+        "flavor": "The Flint-Grubber bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "flint",
+        "light_change": 3,
+        "flavor": "The Flint-Grubber senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Flint-Grubber blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "berry",
+        "flavor": "The Flint-Grubber watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Flint-Grubber screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "meadow_sprout",
+    "name": "Meadow-Sprout",
+    "tier": 1,
+    "biomes": [
+      "grasslands"
+    ],
+    "field_move": "Cut",
+    "description": "A mystical creature that makes its home in the grasslands. Its specialized field ability 'Cut' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_plant_fiber",
+        "light_change": 4,
+        "flavor": "The Meadow-Sprout bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "plant_fiber",
+        "light_change": 3,
+        "flavor": "The Meadow-Sprout senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Meadow-Sprout blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "herbal_poultice",
+        "flavor": "The Meadow-Sprout watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Meadow-Sprout screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "pebble_slug",
+    "name": "Pebble-Slug",
+    "tier": 1,
+    "biomes": [
+      "rocky_ridge"
+    ],
+    "field_move": "Smash",
+    "description": "A mystical creature that makes its home in the rocky ridge. Its specialized field ability 'Smash' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_flint",
+        "light_change": 4,
+        "flavor": "The Pebble-Slug bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "flint",
+        "light_change": 3,
+        "flavor": "The Pebble-Slug senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Pebble-Slug blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "berry",
+        "flavor": "The Pebble-Slug watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Pebble-Slug screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "breeze_gull",
+    "name": "Breeze-Gull",
+    "tier": 1,
+    "biomes": [
+      "wooded_lake",
+      "grasslands"
+    ],
+    "field_move": "Float",
+    "description": "A mystical creature that makes its home in the wooded lake. Its specialized field ability 'Float' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_luminous_algae",
+        "light_change": 4,
+        "flavor": "The Breeze-Gull bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "luminous_algae",
+        "light_change": 3,
+        "flavor": "The Breeze-Gull senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Breeze-Gull blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "flint",
+        "flavor": "The Breeze-Gull watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Breeze-Gull screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "lily_padder",
+    "name": "Lily-Padder",
+    "tier": 1,
+    "biomes": [
+      "wooded_lake"
+    ],
+    "field_move": "Float",
+    "description": "A mystical creature that makes its home in the wooded lake. Its specialized field ability 'Float' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_luminous_algae",
+        "light_change": 4,
+        "flavor": "The Lily-Padder bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "luminous_algae",
+        "light_change": 3,
+        "flavor": "The Lily-Padder senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Lily-Padder blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "berry",
+        "flavor": "The Lily-Padder watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Lily-Padder screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "dandelion_fawn",
+    "name": "Dandelion-Fawn",
+    "tier": 1,
+    "biomes": [
+      "grasslands"
+    ],
+    "field_move": "Cut",
+    "description": "A mystical creature that makes its home in the grasslands. Its specialized field ability 'Cut' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_plant_fiber",
+        "light_change": 4,
+        "flavor": "The Dandelion-Fawn bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "plant_fiber",
+        "light_change": 3,
+        "flavor": "The Dandelion-Fawn senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Dandelion-Fawn blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "water_pouch",
+        "flavor": "The Dandelion-Fawn watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Dandelion-Fawn screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "river_beaver",
+    "name": "River-Beaver",
+    "tier": 1,
+    "biomes": [
+      "wooded_lake"
+    ],
+    "field_move": "Build",
+    "description": "A mystical creature that makes its home in the wooded lake. Its specialized field ability 'Build' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_luminous_algae",
+        "light_change": 4,
+        "flavor": "The River-Beaver bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "luminous_algae",
+        "light_change": 3,
+        "flavor": "The River-Beaver senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The River-Beaver blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The River-Beaver watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted River-Beaver screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "dew_drop",
+    "name": "Dew-Drop",
+    "tier": 1,
+    "biomes": [
+      "wooded_lake",
+      "grasslands"
+    ],
+    "field_move": "Irrigate",
+    "description": "A mystical creature that makes its home in the wooded lake. Its specialized field ability 'Irrigate' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_luminous_algae",
+        "light_change": 4,
+        "flavor": "The Dew-Drop bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "luminous_algae",
+        "light_change": 3,
+        "flavor": "The Dew-Drop senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Dew-Drop blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "roasted_root",
+        "flavor": "The Dew-Drop watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Dew-Drop screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "thistle_fox",
+    "name": "Thistle-Fox",
+    "tier": 1,
+    "biomes": [
+      "grasslands"
+    ],
+    "field_move": "Cut",
+    "description": "A mystical creature that makes its home in the grasslands. Its specialized field ability 'Cut' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_plant_fiber",
+        "light_change": 4,
+        "flavor": "The Thistle-Fox bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "plant_fiber",
+        "light_change": 3,
+        "flavor": "The Thistle-Fox senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Thistle-Fox blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "berry",
+        "flavor": "The Thistle-Fox watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Thistle-Fox screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "twig_squirrel",
+    "name": "Twig-Squirrel",
+    "tier": 1,
+    "biomes": [
+      "grasslands"
+    ],
+    "field_move": "Weave",
+    "description": "A mystical creature that makes its home in the grasslands. Its specialized field ability 'Weave' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_plant_fiber",
+        "light_change": 4,
+        "flavor": "The Twig-Squirrel bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "plant_fiber",
+        "light_change": 3,
+        "flavor": "The Twig-Squirrel senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Twig-Squirrel blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "roasted_root",
+        "flavor": "The Twig-Squirrel watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Twig-Squirrel screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "gravel_scamp",
+    "name": "Gravel-Scamp",
+    "tier": 1,
+    "biomes": [
+      "rocky_ridge"
+    ],
+    "field_move": "Dig",
+    "description": "A mystical creature that makes its home in the rocky ridge. Its specialized field ability 'Dig' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_flint",
+        "light_change": 4,
+        "flavor": "The Gravel-Scamp bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "flint",
+        "light_change": 3,
+        "flavor": "The Gravel-Scamp senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Gravel-Scamp blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "water_pouch",
+        "flavor": "The Gravel-Scamp watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Gravel-Scamp screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "bramble_hedge",
+    "name": "Bramble-Hedge",
+    "tier": 1,
+    "biomes": [
+      "grasslands"
+    ],
+    "field_move": "Build",
+    "description": "A mystical creature that makes its home in the grasslands. Its specialized field ability 'Build' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_plant_fiber",
+        "light_change": 4,
+        "flavor": "The Bramble-Hedge bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "plant_fiber",
+        "light_change": 3,
+        "flavor": "The Bramble-Hedge senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Bramble-Hedge blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "flint",
+        "flavor": "The Bramble-Hedge watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Bramble-Hedge screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "fern_pug",
+    "name": "Fern-Pug",
+    "tier": 1,
+    "biomes": [
+      "grasslands"
+    ],
+    "field_move": "Cut",
+    "description": "A mystical creature that makes its home in the grasslands. Its specialized field ability 'Cut' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_plant_fiber",
+        "light_change": 4,
+        "flavor": "The Fern-Pug bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "plant_fiber",
+        "light_change": 3,
+        "flavor": "The Fern-Pug senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "sweet_berry",
+          "qty": 1
+        },
+        "fail_penalty": "lock_action",
+        "flavor": "The Fern-Pug blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The Fern-Pug watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 1,
+        "effect": "injure",
+        "flavor": "The corrupted Fern-Pug screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "pyrosnail",
+    "name": "Pyrosnail",
+    "tier": 2,
+    "biomes": [
+      "volcano",
+      "desert"
+    ],
+    "field_move": "Stoke",
+    "description": "A mystical creature that makes its home in the volcano. Its specialized field ability 'Stoke' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_sulfur_ash",
+        "light_change": 3,
+        "flavor": "The Pyrosnail bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "sulfur_ash",
+        "light_change": 2,
+        "flavor": "The Pyrosnail senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Pyrosnail blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "berry",
+        "flavor": "The Pyrosnail watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "burn",
+        "flavor": "The corrupted Pyrosnail screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "cinder_mite",
+    "name": "Cinder-Mite",
+    "tier": 2,
+    "biomes": [
+      "volcano"
+    ],
+    "field_move": "Stoke",
+    "description": "A mystical creature that makes its home in the volcano. Its specialized field ability 'Stoke' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_sulfur_ash",
+        "light_change": 3,
+        "flavor": "The Cinder-Mite bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "sulfur_ash",
+        "light_change": 2,
+        "flavor": "The Cinder-Mite senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Cinder-Mite blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "herbal_poultice",
+        "flavor": "The Cinder-Mite watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "burn",
+        "flavor": "The corrupted Cinder-Mite screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "sand_stalker",
+    "name": "Sand-Stalker",
+    "tier": 2,
+    "biomes": [
+      "desert"
+    ],
+    "field_move": "Dig",
+    "description": "A mystical creature that makes its home in the desert. Its specialized field ability 'Dig' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_cactus_flesh",
+        "light_change": 3,
+        "flavor": "The Sand-Stalker bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "cactus_flesh",
+        "light_change": 2,
+        "flavor": "The Sand-Stalker senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Sand-Stalker blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "herbal_poultice",
+        "flavor": "The Sand-Stalker watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Sand-Stalker screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "bog_stalker",
+    "name": "Bog-Stalker",
+    "tier": 2,
+    "biomes": [
+      "sinking_bog"
+    ],
+    "field_move": "Float",
+    "description": "A mystical creature that makes its home in the sinking bog. Its specialized field ability 'Float' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_peat_moss",
+        "light_change": 3,
+        "flavor": "The Bog-Stalker bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "peat_moss",
+        "light_change": 2,
+        "flavor": "The Bog-Stalker senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Bog-Stalker blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "herbal_poultice",
+        "flavor": "The Bog-Stalker watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Bog-Stalker screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "thorn_weaver",
+    "name": "Thorn-Weaver",
+    "tier": 2,
+    "biomes": [
+      "sinking_bog",
+      "grasslands"
+    ],
+    "field_move": "Weave",
+    "description": "A mystical creature that makes its home in the sinking bog. Its specialized field ability 'Weave' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_peat_moss",
+        "light_change": 3,
+        "flavor": "The Thorn-Weaver bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "peat_moss",
+        "light_change": 2,
+        "flavor": "The Thorn-Weaver senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Thorn-Weaver blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "water_pouch",
+        "flavor": "The Thorn-Weaver watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Thorn-Weaver screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "basalt_goliath",
+    "name": "Basalt-Goliath",
+    "tier": 2,
+    "biomes": [
+      "volcano",
+      "rocky_ridge"
+    ],
+    "field_move": "Smash",
+    "description": "A mystical creature that makes its home in the volcano. Its specialized field ability 'Smash' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_sulfur_ash",
+        "light_change": 3,
+        "flavor": "The Basalt-Goliath bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "sulfur_ash",
+        "light_change": 2,
+        "flavor": "The Basalt-Goliath senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Basalt-Goliath blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "water_pouch",
+        "flavor": "The Basalt-Goliath watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "burn",
+        "flavor": "The corrupted Basalt-Goliath screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "rust_weaver",
+    "name": "Rust-Weaver",
+    "tier": 2,
+    "biomes": [
+      "sinking_bog",
+      "ancient_ruins"
+    ],
+    "field_move": "Weave",
+    "description": "A mystical creature that makes its home in the sinking bog. Its specialized field ability 'Weave' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_peat_moss",
+        "light_change": 3,
+        "flavor": "The Rust-Weaver bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "peat_moss",
+        "light_change": 2,
+        "flavor": "The Rust-Weaver senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Rust-Weaver blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "water_pouch",
+        "flavor": "The Rust-Weaver watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Rust-Weaver screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "shale_shell",
+    "name": "Shale-Shell",
+    "tier": 2,
+    "biomes": [
+      "rocky_ridge",
+      "volcano"
+    ],
+    "field_move": "Build",
+    "description": "A mystical creature that makes its home in the rocky ridge. Its specialized field ability 'Build' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_flint",
+        "light_change": 3,
+        "flavor": "The Shale-Shell bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "flint",
+        "light_change": 2,
+        "flavor": "The Shale-Shell senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Shale-Shell blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The Shale-Shell watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Shale-Shell screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "oasis_sip",
+    "name": "Oasis-Sip",
+    "tier": 2,
+    "biomes": [
+      "desert"
+    ],
+    "field_move": "Irrigate",
+    "description": "A mystical creature that makes its home in the desert. Its specialized field ability 'Irrigate' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_cactus_flesh",
+        "light_change": 3,
+        "flavor": "The Oasis-Sip bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "cactus_flesh",
+        "light_change": 2,
+        "flavor": "The Oasis-Sip senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Oasis-Sip blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "flint",
+        "flavor": "The Oasis-Sip watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Oasis-Sip screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "dune_rider",
+    "name": "Dune-Rider",
+    "tier": 2,
+    "biomes": [
+      "desert"
+    ],
+    "field_move": "Float",
+    "description": "A mystical creature that makes its home in the desert. Its specialized field ability 'Float' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_cactus_flesh",
+        "light_change": 3,
+        "flavor": "The Dune-Rider bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "cactus_flesh",
+        "light_change": 2,
+        "flavor": "The Dune-Rider senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Dune-Rider blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The Dune-Rider watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Dune-Rider screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "frost_yeti",
+    "name": "Frost-Yeti",
+    "tier": 2,
+    "biomes": [
+      "frost_peak"
+    ],
+    "field_move": "Smash",
+    "description": "A mystical creature that makes its home in the frost peak. Its specialized field ability 'Smash' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_frost_shard",
+        "light_change": 3,
+        "flavor": "The Frost-Yeti bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "frost_shard",
+        "light_change": 2,
+        "flavor": "The Frost-Yeti senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Frost-Yeti blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "herbal_poultice",
+        "flavor": "The Frost-Yeti watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Frost-Yeti screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "ice_weasel",
+    "name": "Ice-Weasel",
+    "tier": 2,
+    "biomes": [
+      "frost_peak"
+    ],
+    "field_move": "Freeze",
+    "description": "A mystical creature that makes its home in the frost peak. Its specialized field ability 'Freeze' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_frost_shard",
+        "light_change": 3,
+        "flavor": "The Ice-Weasel bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "frost_shard",
+        "light_change": 2,
+        "flavor": "The Ice-Weasel senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Ice-Weasel blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "water_pouch",
+        "flavor": "The Ice-Weasel watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Ice-Weasel screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "chill_wing",
+    "name": "Chill-Wing",
+    "tier": 2,
+    "biomes": [
+      "frost_peak"
+    ],
+    "field_move": "Freeze",
+    "description": "A mystical creature that makes its home in the frost peak. Its specialized field ability 'Freeze' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_frost_shard",
+        "light_change": 3,
+        "flavor": "The Chill-Wing bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "frost_shard",
+        "light_change": 2,
+        "flavor": "The Chill-Wing senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Chill-Wing blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The Chill-Wing watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Chill-Wing screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "cavern_tick",
+    "name": "Cavern-Tick",
+    "tier": 2,
+    "biomes": [
+      "sinking_bog",
+      "ancient_ruins"
+    ],
+    "field_move": "Dig",
+    "description": "A mystical creature that makes its home in the sinking bog. Its specialized field ability 'Dig' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_peat_moss",
+        "light_change": 3,
+        "flavor": "The Cavern-Tick bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "peat_moss",
+        "light_change": 2,
+        "flavor": "The Cavern-Tick senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Cavern-Tick blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "herbal_poultice",
+        "flavor": "The Cavern-Tick watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Cavern-Tick screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "tar_pitcher",
+    "name": "Tar-Pitcher",
+    "tier": 2,
+    "biomes": [
+      "sinking_bog"
+    ],
+    "field_move": "Stoke",
+    "description": "A mystical creature that makes its home in the sinking bog. Its specialized field ability 'Stoke' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_peat_moss",
+        "light_change": 3,
+        "flavor": "The Tar-Pitcher bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "peat_moss",
+        "light_change": 2,
+        "flavor": "The Tar-Pitcher senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Tar-Pitcher blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "water_pouch",
+        "flavor": "The Tar-Pitcher watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Tar-Pitcher screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "obsidian_crab",
+    "name": "Obsidian-Crab",
+    "tier": 2,
+    "biomes": [
+      "volcano"
+    ],
+    "field_move": "Smash",
+    "description": "A mystical creature that makes its home in the volcano. Its specialized field ability 'Smash' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_sulfur_ash",
+        "light_change": 3,
+        "flavor": "The Obsidian-Crab bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "sulfur_ash",
+        "light_change": 2,
+        "flavor": "The Obsidian-Crab senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Obsidian-Crab blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "berry",
+        "flavor": "The Obsidian-Crab watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "burn",
+        "flavor": "The corrupted Obsidian-Crab screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "sol_salamander",
+    "name": "Sol-Salamander",
+    "tier": 2,
+    "biomes": [
+      "desert",
+      "volcano"
+    ],
+    "field_move": "Stoke",
+    "description": "A mystical creature that makes its home in the desert. Its specialized field ability 'Stoke' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_cactus_flesh",
+        "light_change": 3,
+        "flavor": "The Sol-Salamander bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "cactus_flesh",
+        "light_change": 2,
+        "flavor": "The Sol-Salamander senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Sol-Salamander blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "flint",
+        "flavor": "The Sol-Salamander watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Sol-Salamander screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "glacier_turtle",
+    "name": "Glacier-Turtle",
+    "tier": 2,
+    "biomes": [
+      "frost_peak"
+    ],
+    "field_move": "Build",
+    "description": "A mystical creature that makes its home in the frost peak. Its specialized field ability 'Build' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_frost_shard",
+        "light_change": 3,
+        "flavor": "The Glacier-Turtle bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "frost_shard",
+        "light_change": 2,
+        "flavor": "The Glacier-Turtle senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Glacier-Turtle blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "berry",
+        "flavor": "The Glacier-Turtle watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Glacier-Turtle screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "mirage_cat",
+    "name": "Mirage-Cat",
+    "tier": 2,
+    "biomes": [
+      "desert"
+    ],
+    "field_move": "Teleport",
+    "description": "A mystical creature that makes its home in the desert. Its specialized field ability 'Teleport' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_cactus_flesh",
+        "light_change": 3,
+        "flavor": "The Mirage-Cat bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "cactus_flesh",
+        "light_change": 2,
+        "flavor": "The Mirage-Cat senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Mirage-Cat blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The Mirage-Cat watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Mirage-Cat screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "eerie_will_o",
+    "name": "Eerie-Will-o",
+    "tier": 2,
+    "biomes": [
+      "sinking_bog",
+      "ancient_ruins"
+    ],
+    "field_move": "Teleport",
+    "description": "A mystical creature that makes its home in the sinking bog. Its specialized field ability 'Teleport' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_peat_moss",
+        "light_change": 3,
+        "flavor": "The Eerie-Will-o bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "peat_moss",
+        "light_change": 2,
+        "flavor": "The Eerie-Will-o senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 2
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Eerie-Will-o blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The Eerie-Will-o watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 2,
+        "effect": "injure",
+        "flavor": "The corrupted Eerie-Will-o screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "guardian_sentry",
+    "name": "Guardian-Sentry",
+    "tier": 3,
+    "biomes": [
+      "ancient_ruins"
+    ],
+    "field_move": "Build",
+    "description": "A mystical creature that makes its home in the ancient ruins. Its specialized field ability 'Build' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_ancient_gear",
+        "light_change": 2,
+        "flavor": "The Guardian-Sentry bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "ancient_gear",
+        "light_change": 1,
+        "flavor": "The Guardian-Sentry senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Guardian-Sentry blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The Guardian-Sentry watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Guardian-Sentry screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "sanctum_warden",
+    "name": "Sanctum-Warden",
+    "tier": 3,
+    "biomes": [
+      "ancient_ruins"
+    ],
+    "field_move": "Teleport",
+    "description": "A mystical creature that makes its home in the ancient ruins. Its specialized field ability 'Teleport' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_ancient_gear",
+        "light_change": 2,
+        "flavor": "The Sanctum-Warden bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "ancient_gear",
+        "light_change": 1,
+        "flavor": "The Sanctum-Warden senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Sanctum-Warden blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "roasted_root",
+        "flavor": "The Sanctum-Warden watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Sanctum-Warden screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "prism_core",
+    "name": "Prism-Core",
+    "tier": 3,
+    "biomes": [
+      "ancient_ruins"
+    ],
+    "field_move": "Teleport",
+    "description": "A mystical creature that makes its home in the ancient ruins. Its specialized field ability 'Teleport' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_ancient_gear",
+        "light_change": 2,
+        "flavor": "The Prism-Core bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "ancient_gear",
+        "light_change": 1,
+        "flavor": "The Prism-Core senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Prism-Core blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "herbal_poultice",
+        "flavor": "The Prism-Core watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Prism-Core screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "solaris_phoenix",
+    "name": "Solaris-Phoenix",
+    "tier": 3,
+    "biomes": [
+      "volcano",
+      "ancient_ruins"
+    ],
+    "field_move": "Stoke",
+    "description": "A mystical creature that makes its home in the volcano. Its specialized field ability 'Stoke' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_sulfur_ash",
+        "light_change": 2,
+        "flavor": "The Solaris-Phoenix bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "sulfur_ash",
+        "light_change": 1,
+        "flavor": "The Solaris-Phoenix senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Solaris-Phoenix blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The Solaris-Phoenix watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Solaris-Phoenix screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "lunar_hydra",
+    "name": "Lunar-Hydra",
+    "tier": 3,
+    "biomes": [
+      "frost_peak",
+      "ancient_ruins"
+    ],
+    "field_move": "Freeze",
+    "description": "A mystical creature that makes its home in the frost peak. Its specialized field ability 'Freeze' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_frost_shard",
+        "light_change": 2,
+        "flavor": "The Lunar-Hydra bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "frost_shard",
+        "light_change": 1,
+        "flavor": "The Lunar-Hydra senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Lunar-Hydra blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "flint",
+        "flavor": "The Lunar-Hydra watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Lunar-Hydra screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "ruin_gargoyle",
+    "name": "Ruin-Gargoyle",
+    "tier": 3,
+    "biomes": [
+      "ancient_ruins",
+      "rocky_ridge"
+    ],
+    "field_move": "Smash",
+    "description": "A mystical creature that makes its home in the ancient ruins. Its specialized field ability 'Smash' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_ancient_gear",
+        "light_change": 2,
+        "flavor": "The Ruin-Gargoyle bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "ancient_gear",
+        "light_change": 1,
+        "flavor": "The Ruin-Gargoyle senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Ruin-Gargoyle blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "flint",
+        "flavor": "The Ruin-Gargoyle watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Ruin-Gargoyle screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "aether_drake",
+    "name": "Aether-Drake",
+    "tier": 3,
+    "biomes": [
+      "ancient_ruins"
+    ],
+    "field_move": "Float",
+    "description": "A mystical creature that makes its home in the ancient ruins. Its specialized field ability 'Float' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_ancient_gear",
+        "light_change": 2,
+        "flavor": "The Aether-Drake bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "ancient_gear",
+        "light_change": 1,
+        "flavor": "The Aether-Drake senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Aether-Drake blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "roasted_root",
+        "flavor": "The Aether-Drake watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Aether-Drake screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "void_leviathan",
+    "name": "Void-Leviathan",
+    "tier": 3,
+    "biomes": [
+      "sinking_bog",
+      "ancient_ruins"
+    ],
+    "field_move": "Float",
+    "description": "A mystical creature that makes its home in the sinking bog. Its specialized field ability 'Float' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_peat_moss",
+        "light_change": 2,
+        "flavor": "The Void-Leviathan bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "peat_moss",
+        "light_change": 1,
+        "flavor": "The Void-Leviathan senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Void-Leviathan blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "wood",
+        "flavor": "The Void-Leviathan watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Void-Leviathan screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "chronos_sphinx",
+    "name": "Chronos-Sphinx",
+    "tier": 3,
+    "biomes": [
+      "desert",
+      "ancient_ruins"
+    ],
+    "field_move": "Teleport",
+    "description": "A mystical creature that makes its home in the desert. Its specialized field ability 'Teleport' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_cactus_flesh",
+        "light_change": 2,
+        "flavor": "The Chronos-Sphinx bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "cactus_flesh",
+        "light_change": 1,
+        "flavor": "The Chronos-Sphinx senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Chronos-Sphinx blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "berry",
+        "flavor": "The Chronos-Sphinx watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Chronos-Sphinx screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "gaia_gorgon",
+    "name": "Gaia-Gorgon",
+    "tier": 3,
+    "biomes": [
+      "grasslands",
+      "ancient_ruins"
+    ],
+    "field_move": "Cut",
+    "description": "A mystical creature that makes its home in the grasslands. Its specialized field ability 'Cut' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_plant_fiber",
+        "light_change": 2,
+        "flavor": "The Gaia-Gorgon bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "plant_fiber",
+        "light_change": 1,
+        "flavor": "The Gaia-Gorgon senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Gaia-Gorgon blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "berry",
+        "flavor": "The Gaia-Gorgon watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Gaia-Gorgon screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "storm_valkyrie",
+    "name": "Storm-Valkyrie",
+    "tier": 3,
+    "biomes": [
+      "frost_peak",
+      "rocky_ridge"
+    ],
+    "field_move": "Float",
+    "description": "A mystical creature that makes its home in the frost peak. Its specialized field ability 'Float' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_frost_shard",
+        "light_change": 2,
+        "flavor": "The Storm-Valkyrie bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "frost_shard",
+        "light_change": 1,
+        "flavor": "The Storm-Valkyrie senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Storm-Valkyrie blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "roasted_root",
+        "flavor": "The Storm-Valkyrie watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Storm-Valkyrie screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "abyss_viper",
+    "name": "Abyss-Viper",
+    "tier": 3,
+    "biomes": [
+      "sinking_bog"
+    ],
+    "field_move": "Dig",
+    "description": "A mystical creature that makes its home in the sinking bog. Its specialized field ability 'Dig' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_peat_moss",
+        "light_change": 2,
+        "flavor": "The Abyss-Viper bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "peat_moss",
+        "light_change": 1,
+        "flavor": "The Abyss-Viper senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Abyss-Viper blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "berry",
+        "flavor": "The Abyss-Viper watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Abyss-Viper screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "apex_chimera",
+    "name": "Apex-Chimera",
+    "tier": 3,
+    "biomes": [
+      "volcano",
+      "frost_peak"
+    ],
+    "field_move": "Smash",
+    "description": "A mystical creature that makes its home in the volcano. Its specialized field ability 'Smash' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_sulfur_ash",
+        "light_change": 2,
+        "flavor": "The Apex-Chimera bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "sulfur_ash",
+        "light_change": 1,
+        "flavor": "The Apex-Chimera senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Apex-Chimera blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "flint",
+        "flavor": "The Apex-Chimera watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Apex-Chimera screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "primal_wurm",
+    "name": "Primal-Wurm",
+    "tier": 3,
+    "biomes": [
+      "desert",
+      "rocky_ridge"
+    ],
+    "field_move": "Dig",
+    "description": "A mystical creature that makes its home in the desert. Its specialized field ability 'Dig' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_cactus_flesh",
+        "light_change": 2,
+        "flavor": "The Primal-Wurm bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "cactus_flesh",
+        "light_change": 1,
+        "flavor": "The Primal-Wurm senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Primal-Wurm blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "water_pouch",
+        "flavor": "The Primal-Wurm watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Primal-Wurm screeches, striking violently to purge your dark presence."
+      }
+    }
+  },
+  {
+    "id": "oracle_stag",
+    "name": "Oracle-Stag",
+    "tier": 3,
+    "biomes": [
+      "grasslands",
+      "wooded_lake"
+    ],
+    "field_move": "Teleport",
+    "description": "A mystical creature that makes its home in the grasslands. Its specialized field ability 'Teleport' can shape the surrounding environment.",
+    "karma_interactions": {
+      "exalted_light": {
+        "action": "gift",
+        "item_reward": "pristine_plant_fiber",
+        "light_change": 2,
+        "flavor": "The Oracle-Stag bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "harmonious_light": {
+        "action": "reward",
+        "item_reward": "plant_fiber",
+        "light_change": 1,
+        "flavor": "The Oracle-Stag senses your gentle aura and drops a helpful resource."
+      },
+      "neutral": {
+        "action": "challenge",
+        "cost": {
+          "item_id": "lynch_berry",
+          "qty": 3
+        },
+        "fail_penalty": "inflict_curse",
+        "flavor": "The Oracle-Stag blocks your path curiously, waiting for a peaceful offering."
+      },
+      "dark_aligned": {
+        "action": "take",
+        "steal_item": "water_pouch",
+        "flavor": "The Oracle-Stag watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "exalted_dark": {
+        "action": "attack",
+        "damage": 3,
+        "effect": "curse",
+        "flavor": "The corrupted Oracle-Stag screeches, striking violently to purge your dark presence."
+      }
+    }
+  }
+]
