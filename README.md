@@ -20,9 +20,13 @@ AGENTS.md           conventions + roadmap for AI coding agents
 docs/
   art-direction.md  approved art style + asset list
   design-lane/      the physical/board-game design corpus: spec, economy
-                    engine, item/creature catalogs, proposals, reviews,
-                    and generated/ content drops not yet wired into game/
+                    engine, item/creature catalogs, proposals, reviews, and
+                    generated/ — the raw content drops (source of truth for
+                    the converter below)
 tools/
+  drop-converter/   convert.py — maps the generated/ drops into the engine
+                    schemas in game/data/ (wild creatures, item catalog,
+                    wild deck, bottleneck trials)
   engine-analyzer/  Vite + React app for inspecting the design-lane economy
 .github/workflows/  CI: headless smoke test + Android debug APK
 ```
@@ -64,6 +68,10 @@ godot --headless --path game --export-debug "Android Debug" build/into-the-wild-
 - Two victory paths (Light and full Dark), autosave, pass-and-play
 - Character select, quest engine, trading, action cards, creature challenges,
   dark raiding, skill tree, base building (Phases 1–3)
+- Content drop integration: 50 wild creatures with per-band behavior, the
+  200-card Wild Deck (playable fate cards, encounters, loot, wards), a
+  150-item catalog (tools/gear/consumables/relics), 50 dual-path bottleneck
+  trials at guardian sites, and the GameMathEngine loot math (pity chests)
 
 ## Read next
 

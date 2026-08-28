@@ -18,6 +18,9 @@ var events: Array = []
 var recipes: Array = []
 var quests: Dictionary = {}
 var skills: Array = []
+var items_catalog: Dictionary = {}      ## item_id -> catalog def (content drop)
+var wild_deck_data: Dictionary = {}     ## data/wild_deck.json (content drop)
+var bottleneck_quests: Array = []       ## dual-path guardian trials (content drop)
 
 var _rng: RandomNumberGenerator
 
@@ -54,6 +57,14 @@ func _init(rng: RandomNumberGenerator) -> void:
 	quests = _load_json("res://data/quests.json")
 	var sk: Dictionary = _load_json("res://data/skills.json")
 	skills = sk.get("skills", [])
+	# --- content-drop integrations (converted by tools/drop-converter)
+	var wild: Dictionary = _load_json("res://data/creatures_wild.json")
+	creatures.append_array(wild.get("creatures", []))
+	var cat: Dictionary = _load_json("res://data/items_catalog.json")
+	for it in cat.get("items", []):
+		items_catalog[String(it["id"])] = it
+	wild_deck_data = _load_json("res://data/wild_deck.json")
+	bottleneck_quests = _load_json("res://data/quests_bottleneck.json").get("quests", [])
 
 
 static func _load_json(path: String) -> Dictionary:
@@ -185,7 +196,53 @@ func display_name_of(id: String) -> String:
 	for r in recipes:
 		if String(r.get("id", "")) == id:
 			return String(r.get("name", id))
+	if items_catalog.has(id):
+		return String(items_catalog[id].get("name", id))
 	return id.capitalize()
+
+
+# ------------------------------------------------------------------ item catalog (content drop)
+
+func item_def(id: String) -> Dictionary:
+	return items_catalog.get(id, {})
+
+
+## Random catalog item of a rarity (optionally filtered by type), rng-stable.
+func random_catalog_item(rarity: String, types: Array = []) -> Dictionary:
+	var pool: Array = []
+	for it in items_catalog.values():
+		if String(it.get("rarity", "")) != rarity:
+			continue
+		if not types.is_empty() and not types.has(String(it.get("type", ""))):
+			continue
+		pool.append(it)
+	var picked: Variant = _pick(pool)
+	return picked if picked is Dictionary else {}
+
+
+## The strongest tool/gear stat a player carries (0 if none).
+func best_item_stat(p: PlayerState, type: String, stat: String) -> int:
+	var best := 0
+	for id in p.items:
+		var it := item_def(String(id))
+		if String(it.get("type", "")) == type:
+			best = maxi(best, int(it.get(stat, 0)))
+	return best
+
+
+## The bottleneck trial for a guardian site: matched by element (fallback any),
+## picked deterministically by the site's coordinates so a site always poses
+## the same trial.
+func bottleneck_for(element_id: String, site: Vector2i) -> Dictionary:
+	var same: Array = []
+	for q in bottleneck_quests:
+		if String(q.get("element", "")) == element_id:
+			same.append(q)
+	var pool := same if not same.is_empty() else bottleneck_quests
+	if pool.is_empty():
+		return {}
+	var salt := absi(site.x * 92821 + site.y * 486187739)
+	return pool[salt % pool.size()]
 
 
 func vp_faucet(key: String, sub: String = "") -> int:

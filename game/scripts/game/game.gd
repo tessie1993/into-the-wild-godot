@@ -212,12 +212,12 @@ func _build_hud() -> void:
 	care_bar = HBoxContainer.new()
 	care_bar.add_theme_constant_override("separation", 8)
 	bars.add_child(care_bar)
-	for def in [["eat", "Eat (⚡)"], ["sleep", "Sleep (+2⚡, skip)"], ["meditate", "Meditate (1⚡)"], ["trade", "Trade & Gift ⇄"], ["begin_action", "Begin Action ▸"]]:
+	for def in [["eat", "Eat (⚡)"], ["sleep", "Sleep (+2⚡, skip)"], ["meditate", "Meditate (1⚡)"], ["trade", "Trade & Gift ⇄"], ["wild_care", "Wild 🃏"], ["begin_action", "Begin Action ▸"]]:
 		_add_button(care_bar, String(def[0]), String(def[1]), _on_care)
 	action_bar = HBoxContainer.new()
 	action_bar.add_theme_constant_override("separation", 8)
 	bars.add_child(action_bar)
-	for def in [["explore", "Explore"], ["craft", "Craft"], ["creatures", "Creatures"], ["magic", "Magic/Learn"], ["guardian", "Guardian"], ["give_back", "Give Back"], ["raid", "Raid ☠"], ["trade_free", "Trade ⇄"], ["end", "End Turn"]]:
+	for def in [["explore", "Explore"], ["craft", "Craft"], ["creatures", "Creatures"], ["magic", "Magic/Learn"], ["guardian", "Guardian"], ["give_back", "Give Back"], ["raid", "Raid ☠"], ["trade_free", "Trade ⇄"], ["wild", "Wild 🃏"], ["end", "End Turn"]]:
 		_add_button(action_bar, String(def[0]), String(def[1]), _on_action)
 
 	lbl_toast = _label(19, "f2d06b")
@@ -362,11 +362,14 @@ func _refresh_bars(p: PlayerState) -> void:
 	if in_care:
 		(buttons["meditate"] as Button).disabled = p.meditated or p.energy < 1
 		(buttons["trade"] as Button).disabled = Game.players.size() < 2
+		(buttons["wild_care"] as Button).visible = not p.wild_cards.is_empty()
 	else:
 		var done := turn_over
 		for id in ["explore", "craft", "creatures", "magic", "guardian", "give_back", "raid", "trade_free"]:
 			if buttons.has(id):
 				(buttons[id] as Button).disabled = done
+		(buttons["wild"] as Button).visible = not p.wild_cards.is_empty()
+		(buttons["wild"] as Button).text = "Wild 🃏 (%d)" % p.wild_cards.size()
 		if not done:
 			(buttons["give_back"] as Button).disabled = p.commons_count() < 3
 			if buttons.has("trade_free"):
@@ -452,6 +455,8 @@ func _on_care(id: String) -> void:
 			_refresh_hud()
 		"trade":
 			_open_trade(p)
+		"wild_care":
+			_open_wild_menu(p)
 		"begin_action":
 			Game.end_care_phase()
 			_toast("Choose an action card: Explore, Craft, Creatures, Magic, Guardian, or Give Back.")
@@ -466,6 +471,13 @@ func _open_eat(p: PlayerState) -> void:
 	for f in foods:
 		if p.has_common(String(f)):
 			entries.append(["%s (+1⚡)" % Game.decks.display_name_of(String(f)), _eat_pick.bind(p, String(f), false)])
+	# Catalog consumables (content drop) are eaten here too.
+	for id in p.items.duplicate():
+		var it := Game.decks.item_def(String(id))
+		if String(it.get("type", "")) == "consumable":
+			var lbl := "%s (+%d⚡%s)" % [String(it.get("name", id)), int(it.get("use_energy", 1)),
+				", +%d☀" % int(it.get("use_light", 0)) if int(it.get("use_light", 0)) > 0 else ""]
+			entries.append([lbl, _eat_consumable.bind(p, String(id))])
 	if entries.is_empty():
 		_toast("Nothing edible. Gather food commons or cook a meal.")
 		return
@@ -481,6 +493,18 @@ func _eat_pick(p: PlayerState, id: String, cooked: bool) -> void:
 		p.spend_common(id, 1)
 	var gained := Game.care_eat(p, cooked)
 	_toast("+%d⚡" % gained if gained > 0 else "It restores nothing — your success sits heavy (hypocrisy).")
+	_refresh_hud()
+
+
+func _eat_consumable(p: PlayerState, id: String) -> void:
+	_close_modal()
+	var res := Game.use_consumable(p, id)
+	if res.is_empty():
+		return
+	var txt := "+%d⚡" % int(res["energy"])
+	if int(res["light"]) > 0:
+		txt += ", +%d Light" % int(res["light"])
+	_toast("%s. %s" % [Game.decks.display_name_of(id), txt])
 	_refresh_hud()
 
 
@@ -659,6 +683,10 @@ func _on_action(id: String) -> void:
 	if id == "end":
 		Game.end_turn()
 		return
+	if id == "wild":
+		# Wild cards may be played even after the action resolves (Double Down).
+		_open_wild_menu(p)
+		return
 	if turn_over:
 		_toast("Your action is done — End Turn.")
 		return
@@ -709,8 +737,13 @@ func _try_step(axial: Vector2i) -> void:
 	if tile == null or Hex.distance(p.pos, axial) != 1 or moves_left <= 0:
 		return
 	if tile.tier == 3 and not Duality.sanctum_open(Game.band_of(p)):
-		_toast("The Guardian Gate stays closed — only the Radiant may enter.")
-		return
+		# Sanctum Key blessing (Wild Deck): one pass through the Light gate.
+		if p.wards.has("sanctum_key"):
+			p.wards.erase("sanctum_key")
+			_toast("The Sanctum Key turns — the Guardian Gate opens this once.")
+		else:
+			_toast("The Guardian Gate stays closed — only the Radiant may enter.")
+			return
 	var cost := _step_cost(p, tile)
 	if cost > moves_left:
 		_toast("Not enough movement (%s costs %d)." % [_terrain_name(tile), cost])
@@ -733,6 +766,14 @@ func _step_cost(p: PlayerState, tile: IslandTile) -> int:
 	var cost := 2
 	if p.has_item("trail_cloak"):
 		cost = 1
+	# Thermal Cloak blessing (Wild Deck): harsh terrain costs nothing extra.
+	if p.wards.has("thermal_cloak"):
+		cost = 1
+	# Catalog gear (content drop): immunity to its element's harsh terrain.
+	for id in p.items:
+		if String(Game.decks.item_def(String(id)).get("immunity_element", "")) == tile.element_id:
+			cost = 1
+			break
 	# Action Card Explore Lvl 4+: immune to T2 penalty
 	if ActionCards.get_level(p, "explore") >= 4:
 		cost = 1
@@ -779,7 +820,11 @@ func _reveal(tile: IslandTile, p: PlayerState) -> void:
 			if Game.quest_engine != null:
 				Game.quest_engine.on_gather_card(p, tile.tier, String(bonus_card.get("tier", "")))
 			_toast("Explore Lvl 3 bonus: found [%s] %s." % [String(bonus_card["tier"]), Game.decks.display_name_of(String(bonus_card["id"]))])
-	if Game.rng.randf() < 0.5:
+	if p.wards.has("mist_ward"):
+		_toast("The mist ward folds around you — nothing on this tile notices your arrival.")
+	elif Game.rng.randf() < float(Game.decks.config.get("wild", {}).get("card_chance", 0.35)):
+		_resolve_wild_card(Game.wild_deck.draw(), p, tile)
+	elif Game.rng.randf() < 0.5:
 		_resolve_creature(Game.decks.creature_for(tile.element_id, tile.tier), p, tile)
 	else:
 		_resolve_event(Game.decks.random_event(), p, tile)
@@ -819,6 +864,12 @@ func _gather_do(p: PlayerState, tile: IslandTile, exploit: bool) -> void:
 		n_commons += 1
 	if p.skills.has("scavengers_eye"):
 		n_commons += 1
+	# Catalog tool (content drop): the best harvesting tool adds commons and wears out.
+	var tool := Game.use_best_tool(p)
+	if not tool.is_empty():
+		n_commons += int(tool["bonus"])
+		if bool(tool["broke"]):
+			_toast("%s gives its last — the tool breaks apart." % Game.decks.display_name_of(String(tool["id"])))
 	var got: Dictionary = {}
 	for i in n_commons:
 		var c := Game.decks.random_common(tile.element_id)
@@ -846,6 +897,11 @@ func _gather_do(p: PlayerState, tile: IslandTile, exploit: bool) -> void:
 # ----------------------------------------------------------------- craft
 
 func _open_craft(p: PlayerState) -> void:
+	# Ancient Trap (Wild Deck): the mechanism jammed your next Craft.
+	if p.craft_locked:
+		p.craft_locked = false
+		_toast("Your tools are still tangled from the ancient trap — Craft is locked this time.")
+		return
 	var tile: IslandTile = Game.board.get_tile(p.pos)
 	var craft_lvl := ActionCards.get_level(p, "craft")
 	var bench := tile.has_building("homebase") or craft_lvl >= 3
@@ -1103,6 +1159,17 @@ func _do_quest(p: PlayerState) -> void:
 	if is_guardian_tile:
 		if p.has_item("offering_bundle"):
 			entries.append(["★ Make an Offering (+2 Light, +%d VP, −1 Rage)" % (4 + bonus_vp if sanctum else 2 + bonus_vp), _quest_offer.bind(p, sanctum)])
+		# Catalog relics (content drop) can be laid on the altar too.
+		var relic_seen: Array = []
+		for id in p.items:
+			var it := Game.decks.item_def(String(id))
+			if String(it.get("type", "")) == "relic" and not relic_seen.has(String(id)):
+				relic_seen.append(String(id))
+				entries.append(["✧ Offer %s (+%d VP, +1 Light)" % [String(it.get("name", id)), int(it.get("offer_vp", 0))], _offer_relic_pick.bind(p, String(id))])
+		# Bottleneck trial (content drop): the island tests you at its sites.
+		var trial := Game.decks.bottleneck_for(tile.element_id, tile.axial)
+		if not trial.is_empty() and not p.trials_done.has(String(trial.get("id", ""))):
+			entries.append(["⚖ Face the Island's Trial…", _open_trial.bind(p, trial)])
 		if Duality.corrupt_gate_open(Game.band_of(p)):
 			entries.append(["☠ Defile the site (−3 Light, +2 VP, +1 Rage)", _quest_defile.bind(p)])
 
@@ -1207,6 +1274,51 @@ func _quest_defile(p: PlayerState) -> void:
 	_finish_main_action()
 
 
+func _offer_relic_pick(p: PlayerState, item_id: String) -> void:
+	_close_modal()
+	var vp := Game.offer_relic(p, item_id)
+	if vp > 0:
+		action_taken = "guardian"
+		_toast("✧ The Guardian accepts the relic. +%d VP, +1 Light." % vp)
+		_finish_main_action()
+
+
+## Bottleneck trial (content drop): a dual-path quest posed at a Guardian site.
+func _open_trial(p: PlayerState, trial: Dictionary) -> void:
+	_close_modal()
+	var lp: Dictionary = trial.get("light", {})
+	var dp: Dictionary = trial.get("dark", {})
+	var body := "%s\n\n☀ The Way of Harmony — deposit %d commons:\n%s\n→ +%d VP, +%d Light, %s\n\n☠ The Way of Force — free, but the island remembers:\n%s\n→ +%d VP, %d Light, +%d Rage, %s" % [
+		String(trial.get("desc", "")),
+		int(lp.get("cost_commons", 5)), String(lp.get("objective", "")),
+		int(lp.get("vp", 0)), int(lp.get("light", 0)), Game.decks.display_name_of(String(lp.get("item", ""))),
+		String(dp.get("objective", "")),
+		int(dp.get("vp", 0)), int(dp.get("light", 0)), int(dp.get("rage", 2)), Game.decks.display_name_of(String(dp.get("item", ""))),
+	]
+	var entries: Array = []
+	if p.commons_count() >= int(lp.get("cost_commons", 5)):
+		entries.append(["☀ Resolve in harmony (%d commons)" % int(lp.get("cost_commons", 5)), _trial_resolve.bind(p, trial, false)])
+	else:
+		body += "\n\n(You lack the %d commons for the harmonious way.)" % int(lp.get("cost_commons", 5))
+	entries.append(["☠ Force it", _trial_resolve.bind(p, trial, true)])
+	entries.append(["Step back", _close_modal])
+	_show_modal("⚖ %s" % String(trial.get("title", "The Island's Trial")), body, entries)
+
+
+func _trial_resolve(p: PlayerState, trial: Dictionary, dark: bool) -> void:
+	_close_modal()
+	if not Game.resolve_bottleneck(p, trial, dark):
+		_toast("The trial slips away unresolved.")
+		return
+	action_taken = "guardian"
+	var path: Dictionary = trial.get("dark" if dark else "light", {})
+	if dark:
+		_toast("☠ Forced. +%d VP — but the island's Light drains (%d) and its Rage grows." % [int(path.get("vp", 0)), int(path.get("light", 0))])
+	else:
+		_toast("☀ Resolved in harmony! +%d VP, +%d Light." % [int(path.get("vp", 0)), int(path.get("light", 0))])
+	_finish_main_action()
+
+
 # ================================================================= ENCOUNTERS
 
 func _resolve_creature(creature: Dictionary, p: PlayerState, tile: IslandTile) -> void:
@@ -1220,14 +1332,24 @@ func _resolve_creature(creature: Dictionary, p: PlayerState, tile: IslandTile) -
 	var entries: Array = []
 	var body := "F%d · Demand: %s" % [f, demand_txt]
 
+	var flavor: Dictionary = creature.get("flavor", {})
 	match band:
 		Duality.Band.MAX_LIGHT, Duality.Band.LIGHT:
-			var gift_desc := CreatureEngine.apply_effect(p, creature.get("gift", {}), Game.rng)
+			# Wild roster: the Kind band gets the smaller "reward" effect, Radiant the full gift.
+			var effect: Dictionary = creature.get("gift", {})
+			if band == Duality.Band.LIGHT and creature.has("reward"):
+				effect = creature.get("reward", {})
+			var gift_desc := CreatureEngine.apply_effect(p, effect, Game.rng)
 			body += "\n\nIt greets you in pure harmony — its Gift is yours:\n★ %s" % gift_desc
+			var f_line := String(flavor.get("radiant" if band == Duality.Band.MAX_LIGHT else "kind", ""))
+			if f_line != "":
+				body += "\n%s" % f_line
 			if CreatureEngine.can_fulfill_demand(p, creature):
 				entries.append(["Commune deeper (pay demand · +1 Light)", _befriend.bind(p, creature, tile)])
 		Duality.Band.NEUTRAL:
 			body += "\n\nIt offers its Demand as a trial of balance: meet it, commune, or fight."
+			if flavor.has("neutral"):
+				body += "\n%s" % String(flavor["neutral"])
 			if CreatureEngine.can_fulfill_demand(p, creature):
 				entries.append(["Meet the Demand (+1 Light, claim Gift)", _befriend.bind(p, creature, tile)])
 			if p.energy >= 1:
@@ -1243,16 +1365,22 @@ func _resolve_creature(creature: Dictionary, p: PlayerState, tile: IslandTile) -
 			entries.append(["Fight (fate draw vs F%d)" % f, _fight_menu.bind(p, creature, tile)])
 		Duality.Band.DARK:
 			body += "\n\nIt eyes you warily, growling in defense."
+			if flavor.has("shadowed"):
+				body += "\n%s" % String(flavor["shadowed"])
 			if CreatureEngine.can_fulfill_demand(p, creature):
 				entries.append(["Tribute (pay demand to appease)", _befriend.bind(p, creature, tile)])
 			entries.append(["Endure the Bite", func() -> void:
 				_close_modal()
-				var bite_desc := CreatureEngine.apply_effect(p, creature.get("bite", {}), Game.rng, true)
+				# Wild roster: the Shadowed band takes from your pack rather than striking.
+				var take_effect: Dictionary = creature.get("take", creature.get("bite", {}))
+				var bite_desc := CreatureEngine.apply_effect(p, take_effect, Game.rng, true)
 				_toast("Bite suffered: %s." % bite_desc)
 			])
 			entries.append(["Fight back (fate draw vs F%d)" % f, _fight_menu.bind(p, creature, tile)])
 		_: # MAX_DARK
 			body += "\n\nIt sees the corruption in you and attacks on sight!"
+			if flavor.has("dark"):
+				body += "\n%s" % String(flavor["dark"])
 			var bite_desc := CreatureEngine.apply_effect(p, creature.get("bite", {}), Game.rng, true)
 			body += "\n⚠ Hostile Bite: %s" % bite_desc
 			entries.append(["Fight back (+1 F for dark karma)", _fight_menu.bind(p, creature, tile)])
@@ -1399,6 +1527,196 @@ func _resolve_event(ev: Dictionary, p: PlayerState, tile: IslandTile) -> void:
 			desc += "\n\nNext turn: −%d movement." % slow
 	_show_modal(title, desc, [["Continue", _close_modal]])
 	EventBus.inventory_changed.emit(p.index)
+
+
+# ================================================================= WILD DECK (content drop)
+
+## A tile reveal drew from the Wild Deck. fate/ward cards go to the hand;
+## encounter/loot cards resolve immediately through _apply_wild_ops.
+func _resolve_wild_card(card: Dictionary, p: PlayerState, tile: IslandTile) -> void:
+	if card.is_empty():
+		return
+	var kind := String(card.get("kind", ""))
+	var cname := String(card.get("name", "A wild card"))
+	var text := String(card.get("text", ""))
+	if kind == "fate" or kind == "ward":
+		var cap := int(Game.decks.config.get("wild", {}).get("hand_cap", 3))
+		if p.wild_cards.size() >= cap:
+			_show_modal("🃏 " + cname, text + "\n\nYour hands are full — the card blows away on the wind.", [["Continue", _close_modal]])
+			return
+		p.wild_cards.append(String(card.get("id", "")))
+		_show_modal("🃏 " + cname, text + "\n\nAdded to your Wild Cards — play it from the Wild menu.", [["Continue", _close_modal]])
+	else:
+		var lines: Array = [text]
+		_apply_wild_ops(card.get("ops", []), p, tile, lines)
+		_show_modal(("☄ " if kind == "encounter" else "✦ ") + cname, "\n".join(lines), [["Continue", _close_modal]])
+	EventBus.inventory_changed.emit(p.index)
+
+
+## The Wild Deck op vocabulary (see data/wild_deck.json).
+func _apply_wild_ops(ops: Array, p: PlayerState, tile: IslandTile, lines: Array) -> void:
+	for op_v in ops:
+		var op: Dictionary = op_v
+		match String(op.get("op", "")):
+			"gain_common":
+				var id := String(op.get("id", ""))
+				var n := int(op.get("n", 1))
+				for i in n:
+					p.add_common(id if id != "" else Game.decks.random_common(tile.element_id), 1)
+				lines.append("+%d %s." % [n, Game.decks.display_name_of(id) if id != "" else "common(s)"])
+			"gain_card":
+				p.add_card({"id": String(op.get("id", "")), "tier": String(op.get("tier", "uncommon")), "element": String(op.get("element", tile.element_id))})
+				lines.append("Found: [%s] %s." % [String(op.get("tier", "uncommon")), Game.decks.display_name_of(String(op.get("id", "")))])
+			"energy":
+				Game.add_energy(p, int(op.get("n", 0)))
+				lines.append("Energy %+d." % int(op.get("n", 0)))
+			"light":
+				Game.add_light(p, int(op.get("n", 0)))
+				lines.append("Light %+d." % int(op.get("n", 0)))
+			"slow":
+				p.slow_penalty += int(op.get("n", 1))
+				lines.append("Next turn: −%d movement." % int(op.get("n", 1)))
+			"rage":
+				Game.add_rage(int(op.get("n", 1)))
+				lines.append("Island Rage %+d." % int(op.get("n", 1)))
+			"chest":
+				var it := Game.open_chest(p)
+				if it.is_empty() or p.items.size() >= p.pack_size:
+					p.add_common(Game.decks.random_common(tile.element_id), 1)
+					lines.append("The chest holds only scraps (+1 common).")
+				else:
+					p.items.append(String(it["id"]))
+					lines.append("The chest opens: [%s] %s!" % [String(it["rarity"]), String(it["name"])])
+			"draw_ward":
+				var ward := Game.wild_deck.draw_ward()
+				var cap := int(Game.decks.config.get("wild", {}).get("hand_cap", 3))
+				if not ward.is_empty() and p.wild_cards.size() < cap:
+					p.wild_cards.append(String(ward["id"]))
+					lines.append("A blessing answers: %s joins your Wild Cards." % String(ward["name"]))
+				else:
+					lines.append("The blessing stirs, but cannot reach you.")
+			"creature":
+				var el := String(op.get("element", tile.element_id))
+				lines.append("Something stirs...")
+				_close_modal()
+				_resolve_creature(Game.decks.creature_for(el, tile.tier), p, tile)
+				return
+			"mirage":
+				var r := int(op.get("radius", 2))
+				var flipped := 0
+				for axial in Game.board.tiles.keys():
+					var t: IslandTile = Game.board.tiles[axial]
+					if t.explored and t.tier < 3 and axial != p.pos and Hex.distance(p.pos, axial) <= r:
+						t.explored = false
+						_refresh_tile(axial)
+						flipped += 1
+				lines.append("The mirage swallows %d explored tile(s) — the island forgets them." % flipped)
+			"dark_aggression":
+				Game.dark_aggression_rounds = int(op.get("rounds", 2))
+				lines.append("Every wild creature turns hostile for %d rounds!" % int(op.get("rounds", 2)))
+			"craft_lock":
+				p.craft_locked = true
+				lines.append("Your next Craft action is locked.")
+			"fate_check":
+				var draw := Game.fate.draw(Game.band_of(p), Game.decks.canon.get("fate", {}))
+				var value := int(draw["value"])
+				var vs := int(op.get("vs", 4))
+				if value >= vs:
+					lines.append("Fate draw %d vs %d — you slip free!" % [value, vs])
+				else:
+					lines.append("Fate draw %d vs %d — it catches you." % [value, vs])
+					_apply_wild_ops(op.get("fail", []), p, tile, lines)
+			"if_band_kind":
+				var band := Game.band_of(p)
+				var kind_plus := band == Duality.Band.LIGHT or band == Duality.Band.MAX_LIGHT
+				_apply_wild_ops(op.get("then", []) if kind_plus else op.get("else", []), p, tile, lines)
+			"if_element":
+				var els: Array = op.get("elements", [])
+				_apply_wild_ops(op.get("then", []) if els.has(tile.element_id) else op.get("else", []), p, tile, lines)
+			"unless_heart":
+				if p.heart != String(op.get("heart", "")):
+					_apply_wild_ops(op.get("ops", []), p, tile, lines)
+				else:
+					lines.append("Your %s heart knows these waters — no harm done." % p.heart)
+			"unless_item":
+				if not p.has_item(String(op.get("item", ""))):
+					_apply_wild_ops(op.get("ops", []), p, tile, lines)
+				else:
+					lines.append("Your %s holds the cold at bay." % Game.decks.display_name_of(String(op.get("item", ""))))
+
+
+## The Wild Cards menu: play held fate cards and wards.
+func _open_wild_menu(p: PlayerState) -> void:
+	if p.wild_cards.is_empty():
+		_toast("No Wild Cards in hand — they turn up while exploring.")
+		return
+	var entries: Array = []
+	var body_lines: Array = []
+	for id in p.wild_cards.duplicate():
+		var card: Dictionary = Game.wild_deck.defs.get(String(id), {})
+		if card.is_empty():
+			continue
+		var cname := String(card.get("name", id))
+		body_lines.append("• %s — %s" % [cname, String(card.get("text", ""))])
+		if String(card.get("kind", "")) == "ward":
+			var band := Game.band_of(p)
+			var kind_plus := band == Duality.Band.LIGHT or band == Duality.Band.MAX_LIGHT
+			if kind_plus:
+				entries.append(["Invoke: " + cname, _play_ward.bind(p, String(id))])
+			else:
+				body_lines.append("   (needs Kind or Radiant karma to invoke)")
+		else:
+			entries.append(["Play: " + cname, _play_fate_card.bind(p, String(id))])
+	entries.append(["Close", _close_modal])
+	_show_modal("🃏 Wild Cards (%d/%d)" % [p.wild_cards.size(), int(Game.decks.config.get("wild", {}).get("hand_cap", 3))], "\n".join(body_lines), entries)
+
+
+func _play_ward(p: PlayerState, id: String) -> void:
+	_close_modal()
+	var card: Dictionary = Game.wild_deck.defs.get(id, {})
+	p.wild_cards.erase(id)
+	p.wards[String(card.get("ward", id))] = int(card.get("turns", 1))
+	_toast("✨ %s takes hold." % String(card.get("name", id)))
+	_refresh_hud()
+
+
+func _play_fate_card(p: PlayerState, id: String) -> void:
+	_close_modal()
+	var card: Dictionary = Game.wild_deck.defs.get(id, {})
+	match String(card.get("play", "")):
+		"double_down":
+			if action_taken != "explore":
+				_toast("Double Down works on Explore/Gather — take that action first.")
+				return
+			p.wild_cards.erase(id)
+			turn_over = false
+			action_taken = ""
+			_toast("🃏 Double Down! The island holds its breath — act again.")
+		"unshackled":
+			p.wild_cards.erase(id)
+			p.slow_penalty = 0
+			if not turn_over and action_taken != "":
+				action_taken = ""
+				mode = "idle"
+				_toast("🃏 Unshackled — your action choice is free again, and your stride is light.")
+			else:
+				_toast("🃏 Unshackled — every lock on your movement falls away.")
+		"focus_shift":
+			if turn_over or action_taken == "":
+				_toast("Focus Shift is for switching an action in progress.")
+				return
+			p.wild_cards.erase(id)
+			action_taken = ""
+			mode = "idle"
+			_toast("🃏 Focus Shift — you switch freely; the island waits without judgment.")
+		"swift_step":
+			if mode != "explore":
+				_toast("Swift Step is played during Explore, when the extra strides count.")
+				return
+			p.wild_cards.erase(id)
+			moves_left += 2
+			_toast("🃏 Swift Step — +2 movement now.")
+	_refresh_hud()
 
 
 # ================================================================= MODAL / WIN

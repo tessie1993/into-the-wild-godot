@@ -10,7 +10,7 @@
 # ==============================================================================
 
 class_name GameMathEngine
-extends Node
+extends RefCounted
 
 # ==========================================
 # SECTION 1: LEVEL-CONSTANT & STAT BUDGETS

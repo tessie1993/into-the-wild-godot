@@ -13,6 +13,9 @@ enum EncounterType {
 
 ## Computes effective encounter band considering Heart affinity and skills.
 static func effective_band(p: PlayerState, creature: Dictionary) -> Duality.Band:
+	# Eclipse (Wild Deck): every creature acts from Deep Dark aggression.
+	if Game.dark_aggression_rounds > 0:
+		return Duality.Band.MAX_DARK
 	var base_band := Game.band_of(p)
 	var shift := 0
 	
@@ -105,10 +108,25 @@ static func apply_effect(p: PlayerState, effect: Dictionary, rng: RandomNumberGe
 		if p.has_item("healing_salve"):
 			p.remove_item("healing_salve")
 			return "Healing Salve soothingly neutralizes the bite effect!"
-			
+		# Aura Shield ward (Wild Deck): absorbs one full attack, then fades.
+		if p.wards.has("aura_shield"):
+			p.wards.erase("aura_shield")
+			return "The Aura Shield flares and absorbs the attack completely!"
+
 	var op := String(effect.get("op", "none"))
 	var n := int(effect.get("n", 1))
 	var desc := String(effect.get("desc", ""))
+
+	# Catalog gear (content drop): armor softens what a bite can take.
+	if is_bite and (op == "lose_common" or op == "energy" or op == "lose_card"):
+		var armor := Game.decks.best_item_stat(p, "gear", "armor")
+		if armor > 0:
+			if op == "energy":
+				n = mini(0, n + armor)
+			else:
+				n = maxi(0, n - armor)
+			if n == 0:
+				return "Your gear takes the hit — the bite does nothing."
 	
 	match op:
 		"gain_common":
@@ -139,6 +157,11 @@ static func apply_effect(p: PlayerState, effect: Dictionary, rng: RandomNumberGe
 			elif n < 0:
 				for i in absi(n):
 					Game.shift_light(p, "exploit_tile")
+		"gain_card":
+			var cid2 := String(effect.get("id", ""))
+			if cid2 != "":
+				p.add_card({"id": cid2, "tier": String(effect.get("tier", "uncommon")),
+					"element": String(effect.get("element", p.heart if p.heart != "" else "wood"))})
 		"draw_card":
 			for i in n:
 				var c := Game.decks.draw_card(p.heart if p.heart != "" else "wood", 1)

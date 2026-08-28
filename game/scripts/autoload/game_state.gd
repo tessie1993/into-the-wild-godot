@@ -11,6 +11,8 @@ var decks: Decks
 var board: Board
 var fate: Fate
 var quest_engine: QuestEngine
+var wild_deck: WildDeck
+var dark_aggression_rounds: int = 0  ## Eclipse: all creatures act Deep Dark
 var players: Array[PlayerState] = []
 var current: int = 0
 var round_num: int = 1
@@ -40,6 +42,8 @@ func band_of(p: PlayerState) -> Duality.Band:
 func new_game(player_count: int, character_ids: Array[String] = []) -> void:
 	decks = Decks.new(rng)
 	fate = Fate.new(rng, decks.canon.get("fate", {}))
+	wild_deck = WildDeck.new(rng, decks.wild_deck_data)
+	dark_aggression_rounds = 0
 	board = Board.new()
 	board.generate(decks, rng)
 	players.clear()
@@ -90,6 +94,11 @@ func end_care_phase() -> void:
 func end_turn() -> void:
 	var p := current_player()
 	p.fought_recently = false  # set again during the turn if they fought
+	# Wild wards burn down one turn of their owner's time.
+	for ward_id in p.wards.keys().duplicate():
+		p.wards[ward_id] = int(p.wards[ward_id]) - 1
+		if int(p.wards[ward_id]) <= 0:
+			p.wards.erase(ward_id)
 	EventBus.turn_ended.emit(current)
 	
 	# Single player check: resolve immediately
@@ -109,6 +118,10 @@ func end_turn() -> void:
 		round_num += 1
 		for pl in players:
 			pl.gifted_players_this_round.clear()
+		if dark_aggression_rounds > 0:
+			dark_aggression_rounds -= 1
+			if dark_aggression_rounds == 0:
+				EventBus.message.emit("The eclipse passes — the wilds calm again.")
 		# Island Rage: temporal faucet, +1 every round (canon/rage.json).
 		add_rage(Rage.delta_for("round_start"))
 		# Mode turn limit (canon/modes.json; Standard 15 is the designer-approved
@@ -256,6 +269,94 @@ func lose_commons(p: PlayerState, n: int) -> Array:
 	return lost
 
 
+# ------------------------------------------------------------------ item catalog (content drop)
+
+## Eat a catalog consumable in the Care phase. Energy gains respect the
+## hypocrisy penalty like all Care-phase gains; Light is bounded by the item.
+func use_consumable(p: PlayerState, item_id: String) -> Dictionary:
+	var it := decks.item_def(item_id)
+	if it.is_empty() or not p.remove_item(item_id):
+		return {}
+	var gain := maxi(0, int(it.get("use_energy", 1)) - Duality.hypocrisy_energy_penalty(p.vp, p.light))
+	var gained := add_energy(p, gain)
+	var l := int(it.get("use_light", 0))
+	if l != 0:
+		add_light(p, l)
+	EventBus.inventory_changed.emit(p.index)
+	return {"energy": gained, "light": l}
+
+
+## Offer a catalog relic at a Guardian site: consumed for its offer_vp.
+func offer_relic(p: PlayerState, item_id: String) -> int:
+	var it := decks.item_def(item_id)
+	var vp := int(it.get("offer_vp", 0))
+	if vp <= 0 or not p.remove_item(item_id):
+		return 0
+	p.offerings_made += 1
+	add_light(p, 1)
+	add_rage(Rage.delta_for("guardian_quest_step"))
+	add_vp(p, vp, true)
+	if quest_engine != null:
+		quest_engine.on_guardian_offering(p, p.pos)
+	EventBus.inventory_changed.emit(p.index)
+	return vp
+
+
+## Resolve a bottleneck trial (content-drop dual-path quest) at a Guardian site.
+## Light path: deposit 5 commons peacefully. Dark path: force it — free, but
+## the island remembers (Rage + the scaled Light loss).
+func resolve_bottleneck(p: PlayerState, quest: Dictionary, dark: bool) -> bool:
+	var path: Dictionary = quest.get("dark" if dark else "light", {})
+	if path.is_empty() or p.trials_done.has(String(quest.get("id", ""))):
+		return false
+	if not dark:
+		if p.commons_count() < int(path.get("cost_commons", 5)):
+			return false
+		p.spend_any_commons(int(path.get("cost_commons", 5)), rng)
+	else:
+		add_rage(int(path.get("rage", 2)))
+	add_light(p, int(path.get("light", 0)))
+	add_vp(p, int(path.get("vp", 0)), true)
+	var token := String(path.get("item", ""))
+	if token != "" and p.items.size() < p.pack_size:
+		p.items.append(token)
+	p.trials_done.append(String(quest.get("id", "")))
+	EventBus.inventory_changed.emit(p.index)
+	return true
+
+
+## Apply the best catalog tool to a gather: returns its bonus commons and
+## burns one use, breaking the tool when its durability is spent.
+func use_best_tool(p: PlayerState) -> Dictionary:
+	var best_id := ""
+	var best_bonus := 0
+	for id in p.items:
+		var it := decks.item_def(String(id))
+		if String(it.get("type", "")) == "tool" and int(it.get("bonus_commons", 0)) > best_bonus:
+			best_id = String(id)
+			best_bonus = int(it.get("bonus_commons", 0))
+	if best_id == "":
+		return {}
+	if not p.tool_uses.has(best_id):
+		p.tool_uses[best_id] = int(decks.item_def(best_id).get("uses", 3))
+	p.tool_uses[best_id] = int(p.tool_uses[best_id]) - 1
+	var broke := int(p.tool_uses[best_id]) <= 0
+	if broke:
+		p.tool_uses.erase(best_id)
+		p.remove_item(best_id)
+	return {"id": best_id, "bonus": best_bonus, "broke": broke}
+
+
+## Chest roll (content drop): pity-protected rarity roll via GameMathEngine,
+## then a random catalog item of that rarity.
+func open_chest(p: PlayerState) -> Dictionary:
+	var rarity := GameMathEngine.roll_loot_with_pity(
+		{"uncommon": 70.0, "rare": 25.0, "legendary": 5.0}, p.chest_pity, "legendary", 10)
+	if rarity == "null":
+		rarity = "uncommon"
+	return decks.random_catalog_item(rarity, ["tool", "gear", "consumable"])
+
+
 # ------------------------------------------------------------------ fights
 
 ## Resolve a fight (canon chassis + synthesis S2): fate draw + modifiers vs F.
@@ -369,6 +470,8 @@ func save_game() -> void:
 		"common_quests": common_quests,
 		"board": board.to_dict(),
 		"players": players.map(func(p: PlayerState) -> Dictionary: return p.to_dict()),
+		"wild_deck": wild_deck.to_dict() if wild_deck != null else {},
+		"dark_aggression": dark_aggression_rounds,
 	}
 	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if f != null:
@@ -393,6 +496,9 @@ func load_game() -> bool:
 		return false
 	decks = Decks.new(rng)
 	fate = Fate.new(rng, decks.canon.get("fate", {}))
+	wild_deck = WildDeck.new(rng, decks.wild_deck_data)
+	wild_deck.restore(data.get("wild_deck", {}))
+	dark_aggression_rounds = int(data.get("dark_aggression", 0))
 	board = Board.from_dict(data.get("board", {}))
 	players.clear()
 	for pd in data.get("players", []):

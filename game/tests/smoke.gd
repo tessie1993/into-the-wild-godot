@@ -18,7 +18,24 @@ func _ready() -> void:
 	_check(decks.elements.size() == 6, "6 elements")
 	_check(decks.ring_element_ids().size() == 5, "5 ring terrains (Spirit is earned)")
 	_check(decks.characters.size() == 4, "4 characters")
-	_check(decks.creatures.size() >= 12, "creature roster loads (%d)" % decks.creatures.size())
+	_check(decks.creatures.size() >= 62, "creature roster incl. wild drop loads (%d)" % decks.creatures.size())
+	_check(decks.items_catalog.size() == 156, "item catalog loads (150 drop + 6 tokens, got %d)" % decks.items_catalog.size())
+	_check(decks.wild_deck_data.get("cards", []).size() == 20, "wild deck: 20 unique cards")
+	var wd_total := 0
+	for wc in decks.wild_deck_data.get("cards", []):
+		wd_total += int(wc.get("count", 1))
+	_check(wd_total == 200, "wild deck: 200 printed cards (got %d)" % wd_total)
+	_check(decks.bottleneck_quests.size() == 50, "bottleneck trials load (50)")
+	var trial_a := decks.bottleneck_for("stone", Vector2i(2, -1))
+	_check(not trial_a.is_empty() and trial_a == decks.bottleneck_for("stone", Vector2i(2, -1)),
+		"a guardian site always poses the same trial")
+
+	# --- GameMathEngine (content drop): loot math
+	_check(absf(GameMathEngine.get_level_constant(1) - 6.05) < 0.001, "math engine level constant")
+	_check(GameMathEngine.roll_loot_with_replacement({"only": 1.0}) == "only", "weighted loot roll")
+	var pity: Dictionary = {"want": 10}
+	var pity_roll := GameMathEngine.roll_loot_with_pity({"want": 1.0, "other": 99.0}, pity, "want", 10)
+	_check(pity_roll == "want", "pity roll guarantees the target at max rolls")
 
 	# --- CE tier ladder (canon invariant I1)
 	_check(decks.ce_of("common") == 1 and decks.ce_of("uncommon") == 3
@@ -181,6 +198,57 @@ func _ready() -> void:
 		_check(DarkRaiding.can_raid(p_dark, p_target), "outcast can raid target on same hex")
 		var raid_res := DarkRaiding.execute_raid(p_dark, p_target, rng)
 		_check(bool(raid_res["success"]) and not bool(raid_res["blocked"]), "unblocked raid successfully steals materials")
+
+		# --- Content drop integration: wild deck, items, trials, eclipse
+		var wd: WildDeck = game.wild_deck
+		var before_left: int = wd.size_left()
+		var wcard := wd.draw()
+		_check(not wcard.is_empty() and wd.size_left() == before_left - 1, "wild deck draws and depletes")
+		_check(String(wd.draw_ward().get("kind", "")) == "ward", "guardian's whispers can find a ward")
+
+		var p_drop := PlayerState.new()
+		p_drop.index = 0
+		p_drop.items.append("tool_item_01")
+		var tool_res: Dictionary = game.use_best_tool(p_drop)
+		_check(int(tool_res.get("bonus", 0)) == 1, "common tool adds +1 common on gather")
+		game.use_best_tool(p_drop)
+		tool_res = game.use_best_tool(p_drop)
+		_check(bool(tool_res.get("broke", false)) and not p_drop.has_item("tool_item_01"), "tool breaks after its durability is spent")
+
+		p_drop.items.append("consumable_item_01")
+		var e_before: int = p_drop.energy
+		var use_res: Dictionary = game.use_consumable(p_drop, "consumable_item_01")
+		_check(int(use_res.get("energy", 0)) == 1 and p_drop.energy == e_before + 1, "consumable restores energy in the care phase")
+
+		p_drop.items.append("gear_item_01")
+		p_drop.add_common("sticks", 1)
+		var gear_bite := CreatureEngine.apply_effect(p_drop, {"op": "lose_common", "n": 1}, rng, true)
+		_check(p_drop.has_common("sticks", 1) and gear_bite.contains("gear"), "catalog gear armor absorbs a small bite")
+
+		p_drop.items.append("relic_item_01")
+		var gvp_before: int = p_drop.guardian_vp
+		_check(game.offer_relic(p_drop, "relic_item_01") == 2 and p_drop.guardian_vp == gvp_before + 2, "relic offering grants guardian VP")
+
+		var trial: Dictionary = game.decks.bottleneck_for("stone", Vector2i(3, 0))
+		p_drop.add_common("stone", 5)
+		var t_vp: int = p_drop.vp
+		_check(game.resolve_bottleneck(p_drop, trial, false), "bottleneck trial: harmonious path resolves")
+		_check(p_drop.vp > t_vp and p_drop.commons_count() == 1, "trial pays scaled VP and consumes the 5-common deposit")
+		_check(not game.resolve_bottleneck(p_drop, trial, true), "a faced trial cannot be faced again")
+
+		game.dark_aggression_rounds = 1
+		_check(CreatureEngine.effective_band(p_drop, {}) == Duality.Band.MAX_DARK, "eclipse forces Deep Dark encounters")
+		game.dark_aggression_rounds = 0
+
+		var wild_c: Dictionary = {}
+		for c2 in game.decks.creatures:
+			if String(c2.get("id", "")) == "puddle_frog":
+				wild_c = c2
+		_check(not wild_c.is_empty() and wild_c.has("reward") and wild_c.has("take"), "wild creature converted with band effects")
+		var p_kind := PlayerState.new()
+		p_kind.light = 4  # Kind band
+		var reward_desc := CreatureEngine.apply_effect(p_kind, wild_c.get("reward", {}), rng)
+		_check(p_kind.has_common("luminous_algae", 1) and reward_desc != "", "wild reward grants its mapped common")
 
 		# --- Viability Gate & Tiebreaker test
 		var p_win_a := PlayerState.new()

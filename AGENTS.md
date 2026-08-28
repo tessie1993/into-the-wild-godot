@@ -46,9 +46,12 @@ game/            the Godot 4 project — everything the app ships
     game/        game.gd (play scene: board render, action UI, encounters)
     ui/          main_menu.gd, character_select.gd
   tests/         smoke.gd — headless boot + one turn of each action
-docs/design-lane/  design corpus (physical + digital); generated/ holds
-                   content drops not yet wired into game/ — different schema,
-                   integrate deliberately, never copy blindly
+docs/design-lane/  design corpus (physical + digital); generated/ holds the
+                   raw content drops — the converter (below) integrates them
+tools/drop-converter/   convert.py maps generated/ drops into game/data/
+                   (creatures_wild, items_catalog, wild_deck,
+                   quests_bottleneck). Edit drops or mappings there and
+                   re-run it; never hand-edit its outputs in game/data/.
 tools/engine-analyzer/  Vite/React economy inspector for the design lane
 ```
 

@@ -1,0 +1,2105 @@
+{
+  "_comment": "Wild roster - 50 creatures converted from the design-lane drop (docs/design-lane/generated/creatures.json) by tools/drop-converter/convert.py. Biomes mapped to elements; gifts/rewards use the drop's resource ids (registered in resources_digital.json); demands are any-commons at the drop's qty; light_change values are carried by the engine's existing band flows, not duplicated here. Regenerate with the converter, do not hand-edit.",
+  "creatures": [
+    {
+      "id": "puddle_frog",
+      "name": "Puddle-Frog",
+      "element": "wood",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Irrigate",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_luminous_algae",
+        "tier": "uncommon",
+        "element": "wood",
+        "desc": "The Puddle-Frog bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "luminous_algae",
+        "n": 1,
+        "desc": "The Puddle-Frog senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Puddle-Frog watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Puddle-Frog screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Puddle-Frog bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Puddle-Frog senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Puddle-Frog blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Puddle-Frog watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Puddle-Frog screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "moss_weaver",
+      "name": "Moss-Weaver",
+      "element": "grain",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Weave",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_plant_fiber",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Moss-Weaver bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "plant_fiber",
+        "n": 1,
+        "desc": "The Moss-Weaver senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Moss-Weaver watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Moss-Weaver screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Moss-Weaver bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Moss-Weaver senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Moss-Weaver blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Moss-Weaver watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Moss-Weaver screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "flint_grubber",
+      "name": "Flint-Grubber",
+      "element": "stone",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Dig",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_flint",
+        "tier": "uncommon",
+        "element": "stone",
+        "desc": "The Flint-Grubber bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "flint",
+        "n": 1,
+        "desc": "The Flint-Grubber senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Flint-Grubber watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Flint-Grubber screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Flint-Grubber bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Flint-Grubber senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Flint-Grubber blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Flint-Grubber watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Flint-Grubber screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "meadow_sprout",
+      "name": "Meadow-Sprout",
+      "element": "grain",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Cut",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_plant_fiber",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Meadow-Sprout bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "plant_fiber",
+        "n": 1,
+        "desc": "The Meadow-Sprout senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Meadow-Sprout watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Meadow-Sprout screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Meadow-Sprout bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Meadow-Sprout senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Meadow-Sprout blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Meadow-Sprout watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Meadow-Sprout screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "pebble_slug",
+      "name": "Pebble-Slug",
+      "element": "stone",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Smash",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_flint",
+        "tier": "uncommon",
+        "element": "stone",
+        "desc": "The Pebble-Slug bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "flint",
+        "n": 1,
+        "desc": "The Pebble-Slug senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Pebble-Slug watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Pebble-Slug screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Pebble-Slug bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Pebble-Slug senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Pebble-Slug blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Pebble-Slug watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Pebble-Slug screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "breeze_gull",
+      "name": "Breeze-Gull",
+      "element": "wood",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Float",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_luminous_algae",
+        "tier": "uncommon",
+        "element": "wood",
+        "desc": "The Breeze-Gull bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "luminous_algae",
+        "n": 1,
+        "desc": "The Breeze-Gull senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Breeze-Gull watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Breeze-Gull screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Breeze-Gull bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Breeze-Gull senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Breeze-Gull blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Breeze-Gull watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Breeze-Gull screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "lily_padder",
+      "name": "Lily-Padder",
+      "element": "wood",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Float",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_luminous_algae",
+        "tier": "uncommon",
+        "element": "wood",
+        "desc": "The Lily-Padder bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "luminous_algae",
+        "n": 1,
+        "desc": "The Lily-Padder senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Lily-Padder watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Lily-Padder screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Lily-Padder bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Lily-Padder senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Lily-Padder blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Lily-Padder watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Lily-Padder screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "dandelion_fawn",
+      "name": "Dandelion-Fawn",
+      "element": "grain",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Cut",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_plant_fiber",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Dandelion-Fawn bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "plant_fiber",
+        "n": 1,
+        "desc": "The Dandelion-Fawn senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Dandelion-Fawn watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Dandelion-Fawn screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Dandelion-Fawn bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Dandelion-Fawn senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Dandelion-Fawn blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Dandelion-Fawn watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Dandelion-Fawn screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "river_beaver",
+      "name": "River-Beaver",
+      "element": "wood",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Build",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_luminous_algae",
+        "tier": "uncommon",
+        "element": "wood",
+        "desc": "The River-Beaver bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "luminous_algae",
+        "n": 1,
+        "desc": "The River-Beaver senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The River-Beaver watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted River-Beaver screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The River-Beaver bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The River-Beaver senses your gentle aura and drops a helpful resource.",
+        "neutral": "The River-Beaver blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The River-Beaver watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted River-Beaver screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "dew_drop",
+      "name": "Dew-Drop",
+      "element": "wood",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Irrigate",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_luminous_algae",
+        "tier": "uncommon",
+        "element": "wood",
+        "desc": "The Dew-Drop bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "luminous_algae",
+        "n": 1,
+        "desc": "The Dew-Drop senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Dew-Drop watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Dew-Drop screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Dew-Drop bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Dew-Drop senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Dew-Drop blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Dew-Drop watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Dew-Drop screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "thistle_fox",
+      "name": "Thistle-Fox",
+      "element": "grain",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Cut",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_plant_fiber",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Thistle-Fox bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "plant_fiber",
+        "n": 1,
+        "desc": "The Thistle-Fox senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Thistle-Fox watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Thistle-Fox screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Thistle-Fox bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Thistle-Fox senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Thistle-Fox blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Thistle-Fox watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Thistle-Fox screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "twig_squirrel",
+      "name": "Twig-Squirrel",
+      "element": "grain",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Weave",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_plant_fiber",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Twig-Squirrel bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "plant_fiber",
+        "n": 1,
+        "desc": "The Twig-Squirrel senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Twig-Squirrel watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Twig-Squirrel screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Twig-Squirrel bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Twig-Squirrel senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Twig-Squirrel blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Twig-Squirrel watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Twig-Squirrel screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "gravel_scamp",
+      "name": "Gravel-Scamp",
+      "element": "stone",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Dig",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_flint",
+        "tier": "uncommon",
+        "element": "stone",
+        "desc": "The Gravel-Scamp bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "flint",
+        "n": 1,
+        "desc": "The Gravel-Scamp senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Gravel-Scamp watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Gravel-Scamp screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Gravel-Scamp bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Gravel-Scamp senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Gravel-Scamp blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Gravel-Scamp watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Gravel-Scamp screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "bramble_hedge",
+      "name": "Bramble-Hedge",
+      "element": "grain",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Build",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_plant_fiber",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Bramble-Hedge bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "plant_fiber",
+        "n": 1,
+        "desc": "The Bramble-Hedge senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Bramble-Hedge watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Bramble-Hedge screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Bramble-Hedge bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Bramble-Hedge senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Bramble-Hedge blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Bramble-Hedge watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Bramble-Hedge screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "fern_pug",
+      "name": "Fern-Pug",
+      "element": "grain",
+      "tier": "common",
+      "f": 3,
+      "field_move": "Cut",
+      "demand": {
+        "type": "common",
+        "n": 1
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_plant_fiber",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Fern-Pug bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "plant_fiber",
+        "n": 1,
+        "desc": "The Fern-Pug senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Fern-Pug watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -1,
+        "desc": "The corrupted Fern-Pug screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Fern-Pug bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Fern-Pug senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Fern-Pug blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Fern-Pug watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Fern-Pug screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "pyrosnail",
+      "name": "Pyrosnail",
+      "element": "stone",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Stoke",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_sulfur_ash",
+        "tier": "uncommon",
+        "element": "stone",
+        "desc": "The Pyrosnail bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "sulfur_ash",
+        "n": 1,
+        "desc": "The Pyrosnail senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Pyrosnail watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Pyrosnail screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Pyrosnail bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Pyrosnail senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Pyrosnail blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Pyrosnail watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Pyrosnail screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "cinder_mite",
+      "name": "Cinder-Mite",
+      "element": "stone",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Stoke",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_sulfur_ash",
+        "tier": "uncommon",
+        "element": "stone",
+        "desc": "The Cinder-Mite bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "sulfur_ash",
+        "n": 1,
+        "desc": "The Cinder-Mite senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Cinder-Mite watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Cinder-Mite screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Cinder-Mite bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Cinder-Mite senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Cinder-Mite blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Cinder-Mite watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Cinder-Mite screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "sand_stalker",
+      "name": "Sand-Stalker",
+      "element": "grain",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Dig",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_cactus_flesh",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Sand-Stalker bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "cactus_flesh",
+        "n": 1,
+        "desc": "The Sand-Stalker senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Sand-Stalker watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Sand-Stalker screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Sand-Stalker bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Sand-Stalker senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Sand-Stalker blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Sand-Stalker watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Sand-Stalker screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "bog_stalker",
+      "name": "Bog-Stalker",
+      "element": "ether",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Float",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_peat_moss",
+        "tier": "uncommon",
+        "element": "ether",
+        "desc": "The Bog-Stalker bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "peat_moss",
+        "n": 1,
+        "desc": "The Bog-Stalker senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Bog-Stalker watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Bog-Stalker screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Bog-Stalker bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Bog-Stalker senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Bog-Stalker blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Bog-Stalker watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Bog-Stalker screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "thorn_weaver",
+      "name": "Thorn-Weaver",
+      "element": "ether",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Weave",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_peat_moss",
+        "tier": "uncommon",
+        "element": "ether",
+        "desc": "The Thorn-Weaver bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "peat_moss",
+        "n": 1,
+        "desc": "The Thorn-Weaver senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Thorn-Weaver watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Thorn-Weaver screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Thorn-Weaver bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Thorn-Weaver senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Thorn-Weaver blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Thorn-Weaver watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Thorn-Weaver screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "basalt_goliath",
+      "name": "Basalt-Goliath",
+      "element": "stone",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Smash",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_sulfur_ash",
+        "tier": "uncommon",
+        "element": "stone",
+        "desc": "The Basalt-Goliath bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "sulfur_ash",
+        "n": 1,
+        "desc": "The Basalt-Goliath senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Basalt-Goliath watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Basalt-Goliath screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Basalt-Goliath bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Basalt-Goliath senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Basalt-Goliath blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Basalt-Goliath watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Basalt-Goliath screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "rust_weaver",
+      "name": "Rust-Weaver",
+      "element": "ether",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Weave",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_peat_moss",
+        "tier": "uncommon",
+        "element": "ether",
+        "desc": "The Rust-Weaver bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "peat_moss",
+        "n": 1,
+        "desc": "The Rust-Weaver senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Rust-Weaver watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Rust-Weaver screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Rust-Weaver bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Rust-Weaver senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Rust-Weaver blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Rust-Weaver watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Rust-Weaver screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "shale_shell",
+      "name": "Shale-Shell",
+      "element": "stone",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Build",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_flint",
+        "tier": "uncommon",
+        "element": "stone",
+        "desc": "The Shale-Shell bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "flint",
+        "n": 1,
+        "desc": "The Shale-Shell senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Shale-Shell watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Shale-Shell screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Shale-Shell bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Shale-Shell senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Shale-Shell blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Shale-Shell watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Shale-Shell screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "oasis_sip",
+      "name": "Oasis-Sip",
+      "element": "grain",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Irrigate",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_cactus_flesh",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Oasis-Sip bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "cactus_flesh",
+        "n": 1,
+        "desc": "The Oasis-Sip senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Oasis-Sip watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Oasis-Sip screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Oasis-Sip bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Oasis-Sip senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Oasis-Sip blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Oasis-Sip watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Oasis-Sip screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "dune_rider",
+      "name": "Dune-Rider",
+      "element": "grain",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Float",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_cactus_flesh",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Dune-Rider bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "cactus_flesh",
+        "n": 1,
+        "desc": "The Dune-Rider senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Dune-Rider watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Dune-Rider screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Dune-Rider bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Dune-Rider senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Dune-Rider blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Dune-Rider watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Dune-Rider screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "frost_yeti",
+      "name": "Frost-Yeti",
+      "element": "water",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Smash",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_frost_shard",
+        "tier": "uncommon",
+        "element": "water",
+        "desc": "The Frost-Yeti bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "frost_shard",
+        "n": 1,
+        "desc": "The Frost-Yeti senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Frost-Yeti watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Frost-Yeti screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Frost-Yeti bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Frost-Yeti senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Frost-Yeti blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Frost-Yeti watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Frost-Yeti screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "ice_weasel",
+      "name": "Ice-Weasel",
+      "element": "water",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Freeze",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_frost_shard",
+        "tier": "uncommon",
+        "element": "water",
+        "desc": "The Ice-Weasel bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "frost_shard",
+        "n": 1,
+        "desc": "The Ice-Weasel senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Ice-Weasel watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Ice-Weasel screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Ice-Weasel bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Ice-Weasel senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Ice-Weasel blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Ice-Weasel watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Ice-Weasel screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "chill_wing",
+      "name": "Chill-Wing",
+      "element": "water",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Freeze",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_frost_shard",
+        "tier": "uncommon",
+        "element": "water",
+        "desc": "The Chill-Wing bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "frost_shard",
+        "n": 1,
+        "desc": "The Chill-Wing senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Chill-Wing watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Chill-Wing screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Chill-Wing bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Chill-Wing senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Chill-Wing blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Chill-Wing watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Chill-Wing screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "cavern_tick",
+      "name": "Cavern-Tick",
+      "element": "ether",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Dig",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_peat_moss",
+        "tier": "uncommon",
+        "element": "ether",
+        "desc": "The Cavern-Tick bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "peat_moss",
+        "n": 1,
+        "desc": "The Cavern-Tick senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Cavern-Tick watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Cavern-Tick screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Cavern-Tick bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Cavern-Tick senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Cavern-Tick blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Cavern-Tick watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Cavern-Tick screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "tar_pitcher",
+      "name": "Tar-Pitcher",
+      "element": "ether",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Stoke",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_peat_moss",
+        "tier": "uncommon",
+        "element": "ether",
+        "desc": "The Tar-Pitcher bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "peat_moss",
+        "n": 1,
+        "desc": "The Tar-Pitcher senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Tar-Pitcher watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Tar-Pitcher screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Tar-Pitcher bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Tar-Pitcher senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Tar-Pitcher blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Tar-Pitcher watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Tar-Pitcher screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "obsidian_crab",
+      "name": "Obsidian-Crab",
+      "element": "stone",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Smash",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_sulfur_ash",
+        "tier": "uncommon",
+        "element": "stone",
+        "desc": "The Obsidian-Crab bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "sulfur_ash",
+        "n": 1,
+        "desc": "The Obsidian-Crab senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Obsidian-Crab watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Obsidian-Crab screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Obsidian-Crab bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Obsidian-Crab senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Obsidian-Crab blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Obsidian-Crab watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Obsidian-Crab screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "sol_salamander",
+      "name": "Sol-Salamander",
+      "element": "grain",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Stoke",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_cactus_flesh",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Sol-Salamander bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "cactus_flesh",
+        "n": 1,
+        "desc": "The Sol-Salamander senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Sol-Salamander watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Sol-Salamander screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Sol-Salamander bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Sol-Salamander senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Sol-Salamander blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Sol-Salamander watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Sol-Salamander screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "glacier_turtle",
+      "name": "Glacier-Turtle",
+      "element": "water",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Build",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_frost_shard",
+        "tier": "uncommon",
+        "element": "water",
+        "desc": "The Glacier-Turtle bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "frost_shard",
+        "n": 1,
+        "desc": "The Glacier-Turtle senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Glacier-Turtle watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Glacier-Turtle screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Glacier-Turtle bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Glacier-Turtle senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Glacier-Turtle blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Glacier-Turtle watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Glacier-Turtle screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "mirage_cat",
+      "name": "Mirage-Cat",
+      "element": "grain",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Teleport",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_cactus_flesh",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Mirage-Cat bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "cactus_flesh",
+        "n": 1,
+        "desc": "The Mirage-Cat senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Mirage-Cat watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Mirage-Cat screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Mirage-Cat bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Mirage-Cat senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Mirage-Cat blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Mirage-Cat watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Mirage-Cat screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "eerie_will_o",
+      "name": "Eerie-Will-o",
+      "element": "ether",
+      "tier": "uncommon",
+      "f": 5,
+      "field_move": "Teleport",
+      "demand": {
+        "type": "common",
+        "n": 2
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_peat_moss",
+        "tier": "uncommon",
+        "element": "ether",
+        "desc": "The Eerie-Will-o bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "peat_moss",
+        "n": 1,
+        "desc": "The Eerie-Will-o senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 1,
+        "desc": "The Eerie-Will-o watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -2,
+        "desc": "The corrupted Eerie-Will-o screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Eerie-Will-o bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Eerie-Will-o senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Eerie-Will-o blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Eerie-Will-o watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Eerie-Will-o screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "guardian_sentry",
+      "name": "Guardian-Sentry",
+      "element": "spirit",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Build",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_ancient_gear",
+        "tier": "uncommon",
+        "element": "spirit",
+        "desc": "The Guardian-Sentry bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "ancient_gear",
+        "n": 1,
+        "desc": "The Guardian-Sentry senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Guardian-Sentry watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Guardian-Sentry screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Guardian-Sentry bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Guardian-Sentry senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Guardian-Sentry blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Guardian-Sentry watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Guardian-Sentry screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "sanctum_warden",
+      "name": "Sanctum-Warden",
+      "element": "spirit",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Teleport",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_ancient_gear",
+        "tier": "uncommon",
+        "element": "spirit",
+        "desc": "The Sanctum-Warden bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "ancient_gear",
+        "n": 1,
+        "desc": "The Sanctum-Warden senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Sanctum-Warden watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Sanctum-Warden screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Sanctum-Warden bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Sanctum-Warden senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Sanctum-Warden blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Sanctum-Warden watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Sanctum-Warden screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "prism_core",
+      "name": "Prism-Core",
+      "element": "spirit",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Teleport",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_ancient_gear",
+        "tier": "uncommon",
+        "element": "spirit",
+        "desc": "The Prism-Core bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "ancient_gear",
+        "n": 1,
+        "desc": "The Prism-Core senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Prism-Core watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Prism-Core screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Prism-Core bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Prism-Core senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Prism-Core blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Prism-Core watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Prism-Core screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "solaris_phoenix",
+      "name": "Solaris-Phoenix",
+      "element": "stone",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Stoke",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_sulfur_ash",
+        "tier": "uncommon",
+        "element": "stone",
+        "desc": "The Solaris-Phoenix bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "sulfur_ash",
+        "n": 1,
+        "desc": "The Solaris-Phoenix senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Solaris-Phoenix watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Solaris-Phoenix screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Solaris-Phoenix bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Solaris-Phoenix senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Solaris-Phoenix blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Solaris-Phoenix watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Solaris-Phoenix screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "lunar_hydra",
+      "name": "Lunar-Hydra",
+      "element": "water",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Freeze",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_frost_shard",
+        "tier": "uncommon",
+        "element": "water",
+        "desc": "The Lunar-Hydra bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "frost_shard",
+        "n": 1,
+        "desc": "The Lunar-Hydra senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Lunar-Hydra watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Lunar-Hydra screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Lunar-Hydra bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Lunar-Hydra senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Lunar-Hydra blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Lunar-Hydra watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Lunar-Hydra screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "ruin_gargoyle",
+      "name": "Ruin-Gargoyle",
+      "element": "spirit",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Smash",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_ancient_gear",
+        "tier": "uncommon",
+        "element": "spirit",
+        "desc": "The Ruin-Gargoyle bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "ancient_gear",
+        "n": 1,
+        "desc": "The Ruin-Gargoyle senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Ruin-Gargoyle watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Ruin-Gargoyle screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Ruin-Gargoyle bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Ruin-Gargoyle senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Ruin-Gargoyle blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Ruin-Gargoyle watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Ruin-Gargoyle screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "aether_drake",
+      "name": "Aether-Drake",
+      "element": "spirit",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Float",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_ancient_gear",
+        "tier": "uncommon",
+        "element": "spirit",
+        "desc": "The Aether-Drake bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "ancient_gear",
+        "n": 1,
+        "desc": "The Aether-Drake senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Aether-Drake watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Aether-Drake screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Aether-Drake bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Aether-Drake senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Aether-Drake blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Aether-Drake watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Aether-Drake screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "void_leviathan",
+      "name": "Void-Leviathan",
+      "element": "ether",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Float",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_peat_moss",
+        "tier": "uncommon",
+        "element": "ether",
+        "desc": "The Void-Leviathan bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "peat_moss",
+        "n": 1,
+        "desc": "The Void-Leviathan senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Void-Leviathan watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Void-Leviathan screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Void-Leviathan bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Void-Leviathan senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Void-Leviathan blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Void-Leviathan watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Void-Leviathan screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "chronos_sphinx",
+      "name": "Chronos-Sphinx",
+      "element": "grain",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Teleport",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_cactus_flesh",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Chronos-Sphinx bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "cactus_flesh",
+        "n": 1,
+        "desc": "The Chronos-Sphinx senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Chronos-Sphinx watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Chronos-Sphinx screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Chronos-Sphinx bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Chronos-Sphinx senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Chronos-Sphinx blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Chronos-Sphinx watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Chronos-Sphinx screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "gaia_gorgon",
+      "name": "Gaia-Gorgon",
+      "element": "grain",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Cut",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_plant_fiber",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Gaia-Gorgon bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "plant_fiber",
+        "n": 1,
+        "desc": "The Gaia-Gorgon senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Gaia-Gorgon watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Gaia-Gorgon screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Gaia-Gorgon bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Gaia-Gorgon senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Gaia-Gorgon blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Gaia-Gorgon watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Gaia-Gorgon screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "storm_valkyrie",
+      "name": "Storm-Valkyrie",
+      "element": "water",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Float",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_frost_shard",
+        "tier": "uncommon",
+        "element": "water",
+        "desc": "The Storm-Valkyrie bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "frost_shard",
+        "n": 1,
+        "desc": "The Storm-Valkyrie senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Storm-Valkyrie watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Storm-Valkyrie screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Storm-Valkyrie bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Storm-Valkyrie senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Storm-Valkyrie blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Storm-Valkyrie watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Storm-Valkyrie screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "abyss_viper",
+      "name": "Abyss-Viper",
+      "element": "ether",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Dig",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_peat_moss",
+        "tier": "uncommon",
+        "element": "ether",
+        "desc": "The Abyss-Viper bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "peat_moss",
+        "n": 1,
+        "desc": "The Abyss-Viper senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Abyss-Viper watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Abyss-Viper screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Abyss-Viper bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Abyss-Viper senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Abyss-Viper blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Abyss-Viper watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Abyss-Viper screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "apex_chimera",
+      "name": "Apex-Chimera",
+      "element": "stone",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Smash",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_sulfur_ash",
+        "tier": "uncommon",
+        "element": "stone",
+        "desc": "The Apex-Chimera bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "sulfur_ash",
+        "n": 1,
+        "desc": "The Apex-Chimera senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Apex-Chimera watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Apex-Chimera screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Apex-Chimera bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Apex-Chimera senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Apex-Chimera blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Apex-Chimera watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Apex-Chimera screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "primal_wurm",
+      "name": "Primal-Wurm",
+      "element": "grain",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Dig",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_cactus_flesh",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Primal-Wurm bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "cactus_flesh",
+        "n": 1,
+        "desc": "The Primal-Wurm senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Primal-Wurm watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Primal-Wurm screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Primal-Wurm bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Primal-Wurm senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Primal-Wurm blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Primal-Wurm watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Primal-Wurm screeches, striking violently to purge your dark presence."
+      }
+    },
+    {
+      "id": "oracle_stag",
+      "name": "Oracle-Stag",
+      "element": "grain",
+      "tier": "rare",
+      "f": 7,
+      "field_move": "Teleport",
+      "demand": {
+        "type": "common",
+        "n": 3
+      },
+      "gift": {
+        "op": "gain_card",
+        "id": "pristine_plant_fiber",
+        "tier": "uncommon",
+        "element": "grain",
+        "desc": "The Oracle-Stag bows deeply, offering a pristine resource in absolute reverence."
+      },
+      "reward": {
+        "op": "gain_common",
+        "id": "plant_fiber",
+        "n": 1,
+        "desc": "The Oracle-Stag senses your gentle aura and drops a helpful resource."
+      },
+      "take": {
+        "op": "lose_common",
+        "n": 2,
+        "desc": "The Oracle-Stag watches your selfish movements and snatch a valuable resource from your pack."
+      },
+      "bite": {
+        "op": "energy",
+        "n": -3,
+        "desc": "The corrupted Oracle-Stag screeches, striking violently to purge your dark presence."
+      },
+      "flavor": {
+        "radiant": "The Oracle-Stag bows deeply, offering a pristine resource in absolute reverence.",
+        "kind": "The Oracle-Stag senses your gentle aura and drops a helpful resource.",
+        "neutral": "The Oracle-Stag blocks your path curiously, waiting for a peaceful offering.",
+        "shadowed": "The Oracle-Stag watches your selfish movements and snatch a valuable resource from your pack.",
+        "dark": "The corrupted Oracle-Stag screeches, striking violently to purge your dark presence."
+      }
+    }
+  ]
+}

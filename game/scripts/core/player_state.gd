@@ -36,6 +36,14 @@ var offerings_made: int = 0
 # Action Cards (v2 engine)
 var action_levels: Dictionary = {"explore": 1, "craft": 1, "creatures": 1, "magic": 1, "guardian": 1}
 
+# Wild Deck & item catalog (content drop integration)
+var wild_cards: Array = []         ## held fate/ward card ids, cap = config wild.hand_cap
+var wards: Dictionary = {}         ## ward_id -> turns remaining
+var tool_uses: Dictionary = {}     ## catalog tool id -> gathers left before it breaks
+var chest_pity: Dictionary = {}    ## GameMathEngine pity counters for chest rolls
+var craft_locked: bool = false     ## Ancient Trap: next Craft action is locked
+var trials_done: Array = []        ## bottleneck quest ids already faced
+
 # Quest tracking (v2 quest engine)
 var completed_quests: Array = []
 var quest_progress: Dictionary = {}
@@ -124,6 +132,9 @@ func to_dict() -> Dictionary:
 		"slow_penalty": slow_penalty, "last_action": last_action,
 		"skills": skills.duplicate(), "offerings_made": offerings_made,
 		"fought_recently": fought_recently,
+		"wild_cards": wild_cards.duplicate(), "wards": wards.duplicate(),
+		"tool_uses": tool_uses.duplicate(), "chest_pity": chest_pity.duplicate(),
+		"craft_locked": craft_locked, "trials_done": trials_done.duplicate(),
 		"action_levels": action_levels.duplicate(),
 		"completed_quests": completed_quests.duplicate(),
 		"quest_progress": quest_progress.duplicate(),
@@ -158,6 +169,12 @@ static func from_dict(d: Dictionary) -> PlayerState:
 	p.skills = d.get("skills", [])
 	p.offerings_made = int(d.get("offerings_made", 0))
 	p.fought_recently = bool(d.get("fought_recently", false))
+	p.wild_cards = d.get("wild_cards", [])
+	p.wards = d.get("wards", {})
+	p.tool_uses = d.get("tool_uses", {})
+	p.chest_pity = d.get("chest_pity", {})
+	p.craft_locked = bool(d.get("craft_locked", false))
+	p.trials_done = d.get("trials_done", [])
 	p.action_levels = d.get("action_levels", {"explore": 1, "craft": 1, "creatures": 1, "magic": 1, "guardian": 1})
 	p.completed_quests = d.get("completed_quests", [])
 	p.quest_progress = d.get("quest_progress", {})
