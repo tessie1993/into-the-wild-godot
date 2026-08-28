@@ -111,6 +111,29 @@ func _initialize() -> void:
 		vote = qe.submit_vote(1, true, 2)
 		_check(bool(vote["resolved"]) and bool(vote["passed"]), "majority vote passes")
 
+		# --- ActionCards system test
+		var cart_levels := ActionCards.default_levels_for("cartographer")
+		_check(int(cart_levels["explore"]) == 2 and int(cart_levels["craft"]) == 1, "Cartographer starts with Explore Lvl 2")
+		_check(not ActionCards.has_free_trading(test_p), "trading is not free at Guardian Lvl 1")
+		ActionCards.level_up(test_p, "guardian")
+		ActionCards.level_up(test_p, "guardian")
+		_check(ActionCards.get_level(test_p, "guardian") == 3 and ActionCards.has_free_trading(test_p), "trading is free at Guardian Lvl 3")
+
+		# --- TradeSystem test
+		var p_trade_a := PlayerState.new()
+		var p_trade_b := PlayerState.new()
+		p_trade_a.index = 0
+		p_trade_b.index = 1
+		p_trade_a.add_common("flax", 4)
+		p_trade_b.add_common("stone", 1)
+		var bundle_a := {"commons": {"flax": 4}, "cards": []}
+		var bundle_b := {"commons": {"stone": 1}, "cards": []}
+		_check(TradeSystem.calculate_bundle_ce(bundle_a) == 4, "4 commons = 4 CE")
+		_check(TradeSystem.calculate_bundle_ce(bundle_b) == 1, "1 common = 1 CE")
+		var trade_res := TradeSystem.execute_trade(p_trade_a, p_trade_b, bundle_a, bundle_b)
+		_check(bool(trade_res["success"]) and bool(trade_res["generous_a"]), "trade executed (generous: 4 CE vs 1 CE => delta >= 3)")
+		_check(p_trade_a.has_common("stone", 1) and p_trade_b.has_common("flax", 4), "resources exchanged properly")
+
 		var cur: PlayerState = game.current_player()
 		cur.add_common("grain", 3)
 		var g0: int = cur.energy

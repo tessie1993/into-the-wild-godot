@@ -206,12 +206,12 @@ func _build_hud() -> void:
 	care_bar = HBoxContainer.new()
 	care_bar.add_theme_constant_override("separation", 8)
 	bars.add_child(care_bar)
-	for def in [["eat", "Eat"], ["sleep", "Sleep (+2⚡, skip action)"], ["meditate", "Meditate (1⚡)"], ["care_gift", "Gift"], ["begin_action", "Begin Action ▸"]]:
+	for def in [["eat", "Eat (⚡)"], ["sleep", "Sleep (+2⚡, skip)"], ["meditate", "Meditate (1⚡)"], ["trade", "Trade & Gift ⇄"], ["begin_action", "Begin Action ▸"]]:
 		_add_button(care_bar, String(def[0]), String(def[1]), _on_care)
 	action_bar = HBoxContainer.new()
 	action_bar.add_theme_constant_override("separation", 8)
 	bars.add_child(action_bar)
-	for def in [["explore", "Explore/Gather"], ["craft", "Craft"], ["magic", "Magic"], ["learn", "Learn"], ["quest", "Quest"], ["give_back", "Give Back"], ["end", "End Turn"]]:
+	for def in [["explore", "Explore"], ["craft", "Craft"], ["creatures", "Creatures"], ["magic", "Magic/Learn"], ["guardian", "Guardian"], ["give_back", "Give Back"], ["trade_free", "Trade ⇄"], ["end", "End Turn"]]:
 		_add_button(action_bar, String(def[0]), String(def[1]), _on_action)
 
 	lbl_toast = _label(19, "f2d06b")
@@ -355,19 +355,26 @@ func _refresh_bars(p: PlayerState) -> void:
 	action_bar.visible = not in_care
 	if in_care:
 		(buttons["meditate"] as Button).disabled = p.meditated or p.energy < 1
-		(buttons["care_gift"] as Button).disabled = Game.players.size() < 2 or p.commons_count() == 0
+		(buttons["trade"] as Button).disabled = Game.players.size() < 2
 	else:
 		var done := turn_over
-		for id in ["explore", "craft", "magic", "learn", "quest", "give_back"]:
-			(buttons[id] as Button).disabled = done
+		for id in ["explore", "craft", "creatures", "magic", "guardian", "give_back", "trade_free"]:
+			if buttons.has(id):
+				(buttons[id] as Button).disabled = done
 		if not done:
-			(buttons["learn"] as Button).disabled = not p.meditated
-			(buttons["magic"] as Button).disabled = p.energy < 1
 			(buttons["give_back"] as Button).disabled = p.commons_count() < 3
-			(buttons["quest"] as Button).disabled = not _quest_available(p)
+			if buttons.has("trade_free"):
+				(buttons["trade_free"] as Button).visible = ActionCards.has_free_trading(p)
+			# Update dynamic level text
+			(buttons["explore"] as Button).text = "Explore (%d)" % ActionCards.get_level(p, "explore")
+			(buttons["craft"] as Button).text = "Craft (%d)" % ActionCards.get_level(p, "craft")
+			(buttons["creatures"] as Button).text = "Creatures (%d)" % ActionCards.get_level(p, "creatures")
+			(buttons["magic"] as Button).text = "Magic/Learn (%d)" % ActionCards.get_level(p, "magic")
+			(buttons["guardian"] as Button).text = "Guardian (%d)" % ActionCards.get_level(p, "guardian")
 			# WEAKNESS — Cartographer "Restless": no repeating last turn's action.
 			if p.character_id == "cartographer" and p.last_action != "":
-				(buttons[p.last_action] as Button).disabled = true
+				if buttons.has(p.last_action):
+					(buttons[p.last_action] as Button).disabled = true
 		(buttons["end"] as Button).disabled = false
 
 
@@ -423,12 +430,18 @@ func _on_care(id: String) -> void:
 		"meditate":
 			if Game.care_meditate(p):
 				_toast("You sit with the island. Learning is open to you this turn.")
+				if ActionCards.get_level(p, "magic") >= 3:
+					var tile: IslandTile = Game.board.get_tile(p.pos)
+					var com := Game.decks.random_common(tile.element_id)
+					if com != "":
+						p.add_common(com, 1)
+						_toast("Sponsor Perk (Magic Lvl 3): gained +1 %s." % Game.decks.display_name_of(com))
 			_refresh_hud()
-		"care_gift":
-			_open_gift(p)
+		"trade":
+			_open_trade(p)
 		"begin_action":
 			Game.end_care_phase()
-			_toast("Choose one action: Explore/Gather, Craft, Magic, Learn, Quest, or Give Back.")
+			_toast("Choose an action card: Explore, Craft, Creatures, Magic, Guardian, or Give Back.")
 			_refresh_hud()
 
 
@@ -458,31 +471,145 @@ func _eat_pick(p: PlayerState, id: String, cooked: bool) -> void:
 	_refresh_hud()
 
 
-func _open_gift(p: PlayerState) -> void:
+# ----------------------------------------------------------------- trade & bilateral exchange
+
+func _open_trade(p: PlayerState) -> void:
+	var other_players: Array = []
+	for pl in Game.players:
+		if pl.index != p.index:
+			other_players.append(pl)
+	if other_players.is_empty():
+		_toast("No other wanderers to trade with.")
+		return
+	if other_players.size() == 1:
+		_start_trade_with(p, other_players[0] as PlayerState)
+		return
 	var entries: Array = []
-	for other in Game.players:
-		if other.index == p.index:
-			continue
+	for other in other_players:
 		var target: PlayerState = other
-		entries.append([target.display_name, _gift_target.bind(p, target)])
-	entries.append(["Never mind", _close_modal])
-	_show_modal("Gift (Care phase)", "First gift each Care phase: +1 Light (the island notices).", entries)
+		entries.append([target.display_name, _start_trade_with.bind(p, target)])
+	entries.append(["Cancel", _close_modal])
+	_show_modal("Trade & Gift", "Select a trade partner:", entries)
 
 
-func _gift_target(p: PlayerState, target: PlayerState) -> void:
+func _start_trade_with(p: PlayerState, target: PlayerState) -> void:
 	_close_modal()
+	_show_trade_builder(p, target, {}, [], {}, [])
+
+
+func _show_trade_builder(p: PlayerState, target: PlayerState, offer_commons: Dictionary, offer_cards: Array, req_commons: Dictionary, req_cards: Array) -> void:
+	var bundle_a := {"commons": offer_commons, "cards": offer_cards}
+	var bundle_b := {"commons": req_commons, "cards": req_cards}
+	var ce_a := TradeSystem.calculate_bundle_ce(bundle_a)
+	var ce_b := TradeSystem.calculate_bundle_ce(bundle_b)
+	var delta := ce_a - ce_b
+
+	var lines: Array = ["Trading with %s" % target.display_name]
+	lines.append("\nYour Offer (%d CE):" % ce_a)
+	if offer_commons.is_empty() and offer_cards.is_empty():
+		lines.append("  • (nothing offered)")
+	else:
+		for cid in offer_commons.keys():
+			lines.append("  • %s ×%d (%d CE)" % [Game.decks.display_name_of(String(cid)), int(offer_commons[cid]), int(offer_commons[cid])])
+		for c in offer_cards:
+			lines.append("  • [%s] %s (%d CE)" % [String(c.get("tier", "?")), Game.decks.display_name_of(String(c.get("id", ""))), int(TradeSystem.CE_BY_TIER.get(String(c.get("tier", "common")), 1))])
+
+	lines.append("\nYour Request (%d CE):" % ce_b)
+	if req_commons.is_empty() and req_cards.is_empty():
+		lines.append("  • (nothing requested)")
+	else:
+		for cid in req_commons.keys():
+			lines.append("  • %s ×%d (%d CE)" % [Game.decks.display_name_of(String(cid)), int(req_commons[cid]), int(req_commons[cid])])
+		for c in req_cards:
+			lines.append("  • [%s] %s (%d CE)" % [String(c.get("tier", "?")), Game.decks.display_name_of(String(c.get("id", ""))), int(TradeSystem.CE_BY_TIER.get(String(c.get("tier", "common")), 1))])
+
+	lines.append("\nNet Balance: %+d CE" % delta)
+	if delta >= 3:
+		lines.append("★ Generous trade: grants +1 Light reward to you!")
+
 	var entries: Array = []
-	for id in p.commons.keys():
-		var cid := String(id)
-		entries.append(["%s ×%d" % [Game.decks.display_name_of(cid), int(p.commons[id])], _gift_item.bind(p, target, cid)])
-	entries.append(["Never mind", _close_modal])
-	_show_modal("Give what?", "Choose a common from your pouch:", entries)
+	entries.append(["+ Add to Your Offer", _trade_pick_item.bind(p, target, offer_commons, offer_cards, req_commons, req_cards, true)])
+	entries.append(["+ Request from %s" % target.display_name, _trade_pick_item.bind(p, target, offer_commons, offer_cards, req_commons, req_cards, false)])
+	if ce_a > 0 or ce_b > 0:
+		entries.append(["✓ Propose Trade", _trade_confirm_send.bind(p, target, bundle_a, bundle_b)])
+	entries.append(["Cancel Trade", _close_modal])
+
+	_show_modal("Bilateral Trade", "\n".join(lines), entries)
 
 
-func _gift_item(p: PlayerState, target: PlayerState, id: String) -> void:
+func _trade_pick_item(p: PlayerState, target: PlayerState, offer_commons: Dictionary, offer_cards: Array, req_commons: Dictionary, req_cards: Array, offering: bool) -> void:
 	_close_modal()
-	if Game.care_gift(p, target, id):
-		_toast("%s receives %s." % [target.display_name, Game.decks.display_name_of(id)])
+	var source_p := p if offering else target
+	var current_commons := offer_commons if offering else req_commons
+	var current_cards := offer_cards if offering else req_cards
+
+	var entries: Array = []
+	for cid in source_p.commons.keys():
+		var total_has := int(source_p.commons[cid])
+		var already := int(current_commons.get(cid, 0))
+		if total_has > already:
+			var item_id := String(cid)
+			entries.append(["%s (have %d)" % [Game.decks.display_name_of(item_id), total_has - already], func() -> void:
+				current_commons[item_id] = already + 1
+				_show_trade_builder(p, target, offer_commons, offer_cards, req_commons, req_cards)
+			])
+
+	for c in source_p.cards:
+		var cdict: Dictionary = c
+		var already_added := false
+		for ac in current_cards:
+			if String(ac.get("id", "")) == String(cdict.get("id", "")):
+				already_added = true
+				break
+		if not already_added:
+			entries.append(["Card: [%s] %s" % [String(cdict.get("tier", "?")), Game.decks.display_name_of(String(cdict.get("id", "")))], func() -> void:
+				current_cards.append(cdict)
+				_show_trade_builder(p, target, offer_commons, offer_cards, req_commons, req_cards)
+			])
+
+	entries.append(["Back", _show_trade_builder.bind(p, target, offer_commons, offer_cards, req_commons, req_cards)])
+	_show_modal("Choose item to %s" % ("offer" if offering else "request"), "Select resource or card:", entries)
+
+
+func _trade_confirm_send(p: PlayerState, target: PlayerState, bundle_a: Dictionary, bundle_b: Dictionary) -> void:
+	_close_modal()
+	var ce_a := TradeSystem.calculate_bundle_ce(bundle_a)
+	var ce_b := TradeSystem.calculate_bundle_ce(bundle_b)
+	var entries: Array = [
+		["Accept Trade (%d CE for %d CE)" % [ce_a, ce_b], _trade_resolve_choice.bind(p, target, bundle_a, bundle_b, true)],
+		["Decline Trade", _trade_resolve_choice.bind(p, target, bundle_a, bundle_b, false)],
+	]
+	_show_modal(
+		"Trade Proposal from %s" % p.display_name,
+		"%s wants to trade!\n\nThey offer (%d CE):\n%s\n\nIn exchange for (%d CE):\n%s" % [
+			p.display_name, ce_a, _bundle_summary(bundle_a), ce_b, _bundle_summary(bundle_b)
+		],
+		entries
+	)
+
+
+func _bundle_summary(b: Dictionary) -> String:
+	var parts: Array = []
+	var commons: Dictionary = b.get("commons", {})
+	for cid in commons.keys():
+		parts.append("  • %s ×%d" % [Game.decks.display_name_of(String(cid)), int(commons[cid])])
+	var cards: Array = b.get("cards", [])
+	for c in cards:
+		parts.append("  • [%s] %s" % [String(c.get("tier", "?")), Game.decks.display_name_of(String(c.get("id", "")))])
+	return "\n".join(parts) if not parts.is_empty() else "  • (nothing)"
+
+
+func _trade_resolve_choice(p: PlayerState, target: PlayerState, bundle_a: Dictionary, bundle_b: Dictionary, accept: bool) -> void:
+	_close_modal()
+	if not accept:
+		_toast("Trade proposal was declined.")
+		return
+	var res := TradeSystem.execute_trade(p, target, bundle_a, bundle_b)
+	if bool(res.get("success", false)):
+		var extra := " (Generous! +1 Light to %s)" % p.display_name if bool(res.get("generous_a", false)) else ""
+		_toast("Trade agreed!%s" % extra)
+	else:
+		_toast(String(res.get("message", "Trade failed.")))
 	_refresh_hud()
 
 
@@ -503,23 +630,28 @@ func _on_action(id: String) -> void:
 			action_taken = "explore"
 			mode = "explore"
 			flipped_this_move = false
-			moves_left = maxi(0, p.move - p.slow_penalty)
+			var base_move := p.move
+			if ActionCards.get_level(p, "explore") >= 2:
+				base_move += 1
+			moves_left = maxi(0, base_move - p.slow_penalty)
 			p.slow_penalty = 0
-			_toast("Move (tap adjacent tiles), then Finish to gather — or flip the unknown. ⚡: tap your own tile to Push +1 move.")
+			_toast("Explore (Lvl %d) — Move (%d moves left) or tap tile to finish/gather." % [ActionCards.get_level(p, "explore"), moves_left])
 			_refresh_hud()
 		"craft":
 			_open_craft(p)
+		"creatures":
+			_do_creatures(p)
 		"magic":
-			_cast_signature(p)
-		"learn":
-			_open_learn(p)
-		"quest":
+			_open_magic_menu(p)
+		"guardian":
 			_do_quest(p)
 		"give_back":
 			action_taken = "give_back"
 			if Game.give_back_light(p):
 				_toast("You give back. +2 Light, −1 Island Rage, +1 VP.")
 				_finish_main_action()
+		"trade_free":
+			_open_trade(p)
 
 
 # ----------------------------------------------------------------- explore
@@ -562,8 +694,11 @@ func _step_cost(p: PlayerState, tile: IslandTile) -> int:
 	var cost := 2
 	if p.has_item("trail_cloak"):
 		cost = 1
+	# Action Card Explore Lvl 4+: immune to T2 penalty
+	if ActionCards.get_level(p, "explore") >= 4:
+		cost = 1
 	# PERK — Cartographer "Pathfinding": explored T2 costs 1.
-	if p.character_id == "cartographer" and tile.explored:
+	elif p.character_id == "cartographer" and tile.explored:
 		cost = 1
 	return cost
 
@@ -590,6 +725,13 @@ func _reveal(tile: IslandTile, p: PlayerState) -> void:
 			_toast("Found: [%s] %s." % [String(card["tier"]), Game.decks.display_name_of(String(card["id"]))])
 		else:
 			_toast("Hand full — the find slips away.")
+	# Explore Lvl 3+ perk: draw bonus card on reveal
+	if ActionCards.get_level(p, "explore") >= 3:
+		var bonus_card := Game.decks.draw_card(tile.element_id, tile.tier)
+		if not bonus_card.is_empty() and p.add_card(bonus_card):
+			if Game.quest_engine != null:
+				Game.quest_engine.on_gather_card(p, tile.tier, String(bonus_card.get("tier", "")))
+			_toast("Explore Lvl 3 bonus: found [%s] %s." % [String(bonus_card["tier"]), Game.decks.display_name_of(String(bonus_card["id"]))])
 	if Game.rng.randf() < 0.5:
 		_resolve_creature(Game.decks.creature_for(tile.element_id, tile.tier), p, tile)
 	else:
@@ -618,6 +760,9 @@ func _gather_do(p: PlayerState, tile: IslandTile, exploit: bool) -> void:
 	_close_modal()
 	var mult := 2 if exploit else 1
 	var n_commons := 2 * mult
+	# Explore Lvl 2+ perk: +1 common on gathers
+	if ActionCards.get_level(p, "explore") >= 2:
+		n_commons += 1
 	# PERK/WEAKNESS hooks
 	if p.character_id == "botanist" and (tile.element_id == "wood" or tile.element_id == "grain"):
 		n_commons += 1
@@ -655,8 +800,9 @@ func _gather_do(p: PlayerState, tile: IslandTile, exploit: bool) -> void:
 
 func _open_craft(p: PlayerState) -> void:
 	var tile: IslandTile = Game.board.get_tile(p.pos)
-	var bench := tile.has_building("homebase")
-	var workshop := tile.has_building("workshop")
+	var craft_lvl := ActionCards.get_level(p, "craft")
+	var bench := tile.has_building("homebase") or craft_lvl >= 3
+	var workshop := tile.has_building("workshop") or craft_lvl >= 5
 	var entries: Array = []
 	for r in Game.decks.recipes:
 		var recipe: Dictionary = r
@@ -666,11 +812,22 @@ func _open_craft(p: PlayerState) -> void:
 			continue
 		var label := "%s (%s) — %s" % [String(recipe["name"]), String(recipe["tier"]), Crafting.cost_text(recipe, Game.decks)]
 		entries.append([label, _craft_pick.bind(recipe, p, tile)])
+	if craft_lvl < 5 and (p.energy >= 1 or p.commons_count() >= 3):
+		entries.append(["Empower Crafting Card (Level Up)", func() -> void:
+			_close_modal()
+			if p.energy >= 1:
+				Game.add_energy(p, -1)
+			else:
+				p.spend_any_commons(3, Game.rng)
+			ActionCards.level_up(p, "craft")
+			_toast("Crafting Action Card leveled up to Lvl %d!" % ActionCards.get_level(p, "craft"))
+			_finish_main_action()
+		])
 	if entries.is_empty():
-		_toast("Nothing craftable here. Uncommon+ needs a Homebase bench on your tile.")
+		_toast("Nothing craftable here. (Craft Lvl %d)" % craft_lvl)
 		return
 	entries.append(["Never mind", _close_modal])
-	_show_modal("Craft", "Materials decide quality (canon budgets: 2-3 / 6 / 18 / 54 CE).", entries)
+	_show_modal("Building & Crafting (Lvl %d)" % craft_lvl, "Materials decide quality:\n%s" % ActionCards.get_perks_text("craft", craft_lvl), entries)
 
 
 func _craft_pick(recipe: Dictionary, p: PlayerState, tile: IslandTile) -> void:
@@ -692,7 +849,70 @@ func _craft_pick(recipe: Dictionary, p: PlayerState, tile: IslandTile) -> void:
 	_finish_main_action()
 
 
-# ----------------------------------------------------------------- magic
+# ----------------------------------------------------------------- creatures & wildlife
+
+func _do_creatures(p: PlayerState) -> void:
+	action_taken = "creatures"
+	var tile: IslandTile = Game.board.get_tile(p.pos)
+	var clvl := ActionCards.get_level(p, "creatures")
+	var entries: Array = []
+	var creature := Game.decks.creature_for(tile.element_id, tile.tier)
+	if not creature.is_empty():
+		entries.append(["Track Creature (%s)" % String(creature.get("name", "Creature")), func() -> void:
+			_close_modal()
+			_resolve_creature(creature, p, tile)
+			_finish_main_action()
+		])
+	if clvl >= 4:
+		entries.append(["Familiar Commune (+1⚡)", func() -> void:
+			_close_modal()
+			Game.add_energy(p, 1)
+			_toast("Your familiar hums with life: +1⚡.")
+			_finish_main_action()
+		])
+	if clvl < 5 and (p.energy >= 1 or p.commons_count() >= 3):
+		entries.append(["Empower Creatures Card (Level Up)", func() -> void:
+			_close_modal()
+			if p.energy >= 1:
+				Game.add_energy(p, -1)
+			else:
+				p.spend_any_commons(3, Game.rng)
+			ActionCards.level_up(p, "creatures")
+			_toast("Creatures Action Card leveled up to Lvl %d!" % ActionCards.get_level(p, "creatures"))
+			_finish_main_action()
+		])
+	entries.append(["Step back", _close_modal])
+	_show_modal("Creatures & Wildlife (Lvl %d)" % clvl, "Observe and commune with the living island:\n%s" % ActionCards.get_perks_text("creatures", clvl), entries)
+
+
+# ----------------------------------------------------------------- magic & learning
+
+func _open_magic_menu(p: PlayerState) -> void:
+	var mlvl := ActionCards.get_level(p, "magic")
+	var entries: Array = []
+	entries.append(["Cast Signature Ability", func() -> void:
+		_close_modal()
+		_cast_signature(p)
+	])
+	if p.meditated:
+		entries.append(["Learn a Skill Perk", func() -> void:
+			_close_modal()
+			_open_learn(p)
+		])
+	if mlvl < 5 and (p.energy >= 1 or p.commons_count() >= 3):
+		entries.append(["Empower Magic Card (Level Up)", func() -> void:
+			_close_modal()
+			if p.energy >= 1:
+				Game.add_energy(p, -1)
+			else:
+				p.spend_any_commons(3, Game.rng)
+			ActionCards.level_up(p, "magic")
+			_toast("Magic/Learn Action Card leveled up to Lvl %d!" % ActionCards.get_level(p, "magic"))
+			_finish_main_action()
+		])
+	entries.append(["Step back", _close_modal])
+	_show_modal("Magic & Learning (Lvl %d)" % mlvl, "Channel elemental power or expand your knowledge:\n%s" % ActionCards.get_perks_text("magic", mlvl), entries)
+
 
 ## Signature abilities — each expresses the character AND the Duality (canon action 3).
 func _cast_signature(p: PlayerState) -> void:
@@ -765,21 +985,25 @@ func _outcast_drain(p: PlayerState, target: PlayerState) -> void:
 # ----------------------------------------------------------------- learn
 
 func _open_learn(p: PlayerState) -> void:
+	var magic_lvl := ActionCards.get_level(p, "magic")
+	var discount := 1 if magic_lvl >= 2 else 0
+	var c_cost := maxi(1, 3 - discount)
+	var u_cost := maxi(2, 6 - discount)
 	var entries: Array = []
-	if not p.skills.has("scavengers_eye") and p.commons_count() >= 3:
-		entries.append(["Scavenger's Eye (3 CE): +1 common on gathers", _learn_pick.bind(p, "scavengers_eye", 3)])
-	if p.skills.has("scavengers_eye") and not p.skills.has("sturdy_pack") and p.commons_count() >= 6:
-		entries.append(["Sturdy Pack (6 CE): +2 hand limit", _learn_pick.bind(p, "sturdy_pack", 6)])
+	if not p.skills.has("scavengers_eye") and p.commons_count() >= c_cost:
+		entries.append(["Scavenger's Eye (%d CE): +1 common on gathers" % c_cost, _learn_pick.bind(p, "scavengers_eye", c_cost)])
+	if p.skills.has("scavengers_eye") and not p.skills.has("sturdy_pack") and p.commons_count() >= u_cost:
+		entries.append(["Sturdy Pack (%d CE): +2 hand limit" % u_cost, _learn_pick.bind(p, "sturdy_pack", u_cost)])
 	if entries.is_empty():
-		_toast("No affordable skill right now (Common 3 CE, Uncommon 6 CE — canon).")
+		_toast("No affordable skill right now (Common %d CE, Uncommon %d CE)." % [c_cost, u_cost])
 		return
 	entries.append(["Never mind", _close_modal])
-	_show_modal("Learning", "Meditation opened the way. Spend commons as CE:", entries)
+	_show_modal("Learning (Magic Lvl %d)" % magic_lvl, "Meditation opened the way. Spend commons as CE:", entries)
 
 
 func _learn_pick(p: PlayerState, skill: String, ce: int) -> void:
 	_close_modal()
-	action_taken = "learn"
+	action_taken = "magic"
 	p.spend_any_commons(ce, Game.rng)
 	p.skills.append(skill)
 	if skill == "sturdy_pack":
@@ -789,24 +1013,29 @@ func _learn_pick(p: PlayerState, skill: String, ce: int) -> void:
 	_finish_main_action()
 
 
-# ----------------------------------------------------------------- quest
+# ----------------------------------------------------------------- guardian & association
 
 func _do_quest(p: PlayerState) -> void:
 	var tile: IslandTile = Game.board.get_tile(p.pos)
 	var is_guardian_tile := tile.has_guardian or tile.tier == 3
 	var sanctum := tile.tier == 3
+	var glvl := ActionCards.get_level(p, "guardian")
+	var bonus_vp := 1 if glvl >= 2 else 0
 	var entries: Array = []
 
 	if is_guardian_tile:
 		if p.has_item("offering_bundle"):
-			entries.append(["★ Make an Offering (+2 Light, +%d VP, −1 Rage)" % (4 if sanctum else 2), _quest_offer.bind(p, sanctum)])
+			entries.append(["★ Make an Offering (+2 Light, +%d VP, −1 Rage)" % (4 + bonus_vp if sanctum else 2 + bonus_vp), _quest_offer.bind(p, sanctum)])
 		if Duality.corrupt_gate_open(Game.band_of(p)):
 			entries.append(["☠ Defile the site (−3 Light, +2 VP, +1 Rage)", _quest_defile.bind(p)])
+
+	if glvl < 5 and (p.energy >= 1 or p.commons_count() >= 3):
+		entries.append(["Empower Any Action Card (Worker Placement)", _open_action_level_up.bind(p)])
 
 	entries.append(["⚅ Call Quest Redraw Vote", _on_call_quest_redraw_vote.bind(p)])
 	entries.append(["Close", _close_modal])
 
-	var q_lines: Array = ["Active Island Quests:"]
+	var q_lines: Array = ["Guardian & Community (Lvl %d)\n%s\n\nActive Island Quests:" % [glvl, ActionCards.get_perks_text("guardian", glvl)]]
 	for q in Game.common_quests:
 		var qid := String(q.get("id", ""))
 		var qname := String(q.get("name", ""))
@@ -815,11 +1044,30 @@ func _do_quest(p: PlayerState) -> void:
 		var diff := String(q.get("difficulty", "?")).capitalize()
 		var status_str := "Completed ✓" if p.completed_quests.has(qid) else "In Progress"
 		q_lines.append("\n[%s] %s (%d VP) — %s\n  %s" % [diff, qname, vp, status_str, qdesc])
-	
 	if is_guardian_tile:
 		q_lines.append("\n✦ You stand at an ancient Guardian site.")
+	_show_modal("Guardian / Association", "\n".join(q_lines), entries)
 
-	_show_modal("Quests & Guardians", "\n".join(q_lines), entries)
+
+func _open_action_level_up(p: PlayerState) -> void:
+	_close_modal()
+	var entries: Array = []
+	for aid in ActionCards.ACTION_IDS:
+		var lvl := ActionCards.get_level(p, aid)
+		if lvl < 5:
+			var aname := String(ActionCards.ACTION_NAMES.get(aid, aid))
+			entries.append(["%s: Lvl %d -> Lvl %d" % [aname, lvl, lvl + 1], func() -> void:
+				_close_modal()
+				if p.energy >= 1:
+					Game.add_energy(p, -1)
+				else:
+					p.spend_any_commons(3, Game.rng)
+				ActionCards.level_up(p, aid)
+				_toast("%s leveled up to Lvl %d!" % [aname, lvl + 1])
+				_finish_main_action()
+			])
+	entries.append(["Cancel", _close_modal])
+	_show_modal("Empower Action Card", "Spend 1⚡ or 3 Commons to level up an action:", entries)
 
 
 func _on_call_quest_redraw_vote(p: PlayerState) -> void:

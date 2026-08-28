@@ -63,6 +63,7 @@ func new_game(player_count: int, character_ids: Array[String] = []) -> void:
 		p.energy = int(c.get("energy_start", 2))
 		p.heart = String(c.get("heart", ""))
 		p.cross = String(c.get("cross", ""))
+		p.action_levels = ActionCards.default_levels_for(p.character_id)
 		p.pos = starts[i]
 		players.append(p)
 	common_quests = decks.draw_common_quests()
@@ -265,6 +266,8 @@ func fight(p: PlayerState, creature: Dictionary, spend_energy: int) -> Dictionar
 		value += spend_energy  # canon energy spends: +1 per Energy (cap 2 enforced by UI)
 	if p.character_id == "outcast" and rage >= 6:
 		value += 1  # PERK — Rage Capitalizer
+	if ActionCards.get_level(p, "creatures") >= 2:
+		value += 1  # Action Card: Creatures Lvl 2+ (+1 Fate combat modifier)
 	p.fought_recently = true
 	var won: bool = value >= f
 	if won:

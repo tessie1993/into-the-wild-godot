@@ -33,6 +33,9 @@ var fought_recently: bool = false  ## Outcast weakness hook
 var skills: Array = []             ## learned skill ids
 var offerings_made: int = 0
 
+# Action Cards (v2 engine)
+var action_levels: Dictionary = {"explore": 1, "craft": 1, "creatures": 1, "magic": 1, "guardian": 1}
+
 # Quest tracking (v2 quest engine)
 var completed_quests: Array = []
 var quest_progress: Dictionary = {}
@@ -121,6 +124,7 @@ func to_dict() -> Dictionary:
 		"slow_penalty": slow_penalty, "last_action": last_action,
 		"skills": skills.duplicate(), "offerings_made": offerings_made,
 		"fought_recently": fought_recently,
+		"action_levels": action_levels.duplicate(),
 		"completed_quests": completed_quests.duplicate(),
 		"quest_progress": quest_progress.duplicate(),
 		"guardian_quests": guardian_quests.duplicate(true),
@@ -154,6 +158,7 @@ static func from_dict(d: Dictionary) -> PlayerState:
 	p.skills = d.get("skills", [])
 	p.offerings_made = int(d.get("offerings_made", 0))
 	p.fought_recently = bool(d.get("fought_recently", false))
+	p.action_levels = d.get("action_levels", {"explore": 1, "craft": 1, "creatures": 1, "magic": 1, "guardian": 1})
 	p.completed_quests = d.get("completed_quests", [])
 	p.quest_progress = d.get("quest_progress", {})
 	p.guardian_quests = d.get("guardian_quests", [])
