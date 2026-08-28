@@ -1,0 +1,49 @@
+{
+  "$source": "SYNTHESIS-DECISIONS.md — Desktop synthesis rulings over the Orca lane canon. Canon files stay verbatim from lane-systems; this overlay resolves their OPEN markers. Every ruling is provisional until the designer approves.",
+  "S1_vp_scale": {
+    "resolves": ["Q6", "Q2"],
+    "rule": "VP lives on a 0-20 track sharing Light's order of magnitude (the hypocrisy penalty forces this).",
+    "victory_thresholds": {
+      "capable":     { "vp": 16, "min_light": 3 },
+      "enlightened": { "vp": 10, "min_light": 8 },
+      "dark":        { "vp": 18, "max_light": -8 }
+    },
+    "vp_faucets": {
+      "give_back_light": 1,
+      "common_quest": { "easy": 1, "medium": 2, "hard": 3 },
+      "guardian_chain_step": { "common": 1, "uncommon": 2, "rare": 4 },
+      "guardian_chain_complete_bonus": 3,
+      "master_guardian_defeat": 4
+    },
+    "note": "Guardian 3/9/27/54 CE-mirror ladder from the guardians proposal is REJECTED per the synthesis brief (conflict #1); rescaled to 1/2/4 (+3)."
+  },
+  "S2_wild_and_fights": {
+    "resolves": ["Q1", "Q9-partial"],
+    "wild_rule": "Spirit/Wild fate cards are NOT auto-win. A Wild resolves to a value set by your current Duality band: max_dark 1, dark 2, neutral 3, light 4, max_light 5. Zero new card text; kindness literally changes your luck.",
+    "common_f_bump": "Common creatures' printed F raised toward the tier guide: F3 becomes F4, F4 stays F4 (guide C 3-4 -> effective 4). Kills Common-tier cherry-pick fighting profit.",
+    "fight_trigger": "fight_creature -1 Light on WIN is canon (already in duality.json); a lost fight is the Bite, no shift."
+  },
+  "S3_way3_exists": {
+    "resolves": ["Q11"],
+    "rule": "Way 3 is real but never enters the 4D/Ascended board. Dark players end at the CORRUPT GATE on the T2/Ascended border: at max_dark it opens and hosts their Master Guardian confrontation. Cost parity: the Dark chain's total cost equals the Light chain's actual cost (fixes the 2.8x-cheaper inversion found in the guardians review).",
+    "digital_v1": "Sanctum ring is light-gated as before; a max_dark player instead gets the Corrupt Gate action at any Guardian site."
+  },
+  "S4_gift_cap": {
+    "resolves": ["Q12"],
+    "rule": "Care-phase giving grants at most +1 Light per Care phase, total, regardless of gifts/trades made. Action-phase give_back_light (+2) is unaffected. Physically executable, closes the pass-the-card loop."
+  },
+  "S5_viability_test": {
+    "resolves": ["Q7"],
+    "rule": "Hand-checkable viability: a player has a viable path if for ANY Way: (rounds_left * 2) >= VP still needed AND (rounds_left * 3) >= Light distance still needed. Reach constants TUNE; on the 4D board double the Light reach."
+  },
+  "S6_legendary_skill_cost": { "resolves": ["Q4"], "ce": 54, "requires": "workshop" },
+  "S7_hot_spring": { "resolves": ["Q5"], "rule": "refill Energy to cap" },
+  "S8_companion_track": { "resolves": ["Q10"], "rule": "OUT for v1 (cut Temper/favor/companion). Creature card chassis keeps Demand/Gift/Bite/F/Quirk. Companions return as a future module." },
+  "S9_ascended_deck": { "resolves": ["Q3"], "size": 40, "print_counts": { "uncommon": 4, "rare": 12, "legendary": 24 }, "claimed_ev": 19.2, "target": "~2x T2 EV (18.6)" },
+  "S10_ring_split_baseline": { "resolves": ["Q8"], "rule": "Adopt the recovered split (4 gathers outer / 3 inner, 2 explores outer / 1 inner, 2 creatures outer) as the documented baseline." },
+  "best_of_both": {
+    "from_orca_lanes": "entire canon: Care+Action turn, 6 main actions, Duality -10..+10 bands+shifts, hypocrisy penalty, Energy 0-5, Island Rage 0-10, Fate deck, CE tier ladder, deck compositions, gather rules, modes, setup, 6 elements w/ domains, creature chassis, 4 characters, pytest invariants I1-I15",
+    "from_godot_v01": "the shippable Godot app, hex board with T1/T2/Sanctum rings, pass-and-play flow, autosave, creature band UX (gift/reward/challenge/take/attack mapped onto canon bands), original-spec fairness rules (3 common quests easy/med/hard, majority redraw, non-owner decides), dark-win house rule, ship pipeline",
+    "characters_merge": "lane identities + Godot numeric loadouts: Cartographer(move 4, pack 4, heart water), Botanist(move 3, pack 5, heart wood), Blacksmith(move 2, pack 6, heart stone), Outcast(move 3, pack 4+2 hand, heart ether)"
+  }
+}

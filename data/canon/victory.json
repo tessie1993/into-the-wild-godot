@@ -1,0 +1,26 @@
+{
+  "$source": "spec §11, §13, §14",
+  "ways": [
+    { "id": "capable",    "n": 1, "name": "The Capable Path",    "vp_threshold": "high",     "light_threshold": "lower",   "values_set": false, "difficulty": "baseline" },
+    { "id": "enlightened","n": 2, "name": "The Enlightened Path","vp_threshold": "medium",   "light_threshold": "max_light","values_set": false, "difficulty": "baseline" },
+    { "id": "dark",       "n": 3, "name": "The Dark Path",       "vp_threshold": "max",      "light_threshold": "max_dark", "values_set": false, "difficulty": "statistically harder, should FEEL much harder" }
+  ],
+  "thresholds_open": "No numeric VP or Light thresholds exist anywhere in the corpus. Ways 1 and 2 must be statistically EQUAL and Way 3 slightly harder — unverifiable until numbers exist (GDD Q6).",
+  "tiebreakers": [
+    { "n": 1, "rule": "higher Light level wins" },
+    { "n": 2, "rule": "more VP from Guardian quests wins" },
+    { "n": 3, "rule": "shared victory" }
+  ],
+  "collective_viability": {
+    "applies_when": "4D Board is built",
+    "rule": "a player can only win if every active player still has a viable path to win",
+    "viable_path_defined": false,
+    "note": "OPEN — 'viable path to win' has no operational test (GDD Q7)"
+  },
+  "endgame": {
+    "master_guardian": "resides at the centre (third ring) of the 4D Board",
+    "trigger_a": "defeating the Master Guardian -> all players get exactly one more round",
+    "trigger_b": "any standard §11 victory before the Absolute Challenge -> also triggers the final round (loop preventer)"
+  },
+  "house_rule_optional": "a Dark-path winner may not choose Dark the next round"
+}

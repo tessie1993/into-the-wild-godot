@@ -1,0 +1,39 @@
+{
+  "_comment": "All numbers marked TUNE in GDD.md are starting proposals, not final balance.",
+  "board": {
+    "radius": 6,
+    "sanctum_rings": [0],
+    "tier2_rings": [1, 2, 3],
+    "tier1_rings": [4, 5, 6],
+    "guardian_count_tier2": 3,
+    "hex_pixel_size": 64.0
+  },
+  "players": { "min": 1, "max": 4 },
+  "light_track": { "min": -12, "max": 12 },
+  "karma": {
+    "expected_light_per_vp": 0.4,
+    "band_deltas": {
+      "dark_max": -6,
+      "shadowed_max": -2,
+      "neutral_max": 1,
+      "kind_max": 5
+    }
+  },
+  "movement": {
+    "tier1_cost": 1,
+    "tier2_cost": 2,
+    "sanctum_min_band": "KIND"
+  },
+  "actions": {
+    "change_action_light_cost": 1,
+    "give_light_gain": 1
+  },
+  "event_deck_weights": { "resource": 5, "creature": 3, "event": 2 },
+  "rarity_weights_tier1": { "common": 70, "uncommon": 24, "rare": 5, "legendary": 1 },
+  "rarity_weights_tier2": { "common": 35, "uncommon": 38, "rare": 22, "legendary": 5 },
+  "victory": {
+    "light_path": { "vp": 20, "min_light": 8 },
+    "dark_path": { "vp": 24, "required_light": -12 }
+  },
+  "offering": { "vp_reward": 3, "light_reward": 1 }
+}

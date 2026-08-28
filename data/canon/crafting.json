@@ -1,0 +1,26 @@
+{
+  "$source": "economy-engine.md §4.1, §4.2",
+  "budgets": [
+    { "tier": "common",    "ce_min": 2,  "ce_max": 3,  "shape": "Commons only",                                        "bench": false },
+    { "tier": "uncommon",  "ce_min": 6,  "ce_max": 6,  "shape": ">=1 Uncommon resource + Commons",                      "bench": "bench_or_forge_adjacent" },
+    { "tier": "rare",      "ce_min": 18, "ce_max": 18, "shape": ">=1 Rare resource + Uncommons/Commons",                "bench": "bench_or_forge_adjacent" },
+    { "tier": "legendary", "ce_min": 54, "ce_max": 54, "shape": ">=1 Legendary resource + Rares",                       "bench": "bench_and_workshop" }
+  ],
+  "rules": [
+    "materials decide quality: highest required-tier resource sets the item tier",
+    "no sacrifice exchanges: upgrades do not consume the lower-tier item"
+  ],
+  "conversion": {
+    "down": { "from_count": 1, "to_count": 2, "tier_delta": -1, "same_element": true, "location": "anywhere" },
+    "up":   { "from_count": 4, "to_count": 1, "tier_delta": 1,  "same_element": true, "location": "public_crafting_bench" }
+  },
+  "refining": {
+    "rule": "advanced crafting requires refined resources; refining only at public buildings",
+    "example": { "in": "3 Copper Ore", "out": "1 Copper Ingot" },
+    "buildings": ["Bench", "Forge", "Kiln", "Apothecary Hut"]
+  },
+  "learning_costs": [
+    { "tier": "common", "ce": 3 }, { "tier": "uncommon", "ce": 6 }, { "tier": "rare", "ce": 18 }
+  ],
+  "learning_costs_note": "actions-v1-draft §4 lists Common 3 / Uncommon 6 / Rare 18 CE; economy §4.4 says 'matching the skill tier budget'. Legendary skill cost UNSPECIFIED (GDD Q4)."
+}

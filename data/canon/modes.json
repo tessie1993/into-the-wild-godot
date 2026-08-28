@@ -1,0 +1,25 @@
+{
+  "$source": "economy-engine.md §10, §11",
+  "modes": [
+    { "id": "short",    "turns_per_player": 10, "baseline": false, "scaling": "start with 1 Uncommon card + 4 Commons; inner ring opens turn 3" },
+    { "id": "standard", "turns_per_player": 15, "baseline": true,  "scaling": "baseline" },
+    { "id": "epic",     "turns_per_player": 25, "baseline": false, "scaling": "all budgets x1.5 for Legendary tier only (Legendary item = 81 CE); expect 2 Legendaries/player" }
+  ],
+  "claimed_baseline_results": {
+    "$source": "economy-engine.md §11 — Monte Carlo, 20,000 players",
+    "action_mix": { "gathers": 7, "explores": 3, "creatures": 2 },
+    "mean_income_ce": 98.3,
+    "legendaries_per_player": 0.97,
+    "rares_per_player": 4.15,
+    "sink_total_ce": 86,
+    "ring_split_specified": false,
+    "note": "The ring split (how many of the 7 gathers / 3 explores happen on T1 vs T2) is NOT stated, so 98.3 is not reproducible from the doc alone. sim/montecarlo.py solves for the split that reproduces it."
+  },
+  "setup": {
+    "$source": "spec §2",
+    "salvage_draft": { "deal": "2 x player count face-up from the shipwreck pool", "pick": "snake draft, 2 per player" },
+    "energy_start": 2,
+    "hand_limit_cards": 7,
+    "item_slots": { "equipped": 3, "backpack": 2, "total": 5 }
+  }
+}
