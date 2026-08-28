@@ -37,6 +37,7 @@ var lbl_quests: Label
 var lbl_toast: Label
 var care_bar: HBoxContainer
 var action_bar: HBoxContainer
+var karma_track: KarmaTrack
 var buttons: Dictionary = {}
 var modal_root: CenterContainer
 var modal_title: Label
@@ -96,6 +97,7 @@ func _build_world() -> void:
 	add_child(pawn_layer)
 	for axial in Game.board.tiles.keys():
 		_spawn_tile_nodes(axial)
+	_add_sanctum_glow()
 	for p in Game.players:
 		var pawn := Node2D.new()
 		var dot := Polygon2D.new()
@@ -157,7 +159,25 @@ func _refresh_tile(axial: Vector2i) -> void:
 		mark.text = glyphs
 	else:
 		fill.color = FACEDOWN_COLORS.get(tile.tier, Color("333333"))
-		mark.text = ""
+		# Facedown tiles bear faint rune etchings (mockup: the unexplored dark hexes).
+		mark.add_theme_color_override("font_color", UITheme.RUNE_FAINT)
+		mark.text = UITheme.rune_for(axial)
+		return
+	mark.add_theme_color_override("font_color", UITheme.GOLD)
+
+
+## The Sanctum breathes light at the island's heart (mockup: the glowing center).
+func _add_sanctum_glow() -> void:
+	var center := Hex.to_pixel(Vector2i.ZERO, hex_size)
+	var glow := Polygon2D.new()
+	glow.polygon = Hex.corners(center, hex_size * 1.25)
+	glow.color = Color(UITheme.GLOW.r, UITheme.GLOW.g, UITheme.GLOW.b, 0.10)
+	glow.z_index = 1
+	board_layer.add_child(glow)
+	var tween := create_tween().set_loops()
+	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(glow, "color:a", 0.26, 1.6)
+	tween.tween_property(glow, "color:a", 0.10, 1.6)
 
 
 func _place_pawn(p: PlayerState) -> void:
@@ -196,13 +216,31 @@ func _build_hud() -> void:
 
 	var top_right := _panel()
 	top_right.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 14)
+	var quests_box := VBoxContainer.new()
+	quests_box.add_theme_constant_override("separation", 6)
+	top_right.add_child(quests_box)
+	quests_box.add_child(UITheme.heading_label("Island Quests", 16))
 	lbl_quests = _label(15, "cfc7ae")
-	top_right.add_child(lbl_quests)
+	quests_box.add_child(lbl_quests)
+
+	# Karma Track ribbon, top center (mockup).
+	var karma_panel := _panel()
+	karma_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP, Control.PRESET_MODE_MINSIZE, 14)
+	var karma_box := VBoxContainer.new()
+	karma_box.add_theme_constant_override("separation", 2)
+	karma_panel.add_child(karma_box)
+	karma_box.add_child(UITheme.heading_label("Karma Track", 13))
+	karma_track = KarmaTrack.new()
+	karma_box.add_child(karma_track)
 
 	var bottom_right := _panel()
 	bottom_right.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT, Control.PRESET_MODE_MINSIZE, 14)
+	var inv_box := VBoxContainer.new()
+	inv_box.add_theme_constant_override("separation", 6)
+	bottom_right.add_child(inv_box)
+	inv_box.add_child(UITheme.heading_label("Pouch & Gear", 15))
 	lbl_inv = _label(16, "d8e6da")
-	bottom_right.add_child(lbl_inv)
+	inv_box.add_child(lbl_inv)
 
 	# Care bar and Action bar share the bottom center; visibility toggles by phase.
 	var bar_panel := _panel()
@@ -212,12 +250,12 @@ func _build_hud() -> void:
 	care_bar = HBoxContainer.new()
 	care_bar.add_theme_constant_override("separation", 8)
 	bars.add_child(care_bar)
-	for def in [["eat", "Eat (⚡)"], ["sleep", "Sleep (+2⚡, skip)"], ["meditate", "Meditate (1⚡)"], ["trade", "Trade & Gift ⇄"], ["wild_care", "Wild 🃏"], ["begin_action", "Begin Action ▸"]]:
+	for def in [["eat", "🍖 Eat"], ["sleep", "🌙 Sleep"], ["meditate", "🧘 Meditate"], ["trade", "⇄ Trade & Gift"], ["wild_care", "🃏 Wild"], ["begin_action", "Begin Action ▸"]]:
 		_add_button(care_bar, String(def[0]), String(def[1]), _on_care)
 	action_bar = HBoxContainer.new()
 	action_bar.add_theme_constant_override("separation", 8)
 	bars.add_child(action_bar)
-	for def in [["explore", "Explore"], ["craft", "Craft"], ["creatures", "Creatures"], ["magic", "Magic/Learn"], ["guardian", "Guardian"], ["give_back", "Give Back"], ["raid", "Raid ☠"], ["trade_free", "Trade ⇄"], ["wild", "Wild 🃏"], ["end", "End Turn"]]:
+	for def in [["explore", "🧭 Explore"], ["craft", "🔨 Craft"], ["creatures", "🦌 Creatures"], ["magic", "✨ Magic"], ["guardian", "🛡 Guardian"], ["give_back", "💚 Give Back"], ["raid", "☠ Raid"], ["trade_free", "⇄ Trade"], ["wild", "🃏 Wild"], ["end", "✔ End Turn"]]:
 		_add_button(action_bar, String(def[0]), String(def[1]), _on_action)
 
 	lbl_toast = _label(19, "f2d06b")
@@ -229,6 +267,7 @@ func _build_hud() -> void:
 	modal_root.visible = false
 	hud.add_child(modal_root)
 	var mp := PanelContainer.new()
+	mp.add_theme_stylebox_override("panel", UITheme.panel_style(UITheme.GOLD_DEEP, Color(0.05, 0.10, 0.08, 0.98), 14, 2, 20))
 	modal_root.add_child(mp)
 	var mbox := VBoxContainer.new()
 	mbox.custom_minimum_size = Vector2(600, 0)
@@ -259,9 +298,10 @@ func _build_hud() -> void:
 	winner_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	wbox.add_child(winner_label)
 	var back := Button.new()
-	back.text = "Return to Shore"
+	back.text = "Return to Shore  ⛵"
 	back.custom_minimum_size = Vector2(320, 70)
 	back.add_theme_font_size_override("font_size", 24)
+	UITheme.style_button(back, "primary")
 	back.pressed.connect(_back_to_menu)
 	wbox.add_child(back)
 
@@ -273,6 +313,7 @@ func _add_button(bar: HBoxContainer, id: String, text: String, handler: Callable
 	b.text = text
 	b.custom_minimum_size = Vector2(120, 58)
 	b.add_theme_font_size_override("font_size", 18)
+	UITheme.style_button(b, "primary" if id == "begin_action" or id == "end" else "default")
 	b.pressed.connect(handler.bind(id))
 	bar.add_child(b)
 	buttons[id] = b
@@ -285,6 +326,7 @@ func _back_to_menu() -> void:
 
 func _panel() -> PanelContainer:
 	var p := PanelContainer.new()
+	p.add_theme_stylebox_override("panel", UITheme.panel_style())
 	hud.add_child(p)
 	return p
 
@@ -335,12 +377,14 @@ func _refresh_hud() -> void:
 		return
 	var p := Game.current_player()
 	var band := Game.band_of(p)
-	lbl_turn.text = "Round %d — %s   [%s phase]" % [Game.round_num, p.display_name, Game.phase.capitalize()]
-	var move_txt := "  ·  Moves %d" % moves_left if mode == "explore" else ""
+	lbl_turn.text = "Round %d • Turn: %s   [%s phase]" % [Game.round_num, p.display_name, Game.phase.capitalize()]
+	var move_txt := "  |  🥾 Moves %d" % moves_left if mode == "explore" else ""
 	var hyp := Duality.hypocrisy_energy_penalty(p.vp, p.light)
-	var hyp_txt := "  ·  ⚠hypocrisy −%d⚡gain" % hyp if hyp > 0 else ""
-	lbl_stats.text = "⚡%d/5 · Light %d (%s) · VP %d/20 · Island Rage %d/10%s%s" % [
+	var hyp_txt := "  |  ⚠ hypocrisy −%d⚡gain" % hyp if hyp > 0 else ""
+	lbl_stats.text = "⚡ Energy: %d/5  |  ✦ Karma: %+d (%s)  |  ★ %d VP  |  😡 Rage: %d/10%s%s" % [
 		p.energy, p.light, Duality.band_name(band), p.vp, Game.rage, move_txt, hyp_txt]
+	if karma_track != null:
+		karma_track.set_light(p.light, band)
 	var lines: Array = []
 	lines.append("Pouch (%d commons):" % p.commons_count())
 	for id in p.commons.keys():
@@ -369,7 +413,7 @@ func _refresh_bars(p: PlayerState) -> void:
 			if buttons.has(id):
 				(buttons[id] as Button).disabled = done
 		(buttons["wild"] as Button).visible = not p.wild_cards.is_empty()
-		(buttons["wild"] as Button).text = "Wild 🃏 (%d)" % p.wild_cards.size()
+		(buttons["wild"] as Button).text = "🃏 Wild (%d)" % p.wild_cards.size()
 		if not done:
 			(buttons["give_back"] as Button).disabled = p.commons_count() < 3
 			if buttons.has("trade_free"):
@@ -382,11 +426,11 @@ func _refresh_bars(p: PlayerState) -> void:
 						break
 				(buttons["raid"] as Button).visible = can_any_raid
 			# Update dynamic level text
-			(buttons["explore"] as Button).text = "Explore (%d)" % ActionCards.get_level(p, "explore")
-			(buttons["craft"] as Button).text = "Craft (%d)" % ActionCards.get_level(p, "craft")
-			(buttons["creatures"] as Button).text = "Creatures (%d)" % ActionCards.get_level(p, "creatures")
-			(buttons["magic"] as Button).text = "Magic/Learn (%d)" % ActionCards.get_level(p, "magic")
-			(buttons["guardian"] as Button).text = "Guardian (%d)" % ActionCards.get_level(p, "guardian")
+			(buttons["explore"] as Button).text = "🧭 Explore (%d)" % ActionCards.get_level(p, "explore")
+			(buttons["craft"] as Button).text = "🔨 Craft (%d)" % ActionCards.get_level(p, "craft")
+			(buttons["creatures"] as Button).text = "🦌 Creatures (%d)" % ActionCards.get_level(p, "creatures")
+			(buttons["magic"] as Button).text = "✨ Magic (%d)" % ActionCards.get_level(p, "magic")
+			(buttons["guardian"] as Button).text = "🛡 Guardian (%d)" % ActionCards.get_level(p, "guardian")
 			# WEAKNESS — Cartographer "Restless": no repeating last turn's action.
 			if p.character_id == "cartographer" and p.last_action != "":
 				if buttons.has(p.last_action):
@@ -883,6 +927,11 @@ func _gather_do(p: PlayerState, tile: IslandTile, exploit: bool) -> void:
 		if Game.quest_engine != null:
 			Game.quest_engine.on_gather_card(p, tile.tier, String(card.get("tier", "")))
 		card_txt = " + [%s] %s" % [String(card["tier"]), Game.decks.display_name_of(String(card["id"]))]
+	# Harsh ground hides made things (content drop): T2+ gathers can unearth an item.
+	if tile.tier >= 2 and Game.rng.randf() < float(Game.decks.config.get("wild", {}).get("gather_item_chance", 0.2)):
+		var found := Game.find_catalog_item(p, ["tool", "gear", "consumable"])
+		if not found.is_empty():
+			card_txt += " — and half-buried in the ground: [%s] %s!" % [String(found["rarity"]), String(found["name"])]
 	if exploit:
 		tile.exhausted = true
 		_refresh_tile(tile.axial)
@@ -1166,9 +1215,11 @@ func _do_quest(p: PlayerState) -> void:
 			if String(it.get("type", "")) == "relic" and not relic_seen.has(String(id)):
 				relic_seen.append(String(id))
 				entries.append(["✧ Offer %s (+%d VP, +1 Light)" % [String(it.get("name", id)), int(it.get("offer_vp", 0))], _offer_relic_pick.bind(p, String(id))])
-		# Bottleneck trial (content drop): the island tests you at its sites.
+		# Bottleneck trial (content drop): the island tests you at its sites,
+		# but only so many times per journey (balance cap, config wild).
 		var trial := Game.decks.bottleneck_for(tile.element_id, tile.axial)
-		if not trial.is_empty() and not p.trials_done.has(String(trial.get("id", ""))):
+		var trial_cap := int(Game.decks.config.get("wild", {}).get("trials_per_player", 2))
+		if not trial.is_empty() and not p.trials_done.has(String(trial.get("id", ""))) and p.trials_done.size() < trial_cap:
 			entries.append(["⚖ Face the Island's Trial…", _open_trial.bind(p, trial)])
 		if Duality.corrupt_gate_open(Game.band_of(p)):
 			entries.append(["☠ Defile the site (−3 Light, +2 VP, +1 Rage)", _quest_defile.bind(p)])
@@ -1414,6 +1465,11 @@ func _befriend(p: PlayerState, creature: Dictionary, tile: IslandTile) -> void:
 	var extra := ""
 	if not card.is_empty() and p.add_card(card):
 		extra = " Found: [%s] %s." % [String(card["tier"]), Game.decks.display_name_of(String(card["id"]))]
+	# A befriended wild creature works its field move on this tile (content drop).
+	var field_txt := CreatureEngine.apply_field_move(p, creature, tile)
+	if field_txt != "":
+		_refresh_tile(tile.axial)
+		extra += " " + field_txt
 	_toast("Befriended! %s%s" % [gift_desc, extra])
 	EventBus.inventory_changed.emit(p.index)
 
@@ -1450,6 +1506,11 @@ func _fight_do(p: PlayerState, creature: Dictionary, tile: IslandTile, energy: i
 			var card := Game.decks.draw_card(tile.element_id, tile.tier)
 			if not card.is_empty() and p.add_card(card):
 				loot.append(Game.decks.display_name_of(String(card["id"])))
+		# Stronger creatures carry made things (content drop): item loot chance.
+		if String(creature.get("tier", "common")) != "common" and Game.rng.randf() < 0.5:
+			var it := Game.find_catalog_item(p, ["tool", "consumable"])
+			if not it.is_empty():
+				loot.append("[%s] %s" % [String(it["rarity"]), String(it["name"])])
 		_show_modal("Victory — of a kind", "Fate %d%s vs F%d. You win. Loot: %s.\n−1 Light — the island felt that." % [int(result["value"]), wild_txt, int(result["f"]), ", ".join(loot) if not loot.is_empty() else "nothing you could carry"], [["Continue", _close_modal]])
 	else:
 		var bite: Dictionary = creature.get("bite", {})
@@ -1580,7 +1641,7 @@ func _apply_wild_ops(ops: Array, p: PlayerState, tile: IslandTile, lines: Array)
 				Game.add_rage(int(op.get("n", 1)))
 				lines.append("Island Rage %+d." % int(op.get("n", 1)))
 			"chest":
-				var it := Game.open_chest(p)
+				var it := Game.open_chest(p, tile.element_id == "spirit")
 				if it.is_empty() or p.items.size() >= p.pack_size:
 					p.add_common(Game.decks.random_common(tile.element_id), 1)
 					lines.append("The chest holds only scraps (+1 common).")

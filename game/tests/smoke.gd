@@ -236,6 +236,24 @@ func _ready() -> void:
 		_check(p_drop.vp > t_vp and p_drop.commons_count() == 1, "trial pays scaled VP and consumes the 5-common deposit")
 		_check(not game.resolve_bottleneck(p_drop, trial, true), "a faced trial cannot be faced again")
 
+		# Balance invariants (rebalance pass): rewards stay under canon faucet
+		# ranges and the per-player trial cap holds.
+		var trial_vp_ok := true
+		for bq in game.decks.bottleneck_quests:
+			if int(bq["light"]["vp"]) > 4 or int(bq["dark"]["vp"]) > 6:
+				trial_vp_ok = false
+		_check(trial_vp_ok, "trial VP rescaled to canon (light <=4, dark <=6)")
+		var p_capped := PlayerState.new()
+		p_capped.trials_done = ["quest_01", "quest_02"]
+		p_capped.add_common("stone", 9)
+		var other_trial: Dictionary = game.decks.bottleneck_for("wood", Vector2i(1, 1))
+		_check(not game.resolve_bottleneck(p_capped, other_trial, false), "island tests each wanderer at most twice (cap)")
+		var relic_vp_ok := true
+		for idef2 in game.decks.items_catalog.values():
+			if String(idef2.get("type", "")) == "relic" and int(idef2.get("offer_vp", 0)) > 6:
+				relic_vp_ok = false
+		_check(relic_vp_ok, "no relic offering exceeds 6 VP")
+
 		game.dark_aggression_rounds = 1
 		_check(CreatureEngine.effective_band(p_drop, {}) == Duality.Band.MAX_DARK, "eclipse forces Deep Dark encounters")
 		game.dark_aggression_rounds = 0
@@ -249,6 +267,45 @@ func _ready() -> void:
 		p_kind.light = 4  # Kind band
 		var reward_desc := CreatureEngine.apply_effect(p_kind, wild_c.get("reward", {}), rng)
 		_check(p_kind.has_common("luminous_algae", 1) and reward_desc != "", "wild reward grants its mapped common")
+
+		# --- Full asset integration: named items, relic gifts, field moves, wild finds
+		var placeholder_names := 0
+		for idef in game.decks.items_catalog.values():
+			if String(idef.get("name", "")).contains("Item "):
+				placeholder_names += 1
+		_check(placeholder_names == 0, "all 156 catalog items carry real tiered names")
+
+		var t3_gift_ok := true
+		for c3 in game.decks.creatures:
+			if String(c3.get("tier", "")) == "rare" and c3.has("flavor"):
+				var g: Dictionary = c3.get("gift", {})
+				if String(g.get("op", "")) != "gain_item" or game.decks.item_def(String(g.get("id", ""))).is_empty():
+					t3_gift_ok = false
+		_check(t3_gift_ok, "every rare wild creature gifts a valid catalog relic")
+
+		var p_gift := PlayerState.new()
+		CreatureEngine.apply_effect(p_gift, {"op": "gain_item", "id": "relic_item_05"}, rng)
+		_check(p_gift.has_item("relic_item_05"), "gain_item op adds the catalog item")
+
+		var fm_tile := IslandTile.new(Vector2i(2, 2), "wood", 1)
+		fm_tile.exhausted = true
+		var fm_txt := CreatureEngine.apply_field_move(p_gift, wild_c, fm_tile)
+		_check(not fm_tile.exhausted and fm_txt.contains("Irrigate"), "field move restores an exhausted tile")
+		fm_txt = CreatureEngine.apply_field_move(p_gift, wild_c, fm_tile)
+		_check(p_gift.commons_count() >= 1 and fm_txt != "", "field move on living land yields a common")
+
+		var p_find := PlayerState.new()
+		var found_it: Dictionary = game.find_catalog_item(p_find, ["tool"])
+		_check(not found_it.is_empty() and p_find.items.size() == 1
+			and String(game.decks.item_def(String(p_find.items[0])).get("type", "")) == "tool",
+			"wild item find adds a catalog tool to the pack")
+		var relic_chest_ok := false
+		for i in 40:
+			var chest_it: Dictionary = game.open_chest(p_find, true)
+			if String(chest_it.get("type", "")) == "relic":
+				relic_chest_ok = true
+				break
+		_check(relic_chest_ok, "spirit-ground chests can hold relics")
 
 		# --- Viability Gate & Tiebreaker test
 		var p_win_a := PlayerState.new()

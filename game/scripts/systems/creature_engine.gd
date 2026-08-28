@@ -162,6 +162,13 @@ static func apply_effect(p: PlayerState, effect: Dictionary, rng: RandomNumberGe
 			if cid2 != "":
 				p.add_card({"id": cid2, "tier": String(effect.get("tier", "uncommon")),
 					"element": String(effect.get("element", p.heart if p.heart != "" else "wood"))})
+		"gain_item":
+			# Catalog item gift (t3 wild creatures entrust relics). Full pack -> a common instead.
+			var iid := String(effect.get("id", ""))
+			if iid != "" and p.items.size() < p.pack_size:
+				p.items.append(iid)
+			else:
+				p.add_common("spirit_mote", n)
 		"draw_card":
 			for i in n:
 				var c := Game.decks.draw_card(p.heart if p.heart != "" else "wood", 1)
@@ -173,3 +180,20 @@ static func apply_effect(p: PlayerState, effect: Dictionary, rng: RandomNumberGe
 				
 	EventBus.inventory_changed.emit(p.index)
 	return desc if desc != "" else "Effect resolved (%s)." % op
+
+
+## A befriended wild creature works its field move on the land (content drop:
+## every creature's field ability "can shape the surrounding environment").
+## Returns a description of what happened, or "" for creatures without one.
+static func apply_field_move(p: PlayerState, creature: Dictionary, tile: IslandTile) -> String:
+	var move_name := String(creature.get("field_move", ""))
+	if move_name == "":
+		return ""
+	if tile.exhausted:
+		tile.exhausted = false
+		return "%s! The stripped land drinks deep and lives again." % move_name
+	var cid := Game.decks.random_common(tile.element_id)
+	if cid != "":
+		p.add_common(cid, 1)
+		return "%s! The land yields +1 %s." % [move_name, Game.decks.display_name_of(cid)]
+	return "%s! The land stirs in answer." % move_name

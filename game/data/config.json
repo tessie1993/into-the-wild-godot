@@ -76,8 +76,10 @@
     "light_reward": 1
   },
   "wild": {
-    "_comment": "[TUNE] Wild Deck (content drop): card_chance = odds a tile reveal draws from the Wild Deck instead of the classic creature/event split; hand_cap = max held fate/ward cards.",
+    "_comment": "[TUNE] Wild Deck (content drop): card_chance = odds a tile reveal draws from the Wild Deck instead of the classic creature/event split; hand_cap = max held fate/ward cards. gather_item_chance = odds a T2+ gather unearths a catalog item. trials_per_player = how many bottleneck trials one wanderer may face per journey (balance: 4 sites x 4-6 VP would otherwise dwarf every other faucet).",
     "card_chance": 0.35,
-    "hand_cap": 3
+    "hand_cap": 3,
+    "gather_item_chance": 0.2,
+    "trials_per_player": 2
   }
 }

@@ -43,16 +43,45 @@ GIVER_ELEMENT = {
     "ruin_barrier": "ether",
 }
 
-# reward rescale divisors (drop VP 10-23 / canon VP source 1-8; drop Light 5-14 / canon shift 1-4)
-VP_DIV = 3
+# reward rescale divisors (drop VP 10-23 / canon VP source 1-8; drop Light 5-14 / canon shift 1-4).
+# VP_DIV=4 balances against the board: 3 guardian sites + the Sanctum offer up
+# to 4 trials, capped at config wild.trials_per_player — total trial VP must
+# stay well under a victory threshold (enlightened = 10 VP on the 0-20 scale).
+VP_DIV = 4
 LIGHT_DIV = 2
 DARK_LIGHT_DIV = 3
 
 RARITY = {"Common": "common", "Uncommon": "uncommon", "Rare": "rare", "Legendary": "legendary"}
 # consumable use effects by rarity (energy cap is 5; light bounded per Q6 scale)
 CONSUME = {"common": (1, 0), "uncommon": (2, 0), "rare": (2, 1), "legendary": (3, 1)}
-# relic offering VP by rarity (canon VP faucet range 1-8)
-RELIC_VP = {"common": 2, "uncommon": 3, "rare": 5, "legendary": 8}
+# relic offering VP by rarity (canon VP faucet range 1-8; legendary capped at 6
+# so no single item is worth more than half a victory threshold)
+RELIC_VP = {"common": 2, "uncommon": 3, "rare": 4, "legendary": 6}
+
+# The drop names items "Tool Item 1" ... — placeholders. Real names are built
+# family x rarity: each family of 4 consecutive ids is one item line with a
+# version per tier (GDD 6.2: items have versions in sync with the four classes).
+ITEM_FAMILIES = {
+    "tool": ["Sickle", "Hatchet", "Pick", "Fishing Spear", "Foraging Knife",
+             "Shovel", "Saw", "Prybar", "Threshing Flail", "Gathering Hook"],
+    "gear": ["Cloak", "Boots", "Gloves", "Hood", "Vest",
+             "Belt", "Bracers", "Leggings", "Mantle", "Charm"],
+    "consumable": ["Berry Pouch", "Trail Ration", "Herbal Tea", "Honey Cake", "Root Stew",
+                   "Waybread", "Forest Tonic", "Dawn Elixir", "Spirit Draught", "Feast Bundle"],
+    "relic": ["Idol", "Sigil Stone", "Ancestor Mask", "Sun Disc",
+              "Moon Chime", "Guardian Figurine", "Offering Bowl", "Star Shard"],
+}
+TIER_PREFIX = {
+    "tool": {"common": "Flint", "uncommon": "Copper", "rare": "Ironwood", "legendary": "Sunforged"},
+    "gear": {"common": "Patched", "uncommon": "Tanned", "rare": "Warded", "legendary": "Spiritbound"},
+    "consumable": {"common": "Simple", "uncommon": "Hearty", "rare": "Golden", "legendary": "Radiant"},
+    "relic": {"common": "Weathered", "uncommon": "Carved", "rare": "Gilded", "legendary": "Luminous"},
+}
+
+
+def item_name(t, index, rarity):
+    family = ITEM_FAMILIES[t][((index - 1) // 4) % len(ITEM_FAMILIES[t])]
+    return "%s %s" % (TIER_PREFIX[t][rarity], family)
 
 
 def load(name):
@@ -79,6 +108,17 @@ def convert_creatures():
         demand_n = int(k["neutral"].get("cost", {}).get("qty", 1))
         take_n = max(1, c["tier"] - 1)
         damage = int(k["exalted_dark"].get("damage", 1))
+        # Radiant gift: tier 1-2 gives the pristine card; a tier-3 creature
+        # entrusts a relic from the item catalog (deterministic per creature).
+        gift = {"op": "gain_card", "id": gift_id, "tier": "uncommon",
+                "element": element, "desc": k["exalted_light"]["flavor"]}
+        if c["tier"] == 3:
+            # Common/uncommon relics only — a Radiant t3 encounter must not hand
+            # out a 6-VP legendary (rarity cycles C,U,R,L per index).
+            modest = [i for i in range(1, 31) if (i - 1) % 4 < 2]
+            relic_index = modest[sum(ord(ch) for ch in c["id"]) % len(modest)]
+            gift = {"op": "gain_item", "id": "relic_item_%02d" % relic_index,
+                    "desc": k["exalted_light"]["flavor"]}
         entry = {
             "id": c["id"],
             "name": c["name"],
@@ -88,9 +128,8 @@ def convert_creatures():
             "field_move": c.get("field_move", ""),
             # neutral challenge cost (nonexistent berry ids in the drop) -> any-commons demand
             "demand": {"type": "common", "n": demand_n},
-            # exalted gift: pristine_X -> the uncommon card version
-            "gift": {"op": "gain_card", "id": gift_id, "tier": "uncommon",
-                     "element": element, "desc": k["exalted_light"]["flavor"]},
+            # exalted gift: pristine card (t1-2) or a catalog relic (t3)
+            "gift": gift,
             # harmonious reward: the plain common
             "reward": {"op": "gain_common", "id": reward_id, "n": 1,
                        "desc": k["harmonious_light"]["flavor"]},
@@ -125,9 +164,10 @@ def convert_items():
     for it in load("items.json"):
         rarity = RARITY[it["rarity"]]
         t = it["type"].lower()
+        index = int(it["item_id"].rsplit("_", 1)[1])
         entry = {
             "id": it["item_id"],
-            "name": it["name"],
+            "name": item_name(t, index, rarity),
             "type": t,
             "rarity": rarity,
             "desc": it["properties"].get("description", ""),
@@ -151,11 +191,11 @@ def convert_items():
     for i, tier in enumerate(("t1", "t2", "t3"), start=1):
         items.append({"id": "harmony_token_%s" % tier, "name": "Harmony Token %s" % ("I" * i),
                       "type": "relic", "rarity": ("common", "uncommon", "rare")[i - 1],
-                      "offer_vp": (2, 4, 6)[i - 1],
+                      "offer_vp": (2, 3, 4)[i - 1],
                       "desc": "Proof of a bottleneck trial resolved in harmony."})
         items.append({"id": "shatter_shard_%s" % tier, "name": "Shatter Shard %s" % ("I" * i),
                       "type": "relic", "rarity": ("common", "uncommon", "rare")[i - 1],
-                      "offer_vp": (2, 4, 6)[i - 1],
+                      "offer_vp": (2, 3, 4)[i - 1],
                       "desc": "A cold splinter from a trial resolved by force."})
     save("items_catalog.json", {
         "_comment": "Item catalog - 150 items converted from the design-lane drop "

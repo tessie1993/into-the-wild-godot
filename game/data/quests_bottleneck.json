@@ -10,14 +10,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 4,
+        "vp": 3,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 4,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -31,14 +31,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 5,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -52,14 +52,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 7,
+        "vp": 5,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -73,14 +73,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 6,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 8,
+        "vp": 6,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -94,14 +94,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 3,
+        "vp": 2,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 5,
+        "vp": 4,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -115,14 +115,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 4,
+        "vp": 3,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 4,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -136,14 +136,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 5,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -157,14 +157,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 7,
+        "vp": 5,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -178,14 +178,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 6,
+        "vp": 4,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 8,
+        "vp": 6,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -199,14 +199,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 3,
+        "vp": 2,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 5,
+        "vp": 4,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -220,14 +220,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 4,
+        "vp": 3,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 4,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -241,14 +241,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 5,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -262,14 +262,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 7,
+        "vp": 5,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -283,14 +283,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 6,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 8,
+        "vp": 6,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -304,14 +304,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 3,
+        "vp": 2,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 5,
+        "vp": 4,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -325,14 +325,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 4,
+        "vp": 3,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 4,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -346,14 +346,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 5,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -367,14 +367,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 7,
+        "vp": 5,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -388,14 +388,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 6,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 8,
+        "vp": 6,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -409,14 +409,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 3,
+        "vp": 2,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 5,
+        "vp": 4,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -430,14 +430,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 4,
+        "vp": 3,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 4,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -451,14 +451,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 5,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -472,14 +472,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 7,
+        "vp": 5,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -493,14 +493,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 6,
+        "vp": 4,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 8,
+        "vp": 6,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -514,14 +514,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 3,
+        "vp": 2,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 5,
+        "vp": 4,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -535,14 +535,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 4,
+        "vp": 3,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 4,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -556,14 +556,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 5,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -577,14 +577,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 7,
+        "vp": 5,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -598,14 +598,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 6,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 8,
+        "vp": 6,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -619,14 +619,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 3,
+        "vp": 2,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 5,
+        "vp": 4,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -640,14 +640,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 4,
+        "vp": 3,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 4,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -661,14 +661,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 5,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -682,14 +682,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 7,
+        "vp": 5,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -703,14 +703,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 6,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 8,
+        "vp": 6,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -724,14 +724,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 3,
+        "vp": 2,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 5,
+        "vp": 4,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -745,14 +745,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 4,
+        "vp": 3,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 4,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -766,14 +766,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 5,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -787,14 +787,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 7,
+        "vp": 5,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -808,14 +808,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 6,
+        "vp": 4,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 8,
+        "vp": 6,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -829,14 +829,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 3,
+        "vp": 2,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 5,
+        "vp": 4,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -850,14 +850,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 4,
+        "vp": 3,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 4,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -871,14 +871,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 2,
         "item": "harmony_token_t1"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 6,
+        "vp": 5,
         "light": -3,
         "item": "shatter_shard_t1"
       }
@@ -892,14 +892,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 5,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t2"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 7,
+        "vp": 5,
         "light": -4,
         "item": "shatter_shard_t2"
       }
@@ -913,14 +913,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 6,
+        "vp": 4,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 8,
+        "vp": 6,
         "light": -5,
         "item": "shatter_shard_t3"
       }
@@ -934,7 +934,70 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
+        "vp": 2,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_46",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
         "vp": 3,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_47",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_48",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
         "light": 2,
         "item": "harmony_token_t1"
       },
@@ -947,11 +1010,11 @@
       }
     },
     {
-      "id": "quest_46",
-      "title": "The Trial of the Furnace Heat",
-      "giver": "Carl the Blacksmith",
-      "element": "stone",
-      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "id": "quest_49",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
@@ -968,69 +1031,6 @@
       }
     },
     {
-      "id": "quest_47",
-      "title": "The Trial of the Wool Shortage",
-      "giver": "Elder Sarah",
-      "element": "grain",
-      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
-      "light": {
-        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
-        "cost_commons": 5,
-        "vp": 5,
-        "light": 4,
-        "item": "harmony_token_t3"
-      },
-      "dark": {
-        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
-        "rage": 2,
-        "vp": 6,
-        "light": -5,
-        "item": "shatter_shard_t3"
-      }
-    },
-    {
-      "id": "quest_48",
-      "title": "The Trial of the Ancient Seal",
-      "giver": "The Lost Scholar",
-      "element": "spirit",
-      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
-      "light": {
-        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
-        "cost_commons": 5,
-        "vp": 5,
-        "light": 2,
-        "item": "harmony_token_t1"
-      },
-      "dark": {
-        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
-        "rage": 2,
-        "vp": 7,
-        "light": -3,
-        "item": "shatter_shard_t1"
-      }
-    },
-    {
-      "id": "quest_49",
-      "title": "The Trial of the Cooking Fuel",
-      "giver": "Theresa the Cook",
-      "element": "wood",
-      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
-      "light": {
-        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
-        "cost_commons": 5,
-        "vp": 6,
-        "light": 4,
-        "item": "harmony_token_t2"
-      },
-      "dark": {
-        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
-        "rage": 2,
-        "vp": 8,
-        "light": -4,
-        "item": "shatter_shard_t2"
-      }
-    },
-    {
       "id": "quest_50",
       "title": "The Trial of the Ruin Barrier",
       "giver": "Ancient Statue",
@@ -1039,14 +1039,14 @@
       "light": {
         "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
         "cost_commons": 5,
-        "vp": 3,
+        "vp": 2,
         "light": 4,
         "item": "harmony_token_t3"
       },
       "dark": {
         "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
         "rage": 2,
-        "vp": 5,
+        "vp": 4,
         "light": -5,
         "item": "shatter_shard_t3"
       }

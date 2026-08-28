@@ -309,6 +309,9 @@ func resolve_bottleneck(p: PlayerState, quest: Dictionary, dark: bool) -> bool:
 	var path: Dictionary = quest.get("dark" if dark else "light", {})
 	if path.is_empty() or p.trials_done.has(String(quest.get("id", ""))):
 		return false
+	# Balance: the island only tests each wanderer so many times (TUNE).
+	if p.trials_done.size() >= int(decks.config.get("wild", {}).get("trials_per_player", 2)):
+		return false
 	if not dark:
 		if p.commons_count() < int(path.get("cost_commons", 5)):
 			return false
@@ -348,13 +351,32 @@ func use_best_tool(p: PlayerState) -> Dictionary:
 
 
 ## Chest roll (content drop): pity-protected rarity roll via GameMathEngine,
-## then a random catalog item of that rarity.
-func open_chest(p: PlayerState) -> Dictionary:
+## then a random catalog item of that rarity. Chests on spirit ground can
+## hold relics.
+func open_chest(p: PlayerState, include_relics: bool = false) -> Dictionary:
 	var rarity := GameMathEngine.roll_loot_with_pity(
 		{"uncommon": 70.0, "rare": 25.0, "legendary": 5.0}, p.chest_pity, "legendary", 10)
 	if rarity == "null":
 		rarity = "uncommon"
-	return decks.random_catalog_item(rarity, ["tool", "gear", "consumable"])
+	var types: Array = ["tool", "gear", "consumable"]
+	if include_relics:
+		types.append("relic")
+	return decks.random_catalog_item(rarity, types)
+
+
+## An item found in the wild (T2+ gathers, fight loot): weighted rarity roll,
+## added to the pack. Returns the catalog def, or {} when nothing fits.
+func find_catalog_item(p: PlayerState, types: Array) -> Dictionary:
+	if p.items.size() >= p.pack_size:
+		return {}
+	var rarity := GameMathEngine.roll_loot_with_replacement(
+		{"common": 50.0, "uncommon": 30.0, "rare": 15.0, "legendary": 5.0})
+	var it := decks.random_catalog_item(rarity, types)
+	if it.is_empty():
+		return {}
+	p.items.append(String(it["id"]))
+	EventBus.inventory_changed.emit(p.index)
+	return it
 
 
 # ------------------------------------------------------------------ fights

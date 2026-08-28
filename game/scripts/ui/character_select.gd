@@ -41,7 +41,7 @@ func _ready() -> void:
 
 func _build_ui() -> void:
 	var bg := ColorRect.new()
-	bg.color = Color("121a14")
+	bg.color = UITheme.INK
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
@@ -62,11 +62,7 @@ func _build_ui() -> void:
 	title_box.add_theme_constant_override("separation", 6)
 	root_vbox.add_child(title_box)
 
-	_header_label = Label.new()
-	_header_label.text = "CHOOSE YOUR WANDERERS"
-	_header_label.add_theme_font_size_override("font_size", 42)
-	_header_label.add_theme_color_override("font_color", Color("bfe8cf"))
-	_header_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_header_label = UITheme.title_label("CHOOSE YOUR WANDERERS", 44)
 	title_box.add_child(_header_label)
 
 	_sub_label = Label.new()
@@ -105,6 +101,7 @@ func _build_ui() -> void:
 	back_btn.text = "◂ Back to Shore"
 	back_btn.custom_minimum_size = Vector2(220, 60)
 	back_btn.add_theme_font_size_override("font_size", 22)
+	UITheme.style_button(back_btn)
 	back_btn.pressed.connect(_on_back_pressed)
 	bottom_bar.add_child(back_btn)
 
@@ -116,9 +113,10 @@ func _build_ui() -> void:
 	bottom_bar.add_child(_selection_status_label)
 
 	_start_button = Button.new()
-	_start_button.text = "Wash Ashore ▸"
-	_start_button.custom_minimum_size = Vector2(240, 60)
+	_start_button.text = "Confirm Wanderers ▸"
+	_start_button.custom_minimum_size = Vector2(280, 60)
 	_start_button.add_theme_font_size_override("font_size", 24)
+	UITheme.style_button(_start_button, "primary")
 	_start_button.pressed.connect(_on_start_pressed)
 	bottom_bar.add_child(_start_button)
 
@@ -138,22 +136,7 @@ func _create_character_card(c: Dictionary) -> Control:
 
 	var panel := PanelContainer.new()
 	panel.custom_minimum_size = Vector2(340, 560)
-	
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.10, 0.14, 0.11, 0.95)
-	style.border_width_left = 3
-	style.border_width_top = 3
-	style.border_width_right = 3
-	style.border_width_bottom = 3
-	style.border_color = Color(accent.r, accent.g, accent.b, 0.6)
-	style.corner_radius_top_left = 12
-	style.corner_radius_top_right = 12
-	style.corner_radius_bottom_left = 12
-	style.corner_radius_bottom_right = 12
-	style.content_margin_left = 18
-	style.content_margin_top = 18
-	style.content_margin_right = 18
-	style.content_margin_bottom = 18
+	var style := UITheme.panel_style(Color(accent.r, accent.g, accent.b, 0.6), Color(0.07, 0.12, 0.10, 0.97), 12, 3, 18)
 	panel.add_theme_stylebox_override("panel", style)
 	_card_panels[cid] = panel
 
@@ -161,13 +144,19 @@ func _create_character_card(c: Dictionary) -> Control:
 	vbox.add_theme_constant_override("separation", 10)
 	panel.add_child(vbox)
 
-	# Name & Class
+	# Name & Class — flanked by the element medallion like the mockup headers.
+	var name_row := HBoxContainer.new()
+	name_row.alignment = BoxContainer.ALIGNMENT_CENTER
+	name_row.add_theme_constant_override("separation", 10)
+	vbox.add_child(name_row)
+	name_row.add_child(UITheme.medallion(accent, 22.0))
 	var lbl_name := Label.new()
-	lbl_name.text = cname
+	lbl_name.text = "The %s" % cname if not cname.begins_with("The ") else cname
 	lbl_name.add_theme_font_size_override("font_size", 24)
-	lbl_name.add_theme_color_override("font_color", Color("f2d06b"))
+	lbl_name.add_theme_color_override("font_color", UITheme.GOLD)
 	lbl_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vbox.add_child(lbl_name)
+	name_row.add_child(lbl_name)
+	name_row.add_child(UITheme.medallion(accent, 22.0))
 
 	var lbl_desc := Label.new()
 	lbl_desc.text = personality
@@ -198,22 +187,24 @@ func _create_character_card(c: Dictionary) -> Control:
 	lbl_cross.add_theme_color_override("font_color", Color("e87f7f"))
 	aff_box.add_child(lbl_cross)
 
-	# Stats grid
-	var stats_lbl := Label.new()
-	stats_lbl.text = "🏃 Move: %d   🎒 Pack: %d   ✋ Hand: %d" % [move, pack, hand]
-	stats_lbl.add_theme_font_size_override("font_size", 15)
-	stats_lbl.add_theme_color_override("font_color", Color("e8e2cf"))
-	stats_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vbox.add_child(stats_lbl)
+	# Stat chips row (mockup: shield chips under the portrait)
+	var chips := HBoxContainer.new()
+	chips.alignment = BoxContainer.ALIGNMENT_CENTER
+	chips.add_theme_constant_override("separation", 6)
+	vbox.add_child(chips)
+	chips.add_child(UITheme.stat_chip("Move", str(move)))
+	chips.add_child(UITheme.stat_chip("Pack", str(pack)))
+	chips.add_child(UITheme.stat_chip("Hand", str(hand)))
+	chips.add_child(UITheme.stat_chip("Energy", str(int(c.get("energy_start", 2)))))
 
 	var sep2 := HSeparator.new()
 	vbox.add_child(sep2)
 
 	# Perk & Weakness
 	var perk_title := Label.new()
-	perk_title.text = "Perk: %s" % String(perk.get("name", ""))
+	perk_title.text = "❖ Perk — %s" % String(perk.get("name", ""))
 	perk_title.add_theme_font_size_override("font_size", 15)
-	perk_title.add_theme_color_override("font_color", Color("bfe8cf"))
+	perk_title.add_theme_color_override("font_color", UITheme.GOLD_DEEP)
 	vbox.add_child(perk_title)
 
 	var perk_desc := Label.new()
@@ -224,9 +215,9 @@ func _create_character_card(c: Dictionary) -> Control:
 	vbox.add_child(perk_desc)
 
 	var weak_title := Label.new()
-	weak_title.text = "Weakness: %s" % String(weakness.get("name", ""))
+	weak_title.text = "✕ Weakness — %s" % String(weakness.get("name", ""))
 	weak_title.add_theme_font_size_override("font_size", 15)
-	weak_title.add_theme_color_override("font_color", Color("e8a8a8"))
+	weak_title.add_theme_color_override("font_color", UITheme.DANGER)
 	vbox.add_child(weak_title)
 
 	var weak_desc := Label.new()
@@ -245,6 +236,7 @@ func _create_character_card(c: Dictionary) -> Control:
 	btn.text = "Select"
 	btn.custom_minimum_size = Vector2(0, 48)
 	btn.add_theme_font_size_override("font_size", 18)
+	UITheme.style_button(btn)
 	btn.pressed.connect(_on_character_picked.bind(cid))
 	vbox.add_child(btn)
 	_card_buttons[cid] = btn
@@ -292,19 +284,17 @@ func _update_view() -> void:
 			btn.text = "Chosen by Player %d" % (claimed_by + 1)
 			btn.disabled = claimed_by != _current_picking_player
 			style.border_color = col
-			style.border_width_left = 5
-			style.border_width_top = 5
-			style.border_width_right = 5
-			style.border_width_bottom = 5
+			style.set_border_width_all(5)
+			# Mockup: the chosen card glows.
+			style.shadow_color = Color(col.r, col.g, col.b, 0.45)
+			style.shadow_size = 12
 		else:
 			btn.text = "Select as Player %d" % (_current_picking_player + 1)
 			btn.disabled = false
 			var default_accent: Color = CHAR_THEME_COLORS.get(cid, Color("4a7c59"))
 			style.border_color = Color(default_accent.r, default_accent.g, default_accent.b, 0.5)
-			style.border_width_left = 3
-			style.border_width_top = 3
-			style.border_width_right = 3
-			style.border_width_bottom = 3
+			style.set_border_width_all(3)
+			style.shadow_size = 0
 
 
 func _on_character_picked(cid: String) -> void:

@@ -1483,10 +1483,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_ancient_gear",
-        "tier": "uncommon",
-        "element": "spirit",
+        "op": "gain_item",
+        "id": "relic_item_30",
         "desc": "The Guardian-Sentry bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1525,10 +1523,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_ancient_gear",
-        "tier": "uncommon",
-        "element": "spirit",
+        "op": "gain_item",
+        "id": "relic_item_22",
         "desc": "The Sanctum-Warden bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1567,10 +1563,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_ancient_gear",
-        "tier": "uncommon",
-        "element": "spirit",
+        "op": "gain_item",
+        "id": "relic_item_06",
         "desc": "The Prism-Core bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1609,10 +1603,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_sulfur_ash",
-        "tier": "uncommon",
-        "element": "stone",
+        "op": "gain_item",
+        "id": "relic_item_14",
         "desc": "The Solaris-Phoenix bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1651,10 +1643,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_frost_shard",
-        "tier": "uncommon",
-        "element": "water",
+        "op": "gain_item",
+        "id": "relic_item_18",
         "desc": "The Lunar-Hydra bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1693,10 +1683,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_ancient_gear",
-        "tier": "uncommon",
-        "element": "spirit",
+        "op": "gain_item",
+        "id": "relic_item_14",
         "desc": "The Ruin-Gargoyle bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1735,10 +1723,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_ancient_gear",
-        "tier": "uncommon",
-        "element": "spirit",
+        "op": "gain_item",
+        "id": "relic_item_30",
         "desc": "The Aether-Drake bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1777,10 +1763,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_peat_moss",
-        "tier": "uncommon",
-        "element": "ether",
+        "op": "gain_item",
+        "id": "relic_item_26",
         "desc": "The Void-Leviathan bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1819,10 +1803,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_cactus_flesh",
-        "tier": "uncommon",
-        "element": "grain",
+        "op": "gain_item",
+        "id": "relic_item_10",
         "desc": "The Chronos-Sphinx bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1861,10 +1843,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_plant_fiber",
-        "tier": "uncommon",
-        "element": "grain",
+        "op": "gain_item",
+        "id": "relic_item_26",
         "desc": "The Gaia-Gorgon bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1903,10 +1883,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_frost_shard",
-        "tier": "uncommon",
-        "element": "water",
+        "op": "gain_item",
+        "id": "relic_item_22",
         "desc": "The Storm-Valkyrie bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1945,10 +1923,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_peat_moss",
-        "tier": "uncommon",
-        "element": "ether",
+        "op": "gain_item",
+        "id": "relic_item_14",
         "desc": "The Abyss-Viper bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -1987,10 +1963,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_sulfur_ash",
-        "tier": "uncommon",
-        "element": "stone",
+        "op": "gain_item",
+        "id": "relic_item_13",
         "desc": "The Apex-Chimera bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -2029,10 +2003,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_cactus_flesh",
-        "tier": "uncommon",
-        "element": "grain",
+        "op": "gain_item",
+        "id": "relic_item_30",
         "desc": "The Primal-Wurm bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
@@ -2071,10 +2043,8 @@
         "n": 3
       },
       "gift": {
-        "op": "gain_card",
-        "id": "pristine_plant_fiber",
-        "tier": "uncommon",
-        "element": "grain",
+        "op": "gain_item",
+        "id": "relic_item_09",
         "desc": "The Oracle-Stag bows deeply, offering a pristine resource in absolute reverence."
       },
       "reward": {
