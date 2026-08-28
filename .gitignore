@@ -2,8 +2,8 @@
 .godot/
 .import/
 export.cfg
-export_presets.cfg
 *.translation
+# export_presets.cfg is committed on purpose — CI needs it to export the APK
 
 # Android build
 android/

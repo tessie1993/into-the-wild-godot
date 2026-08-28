@@ -1,9 +1,0 @@
-{
-  "$source": "spec §8",
-  "deck_size": 12,
-  "values": [1, 2, 2, 3, 3, 4, 4, 5, 5, 6],
-  "specials": [
-    { "id": "spirit_wild", "count": 2, "effect": "OPEN — Spirit/Wild resolution unspecified (GDD Q1)" }
-  ],
-  "digital_parity": "identical distribution"
-}

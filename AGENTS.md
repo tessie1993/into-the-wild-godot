@@ -36,21 +36,31 @@ never hardcoded.
 ## Layout
 
 ```
-data/            all content + balance (JSON)
-scenes/          thin .tscn shells (root node + script only)
-scripts/
-  autoload/      event_bus.gd, game_state.gd   ← global state + turn engine
-  core/          hex.gd, island_tile.gd, player_state.gd, board.gd
-  systems/       decks.gd, karma.gd, crafting.gd
-  game/          game.gd (play scene: board render, action UI, encounters)
-  ui/            main_menu.gd
+game/            the Godot 4 project — everything the app ships
+  data/          all content + balance (JSON)
+  scenes/        thin .tscn shells (root node + script only)
+  scripts/
+    autoload/    event_bus.gd, game_state.gd   ← global state + turn engine
+    core/        hex.gd, island_tile.gd, player_state.gd, board.gd
+    systems/     decks.gd, karma.gd, crafting.gd, quest_engine.gd, …
+    game/        game.gd (play scene: board render, action UI, encounters)
+    ui/          main_menu.gd, character_select.gd
+  tests/         smoke.gd — headless boot + one turn of each action
+docs/design-lane/  design corpus (physical + digital); generated/ holds
+                   content drops not yet wired into game/ — different schema,
+                   integrate deliberately, never copy blindly
+tools/engine-analyzer/  Vite/React economy inspector for the design lane
 ```
 
 ## How to run / test
 
-- Editor: open `project.godot` in Godot **4.4+**, F5.
-- Headless smoke test (CI-able):
-  `godot --headless --path . --quit` (loads scripts; catches parse errors).
+- Editor: open `game/project.godot` in Godot **4.4+**, F5.
+- Headless smoke test (what CI runs — as a scene so autoloads are live):
+  `godot --headless --path game res://tests/smoke.tscn`
+- CI: `.github/workflows/android-debug.yml` imports the project, runs the
+  smoke test, and exports a signed Android **debug APK** artifact on every
+  push and pull request (non-gradle export; gradle only becomes necessary
+  for the Play Billing plugin at ship time).
 - Android export (later phases): Gradle build **must** stay enabled — the
   Play Billing plugin requires it. Target SDK **36**.
 

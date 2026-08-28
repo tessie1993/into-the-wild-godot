@@ -7,11 +7,48 @@ into the island's harmony. Kindness is a strategy, not a decoration.
 
 **Playable prototype** — local pass-and-play, 1–4 players, placeholder art.
 
+## Repository map
+
+```
+game/               the Godot 4 project (open this in Godot)
+  data/             all game content + balance (JSON) — data-driven
+  scenes/           thin .tscn shells (root node + script only)
+  scripts/          GDScript: autoload/ core/ systems/ game/ ui/
+  tests/            headless smoke test
+GDD.md              the digital game design authority (v0.2 canon synthesis)
+AGENTS.md           conventions + roadmap for AI coding agents
+docs/
+  art-direction.md  approved art style + asset list
+  design-lane/      the physical/board-game design corpus: spec, economy
+                    engine, item/creature catalogs, proposals, reviews,
+                    and generated/ content drops not yet wired into game/
+tools/
+  engine-analyzer/  Vite + React app for inspecting the design-lane economy
+.github/workflows/  CI: headless smoke test + Android debug APK
+```
+
 ## Run it
 
 1. Install [Godot 4.4 or newer](https://godotengine.org/download) (standard build).
-2. Open Godot → Import → select this folder's `project.godot`.
+2. Open Godot → Import → select `game/project.godot`.
 3. Press **F5**. Menu → set player count → *Wash Ashore*.
+
+Headless smoke test (same check CI runs):
+
+```sh
+godot --headless --path game res://tests/smoke.tscn
+```
+
+## Android debug APK
+
+Every push and pull request builds a debug APK via GitHub Actions
+(`.github/workflows/android-debug.yml`). Grab it from the workflow run's
+**artifacts**. To build locally: install the Android export templates for
+your Godot version, then
+
+```sh
+godot --headless --path game --export-debug "Android Debug" build/into-the-wild-debug.apk
+```
 
 ## What works in v0.1
 
@@ -25,15 +62,11 @@ into the island's harmony. Kindness is a strategy, not a decoration.
 - Crafting with 4 rarity tiers; Give (+Light); Offerings at Guardian sites (+VP)
 - 4 unique characters, each with a unique skill and a unique weakness
 - Two victory paths (Light and full Dark), autosave, pass-and-play
+- Character select, quest engine, trading, action cards, creature challenges,
+  dark raiding, skill tree, base building (Phases 1–3)
 
 ## Read next
 
-- `GDD.md` — the full game design, distilled from the designer's spec
-- `AGENTS.md` — conventions + roadmap for AI coding agents (Orca / Claude Code)
-
-## Workflow
-
-This repo is built for agent-driven development: open it in Orca, point your
-agents at `AGENTS.md`, and run parallel lanes (gameplay / UI / content).
-All game content is data-driven in `data/*.json` — most design changes need
-no code at all.
+- `GDD.md` — the full digital game design, distilled from the designer's spec
+- `AGENTS.md` — conventions + roadmap for AI coding agents
+- `docs/design-lane/` — the wider design corpus both builds draw from
