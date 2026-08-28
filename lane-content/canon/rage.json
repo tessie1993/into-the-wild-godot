@@ -1,0 +1,25 @@
+{
+  "$source": "spec §5b, economy-engine.md §7b",
+  "track": { "min": 0, "max": 10, "start": 0 },
+  "faucets": [
+    { "trigger": "round_start",       "delta": 1, "note": "temporal decay, every round" },
+    { "trigger": "exploit_tile",      "delta": 1 },
+    { "trigger": "craft_dark_kit",    "delta": 1 },
+    { "trigger": "cast_dark_spell",   "delta": 1 }
+  ],
+  "sinks": [
+    { "trigger": "guardian_quest_step", "delta": -1 },
+    { "trigger": "give_back_light",     "delta": -1 }
+  ],
+  "fight_modifier": [
+    { "range": [0, 2],  "f_bonus": 0 },
+    { "range": [3, 5],  "f_bonus": 1 },
+    { "range": [6, 8],  "f_bonus": 2 },
+    { "range": [9, 10], "f_bonus": 3 }
+  ],
+  "setback_discard": [
+    { "range": [0, 4],  "extra_discard": 0 },
+    { "range": [5, 8],  "extra_discard": 1 },
+    { "range": [9, 10], "extra_discard": 2 }
+  ]
+}

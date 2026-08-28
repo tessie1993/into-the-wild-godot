@@ -1,0 +1,41 @@
+{
+  "_comment": "MERGED roster — lane-systems character identities (complete, no numbers) x Godot v0.1 numeric loadouts. Signature items and skill trees live in the lane docs; v1 digital implements affinity, stats, one passive perk and one weakness each. heart = loved element (-1 F vs its creatures), cross = distrusted (+1 F, per creatures.md affinity rule).",
+  "characters": [
+    {
+      "id": "cartographer",
+      "name": "The Cartographer",
+      "personality": "Former ship's navigator — charts, paths, the unknown.",
+      "heart": "water", "cross": "stone",
+      "move": 4, "pack_size": 4, "hand_limit": 7, "energy_start": 2,
+      "perk": { "id": "pathfinding", "name": "Pathfinding", "desc": "Moving across already-explored tiles costs no extra on Tier 2 (T2 entry 1 cheaper, min 1)." },
+      "weakness": { "id": "restless", "name": "Restless", "desc": "Cannot choose the same main action two turns in a row." }
+    },
+    {
+      "id": "botanist",
+      "name": "The Botanist",
+      "personality": "Ship's physician and naturalist — flora, potions, growth.",
+      "heart": "wood", "cross": "ether",
+      "move": 3, "pack_size": 5, "hand_limit": 7, "energy_start": 2,
+      "perk": { "id": "bountiful_harvest", "name": "Bountiful Harvest", "desc": "+1 common when gathering on Jungle or Meadow." },
+      "weakness": { "id": "soft_step", "name": "Soft Step", "desc": "Draws one fewer common when gathering on Mountain or Volcano." }
+    },
+    {
+      "id": "blacksmith",
+      "name": "The Blacksmith",
+      "personality": "Ship's carpenter and metalworker — structure, fire, patience.",
+      "heart": "stone", "cross": "water",
+      "move": 2, "pack_size": 6, "hand_limit": 7, "energy_start": 2,
+      "perk": { "id": "true_temper", "name": "Durable Construction", "desc": "Crafting costs 1 fewer common (minimum 1)." },
+      "weakness": { "id": "heavy_gear", "name": "Heavy Gear", "desc": "Lowest movement; storm setbacks cost an extra move." }
+    },
+    {
+      "id": "outcast",
+      "name": "The Outcast",
+      "personality": "Stowaway and scavenger — isolation, guile, survival.",
+      "heart": "ether", "cross": "grain",
+      "move": 3, "pack_size": 4, "hand_limit": 9, "energy_start": 2,
+      "perk": { "id": "rage_capitalizer", "name": "Rage Capitalizer", "desc": "+1 to fight draws while Island Rage is 6 or higher." },
+      "weakness": { "id": "distrusted", "name": "Distrusted", "desc": "Care-phase giving grants no Light on the round after any fight (won or lost)." }
+    }
+  ]
+}

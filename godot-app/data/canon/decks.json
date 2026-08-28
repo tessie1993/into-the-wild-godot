@@ -1,0 +1,27 @@
+{
+  "$source": "economy-engine.md §3.1",
+  "decks": [
+    {
+      "id": "T1", "ring": "outer", "size": 40,
+      "composition": { "uncommon": 0.75, "rare": 0.25, "legendary": 0.0 },
+      "print_counts": { "uncommon": 30, "rare": 10, "legendary": 0 },
+      "claimed_ev": 4.5
+    },
+    {
+      "id": "T2", "ring": "inner", "size": 40,
+      "composition": { "uncommon": 0.40, "rare": 0.45, "legendary": 0.15 },
+      "print_counts": { "uncommon": 16, "rare": 18, "legendary": 6 },
+      "claimed_ev": 9.3,
+      "gather_rule": "draw2keep1",
+      "claimed_ev_draw2keep1": 13.03
+    },
+    {
+      "id": "ascended", "ring": "ascended", "size": null,
+      "composition": null,
+      "print_counts": null,
+      "claimed_ev": 18.6,
+      "note": "spec §13: ~2x T2 EV. Composition unspecified — OPEN (GDD Q3)."
+    }
+  ],
+  "exhaustion": "shuffle that ring's discards into a new deck"
+}

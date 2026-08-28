@@ -1,0 +1,29 @@
+{
+  "_comment": "v2 — CE-legal recipes per canon/crafting.json budgets (C 2-3 CE commons-only; U 6 CE >=1 uncommon card; R 18 CE >=1 rare card). cost.commons = {id:n}; cost.any_commons = n (any commons); cost.any_cards = {tier:n}. Buildings place on your current tile. Blacksmith perk: -1 common (min 1 total).",
+  "recipes": [
+    { "id": "cooked_meal", "name": "Cooked Meal", "tier": "common", "kind": "item",
+      "cost": { "commons": { "grain": 1, "fresh_water": 1 } },
+      "desc": "Care phase: eat for +3 Energy (raw commons give +1)." },
+    { "id": "rope", "name": "Rope", "tier": "common", "kind": "item",
+      "cost": { "commons": { "vines": 2 } },
+      "desc": "Holds things together. Including plans." },
+    { "id": "stone_axe", "name": "Stone Axe", "tier": "common", "kind": "item",
+      "cost": { "commons": { "sticks": 1, "flint": 1, "vines": 1 } },
+      "desc": "+1 common when gathering on Jungle or Mountain." },
+    { "id": "healing_salve", "name": "Healing Salve", "tier": "common", "kind": "item",
+      "cost": { "commons": { "moss": 1, "fresh_water": 1 } },
+      "desc": "Cancels one Bite against you." },
+    { "id": "trail_cloak", "name": "Trail Cloak", "tier": "uncommon", "kind": "item",
+      "cost": { "any_cards": { "uncommon": 1 }, "any_commons": 3 },
+      "desc": "Tier 2 movement costs 1 less." },
+    { "id": "offering_bundle", "name": "Offering Bundle", "tier": "uncommon", "kind": "item",
+      "cost": { "any_cards": { "uncommon": 1 }, "any_commons": 2, "commons": { "spirit_mote": 1 } },
+      "desc": "The Guardians accept this. Spirit is earned, not gathered." },
+    { "id": "homebase", "name": "Homebase Camp", "tier": "uncommon", "kind": "building",
+      "cost": { "any_cards": { "uncommon": 1 }, "any_commons": 3 },
+      "desc": "Placed on your tile. Acts as Crafting Bench: unlocks Uncommon+ crafting here." },
+    { "id": "workshop", "name": "Workshop", "tier": "rare", "kind": "building",
+      "cost": { "any_cards": { "rare": 1, "uncommon": 2 }, "any_commons": 3 },
+      "desc": "Placed on your tile. Unlocks Legendary crafting (needs a bench here too)." }
+  ]
+}

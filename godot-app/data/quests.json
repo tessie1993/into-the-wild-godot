@@ -1,0 +1,22 @@
+{
+  "_comment": "Common quests: 3 drawn per session (easy/medium/hard), open to all players, no first-finisher bonus. Guardian quests: personal, given at guardian tiles, always contain a give-back component. Some quests revoke VP if abandoned (revoke_vp). v1 engine tracks these as data; full quest engine is a roadmap item.",
+  "common": {
+    "easy": [
+      { "id": "first_meal", "name": "A Meal Shared", "desc": "Give any resource to another player.", "vp": 2 },
+      { "id": "shoreline", "name": "Learn the Shore", "desc": "Explore 3 Tier 1 tiles.", "vp": 2 }
+    ],
+    "medium": [
+      { "id": "craft_gift", "name": "Made to be Given", "desc": "Craft an item and give it away.", "vp": 4 },
+      { "id": "deep_step", "name": "Into the Deep", "desc": "Enter a Tier 2 tile and return with an uncommon resource.", "vp": 4 }
+    ],
+    "hard": [
+      { "id": "circle_complete", "name": "The Circle Complete", "desc": "Make an offering at two different Guardian sites.", "vp": 7, "revoke_vp": true },
+      { "id": "no_one_hungry", "name": "No One Hungry", "desc": "In one round, every other player receives a resource from you.", "vp": 7 }
+    ]
+  },
+  "guardian": [
+    { "id": "grove_offering", "name": "The Grove Asks", "desc": "Bring an Offering Bundle to a Guardian. Half its makings must be gathered by another player.", "vp": 3, "light": 1 },
+    { "id": "stone_promise", "name": "A Promise to Stone", "desc": "Return a rare resource to the tile it came from.", "vp": 3, "light": 1 },
+    { "id": "quiet_water", "name": "Quiet the Waters", "desc": "Spend a full turn doing nothing but Rest at Wildwaters. Gain nothing. Notice everything.", "vp": 3, "light": 2 }
+  ]
+}

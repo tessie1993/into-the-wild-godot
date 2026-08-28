@@ -1,0 +1,13 @@
+{
+  "_comment": "Non-creature event cards. Effect types: gain_resource, lose_resource, light_delta, slow_next_turn, vp_delta. Events resolve immediately when drawn (see GDD 8.3).",
+  "events": [
+    { "id": "hidden_spring", "name": "Hidden Spring", "desc": "You find water no map remembers.", "type": "gain_resource", "rarity": "common", "amount": 1 },
+    { "id": "sudden_storm", "name": "Sudden Storm", "desc": "The island reminds you who is bigger.", "type": "slow_next_turn", "amount": 1 },
+    { "id": "spirit_whisper", "name": "Spirit Whisper", "desc": "A voice on the wind approves of how you travel.", "type": "light_delta", "amount": 1 },
+    { "id": "old_shrine", "name": "Old Shrine", "desc": "Someone tended this place once. You leave it better.", "type": "vp_delta", "amount": 1 },
+    { "id": "rotten_cache", "name": "Rotten Cache", "desc": "Someone hoarded here. It did not end well.", "type": "lose_resource", "amount": 1 },
+    { "id": "windfall", "name": "Windfall", "desc": "The land simply gives today.", "type": "gain_resource", "rarity": "uncommon", "amount": 1 },
+    { "id": "cold_mist", "name": "Cold Mist", "desc": "You wander in circles until it lifts.", "type": "slow_next_turn", "amount": 1 },
+    { "id": "echo_of_greed", "name": "Echo of Greed", "desc": "You catch yourself wanting more than you need.", "type": "light_delta", "amount": -1 }
+  ]
+}

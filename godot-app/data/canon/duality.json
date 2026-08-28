@@ -1,0 +1,36 @@
+{
+  "$source": "spec §5, §6; economy-engine.md §4.3",
+  "track": { "min": -10, "max": 10, "start": 0 },
+  "bands": [
+    { "id": "max_dark", "range": [-10, -8], "effects": ["Corrupt Gate unlocked", "double negative effects", "unlocks Dark Quests"], "hypocrisy_exempt": true },
+    { "id": "dark",     "range": [-7, -3],  "effects": ["-1 Move Speed", "+1 F on all creature fights", "creatures auto-Bite or attack"] },
+    { "id": "neutral",  "range": [-2, 2],   "effects": ["creatures offer a Demand challenge", "help = +1 Light", "exploit = +1 Dark and extra loot"] },
+    { "id": "light",    "range": [3, 7],    "effects": ["standard befriend options available"] },
+    { "id": "max_light","range": [8, 10],   "effects": ["Guardian Gate unlocked", "creatures always use Gift reaction", "Duality world events highly positive"] }
+  ],
+  "shifts": [
+    { "trigger": "gift_card",             "delta": 1,  "phase": "care",   "source": "actions-v1-draft Care" },
+    { "trigger": "generous_trade_3ce",    "delta": 1,  "phase": "care",   "source": "economy §4.3" },
+    { "trigger": "exploit_tile",          "delta": -1, "phase": "action", "source": "actions-v1-draft 1" },
+    { "trigger": "craft_dark_kit",        "delta": -1, "phase": "action", "source": "actions-v1-draft 2" },
+    { "trigger": "craft_spirit_item",     "delta": 1,  "phase": "action", "source": "actions-v1-draft 2" },
+    { "trigger": "cast_dark_spell",       "delta": -2, "phase": "action", "source": "actions-v1-draft 3" },
+    { "trigger": "cast_light_spell",      "delta": 1,  "phase": "action", "source": "actions-v1-draft 3" },
+    { "trigger": "guardian_giveback",     "delta": 2,  "phase": "action", "source": "actions-v1-draft 5" },
+    { "trigger": "dark_quest",            "delta": -3, "phase": "action", "source": "actions-v1-draft 5" },
+    { "trigger": "give_back_light",       "delta": 2,  "phase": "action", "source": "actions-v1-draft 6" },
+    { "trigger": "build_public_structure","delta": 2,  "phase": "action", "source": "spec §16" },
+    { "trigger": "befriend_creature",     "delta": 1,  "phase": "action", "source": "spec §8b, economy §3.3" },
+    { "trigger": "fight_creature",        "delta": -1, "phase": "action", "condition": "on fight WIN only; a lost fight resolves the Bite with no Duality shift", "source": "spec §8b 'win: 2 loot draws + Dark lean', economy §3.3, creatures.md" },
+    { "trigger": "fork_resource_dark_use","delta": -1, "phase": "any",    "source": "spec §16, economy §7" },
+    { "trigger": "change_action_pre_luck","delta": -1, "phase": "action", "source": "spec §9 decision lock" }
+  ],
+  "hypocrisy_penalty": {
+    "$source": "spec §5",
+    "rule": "if VP - Light >= 5, lose 1 Energy gain during Care phase per full 5 points of disparity",
+    "threshold": 5,
+    "penalty_per_threshold": -1,
+    "penalty_stat": "energy_gain",
+    "exempt_bands": ["max_dark"]
+  }
+}
