@@ -179,6 +179,31 @@ func _initialize() -> void:
 		var raid_res := DarkRaiding.execute_raid(p_dark, p_target, rng)
 		_check(bool(raid_res["success"]) and not bool(raid_res["blocked"]), "unblocked raid successfully steals materials")
 
+		# --- Viability Gate & Tiebreaker test
+		var p_win_a := PlayerState.new()
+		p_win_a.index = 0
+		p_win_a.vp = 20
+		p_win_a.light = 9
+		_check(game.get_victory_way(p_win_a) == "", "unviable without offerings or outcast")
+		p_win_a.offerings_made = 1
+		_check(game.get_victory_way(p_win_a) == "enlightened", "viable with 1 offering: qualifies for Enlightened")
+
+		var p_win_b := PlayerState.new()
+		p_win_b.index = 1
+		p_win_b.vp = 20
+		p_win_b.light = 8
+		p_win_b.offerings_made = 1
+
+		# Tiebreaker 1 test (Light priority)
+		game.players = [p_win_a, p_win_b]
+		game.resolve_round_end_victory()
+		_check(game.winner_index == 0 and game.winner_way == "enlightened", "tiebreaker 1: higher light (+9 vs +8) wins")
+
+		# Tiebreaker 3 test (Shared Victory when Light & Guardian VP equal)
+		p_win_b.light = 9
+		game.resolve_round_end_victory()
+		_check(game.winner_index == -2 and game.winner_way == "shared", "tiebreaker 3: equal light and guardian VP resolves in shared victory")
+
 		var cur: PlayerState = game.current_player()
 		cur.add_common("grain", 3)
 		var g0: int = cur.energy

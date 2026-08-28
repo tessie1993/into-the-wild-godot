@@ -162,7 +162,13 @@ func _refresh_tile(axial: Vector2i) -> void:
 
 func _place_pawn(p: PlayerState) -> void:
 	var node: Node2D = pawns[p.index]
-	node.position = Hex.to_pixel(p.pos, hex_size) + PAWN_OFFSETS[p.index % PAWN_OFFSETS.size()]
+	var target_pos := Hex.to_pixel(p.pos, hex_size) + PAWN_OFFSETS[p.index % PAWN_OFFSETS.size()]
+	if node.position == Vector2.ZERO or not is_inside_tree():
+		node.position = target_pos
+	else:
+		var tween := create_tween()
+		tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		tween.tween_property(node, "position", target_pos, 0.22)
 
 
 func _circle_points(radius: float, n: int) -> PackedVector2Array:
@@ -747,6 +753,14 @@ func _reveal(tile: IslandTile, p: PlayerState) -> void:
 	tile.explored = true
 	_refresh_tile(tile.axial)
 	EventBus.tile_explored.emit(tile.axial)
+	if tile_fills.has(tile.axial):
+		var fill: Polygon2D = tile_fills[tile.axial]
+		var center := Hex.to_pixel(tile.axial, hex_size)
+		fill.pivot_offset = center
+		var tween := create_tween()
+		tween.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tween.tween_property(fill, "scale", Vector2(1.08, 1.08), 0.12)
+		tween.tween_property(fill, "scale", Vector2(1.0, 1.0), 0.12)
 	if Game.quest_engine != null:
 		Game.quest_engine.on_tile_explored(p, tile)
 	_toast("You step into %s." % _terrain_name(tile))
@@ -1410,6 +1424,12 @@ func _close_modal() -> void:
 
 
 func _on_game_won(index: int, way: String) -> void:
+	if index == -2 or way == "shared":
+		winner_label.text = "★ Shared Victory! ★\n\nIn the spirit of harmony and island balance,\nthe wanderers finish equal in kindness and skill.\nCooperation was the journey all along."
+		winner_overlay.visible = true
+		return
+	if index < 0 or index >= Game.players.size():
+		return
 	var p: PlayerState = Game.players[index]
 	match way:
 		"enlightened":
@@ -1418,19 +1438,66 @@ func _on_game_won(index: int, way: String) -> void:
 			winner_label.text = "%s\nwalks the Capable Path.\nSkilled hands, and light enough to trust." % p.display_name
 		"endgame":
 			winner_label.text = "The seasons turn.\n%s came furthest on their path.\nThe island remembers everyone." % p.display_name
-		_:
+		"dark":
 			winner_label.text = "%s\ntakes the island in shadow.\nA hollow kind of crown." % p.display_name
+		_:
+			winner_label.text = "%s claims victory on the island!" % p.display_name
 	winner_overlay.visible = true
 
 
-# ================================================================= INPUT
+# ================================================================= INPUT & PLATFORM
+
+var _touch_points: Dictionary = {}
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		if modal_root != null and modal_root.visible:
+			_close_modal()
+		elif winner_overlay != null and winner_overlay.visible:
+			_back_to_menu()
+		else:
+			_show_modal("Return to Shore?", "Leave the current session and return to the main menu?", [
+				["Return to Menu", _back_to_menu],
+				["Keep Playing", _close_modal],
+			])
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if winner_overlay != null and winner_overlay.visible:
 		return
 	if modal_root != null and modal_root.visible:
 		return
-	if event is InputEventMouseButton:
+	if event is InputEventScreenTouch:
+		var st := event as InputEventScreenTouch
+		if st.pressed:
+			_touch_points[st.index] = st.position
+			if _touch_points.size() == 1:
+				_pressing = true
+				_drag_moved = false
+		else:
+			_touch_points.erase(st.index)
+			if _touch_points.is_empty():
+				if _pressing and not _drag_moved:
+					_handle_tap()
+				_pressing = false
+	elif event is InputEventScreenDrag:
+		var sd := event as InputEventScreenDrag
+		_touch_points[sd.index] = sd.position
+		if _touch_points.size() >= 2:
+			# Mobile pinch-to-zoom
+			var pkeys := _touch_points.keys()
+			var p1: Vector2 = _touch_points[pkeys[0]]
+			var p2: Vector2 = _touch_points[pkeys[1]]
+			var cur_dist := p1.distance_to(p2)
+			var prev_dist := (p1 - sd.relative).distance_to(p2)
+			if prev_dist > 0.0:
+				var factor := cur_dist / prev_dist
+				_zoom(factor)
+		elif _pressing:
+			if sd.relative.length() > 2.0:
+				_drag_moved = true
+			camera.position -= sd.relative / camera.zoom.x
+	elif event is InputEventMouseButton:
 		var mb := event as InputEventMouseButton
 		if mb.button_index == MOUSE_BUTTON_LEFT:
 			if mb.pressed:
