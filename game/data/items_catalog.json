@@ -1,0 +1,1373 @@
+{
+  "_comment": "Item catalog - 150 items converted from the design-lane drop (docs/design-lane/generated/items.json) plus the 6 bottleneck trial tokens. Tools: bonus_commons on Gather for `uses` gathers. Gear: T2 step-cost immunity in its element + armor reduces creature bites. Consumables: eaten in the Care phase. Relics: consumed by guardian offerings for offer_vp. Names are the drop's placeholders. Regenerate with the converter.",
+  "items": [
+    {
+      "id": "tool_item_01",
+      "name": "Flint Sickle",
+      "type": "tool",
+      "rarity": "common",
+      "desc": "A Common harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 3
+    },
+    {
+      "id": "tool_item_02",
+      "name": "Copper Sickle",
+      "type": "tool",
+      "rarity": "uncommon",
+      "desc": "A Uncommon harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 4
+    },
+    {
+      "id": "tool_item_03",
+      "name": "Ironwood Sickle",
+      "type": "tool",
+      "rarity": "rare",
+      "desc": "A Rare harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 5
+    },
+    {
+      "id": "tool_item_04",
+      "name": "Sunforged Sickle",
+      "type": "tool",
+      "rarity": "legendary",
+      "desc": "A Legendary harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 6
+    },
+    {
+      "id": "tool_item_05",
+      "name": "Flint Hatchet",
+      "type": "tool",
+      "rarity": "common",
+      "desc": "A Common harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 2
+    },
+    {
+      "id": "tool_item_06",
+      "name": "Copper Hatchet",
+      "type": "tool",
+      "rarity": "uncommon",
+      "desc": "A Uncommon harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 3
+    },
+    {
+      "id": "tool_item_07",
+      "name": "Ironwood Hatchet",
+      "type": "tool",
+      "rarity": "rare",
+      "desc": "A Rare harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 4
+    },
+    {
+      "id": "tool_item_08",
+      "name": "Sunforged Hatchet",
+      "type": "tool",
+      "rarity": "legendary",
+      "desc": "A Legendary harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 5
+    },
+    {
+      "id": "tool_item_09",
+      "name": "Flint Pick",
+      "type": "tool",
+      "rarity": "common",
+      "desc": "A Common harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 6
+    },
+    {
+      "id": "tool_item_10",
+      "name": "Copper Pick",
+      "type": "tool",
+      "rarity": "uncommon",
+      "desc": "A Uncommon harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 2
+    },
+    {
+      "id": "tool_item_11",
+      "name": "Ironwood Pick",
+      "type": "tool",
+      "rarity": "rare",
+      "desc": "A Rare harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 3
+    },
+    {
+      "id": "tool_item_12",
+      "name": "Sunforged Pick",
+      "type": "tool",
+      "rarity": "legendary",
+      "desc": "A Legendary harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 4
+    },
+    {
+      "id": "tool_item_13",
+      "name": "Flint Fishing Spear",
+      "type": "tool",
+      "rarity": "common",
+      "desc": "A Common harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 5
+    },
+    {
+      "id": "tool_item_14",
+      "name": "Copper Fishing Spear",
+      "type": "tool",
+      "rarity": "uncommon",
+      "desc": "A Uncommon harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 6
+    },
+    {
+      "id": "tool_item_15",
+      "name": "Ironwood Fishing Spear",
+      "type": "tool",
+      "rarity": "rare",
+      "desc": "A Rare harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 2
+    },
+    {
+      "id": "tool_item_16",
+      "name": "Sunforged Fishing Spear",
+      "type": "tool",
+      "rarity": "legendary",
+      "desc": "A Legendary harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 3
+    },
+    {
+      "id": "tool_item_17",
+      "name": "Flint Foraging Knife",
+      "type": "tool",
+      "rarity": "common",
+      "desc": "A Common harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 4
+    },
+    {
+      "id": "tool_item_18",
+      "name": "Copper Foraging Knife",
+      "type": "tool",
+      "rarity": "uncommon",
+      "desc": "A Uncommon harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 5
+    },
+    {
+      "id": "tool_item_19",
+      "name": "Ironwood Foraging Knife",
+      "type": "tool",
+      "rarity": "rare",
+      "desc": "A Rare harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 6
+    },
+    {
+      "id": "tool_item_20",
+      "name": "Sunforged Foraging Knife",
+      "type": "tool",
+      "rarity": "legendary",
+      "desc": "A Legendary harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 2
+    },
+    {
+      "id": "tool_item_21",
+      "name": "Flint Shovel",
+      "type": "tool",
+      "rarity": "common",
+      "desc": "A Common harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 3
+    },
+    {
+      "id": "tool_item_22",
+      "name": "Copper Shovel",
+      "type": "tool",
+      "rarity": "uncommon",
+      "desc": "A Uncommon harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 4
+    },
+    {
+      "id": "tool_item_23",
+      "name": "Ironwood Shovel",
+      "type": "tool",
+      "rarity": "rare",
+      "desc": "A Rare harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 5
+    },
+    {
+      "id": "tool_item_24",
+      "name": "Sunforged Shovel",
+      "type": "tool",
+      "rarity": "legendary",
+      "desc": "A Legendary harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 6
+    },
+    {
+      "id": "tool_item_25",
+      "name": "Flint Saw",
+      "type": "tool",
+      "rarity": "common",
+      "desc": "A Common harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 2
+    },
+    {
+      "id": "tool_item_26",
+      "name": "Copper Saw",
+      "type": "tool",
+      "rarity": "uncommon",
+      "desc": "A Uncommon harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 3
+    },
+    {
+      "id": "tool_item_27",
+      "name": "Ironwood Saw",
+      "type": "tool",
+      "rarity": "rare",
+      "desc": "A Rare harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 4
+    },
+    {
+      "id": "tool_item_28",
+      "name": "Sunforged Saw",
+      "type": "tool",
+      "rarity": "legendary",
+      "desc": "A Legendary harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 5
+    },
+    {
+      "id": "tool_item_29",
+      "name": "Flint Prybar",
+      "type": "tool",
+      "rarity": "common",
+      "desc": "A Common harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 6
+    },
+    {
+      "id": "tool_item_30",
+      "name": "Copper Prybar",
+      "type": "tool",
+      "rarity": "uncommon",
+      "desc": "A Uncommon harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 2
+    },
+    {
+      "id": "tool_item_31",
+      "name": "Ironwood Prybar",
+      "type": "tool",
+      "rarity": "rare",
+      "desc": "A Rare harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 3
+    },
+    {
+      "id": "tool_item_32",
+      "name": "Sunforged Prybar",
+      "type": "tool",
+      "rarity": "legendary",
+      "desc": "A Legendary harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 4
+    },
+    {
+      "id": "tool_item_33",
+      "name": "Flint Threshing Flail",
+      "type": "tool",
+      "rarity": "common",
+      "desc": "A Common harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 5
+    },
+    {
+      "id": "tool_item_34",
+      "name": "Copper Threshing Flail",
+      "type": "tool",
+      "rarity": "uncommon",
+      "desc": "A Uncommon harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 6
+    },
+    {
+      "id": "tool_item_35",
+      "name": "Ironwood Threshing Flail",
+      "type": "tool",
+      "rarity": "rare",
+      "desc": "A Rare harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 2
+    },
+    {
+      "id": "tool_item_36",
+      "name": "Sunforged Threshing Flail",
+      "type": "tool",
+      "rarity": "legendary",
+      "desc": "A Legendary harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 3
+    },
+    {
+      "id": "tool_item_37",
+      "name": "Flint Gathering Hook",
+      "type": "tool",
+      "rarity": "common",
+      "desc": "A Common harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 4
+    },
+    {
+      "id": "tool_item_38",
+      "name": "Copper Gathering Hook",
+      "type": "tool",
+      "rarity": "uncommon",
+      "desc": "A Uncommon harvesting tool. Its durable structure yields 2.0x raw resources.",
+      "bonus_commons": 2,
+      "uses": 5
+    },
+    {
+      "id": "tool_item_39",
+      "name": "Ironwood Gathering Hook",
+      "type": "tool",
+      "rarity": "rare",
+      "desc": "A Rare harvesting tool. Its durable structure yields 1.0x raw resources.",
+      "bonus_commons": 1,
+      "uses": 6
+    },
+    {
+      "id": "tool_item_40",
+      "name": "Sunforged Gathering Hook",
+      "type": "tool",
+      "rarity": "legendary",
+      "desc": "A Legendary harvesting tool. Its durable structure yields 1.5x raw resources.",
+      "bonus_commons": 1,
+      "uses": 2
+    },
+    {
+      "id": "gear_item_01",
+      "name": "Patched Cloak",
+      "type": "gear",
+      "rarity": "common",
+      "desc": "Wearable protective gear of Common quality. Grants full survival protection against wooded_lake environmental drains.",
+      "immunity_element": "wood",
+      "armor": 1
+    },
+    {
+      "id": "gear_item_02",
+      "name": "Tanned Cloak",
+      "type": "gear",
+      "rarity": "uncommon",
+      "desc": "Wearable protective gear of Uncommon quality. Grants full survival protection against rocky_ridge environmental drains.",
+      "immunity_element": "stone",
+      "armor": 2
+    },
+    {
+      "id": "gear_item_03",
+      "name": "Warded Cloak",
+      "type": "gear",
+      "rarity": "rare",
+      "desc": "Wearable protective gear of Rare quality. Grants full survival protection against sinking_bog environmental drains.",
+      "immunity_element": "ether",
+      "armor": 3
+    },
+    {
+      "id": "gear_item_04",
+      "name": "Spiritbound Cloak",
+      "type": "gear",
+      "rarity": "legendary",
+      "desc": "Wearable protective gear of Legendary quality. Grants full survival protection against volcano environmental drains.",
+      "immunity_element": "stone",
+      "armor": 4
+    },
+    {
+      "id": "gear_item_05",
+      "name": "Patched Boots",
+      "type": "gear",
+      "rarity": "common",
+      "desc": "Wearable protective gear of Common quality. Grants full survival protection against desert environmental drains.",
+      "immunity_element": "grain",
+      "armor": 5
+    },
+    {
+      "id": "gear_item_06",
+      "name": "Tanned Boots",
+      "type": "gear",
+      "rarity": "uncommon",
+      "desc": "Wearable protective gear of Uncommon quality. Grants full survival protection against frost_peak environmental drains.",
+      "immunity_element": "water",
+      "armor": 6
+    },
+    {
+      "id": "gear_item_07",
+      "name": "Warded Boots",
+      "type": "gear",
+      "rarity": "rare",
+      "desc": "Wearable protective gear of Rare quality. Grants full survival protection against ancient_ruins environmental drains.",
+      "immunity_element": "spirit",
+      "armor": 7
+    },
+    {
+      "id": "gear_item_08",
+      "name": "Spiritbound Boots",
+      "type": "gear",
+      "rarity": "legendary",
+      "desc": "Wearable protective gear of Legendary quality. Grants full survival protection against grasslands environmental drains.",
+      "immunity_element": "grain",
+      "armor": 8
+    },
+    {
+      "id": "gear_item_09",
+      "name": "Patched Gloves",
+      "type": "gear",
+      "rarity": "common",
+      "desc": "Wearable protective gear of Common quality. Grants full survival protection against wooded_lake environmental drains.",
+      "immunity_element": "wood",
+      "armor": 9
+    },
+    {
+      "id": "gear_item_10",
+      "name": "Tanned Gloves",
+      "type": "gear",
+      "rarity": "uncommon",
+      "desc": "Wearable protective gear of Uncommon quality. Grants full survival protection against rocky_ridge environmental drains.",
+      "immunity_element": "stone",
+      "armor": 0
+    },
+    {
+      "id": "gear_item_11",
+      "name": "Warded Gloves",
+      "type": "gear",
+      "rarity": "rare",
+      "desc": "Wearable protective gear of Rare quality. Grants full survival protection against sinking_bog environmental drains.",
+      "immunity_element": "ether",
+      "armor": 1
+    },
+    {
+      "id": "gear_item_12",
+      "name": "Spiritbound Gloves",
+      "type": "gear",
+      "rarity": "legendary",
+      "desc": "Wearable protective gear of Legendary quality. Grants full survival protection against volcano environmental drains.",
+      "immunity_element": "stone",
+      "armor": 2
+    },
+    {
+      "id": "gear_item_13",
+      "name": "Patched Hood",
+      "type": "gear",
+      "rarity": "common",
+      "desc": "Wearable protective gear of Common quality. Grants full survival protection against desert environmental drains.",
+      "immunity_element": "grain",
+      "armor": 3
+    },
+    {
+      "id": "gear_item_14",
+      "name": "Tanned Hood",
+      "type": "gear",
+      "rarity": "uncommon",
+      "desc": "Wearable protective gear of Uncommon quality. Grants full survival protection against frost_peak environmental drains.",
+      "immunity_element": "water",
+      "armor": 4
+    },
+    {
+      "id": "gear_item_15",
+      "name": "Warded Hood",
+      "type": "gear",
+      "rarity": "rare",
+      "desc": "Wearable protective gear of Rare quality. Grants full survival protection against ancient_ruins environmental drains.",
+      "immunity_element": "spirit",
+      "armor": 5
+    },
+    {
+      "id": "gear_item_16",
+      "name": "Spiritbound Hood",
+      "type": "gear",
+      "rarity": "legendary",
+      "desc": "Wearable protective gear of Legendary quality. Grants full survival protection against grasslands environmental drains.",
+      "immunity_element": "grain",
+      "armor": 6
+    },
+    {
+      "id": "gear_item_17",
+      "name": "Patched Vest",
+      "type": "gear",
+      "rarity": "common",
+      "desc": "Wearable protective gear of Common quality. Grants full survival protection against wooded_lake environmental drains.",
+      "immunity_element": "wood",
+      "armor": 7
+    },
+    {
+      "id": "gear_item_18",
+      "name": "Tanned Vest",
+      "type": "gear",
+      "rarity": "uncommon",
+      "desc": "Wearable protective gear of Uncommon quality. Grants full survival protection against rocky_ridge environmental drains.",
+      "immunity_element": "stone",
+      "armor": 8
+    },
+    {
+      "id": "gear_item_19",
+      "name": "Warded Vest",
+      "type": "gear",
+      "rarity": "rare",
+      "desc": "Wearable protective gear of Rare quality. Grants full survival protection against sinking_bog environmental drains.",
+      "immunity_element": "ether",
+      "armor": 9
+    },
+    {
+      "id": "gear_item_20",
+      "name": "Spiritbound Vest",
+      "type": "gear",
+      "rarity": "legendary",
+      "desc": "Wearable protective gear of Legendary quality. Grants full survival protection against volcano environmental drains.",
+      "immunity_element": "stone",
+      "armor": 0
+    },
+    {
+      "id": "gear_item_21",
+      "name": "Patched Belt",
+      "type": "gear",
+      "rarity": "common",
+      "desc": "Wearable protective gear of Common quality. Grants full survival protection against desert environmental drains.",
+      "immunity_element": "grain",
+      "armor": 1
+    },
+    {
+      "id": "gear_item_22",
+      "name": "Tanned Belt",
+      "type": "gear",
+      "rarity": "uncommon",
+      "desc": "Wearable protective gear of Uncommon quality. Grants full survival protection against frost_peak environmental drains.",
+      "immunity_element": "water",
+      "armor": 2
+    },
+    {
+      "id": "gear_item_23",
+      "name": "Warded Belt",
+      "type": "gear",
+      "rarity": "rare",
+      "desc": "Wearable protective gear of Rare quality. Grants full survival protection against ancient_ruins environmental drains.",
+      "immunity_element": "spirit",
+      "armor": 3
+    },
+    {
+      "id": "gear_item_24",
+      "name": "Spiritbound Belt",
+      "type": "gear",
+      "rarity": "legendary",
+      "desc": "Wearable protective gear of Legendary quality. Grants full survival protection against grasslands environmental drains.",
+      "immunity_element": "grain",
+      "armor": 4
+    },
+    {
+      "id": "gear_item_25",
+      "name": "Patched Bracers",
+      "type": "gear",
+      "rarity": "common",
+      "desc": "Wearable protective gear of Common quality. Grants full survival protection against wooded_lake environmental drains.",
+      "immunity_element": "wood",
+      "armor": 5
+    },
+    {
+      "id": "gear_item_26",
+      "name": "Tanned Bracers",
+      "type": "gear",
+      "rarity": "uncommon",
+      "desc": "Wearable protective gear of Uncommon quality. Grants full survival protection against rocky_ridge environmental drains.",
+      "immunity_element": "stone",
+      "armor": 6
+    },
+    {
+      "id": "gear_item_27",
+      "name": "Warded Bracers",
+      "type": "gear",
+      "rarity": "rare",
+      "desc": "Wearable protective gear of Rare quality. Grants full survival protection against sinking_bog environmental drains.",
+      "immunity_element": "ether",
+      "armor": 7
+    },
+    {
+      "id": "gear_item_28",
+      "name": "Spiritbound Bracers",
+      "type": "gear",
+      "rarity": "legendary",
+      "desc": "Wearable protective gear of Legendary quality. Grants full survival protection against volcano environmental drains.",
+      "immunity_element": "stone",
+      "armor": 8
+    },
+    {
+      "id": "gear_item_29",
+      "name": "Patched Leggings",
+      "type": "gear",
+      "rarity": "common",
+      "desc": "Wearable protective gear of Common quality. Grants full survival protection against desert environmental drains.",
+      "immunity_element": "grain",
+      "armor": 9
+    },
+    {
+      "id": "gear_item_30",
+      "name": "Tanned Leggings",
+      "type": "gear",
+      "rarity": "uncommon",
+      "desc": "Wearable protective gear of Uncommon quality. Grants full survival protection against frost_peak environmental drains.",
+      "immunity_element": "water",
+      "armor": 0
+    },
+    {
+      "id": "gear_item_31",
+      "name": "Warded Leggings",
+      "type": "gear",
+      "rarity": "rare",
+      "desc": "Wearable protective gear of Rare quality. Grants full survival protection against ancient_ruins environmental drains.",
+      "immunity_element": "spirit",
+      "armor": 1
+    },
+    {
+      "id": "gear_item_32",
+      "name": "Spiritbound Leggings",
+      "type": "gear",
+      "rarity": "legendary",
+      "desc": "Wearable protective gear of Legendary quality. Grants full survival protection against grasslands environmental drains.",
+      "immunity_element": "grain",
+      "armor": 2
+    },
+    {
+      "id": "gear_item_33",
+      "name": "Patched Mantle",
+      "type": "gear",
+      "rarity": "common",
+      "desc": "Wearable protective gear of Common quality. Grants full survival protection against wooded_lake environmental drains.",
+      "immunity_element": "wood",
+      "armor": 3
+    },
+    {
+      "id": "gear_item_34",
+      "name": "Tanned Mantle",
+      "type": "gear",
+      "rarity": "uncommon",
+      "desc": "Wearable protective gear of Uncommon quality. Grants full survival protection against rocky_ridge environmental drains.",
+      "immunity_element": "stone",
+      "armor": 4
+    },
+    {
+      "id": "gear_item_35",
+      "name": "Warded Mantle",
+      "type": "gear",
+      "rarity": "rare",
+      "desc": "Wearable protective gear of Rare quality. Grants full survival protection against sinking_bog environmental drains.",
+      "immunity_element": "ether",
+      "armor": 5
+    },
+    {
+      "id": "gear_item_36",
+      "name": "Spiritbound Mantle",
+      "type": "gear",
+      "rarity": "legendary",
+      "desc": "Wearable protective gear of Legendary quality. Grants full survival protection against volcano environmental drains.",
+      "immunity_element": "stone",
+      "armor": 6
+    },
+    {
+      "id": "gear_item_37",
+      "name": "Patched Charm",
+      "type": "gear",
+      "rarity": "common",
+      "desc": "Wearable protective gear of Common quality. Grants full survival protection against desert environmental drains.",
+      "immunity_element": "grain",
+      "armor": 7
+    },
+    {
+      "id": "gear_item_38",
+      "name": "Tanned Charm",
+      "type": "gear",
+      "rarity": "uncommon",
+      "desc": "Wearable protective gear of Uncommon quality. Grants full survival protection against frost_peak environmental drains.",
+      "immunity_element": "water",
+      "armor": 8
+    },
+    {
+      "id": "gear_item_39",
+      "name": "Warded Charm",
+      "type": "gear",
+      "rarity": "rare",
+      "desc": "Wearable protective gear of Rare quality. Grants full survival protection against ancient_ruins environmental drains.",
+      "immunity_element": "spirit",
+      "armor": 9
+    },
+    {
+      "id": "gear_item_40",
+      "name": "Spiritbound Charm",
+      "type": "gear",
+      "rarity": "legendary",
+      "desc": "Wearable protective gear of Legendary quality. Grants full survival protection against grasslands environmental drains.",
+      "immunity_element": "grain",
+      "armor": 0
+    },
+    {
+      "id": "consumable_item_01",
+      "name": "Simple Berry Pouch",
+      "type": "consumable",
+      "rarity": "common",
+      "desc": "A nourishing Common food or elixir. Restores 10 health and 5 Light points.",
+      "use_energy": 1,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_02",
+      "name": "Hearty Berry Pouch",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "desc": "A nourishing Uncommon food or elixir. Restores 20 health and 10 Light points.",
+      "use_energy": 2,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_03",
+      "name": "Golden Berry Pouch",
+      "type": "consumable",
+      "rarity": "rare",
+      "desc": "A nourishing Rare food or elixir. Restores 30 health and 15 Light points.",
+      "use_energy": 2,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_04",
+      "name": "Radiant Berry Pouch",
+      "type": "consumable",
+      "rarity": "legendary",
+      "desc": "A nourishing Legendary food or elixir. Restores 40 health and 0 Light points.",
+      "use_energy": 3,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_05",
+      "name": "Simple Trail Ration",
+      "type": "consumable",
+      "rarity": "common",
+      "desc": "A nourishing Common food or elixir. Restores 0 health and 5 Light points.",
+      "use_energy": 1,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_06",
+      "name": "Hearty Trail Ration",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "desc": "A nourishing Uncommon food or elixir. Restores 10 health and 10 Light points.",
+      "use_energy": 2,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_07",
+      "name": "Golden Trail Ration",
+      "type": "consumable",
+      "rarity": "rare",
+      "desc": "A nourishing Rare food or elixir. Restores 20 health and 15 Light points.",
+      "use_energy": 2,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_08",
+      "name": "Radiant Trail Ration",
+      "type": "consumable",
+      "rarity": "legendary",
+      "desc": "A nourishing Legendary food or elixir. Restores 30 health and 0 Light points.",
+      "use_energy": 3,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_09",
+      "name": "Simple Herbal Tea",
+      "type": "consumable",
+      "rarity": "common",
+      "desc": "A nourishing Common food or elixir. Restores 40 health and 5 Light points.",
+      "use_energy": 1,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_10",
+      "name": "Hearty Herbal Tea",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "desc": "A nourishing Uncommon food or elixir. Restores 0 health and 10 Light points.",
+      "use_energy": 2,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_11",
+      "name": "Golden Herbal Tea",
+      "type": "consumable",
+      "rarity": "rare",
+      "desc": "A nourishing Rare food or elixir. Restores 10 health and 15 Light points.",
+      "use_energy": 2,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_12",
+      "name": "Radiant Herbal Tea",
+      "type": "consumable",
+      "rarity": "legendary",
+      "desc": "A nourishing Legendary food or elixir. Restores 20 health and 0 Light points.",
+      "use_energy": 3,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_13",
+      "name": "Simple Honey Cake",
+      "type": "consumable",
+      "rarity": "common",
+      "desc": "A nourishing Common food or elixir. Restores 30 health and 5 Light points.",
+      "use_energy": 1,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_14",
+      "name": "Hearty Honey Cake",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "desc": "A nourishing Uncommon food or elixir. Restores 40 health and 10 Light points.",
+      "use_energy": 2,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_15",
+      "name": "Golden Honey Cake",
+      "type": "consumable",
+      "rarity": "rare",
+      "desc": "A nourishing Rare food or elixir. Restores 0 health and 15 Light points.",
+      "use_energy": 2,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_16",
+      "name": "Radiant Honey Cake",
+      "type": "consumable",
+      "rarity": "legendary",
+      "desc": "A nourishing Legendary food or elixir. Restores 10 health and 0 Light points.",
+      "use_energy": 3,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_17",
+      "name": "Simple Root Stew",
+      "type": "consumable",
+      "rarity": "common",
+      "desc": "A nourishing Common food or elixir. Restores 20 health and 5 Light points.",
+      "use_energy": 1,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_18",
+      "name": "Hearty Root Stew",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "desc": "A nourishing Uncommon food or elixir. Restores 30 health and 10 Light points.",
+      "use_energy": 2,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_19",
+      "name": "Golden Root Stew",
+      "type": "consumable",
+      "rarity": "rare",
+      "desc": "A nourishing Rare food or elixir. Restores 40 health and 15 Light points.",
+      "use_energy": 2,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_20",
+      "name": "Radiant Root Stew",
+      "type": "consumable",
+      "rarity": "legendary",
+      "desc": "A nourishing Legendary food or elixir. Restores 0 health and 0 Light points.",
+      "use_energy": 3,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_21",
+      "name": "Simple Waybread",
+      "type": "consumable",
+      "rarity": "common",
+      "desc": "A nourishing Common food or elixir. Restores 10 health and 5 Light points.",
+      "use_energy": 1,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_22",
+      "name": "Hearty Waybread",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "desc": "A nourishing Uncommon food or elixir. Restores 20 health and 10 Light points.",
+      "use_energy": 2,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_23",
+      "name": "Golden Waybread",
+      "type": "consumable",
+      "rarity": "rare",
+      "desc": "A nourishing Rare food or elixir. Restores 30 health and 15 Light points.",
+      "use_energy": 2,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_24",
+      "name": "Radiant Waybread",
+      "type": "consumable",
+      "rarity": "legendary",
+      "desc": "A nourishing Legendary food or elixir. Restores 40 health and 0 Light points.",
+      "use_energy": 3,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_25",
+      "name": "Simple Forest Tonic",
+      "type": "consumable",
+      "rarity": "common",
+      "desc": "A nourishing Common food or elixir. Restores 0 health and 5 Light points.",
+      "use_energy": 1,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_26",
+      "name": "Hearty Forest Tonic",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "desc": "A nourishing Uncommon food or elixir. Restores 10 health and 10 Light points.",
+      "use_energy": 2,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_27",
+      "name": "Golden Forest Tonic",
+      "type": "consumable",
+      "rarity": "rare",
+      "desc": "A nourishing Rare food or elixir. Restores 20 health and 15 Light points.",
+      "use_energy": 2,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_28",
+      "name": "Radiant Forest Tonic",
+      "type": "consumable",
+      "rarity": "legendary",
+      "desc": "A nourishing Legendary food or elixir. Restores 30 health and 0 Light points.",
+      "use_energy": 3,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_29",
+      "name": "Simple Dawn Elixir",
+      "type": "consumable",
+      "rarity": "common",
+      "desc": "A nourishing Common food or elixir. Restores 40 health and 5 Light points.",
+      "use_energy": 1,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_30",
+      "name": "Hearty Dawn Elixir",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "desc": "A nourishing Uncommon food or elixir. Restores 0 health and 10 Light points.",
+      "use_energy": 2,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_31",
+      "name": "Golden Dawn Elixir",
+      "type": "consumable",
+      "rarity": "rare",
+      "desc": "A nourishing Rare food or elixir. Restores 10 health and 15 Light points.",
+      "use_energy": 2,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_32",
+      "name": "Radiant Dawn Elixir",
+      "type": "consumable",
+      "rarity": "legendary",
+      "desc": "A nourishing Legendary food or elixir. Restores 20 health and 0 Light points.",
+      "use_energy": 3,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_33",
+      "name": "Simple Spirit Draught",
+      "type": "consumable",
+      "rarity": "common",
+      "desc": "A nourishing Common food or elixir. Restores 30 health and 5 Light points.",
+      "use_energy": 1,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_34",
+      "name": "Hearty Spirit Draught",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "desc": "A nourishing Uncommon food or elixir. Restores 40 health and 10 Light points.",
+      "use_energy": 2,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_35",
+      "name": "Golden Spirit Draught",
+      "type": "consumable",
+      "rarity": "rare",
+      "desc": "A nourishing Rare food or elixir. Restores 0 health and 15 Light points.",
+      "use_energy": 2,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_36",
+      "name": "Radiant Spirit Draught",
+      "type": "consumable",
+      "rarity": "legendary",
+      "desc": "A nourishing Legendary food or elixir. Restores 10 health and 0 Light points.",
+      "use_energy": 3,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_37",
+      "name": "Simple Feast Bundle",
+      "type": "consumable",
+      "rarity": "common",
+      "desc": "A nourishing Common food or elixir. Restores 20 health and 5 Light points.",
+      "use_energy": 1,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_38",
+      "name": "Hearty Feast Bundle",
+      "type": "consumable",
+      "rarity": "uncommon",
+      "desc": "A nourishing Uncommon food or elixir. Restores 30 health and 10 Light points.",
+      "use_energy": 2,
+      "use_light": 0
+    },
+    {
+      "id": "consumable_item_39",
+      "name": "Golden Feast Bundle",
+      "type": "consumable",
+      "rarity": "rare",
+      "desc": "A nourishing Rare food or elixir. Restores 40 health and 15 Light points.",
+      "use_energy": 2,
+      "use_light": 1
+    },
+    {
+      "id": "consumable_item_40",
+      "name": "Radiant Feast Bundle",
+      "type": "consumable",
+      "rarity": "legendary",
+      "desc": "A nourishing Legendary food or elixir. Restores 0 health and 0 Light points.",
+      "use_energy": 3,
+      "use_light": 1
+    },
+    {
+      "id": "relic_item_01",
+      "name": "Weathered Idol",
+      "type": "relic",
+      "rarity": "common",
+      "desc": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points.",
+      "offer_vp": 2
+    },
+    {
+      "id": "relic_item_02",
+      "name": "Carved Idol",
+      "type": "relic",
+      "rarity": "uncommon",
+      "desc": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points.",
+      "offer_vp": 3
+    },
+    {
+      "id": "relic_item_03",
+      "name": "Gilded Idol",
+      "type": "relic",
+      "rarity": "rare",
+      "desc": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points.",
+      "offer_vp": 4
+    },
+    {
+      "id": "relic_item_04",
+      "name": "Luminous Idol",
+      "type": "relic",
+      "rarity": "legendary",
+      "desc": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points.",
+      "offer_vp": 6
+    },
+    {
+      "id": "relic_item_05",
+      "name": "Weathered Sigil Stone",
+      "type": "relic",
+      "rarity": "common",
+      "desc": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points.",
+      "offer_vp": 2
+    },
+    {
+      "id": "relic_item_06",
+      "name": "Carved Sigil Stone",
+      "type": "relic",
+      "rarity": "uncommon",
+      "desc": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points.",
+      "offer_vp": 3
+    },
+    {
+      "id": "relic_item_07",
+      "name": "Gilded Sigil Stone",
+      "type": "relic",
+      "rarity": "rare",
+      "desc": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points.",
+      "offer_vp": 4
+    },
+    {
+      "id": "relic_item_08",
+      "name": "Luminous Sigil Stone",
+      "type": "relic",
+      "rarity": "legendary",
+      "desc": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points.",
+      "offer_vp": 6
+    },
+    {
+      "id": "relic_item_09",
+      "name": "Weathered Ancestor Mask",
+      "type": "relic",
+      "rarity": "common",
+      "desc": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points.",
+      "offer_vp": 2
+    },
+    {
+      "id": "relic_item_10",
+      "name": "Carved Ancestor Mask",
+      "type": "relic",
+      "rarity": "uncommon",
+      "desc": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points.",
+      "offer_vp": 3
+    },
+    {
+      "id": "relic_item_11",
+      "name": "Gilded Ancestor Mask",
+      "type": "relic",
+      "rarity": "rare",
+      "desc": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points.",
+      "offer_vp": 4
+    },
+    {
+      "id": "relic_item_12",
+      "name": "Luminous Ancestor Mask",
+      "type": "relic",
+      "rarity": "legendary",
+      "desc": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points.",
+      "offer_vp": 6
+    },
+    {
+      "id": "relic_item_13",
+      "name": "Weathered Sun Disc",
+      "type": "relic",
+      "rarity": "common",
+      "desc": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points.",
+      "offer_vp": 2
+    },
+    {
+      "id": "relic_item_14",
+      "name": "Carved Sun Disc",
+      "type": "relic",
+      "rarity": "uncommon",
+      "desc": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points.",
+      "offer_vp": 3
+    },
+    {
+      "id": "relic_item_15",
+      "name": "Gilded Sun Disc",
+      "type": "relic",
+      "rarity": "rare",
+      "desc": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points.",
+      "offer_vp": 4
+    },
+    {
+      "id": "relic_item_16",
+      "name": "Luminous Sun Disc",
+      "type": "relic",
+      "rarity": "legendary",
+      "desc": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points.",
+      "offer_vp": 6
+    },
+    {
+      "id": "relic_item_17",
+      "name": "Weathered Moon Chime",
+      "type": "relic",
+      "rarity": "common",
+      "desc": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points.",
+      "offer_vp": 2
+    },
+    {
+      "id": "relic_item_18",
+      "name": "Carved Moon Chime",
+      "type": "relic",
+      "rarity": "uncommon",
+      "desc": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points.",
+      "offer_vp": 3
+    },
+    {
+      "id": "relic_item_19",
+      "name": "Gilded Moon Chime",
+      "type": "relic",
+      "rarity": "rare",
+      "desc": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points.",
+      "offer_vp": 4
+    },
+    {
+      "id": "relic_item_20",
+      "name": "Luminous Moon Chime",
+      "type": "relic",
+      "rarity": "legendary",
+      "desc": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points.",
+      "offer_vp": 6
+    },
+    {
+      "id": "relic_item_21",
+      "name": "Weathered Guardian Figurine",
+      "type": "relic",
+      "rarity": "common",
+      "desc": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points.",
+      "offer_vp": 2
+    },
+    {
+      "id": "relic_item_22",
+      "name": "Carved Guardian Figurine",
+      "type": "relic",
+      "rarity": "uncommon",
+      "desc": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points.",
+      "offer_vp": 3
+    },
+    {
+      "id": "relic_item_23",
+      "name": "Gilded Guardian Figurine",
+      "type": "relic",
+      "rarity": "rare",
+      "desc": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points.",
+      "offer_vp": 4
+    },
+    {
+      "id": "relic_item_24",
+      "name": "Luminous Guardian Figurine",
+      "type": "relic",
+      "rarity": "legendary",
+      "desc": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points.",
+      "offer_vp": 6
+    },
+    {
+      "id": "relic_item_25",
+      "name": "Weathered Offering Bowl",
+      "type": "relic",
+      "rarity": "common",
+      "desc": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points.",
+      "offer_vp": 2
+    },
+    {
+      "id": "relic_item_26",
+      "name": "Carved Offering Bowl",
+      "type": "relic",
+      "rarity": "uncommon",
+      "desc": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 20 Victory Points.",
+      "offer_vp": 3
+    },
+    {
+      "id": "relic_item_27",
+      "name": "Gilded Offering Bowl",
+      "type": "relic",
+      "rarity": "rare",
+      "desc": "An ancient Rare spirit artifact found near structural anomalies. Offering this at a Guardian site yields 25 Victory Points.",
+      "offer_vp": 4
+    },
+    {
+      "id": "relic_item_28",
+      "name": "Luminous Offering Bowl",
+      "type": "relic",
+      "rarity": "legendary",
+      "desc": "An ancient Legendary spirit artifact found near structural anomalies. Offering this at a Guardian site yields 30 Victory Points.",
+      "offer_vp": 6
+    },
+    {
+      "id": "relic_item_29",
+      "name": "Weathered Star Shard",
+      "type": "relic",
+      "rarity": "common",
+      "desc": "An ancient Common spirit artifact found near structural anomalies. Offering this at a Guardian site yields 35 Victory Points.",
+      "offer_vp": 2
+    },
+    {
+      "id": "relic_item_30",
+      "name": "Carved Star Shard",
+      "type": "relic",
+      "rarity": "uncommon",
+      "desc": "An ancient Uncommon spirit artifact found near structural anomalies. Offering this at a Guardian site yields 15 Victory Points.",
+      "offer_vp": 3
+    },
+    {
+      "id": "harmony_token_t1",
+      "name": "Harmony Token I",
+      "type": "relic",
+      "rarity": "common",
+      "offer_vp": 2,
+      "desc": "Proof of a bottleneck trial resolved in harmony."
+    },
+    {
+      "id": "shatter_shard_t1",
+      "name": "Shatter Shard I",
+      "type": "relic",
+      "rarity": "common",
+      "offer_vp": 2,
+      "desc": "A cold splinter from a trial resolved by force."
+    },
+    {
+      "id": "harmony_token_t2",
+      "name": "Harmony Token II",
+      "type": "relic",
+      "rarity": "uncommon",
+      "offer_vp": 3,
+      "desc": "Proof of a bottleneck trial resolved in harmony."
+    },
+    {
+      "id": "shatter_shard_t2",
+      "name": "Shatter Shard II",
+      "type": "relic",
+      "rarity": "uncommon",
+      "offer_vp": 3,
+      "desc": "A cold splinter from a trial resolved by force."
+    },
+    {
+      "id": "harmony_token_t3",
+      "name": "Harmony Token III",
+      "type": "relic",
+      "rarity": "rare",
+      "offer_vp": 4,
+      "desc": "Proof of a bottleneck trial resolved in harmony."
+    },
+    {
+      "id": "shatter_shard_t3",
+      "name": "Shatter Shard III",
+      "type": "relic",
+      "rarity": "rare",
+      "offer_vp": 4,
+      "desc": "A cold splinter from a trial resolved by force."
+    }
+  ]
+}

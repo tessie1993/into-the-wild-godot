@@ -40,3 +40,25 @@ Base style suffix — append to every prompt:
 Consistency tips: generate each category in one session with the same seed
 family; upscale to 2048 then downscale; keep one reference image pinned as
 style anchor across Flow sessions.
+
+## UI style guide (in-engine, mockup pass 2026-08-28)
+
+The mockups (title screen, character select, board HUD, karma track) are
+implemented in code via `game/scripts/ui/ui_theme.gd` — one visual language
+until painted assets land:
+
+- **Ground:** deep forest ink `#0b1712`; panels `rgba` dark green-teal with
+  2px bronze `#8a6d3b` borders, radius 10–16.
+- **Text:** parchment `#e8dcc0` body, dim `#b7ab8d`; titles gold `#f2d06b`
+  with soft ink shadow; section headings `❖ SMALL CAPS ❖` in `#c9a227`.
+- **CTAs:** deep leaf green with gold border and gold text ("Wash Ashore",
+  "Begin Action", "End Turn"); danger accents `#d16a5a`.
+- **Selection/glow:** teal `#57d8c4` (Sanctum pulse), player-color card glow.
+- **Board:** facedown hexes slate blue-grey with faint rune etchings;
+  explored hexes keep the element palette anchors above; the Sanctum
+  breathes a teal glow.
+- **Karma track:** violet-to-gold ribbon, ☾/☀ ends, band-boundary ticks,
+  glowing marker (`karma_track.gd`).
+
+Painted replacements from the asset list slot in per element/screen without
+layout changes.

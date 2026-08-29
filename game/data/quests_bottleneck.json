@@ -1,0 +1,1055 @@
+{
+  "_comment": "Bottleneck trials - 50 dual-path quests converted from the design-lane drop (docs/design-lane/generated/quests.json). Offered at guardian sites, matched by element (giver mapping in the converter). Rewards rescaled to canon: VP/3, Light/2 (dark Light/3) per reviews/Q6.md. The light path costs 5 commons (the 'peaceful deposit'); the dark path is free but adds Rage and the scaled Light loss. Regenerate with the converter.",
+  "quests": [
+    {
+      "id": "quest_01",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 3,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_02",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_03",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_04",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 6,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_05",
+      "title": "The Trial of the Ruin Barrier",
+      "giver": "Ancient Statue",
+      "element": "ether",
+      "desc": "The island is testing you. Ancient Statue needs help solving a bottleneck with ruin barrier.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 2,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_06",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 3,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_07",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_08",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_09",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 6,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_10",
+      "title": "The Trial of the Ruin Barrier",
+      "giver": "Ancient Statue",
+      "element": "ether",
+      "desc": "The island is testing you. Ancient Statue needs help solving a bottleneck with ruin barrier.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 2,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_11",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 3,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_12",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_13",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_14",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 6,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_15",
+      "title": "The Trial of the Ruin Barrier",
+      "giver": "Ancient Statue",
+      "element": "ether",
+      "desc": "The island is testing you. Ancient Statue needs help solving a bottleneck with ruin barrier.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 2,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_16",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 3,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_17",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_18",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_19",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 6,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_20",
+      "title": "The Trial of the Ruin Barrier",
+      "giver": "Ancient Statue",
+      "element": "ether",
+      "desc": "The island is testing you. Ancient Statue needs help solving a bottleneck with ruin barrier.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 2,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_21",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 3,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_22",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_23",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_24",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 6,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_25",
+      "title": "The Trial of the Ruin Barrier",
+      "giver": "Ancient Statue",
+      "element": "ether",
+      "desc": "The island is testing you. Ancient Statue needs help solving a bottleneck with ruin barrier.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 2,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_26",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 3,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_27",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_28",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_29",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 6,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_30",
+      "title": "The Trial of the Ruin Barrier",
+      "giver": "Ancient Statue",
+      "element": "ether",
+      "desc": "The island is testing you. Ancient Statue needs help solving a bottleneck with ruin barrier.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 2,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_31",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 3,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_32",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_33",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_34",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 6,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_35",
+      "title": "The Trial of the Ruin Barrier",
+      "giver": "Ancient Statue",
+      "element": "ether",
+      "desc": "The island is testing you. Ancient Statue needs help solving a bottleneck with ruin barrier.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 2,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_36",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 3,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_37",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_38",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_39",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 6,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_40",
+      "title": "The Trial of the Ruin Barrier",
+      "giver": "Ancient Statue",
+      "element": "ether",
+      "desc": "The island is testing you. Ancient Statue needs help solving a bottleneck with ruin barrier.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 2,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_41",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 3,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_42",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_43",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_44",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 6,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_45",
+      "title": "The Trial of the Ruin Barrier",
+      "giver": "Ancient Statue",
+      "element": "ether",
+      "desc": "The island is testing you. Ancient Statue needs help solving a bottleneck with ruin barrier.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 2,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_46",
+      "title": "The Trial of the Furnace Heat",
+      "giver": "Carl the Blacksmith",
+      "element": "stone",
+      "desc": "The island is testing you. Carl the Blacksmith needs help solving a bottleneck with furnace heat.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 3,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_47",
+      "title": "The Trial of the Wool Shortage",
+      "giver": "Elder Sarah",
+      "element": "grain",
+      "desc": "The island is testing you. Elder Sarah needs help solving a bottleneck with wool shortage.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    },
+    {
+      "id": "quest_48",
+      "title": "The Trial of the Ancient Seal",
+      "giver": "The Lost Scholar",
+      "element": "spirit",
+      "desc": "The island is testing you. The Lost Scholar needs help solving a bottleneck with ancient seal.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 2,
+        "item": "harmony_token_t1"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 5,
+        "light": -3,
+        "item": "shatter_shard_t1"
+      }
+    },
+    {
+      "id": "quest_49",
+      "title": "The Trial of the Cooking Fuel",
+      "giver": "Theresa the Cook",
+      "element": "wood",
+      "desc": "The island is testing you. Theresa the Cook needs help solving a bottleneck with cooking fuel.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 4,
+        "light": 4,
+        "item": "harmony_token_t2"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 6,
+        "light": -4,
+        "item": "shatter_shard_t2"
+      }
+    },
+    {
+      "id": "quest_50",
+      "title": "The Trial of the Ruin Barrier",
+      "giver": "Ancient Statue",
+      "element": "ether",
+      "desc": "The island is testing you. Ancient Statue needs help solving a bottleneck with ruin barrier.",
+      "light": {
+        "objective": "Use a happy creature's field move or deposit 5 high-quality biomes resources peacefully.",
+        "cost_commons": 5,
+        "vp": 2,
+        "light": 4,
+        "item": "harmony_token_t3"
+      },
+      "dark": {
+        "objective": "Force local wild creatures to complete the task by force, using bindings or iron traps.",
+        "rage": 2,
+        "vp": 4,
+        "light": -5,
+        "item": "shatter_shard_t3"
+      }
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "_comment": "Digital adaptation of lane-systems resources.md + canon/elements.json. Commons are unlimited terrain staples (tokens); Uncommon/Rare/Legendary are deck CARDS. Names are verbatim from resources.md (subset for v1; extend freely). T2 terrain names are digital flavor, editable.",
+  "elements": [
+    {
+      "id": "wood",
+      "name": "Jungle",
+      "t2_name": "Deep Jungle",
+      "domain": "earth",
+      "color": "#2f7d4a",
+      "t2_color": "#1c5432",
+      "commons": [
+        "sticks",
+        "vines",
+        "bark",
+        "leaves",
+        "luminous_algae"
+      ],
+      "cards": {
+        "uncommon": [
+          "hardwood",
+          "resin",
+          "medicinal_herbs",
+          "pristine_luminous_algae"
+        ],
+        "rare": [
+          "ironwood",
+          "heartwood"
+        ],
+        "legendary": [
+          "worldroot"
+        ]
+      }
+    },
+    {
+      "id": "grain",
+      "name": "Meadow",
+      "t2_name": "Sunscorch Meadow",
+      "domain": "sun",
+      "color": "#c9a227",
+      "t2_color": "#8a7a34",
+      "commons": [
+        "grain",
+        "straw",
+        "reeds",
+        "wild_berries",
+        "plant_fiber",
+        "cactus_flesh"
+      ],
+      "cards": {
+        "uncommon": [
+          "honey",
+          "golden_grain",
+          "sunpetal",
+          "pristine_plant_fiber",
+          "pristine_cactus_flesh"
+        ],
+        "rare": [
+          "goldenroot",
+          "royal_honey"
+        ],
+        "legendary": [
+          "sunheart_grain"
+        ]
+      }
+    },
+    {
+      "id": "stone",
+      "name": "Mountain",
+      "t2_name": "Volcano",
+      "domain": "fire",
+      "color": "#b3452e",
+      "t2_color": "#7d2f1c",
+      "commons": [
+        "stone",
+        "flint",
+        "clay",
+        "coal"
+      ],
+      "cards": {
+        "uncommon": [
+          "copper_ore",
+          "iron_ore",
+          "obsidian_shard",
+          "pristine_flint"
+        ],
+        "rare": [
+          "fire_crystal",
+          "mithril"
+        ],
+        "legendary": [
+          "dragonglass"
+        ]
+      }
+    },
+    {
+      "id": "water",
+      "name": "Lakeshore",
+      "t2_name": "Wildwaters",
+      "domain": "sky",
+      "color": "#2e6fae",
+      "t2_color": "#1d4b79",
+      "commons": [
+        "fresh_water",
+        "fish",
+        "shells",
+        "kelp",
+        "frost_shard"
+      ],
+      "cards": {
+        "uncommon": [
+          "pearl",
+          "coral",
+          "storm_feather",
+          "pristine_frost_shard"
+        ],
+        "rare": [
+          "stormglass",
+          "tidecrystal"
+        ],
+        "legendary": [
+          "leviathan_scale"
+        ]
+      }
+    },
+    {
+      "id": "ether",
+      "name": "Swamp",
+      "t2_name": "Deep Swamp",
+      "domain": "moon",
+      "color": "#7a5fae",
+      "t2_color": "#573f85",
+      "commons": [
+        "mushroom",
+        "moss",
+        "peat",
+        "spores",
+        "peat_moss"
+      ],
+      "cards": {
+        "uncommon": [
+          "glowcap",
+          "witchmoss",
+          "bog_iron",
+          "pristine_peat_moss"
+        ],
+        "rare": [
+          "etherbloom",
+          "wisp_essence"
+        ],
+        "legendary": [
+          "moonshroom"
+        ]
+      }
+    },
+    {
+      "id": "spirit",
+      "name": "Spirit Grove",
+      "t2_name": "The Sanctum",
+      "domain": "soul",
+      "color": "#cfc4e8",
+      "t2_color": "#8f7fc0",
+      "earned_not_gathered": true,
+      "commons": [
+        "spirit_mote",
+        "incense",
+        "ancient_gear"
+      ],
+      "cards": {
+        "uncommon": [
+          "blessing",
+          "spirit_essence",
+          "pristine_ancient_gear"
+        ],
+        "rare": [
+          "guardians_favor"
+        ],
+        "legendary": [
+          "pure_light"
+        ]
+      }
+    }
+  ]
+}

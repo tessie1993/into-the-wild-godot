@@ -1,0 +1,322 @@
+{
+  "_comment": "The Wild Deck - 200 cards (20 unique) converted from the design-lane drop (docs/design-lane/generated/deck.json). Drawn on tile reveals at config.wild.card_chance. fate/ward cards go to the hand; encounter/loot resolve on draw. Ops are the engine vocabulary in game.gd/_apply_wild_ops. Regenerate with the converter.",
+  "cards": [
+    {
+      "id": "action_double_down",
+      "name": "Double Down",
+      "req": "any",
+      "text": "Bypass action locking and execute the Gather or Explore action twice this turn.",
+      "count": 15,
+      "kind": "fate",
+      "play": "double_down"
+    },
+    {
+      "id": "action_unshackled",
+      "name": "Unshackled",
+      "req": "any",
+      "text": "Instantly remove a 'Lock' status from your chosen action.",
+      "count": 15,
+      "kind": "fate",
+      "play": "unshackled"
+    },
+    {
+      "id": "action_focus_shift",
+      "name": "Focus Shift",
+      "req": "any",
+      "text": "Switch your chosen action this turn without paying the 1 Light cost.",
+      "count": 15,
+      "kind": "fate",
+      "play": "focus_shift"
+    },
+    {
+      "id": "action_swift_step",
+      "name": "Swift Step",
+      "req": "any",
+      "text": "Move up to 2 hexes instead of 1 on your move phase.",
+      "count": 15,
+      "kind": "fate",
+      "play": "swift_step"
+    },
+    {
+      "id": "encounter_swamp_ambush",
+      "name": "Swamp Ambush",
+      "req": "any",
+      "text": "Sinking Bog encounter. Trigger a challenge with a local Sinking Bog creature. Fail penalty: Bleed.",
+      "count": 10,
+      "kind": "encounter",
+      "ops": [
+        {
+          "op": "creature",
+          "element": "ether"
+        }
+      ]
+    },
+    {
+      "id": "encounter_sinking_quagmire",
+      "name": "Sinking Quagmire",
+      "req": "any",
+      "text": "Drains 2 Warmth and locks your movement next turn unless a Water-type helps.",
+      "count": 10,
+      "kind": "encounter",
+      "ops": [
+        {
+          "op": "unless_heart",
+          "heart": "water",
+          "ops": [
+            {
+              "op": "energy",
+              "n": -2
+            },
+            {
+              "op": "slow",
+              "n": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encounter_guardian's_whispers",
+      "name": "Guardian's Whispers",
+      "req": "any",
+      "text": "Guardian site event. Draw 1 Blessing card if your karma is positive; otherwise lose 2 Light.",
+      "count": 10,
+      "kind": "encounter",
+      "ops": [
+        {
+          "op": "if_band_kind",
+          "then": [
+            {
+              "op": "draw_ward"
+            }
+          ],
+          "else": [
+            {
+              "op": "light",
+              "n": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encounter_raging_tempest",
+      "name": "Raging Tempest",
+      "req": "any",
+      "text": "Frost Peak event. Forces player to build a campfire or lose 3 health from cold.",
+      "count": 10,
+      "kind": "encounter",
+      "ops": [
+        {
+          "op": "unless_item",
+          "item": "campfire",
+          "ops": [
+            {
+              "op": "energy",
+              "n": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encounter_ancient_trap",
+      "name": "Ancient Trap",
+      "req": "any",
+      "text": "Ancient Ruins encounter. Roll a saving challenge. Failure locks your next Craft action.",
+      "count": 10,
+      "kind": "encounter",
+      "ops": [
+        {
+          "op": "fate_check",
+          "vs": 4,
+          "fail": [
+            {
+              "op": "craft_lock"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encounter_mirage",
+      "name": "Mirage",
+      "req": "any",
+      "text": "Desert encounter. Turns all explored tiles face down within a 2-tile radius.",
+      "count": 10,
+      "kind": "encounter",
+      "ops": [
+        {
+          "op": "mirage",
+          "radius": 2
+        }
+      ]
+    },
+    {
+      "id": "encounter_eclipse",
+      "name": "Eclipse",
+      "req": "any",
+      "text": "Eldritch event. Temporarily forces all wild creatures into 'Exalted Dark' aggression for 2 turns.",
+      "count": 10,
+      "kind": "encounter",
+      "ops": [
+        {
+          "op": "dark_aggression",
+          "rounds": 2
+        }
+      ]
+    },
+    {
+      "id": "loot_rich_loom",
+      "name": "Rich Loom",
+      "req": "any",
+      "text": "Gather +3 Plant Fiber from any forest or grasslands tile this turn.",
+      "count": 10,
+      "kind": "loot",
+      "ops": [
+        {
+          "op": "if_element",
+          "elements": [
+            "wood",
+            "grain"
+          ],
+          "then": [
+            {
+              "op": "gain_common",
+              "id": "plant_fiber",
+              "n": 3
+            }
+          ],
+          "else": [
+            {
+              "op": "gain_common",
+              "n": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loot_flint_deposit",
+      "name": "Flint Deposit",
+      "req": "any",
+      "text": "Gather +2 Flint from any rocky tile without using a Pickaxe.",
+      "count": 10,
+      "kind": "loot",
+      "ops": [
+        {
+          "op": "if_element",
+          "elements": [
+            "stone"
+          ],
+          "then": [
+            {
+              "op": "gain_common",
+              "id": "flint",
+              "n": 2
+            }
+          ],
+          "else": [
+            {
+              "op": "gain_common",
+              "n": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loot_luminous_algae_pool",
+      "name": "Luminous Algae Pool",
+      "req": "any",
+      "text": "Wooded Lake resource. Instantly restores 3 Light and provides 2 Luminous Algae.",
+      "count": 10,
+      "kind": "loot",
+      "ops": [
+        {
+          "op": "light",
+          "n": 1
+        },
+        {
+          "op": "gain_common",
+          "id": "luminous_algae",
+          "n": 2
+        }
+      ]
+    },
+    {
+      "id": "loot_hidden_chest",
+      "name": "Hidden Chest",
+      "req": "any",
+      "text": "Open a chest. Draw 1 random Rare or Uncommon consumable item.",
+      "count": 10,
+      "kind": "loot",
+      "ops": [
+        {
+          "op": "chest"
+        }
+      ]
+    },
+    {
+      "id": "loot_scrap_metal_pile",
+      "name": "Scrap Metal Pile",
+      "req": "any",
+      "text": "Ancient Ruins resource. Harvest 2 Ancient Gears and 1 Copper Ore.",
+      "count": 10,
+      "kind": "loot",
+      "ops": [
+        {
+          "op": "gain_common",
+          "id": "ancient_gear",
+          "n": 2
+        },
+        {
+          "op": "gain_card",
+          "id": "copper_ore",
+          "tier": "uncommon",
+          "element": "stone"
+        }
+      ]
+    },
+    {
+      "id": "ward_mist_ward",
+      "name": "Mist Ward",
+      "req": "positive",
+      "text": "Deploy a magical fog ward. Wild creatures cannot chase or spot you for 3 turns.",
+      "count": 5,
+      "kind": "ward",
+      "ward": "mist_ward",
+      "turns": 3
+    },
+    {
+      "id": "ward_thermal_cloak_blessing",
+      "name": "Thermal Cloak Blessing",
+      "req": "positive",
+      "text": "Provides complete warmth protection from cold mountain hexes for 5 turns.",
+      "count": 5,
+      "kind": "ward",
+      "ward": "thermal_cloak",
+      "turns": 5
+    },
+    {
+      "id": "ward_aura_shield",
+      "name": "Aura Shield",
+      "req": "positive",
+      "text": "Absorbs up to 3 damage from any hostile creature attack.",
+      "count": 5,
+      "kind": "ward",
+      "ward": "aura_shield",
+      "turns": 3
+    },
+    {
+      "id": "ward_sanctum_key",
+      "name": "Sanctum Key",
+      "req": "positive",
+      "text": "Bypasses the Light-gate requirements of the central Sanctum.",
+      "count": 5,
+      "kind": "ward",
+      "ward": "sanctum_key",
+      "turns": 1
+    }
+  ]
+}
