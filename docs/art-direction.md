@@ -62,3 +62,24 @@ until painted assets land:
 
 Painted replacements from the asset list slot in per element/screen without
 layout changes.
+
+## Production asset list (2026-09-09)
+
+The generator-ready list lives in `docs/art/` — `manifest.json` (one job per
+asset: prompt, aspect ratio, references, output path, engine target) and
+`prompt-sheet.md` (the same jobs, readable). Rebuild it with
+`python3 tools/art-manifest/build_manifest.py`; card jobs are derived from
+`game/data/`, so content changes flow through.
+
+Corrections to the v1 list above, from the code as it stands:
+
+- Hex tiles are **pointy-top** (`game/scripts/core/hex.gd`: corners at
+  60°·i − 30°), not flat-top.
+- Cards are 512×768 with a 468×240 art window at (22, 98)
+  (`game/scripts/tools/render_cards.py`); the list generates art panels for
+  that window, not full cards. The card back is the one full-bleed card.
+- Guardians have no names or ids in `game/data`; the list produces one sigil
+  per element (6) plus the Corrupt Gate and the Guardian Gate. Five vs six is
+  an open designer decision.
+- `ui_theme.gd` carries two palettes (the storybook constants and the
+  mockup-pass API); the manifest quotes both.

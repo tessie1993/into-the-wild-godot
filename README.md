@@ -18,12 +18,16 @@ game/               the Godot 4 project (open this in Godot)
 GDD.md              the digital game design authority (v0.2 canon synthesis)
 AGENTS.md           conventions + roadmap for AI coding agents
 docs/
-  art-direction.md  approved art style + asset list
+  art-direction.md  approved art style (designer-approved 2026-08-28)
+  art/              generator-ready asset list: manifest.json (feed it to an
+                    image-generation agent) + prompt-sheet.md (same jobs, readable)
   design-lane/      the physical/board-game design corpus: spec, economy
                     engine, item/creature catalogs, proposals, reviews, and
                     generated/ — the raw content drops (source of truth for
                     the converter below)
 tools/
+  art-manifest/     build_manifest.py — rebuilds docs/art/ from game/data + the
+                    placeholder card set
   drop-converter/   convert.py — maps the generated/ drops into the engine
                     schemas in game/data/ (wild creatures, item catalog,
                     wild deck, bottleneck trials)
