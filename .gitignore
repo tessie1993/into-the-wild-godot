@@ -16,3 +16,7 @@ build/
 .DS_Store
 Thumbs.db
 *.tmp
+
+# Python tooling (tools/, game/scripts/tools/)
+__pycache__/
+*.pyc
